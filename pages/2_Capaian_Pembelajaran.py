@@ -13,9 +13,9 @@ Setelah mempelajari modul ini, siswa diharapkan mampu:
 1. Mengidentifikasi bentuk umum fungsi kuadrat.
 2. Menganalisis pengaruh koefisien terhadap bentuk grafik.
 3. Menentukan akar-akar persamaan kuadrat.
-4. Menyelesaikan soal dengan metode pemfaktoran dan rumus kuadrat.
+4. Menyelesaikan soal dengan metode pemfaktoran dan rumus ABC.
 5. Mengaplikasikan konsep fungsi kuadrat dalam masalah kontekstual.
-6. Memanfaatkan AI untuk eksplorasi dan refleksi terhadap konsep matematika.
+6. Memanfaatkan AI untuk eksplorasi dan refleksi terhadap pemecahan masalah matematika.
 """)
 
 st.markdown("""
