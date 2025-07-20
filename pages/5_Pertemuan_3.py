@@ -47,7 +47,7 @@ st.markdown(r"""
 ### 📘 Materi: Rumus ABC
 
 Persamaan kuadrat memiliki bentuk umum:
-ax² + bx + c = 0
+$$ax^2 + bx + c = 0$$
 
 Untuk menyelesaikannya, kita gunakan **rumus ABC**:
 $$
@@ -55,8 +55,8 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
 Keterangan:
-- a, b, c adalah koefisien dari persamaan kuadrat
-- D = b² - 4ac   disebut **diskriminan**, menentukan jumlah dan jenis akar
+- $$a, b, c$$ adalah koefisien dari persamaan kuadrat
+- $$D = b^2 - 4ac$$   disebut **diskriminan**, menentukan jumlah dan jenis akar
 """)
 
 contoh = st.text_input("Masukkan persamaan kuadratmu (contoh: x² - 5x + 6):")
@@ -72,7 +72,7 @@ if analisis.strip():
 st.subheader("🔹 Langkah 4: Pengolahan Data (Interactive)")
 st.markdown(r"""
 Misalnya kamu diberikan persamaan kuadrat berikut:  
-x² - 4x - 5 = 0
+$$x^2 - 4x - 5 = 0$$
 
 Lakukan analisis terhadap soal tersebut:  
 - Apa bentuk umum dari persamaan kuadrat tersebut?  
