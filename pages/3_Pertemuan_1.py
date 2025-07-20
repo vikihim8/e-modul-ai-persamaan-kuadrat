@@ -68,9 +68,9 @@ x = \frac{-b}{2a}
 $$
 
   Lalu dihitung $$f(x) = ax^2 + bx + c$$
-- **Titik potong sumbu-Y** adalah (0, c)
+- **Titik potong sumbu-Y** adalah $$(0, c)$$
 - **Titik potong sumbu-X** dapat dicari dengan menyelesaikan persamaan:
-  ax² + bx + c = 0
+  $$ax^2 + bx + c = 0$$
 """)
 
 st.markdown(r"""
