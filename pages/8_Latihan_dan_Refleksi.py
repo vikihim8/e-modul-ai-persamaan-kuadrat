@@ -50,7 +50,7 @@ menggunakan rumus ABC
 latihan2 = st.text_area("📥 Jawaban Soal 2:")
 
 # Soal 3
-st.markdown("**3.** Sebuah fungsi kuadrat memiliki akar-akar 3 dan -2. Tentukan bentuk fungsi kuadrat tersebut.")
+st.markdown("**3.** Sebuah fungsi kuadrat memiliki akar-akar $$3$$ dan $$-2$$. Tentukan bentuk fungsi kuadrat tersebut.")
 latihan3 = st.text_area("📥 Jawaban Soal 3:")
 
 # Refleksi
