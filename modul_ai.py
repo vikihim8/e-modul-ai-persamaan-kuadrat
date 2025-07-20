@@ -20,9 +20,9 @@ Selamat datang di e-modul pembelajaran pendekatan **Discovery Learning** berbasi
 
 Modul ini terdiri dari beberapa pertemuan:
 1. **Bentuk Umum dan Grafik**
-2. **Faktor dan Akar Persamaan**
-3. **Metode Pemfaktoran**
-4. **Penerapan dalam Masalah Kontekstual**
+2. **Faktorisasi Akar-Akar**
+3. **Metode Rumus ABC**
+4. **Penerapan dalam Masalah Kontekstual Sehari-hari**
 """)
 
 if st.button("📌 Lihat Capaian Pembelajaran"):
