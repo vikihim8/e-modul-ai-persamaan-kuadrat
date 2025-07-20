@@ -1,0 +1,186 @@
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import datetime
+
+# Setup Spreadsheet
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
+client = gspread.authorize(creds)
+sheet = client.open_by_key("18g9_lCQQDjyU85TJpBUZRzJIrFmrVPeCnjNg4DqrPx8").sheet1
+
+def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
+    waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
+
+st.set_page_config(page_title="Pertemuan 1", layout="centered")
+
+st.title("🧮 Pertemuan 1: Bentuk Umum dan Grafik Fungsi Kuadrat")
+st.markdown("**Capaian Pembelajaran:** Siswa dapat menganalisis bentuk umum dan grafik fungsi kuadrat berdasarkan koefisien a, b, dan c.")
+
+# Identitas
+st.subheader("👤 Identitas Siswa")
+nama = st.text_input("Nama:")
+kelas = st.text_input("Kelas:")
+
+# Langkah 1: Stimulus
+st.subheader("🔹 Langkah 1: Stimulus (Self-construction)")
+st.markdown("Salin prompt di bawah ini ke Gemini AI dan **pelajari jawabannya**.")
+st.code("Jelaskan bentuk umum fungsi kuadrat dan hubungannya dengan grafik parabola.")
+st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
+jawaban1 = st.text_area("📥 Tuliskan ringkasan pemahamanmu dari jawaban Gemini AI:")
+if jawaban1.strip():
+    st.success("✅ Jawaban diterima. Sekarang kamu dapat melanjutkan ke langkah berikutnya.")
+
+# Langkah 2: Identifikasi Masalah (Self-instruction)
+st.subheader("🔹 Langkah 2: Identifikasi Masalah")
+st.markdown("Apa yang kamu pahami tentang pengaruh nilai a, b, dan c terhadap bentuk grafik?")
+jawaban2 = st.text_area("📥 Tuliskan identifikasimu:")
+if jawaban2.strip():
+    st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
+
+
+# Langkah 3: Pengumpulan Data
+st.subheader("🔹 Langkah 3: Pengumpulan Data")
+
+st.markdown(r"""
+### 📘 Materi: Bentuk Umum Fungsi Kuadrat
+
+Fungsi kuadrat memiliki bentuk umum:  
+f(x) = ax² + bx + c
+
+Dengan:
+- **a** menentukan arah buka parabola dan lebarnya  
+- **b** memengaruhi posisi sumbu simetri  
+- **c** adalah titik potong dengan sumbu-Y  
+
+Beberapa karakteristik penting dari fungsi kuadrat:
+- **Arah buka parabola**:
+  - Jika \( a > 0 \), parabola membuka ke atas
+  - Jika \( a < 0 \), parabola membuka ke bawah  
+- **Titik puncak (vertex)** parabola:
+$$
+x = \frac{-b}{2a}
+$$
+
+  Lalu dihitung f(x) = ax² + bx + c
+- **Titik potong sumbu-Y** adalah (0, c)
+- **Titik potong sumbu-X** dapat dicari dengan menyelesaikan persamaan:
+  ax² + bx + c = 0
+""")
+
+st.markdown(r"""
+**Contoh:** Jika f(x) = x² - 2x + 1 maka:
+- a = 1
+- b = -2
+- c = 1
+""")
+
+
+st.markdown("Silakan masukkan nilai a, b, dan c dari suatu fungsi kuadrat:")
+a = st.number_input("Nilai a", value=1.0, step=0.1, format="%.2f")
+b = st.number_input("Nilai b", value=-2.0, step=0.1, format="%.2f")
+c = st.number_input("Nilai c", value=1.0, step=0.1, format="%.2f")
+
+analisis = st.text_area("📥 Tuliskan analisismu berdasarkan nilai a, b, dan c:")
+
+# Cek AI muncul hanya jika siswa sudah menganalisis
+if analisis.strip():
+    with st.expander("🤖 Cek AI untuk Grafik"):
+        st.markdown("Salin prompt ini ke Gemini AI:")
+        st.code(f"Jelaskan bentuk grafik dari fungsi f(x) = {a}x² + {b}x + {c}, termasuk arah buka, titik potong, dan titik puncaknya.")
+        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
+        st.markdown("Bandingkan jawaban AI dengan analisismu.")
+
+
+# Langkah 4: Pengolahan Data (Grafik)
+st.subheader("🔹 Langkah 4: Pengolahan Data")
+
+# Penjelasan fungsi dan titik puncak
+st.markdown(r"""
+Grafik dari fungsi kuadrat f(x) = ax² + bx + c memiliki bentuk **parabola**.  
+
+Titik puncak (**vertex**) dari grafik fungsi ini dapat ditentukan dengan rumus:
+$$
+x = \frac{-b}{2a}
+$$
+""")
+
+
+# Perhitungan dan plotting
+x_vals = np.linspace(-10, 10, 400)
+y_vals = a * x_vals**2 + b * x_vals + c
+xp = -b / (2 * a)
+yp = a * xp**2 + b * xp + c
+
+fig, ax = plt.subplots()
+ax.plot(x_vals, y_vals, label=r"$f(x) = ax^2 + bx + c$")
+ax.plot(xp, yp, 'ro', label=fr"Titik Puncak $({xp:.2f}, {yp:.2f})$")
+ax.axhline(0, color='gray', linestyle='--')
+ax.axvline(0, color='gray', linestyle='--')
+ax.grid(True)
+ax.legend()
+st.pyplot(fig)
+
+
+# Langkah 5: Verifikasi
+st.subheader("🔹 Langkah 5: Verifikasi")
+st.markdown("""
+Pada langkah sebelumnya, kamu telah membandingkan hasil analisis grafikmu dengan jawaban dari AI.
+
+Sekarang, saatnya melakukan refleksi:
+""")
+
+verifikasi = st.text_area("📥 Apa yang kamu pelajari dari perbandingan tersebut?\nMisalnya: Apakah ada hal baru yang kamu sadari? Adakah kesalahan dalam analisismu sebelumnya?")
+
+cek = st.radio("📌 Apakah hasil analisismu sudah sesuai dengan penjelasan AI?", ["Sudah sesuai", "Sebagian sesuai", "Belum sesuai"])
+
+st.markdown("✅ Refleksi ini membantumu memahami apakah pemahamanmu sudah tepat atau masih perlu diperbaiki.")
+
+
+# Langkah 6: Kesimpulan
+st.subheader("🔹 Langkah 6: Kesimpulan")
+kesimpulan = st.text_area("📝 Tuliskan simpulanmu mengenai bentuk umum fungsi kuadrat dan grafiknya:")
+
+if kesimpulan:
+    with st.expander("🤖 Cek AI untuk Validasi Kesimpulan"):
+        st.markdown("Salin dan tempelkan prompt berikut ke Gemini:")
+        st.code("Buat simpulan tentang bentuk umum fungsi kuadrat dan bagaimana grafiknya terbentuk berdasarkan nilai a, b, dan c.")
+        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
+
+# Refleksi akhir
+st.subheader("🔹 Refleksi")
+refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
+
+# Simpan hasil ke spreadsheet (simulasi local)
+if st.button("📤 Kirim Jawaban"):
+    if nama and kelas:
+        # Simpan lokal (opsional, jika masih ingin simpan ke file .txt)
+        with open("hasil_pertemuan_1.txt", "a", encoding="utf-8") as f:
+            waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"\n---\nWaktu: {waktu}\nNama: {nama}\nKelas: {kelas}\nStimulus: {jawaban1}\nIdentifikasi: {jawaban2}\nAnalisis: {analisis}\nVerifikasi: {verifikasi}\nCocok AI: {cek}\nKesimpulan: {kesimpulan}\n")
+
+        # Gabungkan semua jawaban menjadi satu string jika perlu
+        semua_jawaban = f"Stimulus: {jawaban1} | Identifikasi: {jawaban2} | Analisis: {analisis} | Verifikasi: {verifikasi} | Cocok AI: {cek} | Kesimpulan: {kesimpulan}"
+
+        # Kirim ke Google Sheet
+        simpan_ke_sheet(nama, kelas, "Pertemuan 1", "-", semua_jawaban, refleksi)
+
+        st.success("✅ Jawaban berhasil dikirim ke spreadsheet dan disimpan lokal!")
+    else:
+        st.warning("❗ Nama dan Kelas wajib diisi.")
+
+# Navigasi
+st.markdown("---")
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("⬅️ Capaian Pembelajaran"):
+        st.switch_page("pages/2_Capaian_Pembelajaran.py")
+with col2:
+    if st.button("🏠 Daftar Isi"):
+        st.switch_page("pages/0_Daftar_Isi.py")
+with col3:
+    if st.button("➡️ Pertemuan 2"):
+        st.switch_page("pages/4_Pertemuan_2.py")
