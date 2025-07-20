@@ -38,7 +38,7 @@ if stimulus_ai.strip():
 
 # Langkah 2: Identifikasi Masalah
 st.subheader("🔹 Langkah 2: Identifikasi Masalah")
-st.markdown("Contoh: Sebuah bola dilempar ke atas, dan ketinggiannya terhadap waktu dinyatakan oleh: h(t) = -5t² + 20t. Apa saja informasi yang bisa diperoleh?")
+st.markdown("Contoh: Sebuah bola dilempar ke atas, dan ketinggiannya terhadap waktu dinyatakan oleh: $$h(t) = -5t^2 + 20t$$. Apa saja informasi yang bisa diperoleh?")
 identifikasi = st.text_area("📥 Tuliskan masalah yang dapat dipecahkan dari situasi tersebut:")
 if identifikasi.strip():
     st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
@@ -47,9 +47,9 @@ if identifikasi.strip():
 st.subheader("🔹 Langkah 3: Pengumpulan Data")
 st.markdown("Dari soal yang kamu baca di Langkah 2, jawablah pertanyaan berikut:")
 
-data1 = st.text_input("1️⃣ Apa nilai a, b, dan c dari persamaan kuadrat dalam soal?", key="data1_l3")
+data1 = st.text_input("1️⃣ Apa nilai $$a, b,$$ dan $$c$$ dari persamaan kuadrat dalam soal?", key="data1_l3")
 data2 = st.text_input("2️⃣ Tentukan jenis akar-akarnya (real dan berbeda, real dan kembar, atau imajiner)?", key="data2_l3")
-data3 = st.text_input("3️⃣ Berapa nilai diskriminannya (D= b²-4ac)?", key="data3_l3")
+data3 = st.text_input("3️⃣ Berapa nilai diskriminannya ($$D= b²-4ac$$)?", key="data3_l3")
 
 # Simpan jawaban
 if data1 and data2 and data3:
