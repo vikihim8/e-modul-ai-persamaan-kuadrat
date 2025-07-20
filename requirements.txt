@@ -3,4 +3,5 @@ openai
 matplotlib
 numpy
 pandas
-
+gspread
+oauth2client
