@@ -49,20 +49,20 @@ st.subheader("🔹 Langkah 3: Pengumpulan Data dan Materi (Self-contained)")
 st.markdown(r"""
 **Materi: Faktor dan Akar Persamaan Kuadrat**
 
-Jika suatu fungsi kuadrat berbentuk f(x) = ax² + bx + c dan dapat difaktorkan menjadi 
-f(x) = (x - p)(x - q)
+Jika suatu fungsi kuadrat berbentuk $$f(x) = ax^2 + bx + c$$ dan dapat difaktorkan menjadi 
+$$f(x) = (x - p)(x - q)$$
 
 maka akar-akar persamaannya adalah:
-x1 = p  dan  x2 = q
+$$x1 = p$$  dan  $$x2 = q$$
 
 #### Contoh:
-x² - 5x + 6 = 0
+$$x² - 5x + 6 = 0$$
  
 Faktorkan:  
-(x - 2)(x - 3) = 0
+$$(x - 2)(x - 3) = 0$$
 
 Jadi, akar-akarnya adalah:  
-x1 = 2   dan    x2 = 3
+$$x1 = 2$$   dan    $$x2 = 3$$
 """)
 
 contoh = st.text_input("✍️ Masukkan persamaan kuadratmu (contoh: x² - 5x + 6):")
@@ -80,7 +80,7 @@ if analisis.strip():
 st.subheader("🔹 Langkah 4: Pengolahan Data (Interactive)")
 st.markdown(r"""
 Misalnya kamu diberikan persamaan:  
-x² - 4x - 5 = 0
+$$x^2 - 4x - 5 = 0$$
 
 Cobalah faktorkan dan tentukan akarnya.
 """)
