@@ -51,7 +51,7 @@ st.markdown(r"""
 ### 📘 Materi: Bentuk Umum Fungsi Kuadrat
 
 Fungsi kuadrat memiliki bentuk umum:  
-f(x) = ax² + bx + c
+$$f(x) = ax^2 + bx + c$$
 
 Dengan:
 - **a** menentukan arah buka parabola dan lebarnya  
@@ -67,14 +67,14 @@ $$
 x = \frac{-b}{2a}
 $$
 
-  Lalu dihitung f(x) = ax² + bx + c
+  Lalu dihitung $$f(x) = ax^2 + bx + c$$
 - **Titik potong sumbu-Y** adalah (0, c)
 - **Titik potong sumbu-X** dapat dicari dengan menyelesaikan persamaan:
   ax² + bx + c = 0
 """)
 
 st.markdown(r"""
-**Contoh:** Jika f(x) = x² - 2x + 1 maka:
+**Contoh:** Jika $$f(x) = x^2 - 2x + 1$$ maka:
 - a = 1
 - b = -2
 - c = 1
@@ -102,7 +102,7 @@ st.subheader("🔹 Langkah 4: Pengolahan Data")
 
 # Penjelasan fungsi dan titik puncak
 st.markdown(r"""
-Grafik dari fungsi kuadrat f(x) = ax² + bx + c memiliki bentuk **parabola**.  
+Grafik dari fungsi kuadrat $$f(x) = ax^2 + bx + c$$ memiliki bentuk **parabola**.  
 
 Titik puncak (**vertex**) dari grafik fungsi ini dapat ditentukan dengan rumus:
 $$
