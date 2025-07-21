@@ -150,8 +150,10 @@ with col1:
 with col2:
     if st.button("🏠 Daftar Isi"):
         st.switch_page("pages/0_Daftar_Isi.py")
+from streamlit_extras.switch_page_button import switch_page
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
-        st.switch_page("pages/8_Latihan_dan_refleksi.py")
+        switch_page("8_Latihan_dan_refleksi")
+
 
 
