@@ -146,14 +146,14 @@ st.markdown("---")
 col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("⬅️ Pertemuan 3"):
-        st.switch_page("pages/6_Pertemuan_3.py")
+        st.switch_page("pages/5_Pertemuan_3.py")
 with col2:
     if st.button("🏠 Daftar Isi"):
         st.switch_page("pages/0_Daftar_Isi.py")
 from streamlit_extras.switch_page_button import switch_page
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
-        switch_page("8_Latihan_dan_refleksi")
+        st.switch_page("8_Latihan_dan_refleksi")
 
 
 
