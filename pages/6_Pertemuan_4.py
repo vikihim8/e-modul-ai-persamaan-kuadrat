@@ -152,7 +152,7 @@ with col2:
         st.switch_page("pages/0_Daftar_Isi.py")
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
-        st.switch_page("8_Latihan_dan_refleksi")
+        st.switch_page("8_Latihan_dan_Refleksi")
 
 
 
