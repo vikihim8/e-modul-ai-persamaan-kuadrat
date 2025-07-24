@@ -28,111 +28,67 @@ nama = st.text_input("Nama:")
 kelas = st.text_input("Kelas:")
 
 # Langkah 1: Stimulus
-st.subheader("🔹 Langkah 1: Stimulus (Self-construction)")
-st.markdown("Salin prompt di bawah ini ke Gemini AI dan **pelajari jawabannya**.")
-st.code("Jelaskan bagaimana persamaan kuadrat dapat digunakan untuk memodelkan gerak benda dalam kehidupan sehari-hari.")
-st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-stimulus_ai = st.text_area("📥 Tuliskan ringkasan pemahamanmu dari jawaban Gemini AI:")
-if stimulus_ai.strip():
-    st.success("✅ Jawaban diterima. Sekarang kamu dapat melanjutkan ke langkah berikutnya.")
+st.header("1. Stimulus")
+st.image("pages/lintasan_bola.png", caption="Contoh lintasan bola (fungsi kuadrat)", use_container_width=True)
+st.markdown("📌 **Perhatikan gambar lintasan bola di atas!**")
+st.markdown("Bola dilempar ke atas hingga mencapai ketinggian maksimum lalu jatuh kembali ke tanah. Bentuk lintasan bola menyerupai grafik fungsi kuadrat.")
+stimulus_input = st.text_area("✍️ Analisis: Apa yang bisa kamu amati dari lintasan bola tersebut?", key="stimulus")
 
 # Langkah 2: Identifikasi Masalah
-st.subheader("🔹 Langkah 2: Identifikasi Masalah")
-st.markdown("Contoh: Sebuah bola dilempar ke atas, dan ketinggiannya terhadap waktu dinyatakan oleh: $$h(t) = -5t^2 + 20t$$. Apa saja informasi yang bisa diperoleh?")
-identifikasi = st.text_area("📥 Tuliskan masalah yang dapat dipecahkan dari situasi tersebut:")
-if identifikasi.strip():
-    st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
+st.header("2. Identifikasi Masalah")
+st.markdown("🎯 **Dapatkah kamu merumuskan pertanyaan atau masalah dari gambar tersebut? Misalnya: berapa ketinggian maksimum bola? atau berapa lama bola berada di udara?**")
+identifikasi_input = st.text_area("✍️ Tulis pertanyaan atau masalah yang kamu identifikasi berdasarkan stimulus", key="identifikasi")
+if identifikasi_input:
+    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/)")
 
 # Langkah 3: Pengumpulan Data
-st.subheader("🔹 Langkah 3: Pengumpulan Data")
-st.markdown("Dari soal yang kamu baca di Langkah 2, jawablah pertanyaan berikut:")
+st.header("3. Pengumpulan Data")
+st.markdown("📈 Eksplorasi fungsi kuadrat dalam bentuk umum: `h(t) = -4.9t² + vt + h₀`, di mana:")
+st.markdown("- `t`: waktu (detik)")
+st.markdown("- `v`: kecepatan awal (m/s)")
+st.markdown("- `h₀`: tinggi awal (meter)")
 
-data1 = st.text_input("1️⃣ Apa nilai $$a, b,$$ dan $$c$$ dari persamaan kuadrat dalam soal?", key="data1_l3")
-data2 = st.text_input("2️⃣ Tentukan jenis akar-akarnya (real dan berbeda, real dan kembar, atau imajiner)?", key="data2_l3")
-data3 = st.text_input("3️⃣ Berapa nilai diskriminannya ($$D= b²-4ac$$)?", key="data3_l3")
+v = st.number_input("Masukkan kecepatan awal (v) dalam m/s", value=20)
+h0 = st.number_input("Masukkan tinggi awal (h₀) dalam meter", value=1)
 
-# Simpan jawaban
-if data1 and data2 and data3:
-    st.session_state["isidata_l3"] = True
+if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
+    import sympy as sp
+    t = sp.Symbol('t')
+    h = -4.9*t**2 + v*t + h0
+    t_max = sp.solve(h.diff(t), t)[0]
+    h_max = h.subs(t, t_max)
+    total_waktu = sp.solve(h, t)
+    
+    st.success(f"⏱️ Waktu saat tinggi maksimum: {float(t_max):.2f} detik")
+    st.success(f"📏 Tinggi maksimum bola: {float(h_max):.2f} meter")
+    st.success(f"🕒 Perkiraan bola menyentuh tanah: {float(max(total_waktu)):.2f} detik")
 
-# Tampilkan Cek AI jika semua jawaban diisi
-if st.session_state.get("isidata_l3", False):
-    with st.expander("🤖 Cek AI untuk Konfirmasi Jawabanmu"):
-        st.markdown("""
-Salin dan tempelkan prompt berikut ke Gemini AI atau AI lain:
-Saya ingin memeriksa jawaban saya:
-a. Nilai a, b, dan c dari x² - 4x - 5 = 0
-b. Jenis akarnya
-c. Nilai diskriminannya
-Beritahu apakah sudah benar, dan jelaskan alasannya.
-""")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("""
-Setelah membaca jawaban AI, tulislah:
-        """)
+st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
+pengumpulan_input = st.text_area("Tulis pemahamanmu di sini", key="pengumpulan")
+if pengumpulan_input:
+    st.markdown("[🔗 Cek pemahamanmu di Perplexity](https://www.perplexity.ai/)")
 
-        refleksi_l3 = st.text_area("📥 Apa yang kamu pelajari dari penjelasan AI di Langkah 3?")
-        st.session_state["refleksi_l3"] = refleksi_l3
-else:
-    st.info("⛔ Silakan isi semua pertanyaan di atas terlebih dahulu.")
+# Langkah 4: Pengolahan Data (Latihan)
+st.header("4. Pengolahan Data")
+st.markdown("📝 **Latihan Soal:**\nSeseorang melempar bola dengan kecepatan awal 15 m/s dari atas tebing setinggi 5 meter. Tentukan:")
+st.markdown("- Tinggi maksimum bola")
+st.markdown("- Waktu untuk mencapai tanah")
 
-# Langkah 4: Pengolahan Data (Grafik)
-st.subheader("🔹 Langkah 4: Representasi Grafis")
-
-st.markdown("Masukkan nilai-nilai berikut untuk menggambar grafik parabola:")
-
-a_val = st.number_input("Nilai a", step=1, format="%d", key="a_l4")
-b_val = st.number_input("Nilai b", step=1, format="%d", key="b_l4")
-c_val = st.number_input("Nilai c", step=1, format="%d", key="c_l4")
-
-if a_val != 0 or b_val != 0 or c_val != 0:
-    st.session_state["analisis_l4"] = f"a={a_val}, b={b_val}, c={c_val}"
-
-    x_vals = np.linspace(-10, 10, 400)
-    y_vals = a_val * x_vals**2 + b_val * x_vals + c_val
-
-    fig, ax = plt.subplots()
-    ax.plot(x_vals, y_vals, label=f"{a_val}x² + {b_val}x + {c_val}")
-    ax.axhline(0, color='gray', lw=1)
-    if a_val != 0:
-        ax.axvline(-b_val / (2 * a_val), color='red', linestyle='--', label='Sumbu Simetri')
-    ax.legend()
-    st.pyplot(fig)
-
-    st.session_state["grafik_sudah_dibuat"] = True
-else:
-    st.info("❗Masukkan nilai a, b, dan c untuk melihat grafik.")
+pengolahan_input = st.text_area("✍️ Tulis jawabanmu di sini", key="pengolahan")
+if pengolahan_input:
+    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/)")
 
 # Langkah 5: Verifikasi
-st.subheader("🔹 Langkah 5: Verifikasi")
-st.markdown("❗ *Selesaikan Langkah 4 terlebih dahulu sebelum melakukan verifikasi.*")
-
-if st.session_state.get("analisis_l4", "").strip() != "":
-    with st.expander("🤖 Cek AI untuk Verifikasi Jawaban"):
-        st.markdown(r"""
-Salin dan tempelkan prompt berikut ke Gemini AI (atau AI lainnya):
-Jelaskan cara menyelesaikan persamaan kuadrat berikut dengan metode rumus ABC:
-x^2 - 4x - 5 = 0
-Bandingkan hasilnya dengan jawaban saya.
-""")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        kesesuaian = st.selectbox("Bagaimana tingkat kesesuaian jawabanmu dengan penjelasan AI?", ["Semua sama", "Sebagian sama", "Tidak sama sekali"], key="kesesuaian_l5")
-        refleksi = st.text_area("📥 Apa yang kamu pelajari dari perbandingan tersebut?", key="refleksi_l5")
-
-        st.session_state["verifikasi_kesesuaian"] = kesesuaian
-        st.session_state["verifikasi_refleksi"] = refleksi
-else:
-    st.info("⛔ Silakan isi Langkah 4 terlebih dahulu.")
+st.header("5. Verifikasi")
+st.markdown("📌 **Bandingkan jawabanmu dengan teman atau cek ulang ke sumber belajar.**")
+verifikasi_input = st.text_area("✍️ Apa yang perlu kamu perbaiki atau pertahankan dari jawabanmu?", key="verifikasi")
 
 # Langkah 6: Kesimpulan
-st.subheader("🔹 Langkah 6: Kesimpulan")
-kesimpulan = st.text_area("📝 Tuliskan simpulanmu mengenai penggunaan persamaan kuadrat dalam kehidupan nyata:")
-
-if kesimpulan:
-    with st.expander("🤖 Cek AI untuk Validasi Kesimpulan"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code("Jelaskan simpulan tentang enggunaan persamaan kuadrat dalam kehidupan nyata")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
+st.header("6. Kesimpulan")
+st.markdown("📍 **Tuliskan kesimpulanmu tentang penerapan fungsi kuadrat dalam kehidupan sehari-hari!**")
+kesimpulan_input = st.text_area("✍️ Kesimpulanmu", key="kesimpulan")
+if kesimpulan_input:
+    st.markdown("[🔗 Bandingkan kesimpulanmu dengan Perplexity](https://www.perplexity.ai/)")
 
 if st.button("📤 Kirim Jawaban"):
     if nama and kelas:
