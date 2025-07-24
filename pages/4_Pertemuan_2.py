@@ -74,7 +74,7 @@ analisis = st.text_area("📝 Tulis analisismu terhadap hasil faktorisasi di ata
 
 # 5. Cek AI muncul setelah siswa isi analisis
 if analisis.strip() != "":
-    st.markdown("🔍 [Klik di sini untuk melihat penjelasan dari AI](https://www.perplexity.ai/search/langkah-memfaktorkan-fungsi-kuadr-vc0R9Z.hTMWkgFLWTtnmwA)")
+    st.markdown("🔍 [Klik di sini untuk melihat penjelasan dari AI](https://www.perplexity.ai/search/materi-faktorisasi-dari-fungsi-9xV92TI5QQOZA0wFxQFUfg)")
 
 
 st.header("4. Pengolahan Data")
