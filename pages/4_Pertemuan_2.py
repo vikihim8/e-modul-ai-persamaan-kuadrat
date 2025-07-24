@@ -25,81 +25,91 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# --- 1. STIMULUS ---
-st.header("1. Stimulus")
-st.write("""
-Perhatikan bentuk umum fungsi kuadrat berikut:  
-$$f(x) = x^2 - 5x + 6$$  
-Coba ingat kembali bagaimana bentuk ini bisa diubah menjadi bentuk faktor.
-""")
+# --- 1. Stimulus ---
+st.header("1. Pemberian Rangsangan (Stimulus)")
+st.write("Perhatikan bentuk fungsi kuadrat berikut:")
+st.latex(r"f(x) = x^2 - 5x + 6")
+st.write("Bentuk tersebut adalah bentuk umum fungsi kuadrat. Apakah kamu bisa mengubahnya menjadi bentuk faktor?")
+jawaban1 = st.text_area("📝 Tuliskan hal yang menarik atau membingungkan dari bentuk kuadrat di atas:")
 
-# --- 2. IDENTIFIKASI MASALAH ---
+# --- 2. Identifikasi Masalah ---
 st.header("2. Identifikasi Masalah")
-masalah = st.text_area("❓ Apa yang menjadi pertanyaan atau masalah yang muncul dari stimulus di atas?")
+jawaban2 = st.text_area("❓ Apa pertanyaan atau masalah yang muncul dari stimulus di atas?")
 
-if masalah.strip():
-    st.success("✅ Masalah telah dicatat.")
+if jawaban2.strip():
+    st.success("✅ Jawaban dicatat.")
+    with st.expander("👉 Lihat referensi AI (setelah mengisi jawaban)"):
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/apa-itu-faktorisasi-fungsi-kuadrat-dalam-matematika-nKRGw0RIQyiTx6HdNi9PZQ)")
 else:
-    st.warning("Silakan tulis masalah yang kamu temukan dari stimulus.")
+    st.warning("Silakan isi jawaban terlebih dahulu.")
 
-# --- 3. PENGUMPULAN DATA ---
+# --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
 st.write("""
-Mari kita ingat rumus faktorisasi bentuk kuadrat:  
-Jika $f(x) = ax^2 + bx + c$, maka kita cari dua bilangan yang hasil kalinya $a×c$ dan jumlahnya $b$.
+Untuk memfaktorkan fungsi kuadrat dari bentuk:
+$$f(x) = ax^2 + bx + c$$  
+Kita harus mencari dua bilangan yang hasil kalinya $a \cdot c$ dan jumlahnya $b$.
 """)
 
-# --- 4. PENGOLAHAN DATA ---
+st.write("Eksplorasi: Berapa hasil kali dan jumlah dari dua bilangan berikut?")
+bil1 = st.number_input("Bilangan 1", step=1)
+bil2 = st.number_input("Bilangan 2", step=1)
+
+if bil1 and bil2:
+    st.info(f"Hasil kali: {bil1 * bil2}, Jumlah: {bil1 + bil2}")
+
+# --- 4. Pengolahan Data ---
 st.header("4. Pengolahan Data")
-st.write("Silakan faktorkan fungsi berikut secara manual:")
-soal_pengolahan = st.text_input("📝 Faktorkan:  \n$$f(x) = x^2 - 7x + 10$$")
+st.write("Faktorkan bentuk berikut:")
+st.latex(r"f(x) = x^2 - 7x + 10")
+analisis = st.text_input("📝 Tulis bentuk faktornya:")
 
-if soal_pengolahan.strip():
-    st.success("✅ Jawaban kamu disimpan.")
+if analisis.strip():
+    st.success("✅ Jawaban disimpan.")
+    with st.expander("🔍 Cek AI setelah menjawab"):
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-7x-10-TYnyNzPvSpitYI-Z0rdrOw)")
 else:
-    st.warning("Silakan faktorkan fungsi terlebih dahulu.")
+    st.warning("Silakan faktorkan dulu sebelum cek AI.")
 
-# --- 5. PEMBUKTIAN ---
+# --- 5. Pembuktian (Verifikasi) ---
 st.header("5. Pembuktian")
-st.write("Coba kerjakan soal berikut dan simak hasil dari AI setelah kamu menjawab:")
-st.write("**Soal:** Faktorkan bentuk:  \n$$f(x) = x^2 - 3x - 10$$")
+st.write("Soal: Faktorkan bentuk berikut:")
+st.latex(r"f(x) = x^2 - 3x - 10")
+analisis_l4 = st.text_input("🧠 Jawabanmu (dalam bentuk faktor):")
 
-jawaban = st.text_input("🧠 Jawabanmu (dalam bentuk faktor):")
-
-if jawaban.strip():
-    st.success("✅ Jawaban kamu telah dicatat.")
-    if st.button("Buka Perplexity untuk klarifikasi", key="buka_ai_faktorisasi"):
-        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-minus-3x-minus-10-vV0n2C6WTLmaV6Sg_y-qGA)")
+if analisis_l4.strip():
+    st.success("✅ Jawaban disimpan.")
+    with st.expander("🔍 Lihat pembahasan AI setelah menjawab"):
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-minus-3x-minus-10-vV0n2C6WTLmaV6Sg_y-qGA)")
 else:
-    st.warning("Silakan isi jawaban terlebih dahulu sebelum membuka referensi AI.")
+    st.warning("Silakan isi jawaban terlebih dahulu.")
 
-# --- 6. PENARIKAN KESIMPULAN ---
+# --- 6. Penarikan Kesimpulan ---
 st.header("6. Penarikan Kesimpulan")
 kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas ini?")
-
 if kesimpulan.strip():
     st.success("✅ Kesimpulan kamu tercatat.")
     if st.button("Lihat rangkuman AI", key="buka_ai_kesimpulan_2"):
-        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/kesimpulan-materi-faktorisasi-fungsi-kuadrat-r1Az5zNSfTicI7hAo9FqBg)")
+        st.markdown("[Buka Rangkuman AI](https://www.perplexity.ai/search/kesimpulan-materi-faktorisasi-fungsi-kuadrat-r1Az5zNSfTicI7hAo9FqBg)")
 else:
-    st.warning("Silakan isi kesimpulan terlebih dahulu sebelum membuka rangkuman AI.")
-# Refleksi akhir
-st.subheader("🔹 Refleksi")
-refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
+    st.warning("Silakan isi kesimpulan sebelum cek rangkuman.")
 
-# Kirim
-if st.button("📤 Kirim Jawaban ke Spreadsheet"):
-    if nama and kelas:
-        semua_jawaban = f"Stimulus: {jawaban1} | Identifikasi: {jawaban2} | Analisis: {analisis} | Analisis Soal: {analisis_l4} | Verifikasi: {st.session_state.get('verifikasi_kesesuaian', '')} | Kesimpulan: {kesimpulan}"
-        refleksi_akhir = refleksi or st.session_state.get("verifikasi_refleksi", "")
+# --- Refleksi Akhir ---
+st.subheader("🪞 Refleksi Belajar")
+refleksi = st.radio("Seberapa yakin kamu memahami materi faktorisasi fungsi kuadrat?", 
+                    ["Tidak yakin", "Kurang yakin", "Cukup yakin", "Yakin", "Sangat yakin"])
 
-        # Simpan ke spreadsheet
-        simpan_ke_sheet(nama, kelas, "Pertemuan 2", "-", semua_jawaban, refleksi_akhir)
+kuis = st.radio("Jika f(x) = x² - 7x + 10, maka faktornya adalah ...", 
+                ["(x-5)(x-2)", "(x+5)(x+2)", "(x-7)(x+10)", "Tidak bisa difaktorkan"])
 
-        st.success("✅ Jawaban berhasil dikirim ke spreadsheet!")
+cek = ""
+if kuis:
+    if kuis == "(x-5)(x-2)":
+        st.success("✅ Jawaban benar!")
+        cek = "Benar"
     else:
-        st.warning("❗ Harap lengkapi nama dan kelas sebelum mengirim.")
-
+        st.error("❌ Jawaban belum tepat.")
+        cek = "Salah"
 
 # Navigasi
 st.markdown("---")
