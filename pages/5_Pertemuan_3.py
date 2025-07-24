@@ -97,21 +97,36 @@ if a != 0:
 else:
     st.warning("Nilai a tidak boleh 0")
 
+st.header("4. Pengolahan Data")
+st.write("""
+Latihan Soal:
+Selesaikan persamaan berikut dengan rumus ABC:
 
-# Langkah 5: Verifikasi (Analisis Siswa)
-st.header("5️⃣ Verifikasi")
-st.write("Tuliskan hasil analisismu berdasarkan langkah-langkah penyelesaian yang kamu lakukan.")
-analisis = st.text_area("📝 Jawabanmu di sini")
+> 2x² - 4x - 6 = 0
+""")
+jawaban_pengolahan = st.text_area("Tulis jawabanmu di sini:")
+if jawaban_pengolahan:
+    st.markdown("[Cek jawabanmu di Perplexity AI](https://www.perplexity.ai/)", unsafe_allow_html=True)
 
-# Langkah 6: Menarik Kesimpulan dan Cek AI
-st.header("6️⃣ Menarik Kesimpulan")
-if analisis:
-    st.success("Terima kasih! Sekarang kamu bisa mengecek jawabanmu menggunakan AI.")
-    st.markdown(
-        '[🔍 Cek Jawabanmu di Perplexity](https://www.perplexity.ai/)'
-    )
-else:
-    st.info("Silakan isi analisis terlebih dahulu untuk membuka link cek jawaban AI.")
+# LANGKAH 5: VERIFIKASI
+st.header("5. Verifikasi")
+st.write("""
+Bandingkan jawabanmu dengan jawaban dari teman atau AI.
+Apakah terdapat perbedaan?
+""")
+verifikasi_input = st.text_area("Tuliskan hasil verifikasimu di sini:")
+if verifikasi_input:
+    st.markdown("[Diskusikan dengan AI di Perplexity](https://www.perplexity.ai/)", unsafe_allow_html=True)
+
+# LANGKAH 6: KESIMPULAN
+st.header("6. Kesimpulan")
+st.write("""
+Buatlah kesimpulan dari pembelajaran hari ini, khususnya tentang cara penyelesaian persamaan kuadrat menggunakan rumus ABC.
+""")
+kesimpulan_input = st.text_area("Tuliskan kesimpulanmu:")
+if kesimpulan_input:
+    st.markdown("[Cek kesimpulan dengan Perplexity AI](https://www.perplexity.ai/)", unsafe_allow_html=True)
+
 # Refleksi akhir
 st.subheader("🔹 Refleksi")
 refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
