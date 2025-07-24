@@ -26,46 +26,59 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# Langkah 1: Stimulus
-st.header("1️⃣ Stimulus")
-st.write("""
-Bayangkan kamu sedang bermain game mencari harta karun. Kamu menemukan sebuah peta dengan petunjuk yang ditulis dalam bentuk persamaan kuadrat. Untuk membuka peti, kamu harus menyelesaikan persamaan tersebut. Bagaimana cara kamu menyelesaikannya?
+# LANGKAH 1: STIMULUS
+st.header("1. Stimulus")
+st.image("pages/lintasan_bola.png", caption="Lintasan Gerak Parabola", use_column_width=True)
+st.write("Perhatikan gambar di atas! Bagaimana hubungan antara lintasan bola dengan bentuk persamaan kuadrat?")
+stimulus_jawaban = st.text_area("Tuliskan analisismu berdasarkan stimulus tersebut di sini:")
+st.markdown("---")
+
+# LANGKAH 2: IDENTIFIKASI MASALAH
+st.header("2. Identifikasi Masalah")
+st.write("Diberikan permasalahan berikut:")
+st.markdown("""
+> Sebuah bola dilempar ke atas membentuk lintasan parabola. Persamaan lintasan tersebut dinyatakan dalam bentuk umum persamaan kuadrat. Tentukan akar-akar dari persamaan tersebut menggunakan rumus ABC!
 """)
+identifikasi_jawaban = st.text_area("Tuliskan identifikasi masalah yang kamu temukan:")
+if identifikasi_jawaban:
+    st.success("Masalah telah diidentifikasi. Kamu bisa eksplorasi lebih lanjut dengan bantuan AI.")
+    st.markdown("[Cek penjelasan AI di Preplexity](https://www.perplexity.ai)")
 
-# Langkah 2: Identifikasi Masalah
-st.header("2️⃣ Identifikasi Masalah")
-st.write("Masalah: Bagaimana cara menyelesaikan persamaan kuadrat ax² + bx + c = 0 dengan menggunakan rumus ABC?")
+st.markdown("---")
 
-# Langkah 3: Pengumpulan Data
-st.header("3️⃣ Pengumpulan Data")
-st.write("Masukkan nilai a, b, dan c dari persamaan kuadrat yang ingin kamu selesaikan:")
+# LANGKAH 3: PENGUMPULAN & PENGOLAHAN DATA
+st.header("3. Pengumpulan dan Pengolahan Data")
+st.write("Masukkan nilai koefisien berikut dari persamaan kuadrat:")
+col1, col2, col3 = st.columns(3)
+with col1:
+    a = st.number_input("Masukkan nilai a", step=1.0)
+with col2:
+    b = st.number_input("Masukkan nilai b", step=1.0)
+with col3:
+    c = st.number_input("Masukkan nilai c", step=1.0)
 
-a = st.number_input("Masukkan nilai a", step=1.0)
-b = st.number_input("Masukkan nilai b", step=1.0)
-c = st.number_input("Masukkan nilai c", step=1.0)
-
-# Langkah 4: Pengolahan Data
-st.header("4️⃣ Pengolahan Data")
 if a != 0:
-    st.markdown(f"Persamaan kuadrat: **{a}x² + {b}x + {c} = 0**")
+    x = sp.Symbol('x')
+    diskriminan = b**2 - 4*a*c
+    akar1 = (-b + sp.sqrt(diskriminan)) / (2*a)
+    akar2 = (-b - sp.sqrt(diskriminan)) / (2*a)
+    
+    st.subheader("🔹 Bentuk Persamaan Kuadrat")
+    st.latex(f"{a}x^2 + {b}x + {c} = 0")
 
-    # Hitung diskriminan
-    D = b**2 - 4*a*c
-    st.write(f"Diskriminan (D) = {D}")
+    st.subheader("🔹 Solusi dengan Rumus ABC")
+    st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
+    st.latex(rf"x = \frac{{-{b} \pm \sqrt{{{b}^2 - 4({a})({c})}}}}{{2({a})}}")
+    st.latex(rf"x_1 = {sp.simplify(akar1)}, \quad x_2 = {sp.simplify(akar2)}")
 
-    if D > 0:
-        x1 = (-b + math.sqrt(D)) / (2*a)
-        x2 = (-b - math.sqrt(D)) / (2*a)
-        st.success(f"Akar-akar real dan berbeda:\nx₁ = {x1:.2f}, x₂ = {x2:.2f}")
-    elif D == 0:
-        x = -b / (2*a)
-        st.info(f"Akar real dan sama:\nx = {x:.2f}")
-    else:
-        real_part = -b / (2*a)
-        imag_part = math.sqrt(abs(D)) / (2*a)
-        st.warning(f"Akar-akar kompleks:\nx₁ = {real_part:.2f} + {imag_part:.2f}i, x₂ = {real_part:.2f} - {imag_part:.2f}i")
-else:
-    st.error("Nilai a tidak boleh nol (a ≠ 0) dalam persamaan kuadrat.")
+    st.subheader("🔹 Faktorisasi Persamaan")
+    bentuk_faktorisasi = a * (x - akar1) * (x - akar2)
+    st.latex(f"{sp.expand(bentuk_faktorisasi)} = 0")
+
+    analisis_pengolahan = st.text_area("Apa yang kamu simpulkan dari hasil perhitungan di atas?")
+    if analisis_pengolahan:
+        st.success("Kamu telah menyelesaikan analisis pengolahan data.")
+        st.markdown("[Cek validasi penjelasan di Preplexity](https://www.perplexity.ai)")
 
 # Langkah 5: Verifikasi (Analisis Siswa)
 st.header("5️⃣ Verifikasi")
