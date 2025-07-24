@@ -26,7 +26,7 @@ nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
 # --- 1. Stimulus ---
-st.header("1. Pemberian Rangsangan (Stimulus)")
+st.header("1. Stimulus)")
 st.write("Perhatikan bentuk fungsi kuadrat berikut:")
 st.latex(r"f(x) = x^2 - 5x + 6")
 st.write("Bentuk tersebut adalah bentuk umum fungsi kuadrat. Apakah kamu bisa mengubahnya menjadi bentuk faktor?")
@@ -39,7 +39,7 @@ jawaban2 = st.text_area("❓ Apa pertanyaan atau masalah yang muncul dari stimul
 if jawaban2.strip():
     st.success("✅ Jawaban dicatat.")
     with st.expander("👉 Lihat referensi AI (setelah mengisi jawaban)"):
-        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/apa-itu-faktorisasi-fungsi-kuadrat-dalam-matematika-nKRGw0RIQyiTx6HdNi9PZQ)")
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/perhatikan-bentuk-fungsi-kuadr-6B4Ys2oFSY2k7brcauEtHA)")
 else:
     st.warning("Silakan isi jawaban terlebih dahulu.")
 
@@ -51,9 +51,23 @@ $$f(x) = ax^2 + bx + c$$
 Kita harus mencari dua bilangan yang hasil kalinya $a \cdot c$ dan jumlahnya $b$.
 """)
 
-st.write("Eksplorasi: Berapa hasil kali dan jumlah dari dua bilangan berikut?")
+st.write("💡 Eksplorasi: Berapa hasil kali dan jumlah dari dua bilangan berikut?")
 bil1 = st.number_input("Bilangan 1", step=1)
 bil2 = st.number_input("Bilangan 2", step=1)
+
+if bil1 and bil2:
+    st.info(f"Hasil kali: {bil1 * bil2}, Jumlah: {bil1 + bil2}")
+
+# Tambahan Analisis Siswa
+st.markdown("### 🔍 Analisis Siswa")
+analisis_siswa = st.text_area("📝 Jelaskan bagaimana dua bilangan ini bisa digunakan untuk memfaktorkan bentuk kuadrat.")
+
+if analisis_siswa.strip():
+    st.success("✅ Analisis kamu sudah dicatat.")
+    with st.expander("💬 Lihat penjelasan AI setelah kamu menjawab"):
+        st.markdown("[Cek AI - Cara dua bilangan membantu faktorisasi](https://www.perplexity.ai/search/mengapa-dua-bilangan-dalam-faktorisasi-fungsi-kuadrat-EiTiQJPzRguRTTYoKk_PGQ)")
+else:
+    st.warning("Silakan isi dulu penjelasanmu sebelum melihat referensi AI.")
 
 if bil1 and bil2:
     st.info(f"Hasil kali: {bil1 * bil2}, Jumlah: {bil1 + bil2}")
@@ -67,7 +81,7 @@ analisis = st.text_input("📝 Tulis bentuk faktornya:")
 if analisis.strip():
     st.success("✅ Jawaban disimpan.")
     with st.expander("🔍 Cek AI setelah menjawab"):
-        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-7x-10-TYnyNzPvSpitYI-Z0rdrOw)")
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
 else:
     st.warning("Silakan faktorkan dulu sebelum cek AI.")
 
@@ -80,7 +94,7 @@ analisis_l4 = st.text_input("🧠 Jawabanmu (dalam bentuk faktor):")
 if analisis_l4.strip():
     st.success("✅ Jawaban disimpan.")
     with st.expander("🔍 Lihat pembahasan AI setelah menjawab"):
-        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-minus-3x-minus-10-vV0n2C6WTLmaV6Sg_y-qGA)")
+        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/soal-faktorkan-bentuk-berikut-787Tzl.dRTSZOdt4ppj4QQ)")
 else:
     st.warning("Silakan isi jawaban terlebih dahulu.")
 
@@ -90,7 +104,7 @@ kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas
 if kesimpulan.strip():
     st.success("✅ Kesimpulan kamu tercatat.")
     if st.button("Lihat rangkuman AI", key="buka_ai_kesimpulan_2"):
-        st.markdown("[Buka Rangkuman AI](https://www.perplexity.ai/search/kesimpulan-materi-faktorisasi-fungsi-kuadrat-r1Az5zNSfTicI7hAo9FqBg)")
+        st.markdown("[Buka Rangkuman AI](https://www.perplexity.ai/search/kesimpulan-materi-faktorisasi-_FgcWfjBTE6928qG9BJ9kQ)")
 else:
     st.warning("Silakan isi kesimpulan sebelum cek rangkuman.")
 
