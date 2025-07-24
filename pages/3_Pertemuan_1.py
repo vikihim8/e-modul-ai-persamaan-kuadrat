@@ -86,18 +86,18 @@ if analisis_siswa.strip() != "":
         st.success("Untuk materi lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai)")
 
 # ---------- Latihan Soal ----------
-st.markdown("## 4. Latihan Soal")
+st.markdown("## 4. Pengolahan Data")
 soal = "Berapakah nilai koordinat titik puncak dari fungsi kuadrat ini?"
 st.write(soal)
-jawaban_siswa = st.text_input("Masukkan jawabanmu (format: x,y)")
+jawaban_siswa = st.text_input("Masukkan jawabanmu (format: $$x,y$$)")
 
 if jawaban_siswa:
     # ---------- AI Mengecek Jawaban ----------
-    x_puncak = -b / (2 * a)
-    y_puncak = a * x_puncak**2 + b * x_puncak + c
+    x_puncak = $$-b / (2 * a)$$
+    y_puncak = $$a * x_puncak**2 + b * x_puncak + c$$
     jawaban_benar = f"{x_puncak:.2f},{y_puncak:.2f}"
 
-    st.markdown("## 5. Cek Jawaban")
+    st.markdown("## Cek Jawaban")
     if jawaban_siswa.replace(" ", "") == jawaban_benar:
         st.success("Jawaban kamu benar! 🎉")
     else:
