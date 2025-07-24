@@ -90,6 +90,23 @@ kesimpulan_input = st.text_area("✍️ Kesimpulanmu", key="kesimpulan")
 if kesimpulan_input:
     st.markdown("[🔗 Bandingkan kesimpulanmu dengan Perplexity](https://www.perplexity.ai/search/kesimpulan-tentang-penerapan-f-gHdPbIOJTAKjKtpLPNESOQ/)")
 
+# --- Refleksi Akhir ---
+st.subheader("🪞 Refleksi Belajar")
+refleksi = st.radio("Seberapa yakin kamu memahami pengolahan data melalui latihan soal fungsi kuadrat?", 
+                    ["Tidak yakin", "Kurang yakin", "Cukup yakin", "Yakin", "Sangat yakin"])
+
+kuis = st.radio("Jika diketahui persamaan kuadrat x² + 2x - 8 = 0, maka akar-akarnya adalah ...", 
+                ["x = -4 atau x = 2", "x = 4 atau x = -2", "x = 2 atau x = 4", "x = -2 atau x = -4"])
+
+cek = ""
+if kuis:
+    if kuis == "x = -4 atau x = 2":
+        st.success("✅ Jawaban benar!")
+        cek = "Benar"
+    else:
+        st.error("❌ Jawaban belum tepat.")
+        cek = "Salah"
+
 if st.button("📤 Kirim Jawaban"):
     if nama and kelas:
         simpan_ke_sheet(nama, kelas, "Pertemuan 4", "-", identifikasi, kesimpulan)
