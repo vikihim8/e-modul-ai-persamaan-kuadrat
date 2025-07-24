@@ -39,7 +39,7 @@ st.header("2. Identifikasi Masalah")
 st.markdown("🎯 **Dapatkah kamu merumuskan pertanyaan atau masalah dari gambar tersebut? Misalnya: berapa ketinggian maksimum bola? atau berapa lama bola berada di udara?**")
 identifikasi_input = st.text_area("✍️ Tulis pertanyaan atau masalah yang kamu identifikasi berdasarkan stimulus", key="identifikasi")
 if identifikasi_input:
-    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/)")
+    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/search/dapatkah-kamu-merumuskan-perta-Yzv6JLajQseUqe2pu1AD4w/)")
 
 # Langkah 3: Pengumpulan Data
 st.header("3. Pengumpulan Data")
@@ -66,7 +66,7 @@ if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
 st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
 pengumpulan_input = st.text_area("Tulis pemahamanmu di sini", key="pengumpulan")
 if pengumpulan_input:
-    st.markdown("[🔗 Cek pemahamanmu di Perplexity](https://www.perplexity.ai/)")
+    st.markdown("[🔗 Cek pemahamanmu di Perplexity](https://www.perplexity.ai/search/eksplorasi-fungsi-kuadrat-dala-Y4pOPedPSAebrZYkcVlgcA/)")
 
 # Langkah 4: Pengolahan Data (Latihan)
 st.header("4. Pengolahan Data")
@@ -76,7 +76,7 @@ st.markdown("- Waktu untuk mencapai tanah")
 
 pengolahan_input = st.text_area("✍️ Tulis jawabanmu di sini", key="pengolahan")
 if pengolahan_input:
-    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/)")
+    st.markdown("[🔗 Cek jawabanmu di Perplexity](https://www.perplexity.ai/search/seseorang-melempar-bola-dengan-0QxxhQRCSaenvUgjZcGvgw/)")
 
 # Langkah 5: Verifikasi
 st.header("5. Verifikasi")
@@ -88,7 +88,7 @@ st.header("6. Kesimpulan")
 st.markdown("📍 **Tuliskan kesimpulanmu tentang penerapan fungsi kuadrat dalam kehidupan sehari-hari!**")
 kesimpulan_input = st.text_area("✍️ Kesimpulanmu", key="kesimpulan")
 if kesimpulan_input:
-    st.markdown("[🔗 Bandingkan kesimpulanmu dengan Perplexity](https://www.perplexity.ai/)")
+    st.markdown("[🔗 Bandingkan kesimpulanmu dengan Perplexity](https://www.perplexity.ai/search/kesimpulan-tentang-penerapan-f-gHdPbIOJTAKjKtpLPNESOQ/)")
 
 if st.button("📤 Kirim Jawaban"):
     if nama and kelas:
