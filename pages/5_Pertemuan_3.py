@@ -3,6 +3,7 @@ import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
+import sympy as sp
 
 # Setup Spreadsheet
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -15,6 +16,7 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
+x = sp.Symbol('x')
 st.set_page_config(page_title="Pertemuan 2", layout="centered")
 
 st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat dengan Rumus ABC")
@@ -25,124 +27,81 @@ nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
 
-# Langkah 1: Stimulus (Self-construction)
-st.subheader("🔹 Langkah 1: Stimulus (Self-construction)")
-st.markdown("Salin prompt di bawah ini ke Gemini AI dan **pelajari jawabannya**.")
-st.code("Jelaskan bagaimana rumus ABC dapat digunakan untuk menyelesaikan persamaan kuadrat.")
-st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-jawaban1 = st.text_area("📥 Tuliskan ringkasan pemahamanmu dari jawaban Gemini AI:")
-if jawaban1.strip():
-    st.success("✅ Jawaban diterima. Sekarang kamu dapat melanjutkan ke langkah berikutnya.")
+# 1. STIMULUS
+# -------------------
+st.header("1️⃣ Stimulus")
+st.markdown("""
+Rumus ABC digunakan untuk menyelesaikan semua bentuk persamaan kuadrat, bahkan yang tidak bisa difaktorkan.
 
-# Langkah 2: Identifikasi Masalah (Self-instruction)
-st.subheader("🔹 Langkah 2: Identifikasi Masalah")
-st.markdown("Apa yang terjadi jika sebuah persamaan kuadrat tidak dapat difaktorkan? Bagaimana kamu dapat menemukan akarnya?")
-jawaban2 = st.text_area("📥 Tuliskan identifikasimu:")
-if jawaban2.strip():
-    st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
+Bentuk umum persamaan kuadrat:
+""")
+st.latex(r"ax^2 + bx + c = 0")
+st.markdown("Masukkan nilai a, b, dan c untuk melihat hasil penyelesaiannya:")
 
-# Langkah 3: Pengumpulan Data (Modeling)
-st.subheader("🔹 Langkah 3: Pengumpulan Data")
-st.markdown(r"""
-### 📘 Materi: Rumus ABC
+a = st.number_input("Nilai a", format="%.2f")
+b = st.number_input("Nilai b", format="%.2f")
+c = st.number_input("Nilai c", format="%.2f")
 
-Persamaan kuadrat memiliki bentuk umum:
-$$ax^2 + bx + c = 0$$
+if a != 0:
+    persamaan = a*x**2 + b*x + c
+    D = b**2 - 4*a*c
+    akar1 = (-b + sp.sqrt(D)) / (2*a)
+    akar2 = (-b - sp.sqrt(D)) / (2*a)
 
-Untuk menyelesaikannya, kita gunakan **rumus ABC**:
-$$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-$$
+    st.success("Persamaan Kuadrat yang Dibentuk:")
+    st.latex(sp.Eq(persamaan, 0))
 
-Keterangan:
-- $$a, b, c$$ adalah koefisien dari persamaan kuadrat
-- $$D = b^2 - 4ac$$   disebut **diskriminan**, menentukan jumlah dan jenis akar
+    st.markdown("Rumus ABC:")
+    st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
+    st.markdown(f"Diskriminan D = {D}")
+
+    st.markdown("Hasil akar-akarnya:")
+    st.latex(sp.Eq(x, akar1))
+    st.latex(sp.Eq(x, akar2))
+
+    # -------------------
+    # 2. IDENTIFIKASI MASALAH
+    # -------------------
+    st.header("2️⃣ Identifikasi Masalah")
+    st.markdown("""
+Apa jenis akar yang dihasilkan dari nilai D tersebut? Bagaimana jika D bernilai negatif, nol, atau positif?
 """)
 
-contoh = st.text_input("Masukkan persamaan kuadratmu (contoh: x² - 5x + 6):")
-analisis = st.text_area("📥 Tuliskan cara menyelesaikannya dengan rumus ABC, termasuk nilai diskriminan dan akarnya:")
+    # -------------------
+    # 3. PENGUMPULAN DATA
+    # -------------------
+    st.header("3️⃣ Pengumpulan Data")
+    st.markdown("Tuliskan prosesmu dalam menyelesaikan persamaan kuadrat di atas menggunakan rumus ABC.")
+    jawaban_siswa = st.text_area("✍️ Langkah-langkah penyelesaian versimu:")
 
-if analisis.strip():
-    with st.expander("🤖 Cek AI untuk Rumus ABC"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code(f"Selesaikan persamaan kuadrat {contoh} menggunakan rumus ABC. Jelaskan langkah-langkahnya.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("Bandingkan hasilnya dengan analisismu.")
+    # -------------------
+    # 4. PENGOLAHAN DATA
+    # -------------------
+    if jawaban_siswa.strip() != "":
+        st.header("4️⃣ Pengolahan Data")
+        st.markdown("Bagus! Sekarang kamu bisa membandingkan jawabanmu dengan jawaban dari AI.")
+        st.markdown("### 🤖 [Klik di sini untuk cek ke Gemini AI](https://gemini.google.com/)")
 
-st.subheader("🔹 Langkah 4: Pengolahan Data (Interactive)")
-st.markdown(r"""
-Misalnya kamu diberikan persamaan kuadrat berikut:  
-$$x^2 - 4x - 5 = 0$$
-
-Lakukan analisis terhadap soal tersebut:  
-- Apa bentuk umum dari persamaan kuadrat tersebut?  
-- Apakah kamu bisa mencari akar-akar dari persamaan itu?  
-- Tentukan akar-akarnya berdasarkan rumus ABC.
-
-Tuliskan hasil analisismu di bawah ini:
+    # -------------------
+    # 5. GENERALISASI
+    # -------------------
+    st.header("5️⃣ Generalisasi")
+    st.markdown("""
+Dari kegiatan ini, kamu dapat menyimpulkan bahwa:
+- Rumus ABC selalu bisa digunakan untuk menyelesaikan persamaan kuadrat apa pun.
+- Jenis akar ditentukan oleh nilai diskriminan:
+    - D > 0 → dua akar real berbeda
+    - D = 0 → satu akar real (kembar)
+    - D < 0 → dua akar kompleks (tidak real)
 """)
 
-analisis_l4 = st.text_area("📥 Tuliskan hasil penyelesaian akar-akar dari soal tersebut:")
-if analisis_l4:
-    st.session_state.analisis_l4 = analisis_l4
-
-# Visualisasi Grafik
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Definisikan fungsi kuadrat
-def f(x):
-    return x**2 - 4*x - 5
-
-x_vals = np.linspace(-5, 9, 400)
-y_vals = f(x_vals)
-
-fig, ax = plt.subplots()
-ax.plot(x_vals, y_vals, label=r"$y = x^2 - 4x - 5$")
-ax.axhline(0, color='black', linewidth=1)
-ax.axvline(0, color='black', linewidth=1)
-ax.grid(True, linestyle='--', alpha=0.5)
-ax.set_title("Grafik Persamaan Kuadrat")
-ax.legend()
-st.pyplot(fig)
-
-
-st.subheader("🔹 Langkah 5: Verifikasi")
-st.markdown("❗ *Selesaikan Langkah 4 terlebih dahulu sebelum melakukan verifikasi.*")
-
-# Cek apakah siswa sudah menjawab Langkah 4
-if "analisis_l4" in st.session_state and st.session_state.analisis_l4.strip() != "":
-    with st.expander("🤖 Cek AI untuk Verifikasi Jawaban"):
-        st.markdown("""
-Salin dan tempelkan prompt berikut ke Gemini AI (atau AI lainnya):  
-""")
-        st.code("""
-Jelaskan cara menyelesaikan persamaan kuadrat berikut dengan metode rumus ABC:
-x^2 - 4x - 5 = 0
-Bandingkan hasilnya dengan jawaban saya.
-""")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("🟩 Setelah membaca hasil dari Gemini AI, isilah bagian berikut:")
-
-        kesesuaian = st.selectbox("Bagaimana tingkat kesesuaian jawabanmu dengan penjelasan AI?", ["Semua sama", "Sebagian sama", "Tidak sama sekali"])
-
-        refleksi = st.text_area("📥 Apa yang kamu pelajari dari perbandingan tersebut?")
-
-        st.session_state.verifikasi_kesesuaian = kesesuaian
-        st.session_state.verifikasi_refleksi = refleksi
+    # -------------------
+    # 6. PENARIKAN KESIMPULAN
+    # -------------------
+    st.header("6️⃣ Penarikan Kesimpulan")
+    st.markdown("Apa kelebihan dan kelemahan dari metode rumus ABC dibanding metode faktorisasi atau melengkapkan kuadrat?")
 else:
-    st.info("⛔ Silakan isi jawaban di Langkah 4 terlebih dahulu.")
-
-
-# Langkah 6: Kesimpulan
-st.subheader("🔹 Langkah 6: Kesimpulan")
-kesimpulan = st.text_area("📝 Tuliskan simpulanmu tentang bagaimana rumus ABC digunakan untuk menyelesaikan persamaan kuadrat:")
-
-if kesimpulan:
-    with st.expander("🤖 Cek AI untuk Validasi Kesimpulan"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code("Jelaskan simpulan tentang bagaimana rumus ABC digunakan untuk menyelesaikan persamaan kuadrat.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
+    st.warning("Nilai a tidak boleh nol. Persamaan kuadrat harus memiliki suku x².")
 
 # Refleksi akhir
 st.subheader("🔹 Refleksi")
