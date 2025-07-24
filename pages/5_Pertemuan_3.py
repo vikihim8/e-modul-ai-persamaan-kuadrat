@@ -127,9 +127,23 @@ kesimpulan_input = st.text_area("Tuliskan kesimpulanmu:")
 if kesimpulan_input:
     st.markdown("[Cek kesimpulan dengan Perplexity AI](https://www.perplexity.ai/search/kesimpulan-materi-persamaan-ku-RdlMiqRjQq6VedhRfHeqCw/)", unsafe_allow_html=True)
 
-# Refleksi akhir
-st.subheader("🔹 Refleksi")
-refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
+# --- Refleksi Akhir ---
+st.subheader("🪞 Refleksi Belajar")
+refleksi = st.radio("Seberapa yakin kamu memahami materi penyelesaian persamaan kuadrat dengan rumus abc?", 
+                    ["Tidak yakin", "Kurang yakin", "Cukup yakin", "Yakin", "Sangat yakin"])
+
+kuis = st.radio("Jika f(x) = x² - 4x - 5, maka akar-akar dari persamaan tersebut adalah ...", 
+                ["x = -5 atau x = 1", "x = 5 atau x = -1", "x = -4 atau x = 5", "x = 4 atau x = 5"])
+
+cek = ""
+if kuis:
+    if kuis == "x = 5 atau x = -1":
+        st.success("✅ Jawaban benar!")
+        cek = "Benar"
+    else:
+        st.error("❌ Jawaban belum tepat.")
+        cek = "Salah"
+
 
 # Kirim ke Spreadsheet
 if st.button("📤 Kirim Jawaban"):
