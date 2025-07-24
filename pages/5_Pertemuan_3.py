@@ -28,7 +28,7 @@ kelas = st.text_input("Kelas:")
 
 # LANGKAH 1: STIMULUS
 st.header("1. Stimulus")
-st.image("pages/lintasan_bola.png", caption="Lintasan Gerak Parabola", use_column_width=True)
+st.image("pages/lintasan_bola.png", caption="Lintasan Gerak Parabola", use_container_width=True)
 st.write("Perhatikan gambar di atas! Bagaimana hubungan antara lintasan bola dengan bentuk persamaan kuadrat?")
 stimulus_jawaban = st.text_area("Tuliskan analisismu berdasarkan stimulus tersebut di sini:")
 st.markdown("---")
@@ -47,7 +47,7 @@ if identifikasi_jawaban:
 st.markdown("---")
 
 # LANGKAH 3: PENGUMPULAN & PENGOLAHAN DATA
-st.header("3. Pengumpulan dan Pengolahan Data")
+st.header("3. Pengumpulan Data")
 st.write("Masukkan nilai koefisien berikut dari persamaan kuadrat:")
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -74,8 +74,42 @@ if a != 0:
     st.subheader("🔹 Faktorisasi Persamaan")
     bentuk_faktorisasi = a * (x - akar1) * (x - akar2)
     st.latex(f"{sp.expand(bentuk_faktorisasi)} = 0")
+st.markdown("**Eksplorasi Pengaruh Nilai Diskriminan (D) dan Koefisien a terhadap Bentuk Grafik Persamaan Kuadrat**")
 
-    analisis_pengolahan = st.text_area("Apa yang kamu simpulkan dari hasil perhitungan di atas?")
+st.markdown("""
+Diskriminan \( D = b^2 - 4ac \) membantu kita memahami:
+- Apakah persamaan kuadrat memiliki akar real atau imajiner.
+- Seperti apa bentuk grafiknya (memotong sumbu-x atau tidak).
+""")
+
+a_input = st.number_input("Masukkan nilai a", format="%.2f")
+b_input = st.number_input("Masukkan nilai b", format="%.2f")
+c_input = st.number_input("Masukkan nilai c", format="%.2f")
+
+if a_input != 0:
+    D = b_input**2 - 4*a_input*c_input
+    st.latex(f"D = {b_input}^2 - 4×{a_input}×{c_input} = {D}")
+
+    # Interpretasi nilai D dan arah parabola
+    if D > 0:
+        akar = "D > 0 → Akar real dan berbeda"
+    elif D == 0:
+        akar = "D = 0 → Akar real dan sama (tunggal)"
+    else:
+        akar = "D < 0 → Akar imajiner, grafik tidak memotong sumbu-x"
+    
+    if a_input > 0:
+        arah = "a > 0 → Grafik terbuka ke atas (senyum)"
+    else:
+        arah = "a < 0 → Grafik terbuka ke bawah (sedih)"
+    
+    st.success(f"Interpretasi Diskriminan dan Koefisien a:\n\n- {akar}\n- {arah}")
+else:
+    st.warning("Nilai a tidak boleh 0 dalam persamaan kuadrat.")
+
+# ✅ Masukan analisis siswa
+st.markdown("### 📌 Analisis Siswa")
+st.text_area("Tuliskan analisismu berdasarkan nilai a, b, c yang kamu masukkan di atas. Jelaskan bentuk grafiknya, banyaknya akar, dan arah parabolanya.")
     if analisis_pengolahan:
         st.success("Kamu telah menyelesaikan analisis pengolahan data.")
         st.markdown("[Cek validasi penjelasan di Preplexity](https://www.perplexity.ai)")
