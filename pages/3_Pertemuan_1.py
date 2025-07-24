@@ -74,13 +74,13 @@ if analisis_siswa.strip() != "":
         st.markdown("### 4. Materi Otomatis dari AI")
         st.info(
             f"""
-            Berdasarkan grafik fungsi kuadrat $$\( y = {a}x^2 + {b}x + {c} \)$$, berikut kesimpulan:
+            Berdasarkan grafik fungsi kuadrat $$y = {a}x^2 + {b}x + {c}$$, berikut kesimpulan:
             
             - Grafik terbuka ke **{'atas' if a > 0 else 'bawah'}** karena nilai $$a = {a}$$
-            - Titik puncak grafik: $$\\( x = -\\frac{{b}}{{2a}} = {-b/(2*a):.2f} \\)$$
-            - Sumbu simetri: $$\\( x = {-b/(2*a):.2f} \\)$$
+            - Titik puncak grafik: $$x = -\\frac{{b}}{{2a}} = {-b/(2*a):.2f}$$
+            - Sumbu simetri: $$x = {-b/(2*a):.2f}$$
             - Nilai {'minimum' if a > 0 else 'maksimum'} fungsi: 
-              $$\\( y = {a*(-b/(2*a))**2 + b*(-b/(2*a)) + c:.2f} \\)$$
+              $$y = {a*(-b/(2*a))**2 + b*(-b/(2*a)) + c:.2f}$$
             """
         )
 
