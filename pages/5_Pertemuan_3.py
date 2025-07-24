@@ -70,24 +70,32 @@ if a != 0:
     st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
     st.latex(rf"x_1 = {sp.simplify(akar1)}, \quad x_2 = {sp.simplify(akar2)}")
 
-    if diskriminan >= 0:
-        st.subheader("🔹 Faktorisasi Persamaan")
-        bentuk_faktorisasi = a * (x - akar1) * (x - akar2)
-        st.latex(f"{sp.expand(bentuk_faktorisasi)} = 0")
+    if st.button("Tampilkan Persamaan dan Grafik"):
+    D = b**2 - 4*a*c
+    st.write(f"Persamaan kuadrat: {a}x² + ({b})x + ({c}) = 0")
+    st.write(f"Diskriminan: D = {D}")
+    
+    if D > 0:
+        hasil = "Memiliki 2 akar real berbeda."
+    elif D == 0:
+        hasil = "Memiliki 2 akar real kembar."
     else:
-        st.info("Diskriminan < 0 → tidak bisa difaktorkan dalam bilangan real.")
+        hasil = "Tidak memiliki akar real (akar imajiner)."
+    st.info(f"Bentuk akar berdasarkan diskriminan: {hasil}")
 
-    # Interpretasi D dan arah grafik
-    st.markdown("### 📊 Eksplorasi Grafik Berdasarkan Nilai D dan a")
-    if diskriminan > 0:
-        keterangan = "Akar real dan berbeda"
-    elif diskriminan == 0:
-        keterangan = "Akar real dan kembar"
-    else:
-        keterangan = "Akar imajiner (tidak memotong sumbu-x)"
+    # Tampilkan grafik parabola
+    import matplotlib.pyplot as plt
+    import numpy as np
 
-    arah_parabola = "terbuka ke atas (a > 0)" if a > 0 else "terbuka ke bawah (a < 0)"
-    st.success(f"- Diskriminan = {diskriminan} → {keterangan}\n- Grafik {arah_parabola}")
+    x = np.linspace(-10, 10, 400)
+    y = a * x**2 + b * x + c
+    fig, ax = plt.subplots()
+    ax.plot(x, y, label=f'{a}x² + {b}x + {c}')
+    ax.axhline(0, color='gray', lw=1)
+    ax.axvline(0, color='gray', lw=1)
+    ax.set_title("Grafik Persamaan Kuadrat")
+    ax.legend()
+    st.pyplot(fig)
 
     analisis_pengolahan = st.text_area("📌 Analisismu berdasarkan hasil di atas:")
 
