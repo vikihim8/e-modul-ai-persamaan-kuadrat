@@ -48,29 +48,47 @@ st.header("3. Pengumpulan Data")
 st.write("""
 Untuk memfaktorkan fungsi kuadrat dari bentuk:
 $$f(x) = ax^2 + bx + c$$  
-Kita harus mencari dua bilangan yang hasil kalinya $a \cdot c$ dan jumlahnya $b$.
+Kita harus mencari dua bilangan yang hasil kalinya $a \\cdot c$ dan jumlahnya $b$.
 """)
 
-st.write("💡 Eksplorasi: Berapa hasil kali dan jumlah dari dua bilangan berikut?")
-bil1 = st.number_input("Bilangan 1", step=1)
-bil2 = st.number_input("Bilangan 2", step=1)
+# Koefisien
+a, b, c = 2, 5, 3  # Ganti sesuai soalmu
 
+# Eksplorasi dua bilangan
+st.markdown("💡 **Eksplorasi**: Cari dua bilangan yang memenuhi syarat berikut:")
+st.latex(f"\\text{{Hasil kali}} = a \\cdot c = {a} \\cdot {c} = {a*c}")
+st.latex(f"\\text{{Jumlah}} = b = {b}")
+
+bil1 = st.number_input("Bilangan 1", key="bil1", step=1)
+bil2 = st.number_input("Bilangan 2", key="bil2", step=1)
+
+# Otomatis cek jawaban
 if bil1 and bil2:
-    st.info(f"Hasil kali: {bil1 * bil2}, Jumlah: {bil1 + bil2}")
+    hasil_kali = bil1 * bil2
+    jumlah = bil1 + bil2
+    st.info(f"Hasil kali: {hasil_kali}, Jumlah: {jumlah}")
 
-# Tambahan Analisis Siswa
+    if hasil_kali == a * c and jumlah == b:
+        st.success("✅ Dua bilangan tersebut **BENAR**. Lanjut ke analisis!")
+    else:
+        st.error("❌ Dua bilangan tersebut **belum tepat**. Coba lagi!")
+
+# Analisis siswa
 st.markdown("### 🔍 Analisis Siswa")
-analisis_siswa = st.text_area("📝 Jelaskan bagaimana dua bilangan ini bisa digunakan untuk memfaktorkan bentuk kuadrat.")
+analisis_siswa = st.text_area(
+    "📝 Jelaskan bagaimana dua bilangan ini bisa digunakan untuk memfaktorkan bentuk kuadrat.",
+    placeholder="Misalnya: Saya membagi suku tengah menjadi jumlah dua bilangan tersebut lalu melakukan faktorisasi parsial..."
+)
 
+# Tampilkan link AI setelah analisis diisi
 if analisis_siswa.strip():
     st.success("✅ Analisis kamu sudah dicatat.")
-    with st.expander("💬 Lihat penjelasan AI setelah kamu menjawab"):
-        st.markdown("[Cek AI - Cara dua bilangan membantu faktorisasi](https://www.perplexity.ai/search/mengapa-dua-bilangan-dalam-faktorisasi-fungsi-kuadrat-EiTiQJPzRguRTTYoKk_PGQ)")
+    with st.expander("📘 Lihat Penjelasan AI (setelah kamu menganalisis)"):
+        st.markdown(
+            "[Klik untuk membuka penjelasan AI di Perplexity](https://www.perplexity.ai/search/mengapa-dua-bilangan-dalam-faktorisasi-fungsi-kuadrat-EiTiQJPzRguRTTYoKk_PGQ)"
+        )
 else:
-    st.warning("Silakan isi dulu penjelasanmu sebelum melihat referensi AI.")
-
-if bil1 and bil2:
-    st.info(f"Hasil kali: {bil1 * bil2}, Jumlah: {bil1 + bil2}")
+    st.warning("Isi analisis terlebih dahulu untuk melihat penjelasan AI.")
 
 # --- 4. Pengolahan Data ---
 st.header("4. Pengolahan Data")
