@@ -49,22 +49,58 @@ if jawaban2.strip():
 
 # --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
-q1 = st.text_input("📌 Apa bentuk umum fungsi kuadrat?")
-q2 = st.text_input("📌 Apa yang dimaksud dengan sumbu simetri pada grafik fungsi kuadrat?")
-q3 = st.text_input("📌 Apa peran nilai a dalam bentuk umum fungsi kuadrat?")
+st.markdown("## 1. Masukkan nilai untuk persamaan kuadrat")
+a = st.number_input("Masukkan nilai a", value=1.0)
+b = st.number_input("Masukkan nilai b", value=0.0)
+c = st.number_input("Masukkan nilai c", value=0.0)
 
-if all([q1.strip(), q2.strip(), q3.strip()]):
-    st.success("Jawaban terkumpul. Kamu sekarang bisa menggunakan Perplexity.")
-    st.markdown("[🔍 Gunakan Perplexity untuk Belajar Tambahan](https://www.perplexity.ai)")
+if a != 0:
+    # ---------- Bagian Grafik ----------
+    st.markdown("## 2. Grafik Fungsi Kuadrat")
+    x = np.linspace(-10, 10, 400)
+    y = a * x**2 + b * x + c
 
-# --- 4. Pengolahan Data ---
-st.header("4. Pengolahan Data")
-st.write("Susunlah persamaan kuadrat dari data berikut:")
-st.table({
-    "x": [-2, -1, 0, 1, 2],
-    "y": [4, 1, 0, 1, 4]
-})
-analisis = st.text_area("✏️ Tulis bentuk persamaan kuadrat berdasarkan data di atas")
+    fig, ax = plt.subplots()
+    ax.plot(x, y, label=f"y = {a}x² + {b}x + {c}")
+    ax.axhline(0, color='black', linewidth=0.5)
+    ax.axvline(0, color='black', linewidth=0.5)
+    ax.grid(True)
+    ax.legend()
+    st.pyplot(fig)
+
+    # ---------- Penjelasan Materi dari AI ----------
+    st.markdown("## 3. Materi Otomatis dari AI (berbasis fungsi)")
+    st.info(
+        f"""
+        Berdasarkan grafik fungsi kuadrat \( y = {a}x^2 + {b}x + {c} \), berikut kesimpulan:
+        
+        - Grafik akan terbuka ke **atas** jika nilai **a > 0** dan ke **bawah** jika **a < 0**.
+        - Titik puncak (vertex) fungsi kuadrat berada di:
+          \n\\( x = -\\frac{{b}}{{2a}} \\)
+        - Sumbu simetri grafik adalah garis vertikal melalui titik puncak.
+        - Nilai minimum/maksimum fungsi ditentukan oleh nilai \( y \) pada titik puncak.
+        """
+    )
+# ---------- Latihan Soal ----------
+st.markdown("## 4. Latihan Soal")
+soal = "Berapakah nilai koordinat titik puncak dari fungsi kuadrat ini?"
+st.write(soal)
+jawaban_siswa = st.text_input("Masukkan jawabanmu (format: x,y)")
+
+if jawaban_siswa:
+    # ---------- AI Mengecek Jawaban ----------
+    x_puncak = -b / (2 * a)
+    y_puncak = a * x_puncak**2 + b * x_puncak + c
+    jawaban_benar = f"{x_puncak:.2f},{y_puncak:.2f}"
+
+    st.markdown("## 5. Cek Jawaban")
+    if jawaban_siswa.replace(" ", "") == jawaban_benar:
+        st.success("Jawaban kamu benar! 🎉")
+    else:
+        st.warning(f"Jawaban belum tepat. Jawaban AI: **{jawaban_benar}**")
+
+else:
+    st.error("Nilai a tidak boleh 0. Fungsi kuadrat tidak valid jika a = 0.")
 
 if analisis.strip():
     st.success("✅ Jawaban kamu telah dicatat.")
