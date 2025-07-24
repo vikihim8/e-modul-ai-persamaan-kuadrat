@@ -26,71 +26,61 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# 1. STIMULUS
-st.header("1️. Stimulus")
-st.markdown("""
-Rumus ABC digunakan untuk menyelesaikan semua bentuk persamaan kuadrat, bahkan yang tidak bisa difaktorkan.
-
-Bentuk umum persamaan kuadrat:
+# Langkah 1: Stimulus
+st.header("1️⃣ Stimulus")
+st.write("""
+Bayangkan kamu sedang bermain game mencari harta karun. Kamu menemukan sebuah peta dengan petunjuk yang ditulis dalam bentuk persamaan kuadrat. Untuk membuka peti, kamu harus menyelesaikan persamaan tersebut. Bagaimana cara kamu menyelesaikannya?
 """)
-st.latex(r"ax^2 + bx + c = 0")
-st.markdown("Masukkan nilai a, b, dan c untuk melihat hasil penyelesaiannya:")
 
-a = st.number_input("Nilai a", format="%.2f")
-b = st.number_input("Nilai b", format="%.2f")
-c = st.number_input("Nilai c", format="%.2f")
+# Langkah 2: Identifikasi Masalah
+st.header("2️⃣ Identifikasi Masalah")
+st.write("Masalah: Bagaimana cara menyelesaikan persamaan kuadrat ax² + bx + c = 0 dengan menggunakan rumus ABC?")
 
-jawaban1, jawaban2, analisis, analisis_l4, kesesuaian, kesimpulan = "", "", "", "", "", ""
+# Langkah 3: Pengumpulan Data
+st.header("3️⃣ Pengumpulan Data")
+st.write("Masukkan nilai a, b, dan c dari persamaan kuadrat yang ingin kamu selesaikan:")
 
+a = st.number_input("Masukkan nilai a", step=1.0)
+b = st.number_input("Masukkan nilai b", step=1.0)
+c = st.number_input("Masukkan nilai c", step=1.0)
+
+# Langkah 4: Pengolahan Data
+st.header("4️⃣ Pengolahan Data")
 if a != 0:
-    persamaan = a*x**2 + b*x + c
+    st.markdown(f"Persamaan kuadrat: **{a}x² + {b}x + {c} = 0**")
+
+    # Hitung diskriminan
     D = b**2 - 4*a*c
-    akar1 = (-b + sp.sqrt(D)) / (2*a)
-    akar2 = (-b - sp.sqrt(D)) / (2*a)
+    st.write(f"Diskriminan (D) = {D}")
 
-    st.success("Persamaan Kuadrat yang Dibentuk:")
-    st.latex(sp.Eq(persamaan, 0))
-
-    st.markdown("Rumus ABC:")
-    st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
-    st.markdown(f"Diskriminan D = {D}")
-
-    st.markdown("Hasil akar-akarnya:")
-    st.latex(sp.Eq(x, akar1))
-    st.latex(sp.Eq(x, akar2))
-
-    # 2. IDENTIFIKASI MASALAH
-    st.header("2️. Identifikasi Masalah")
-    jawaban2 = st.text_area("❓ Jenis akar apa yang kamu dapatkan dari nilai D di atas?")
-
-    # 3. PENGUMPULAN DATA
-    st.header("3️. Pengumpulan Data")
-    jawaban_siswa = st.text_area("✍️ Tulis langkah-langkah penyelesaian versimu:")
-
-    # 4. PENGOLAHAN DATA
-    if jawaban_siswa.strip():
-        analisis = jawaban_siswa
-        st.header("4️. Pengolahan Data")
-        st.markdown("Bandingkan jawabanmu dengan bantuan AI berikut:")
-        st.markdown("🔎 [Cek di Gemini AI](https://gemini.google.com/)")
-
-    # 5. GENERALISASI
-    st.header("5️. Generalisasi")
-    st.markdown("""
-    Dari kegiatan ini, kamu dapat menyimpulkan bahwa:
-    - Rumus ABC selalu bisa digunakan untuk menyelesaikan persamaan kuadrat apa pun.
-    - Jenis akar ditentukan oleh nilai diskriminan:
-        - D > 0 → dua akar real berbeda  
-        - D = 0 → satu akar real (kembar)  
-        - D < 0 → dua akar kompleks (tidak real)
-    """)
-
-    # 6. PENARIKAN KESIMPULAN
-    st.header("6️. Penarikan Kesimpulan")
-    kesimpulan = st.text_area("🧠 Apa kelebihan dan kekurangan dari rumus ABC dibanding cara lain?")
+    if D > 0:
+        x1 = (-b + math.sqrt(D)) / (2*a)
+        x2 = (-b - math.sqrt(D)) / (2*a)
+        st.success(f"Akar-akar real dan berbeda:\nx₁ = {x1:.2f}, x₂ = {x2:.2f}")
+    elif D == 0:
+        x = -b / (2*a)
+        st.info(f"Akar real dan sama:\nx = {x:.2f}")
+    else:
+        real_part = -b / (2*a)
+        imag_part = math.sqrt(abs(D)) / (2*a)
+        st.warning(f"Akar-akar kompleks:\nx₁ = {real_part:.2f} + {imag_part:.2f}i, x₂ = {real_part:.2f} - {imag_part:.2f}i")
 else:
-    st.warning("Nilai a tidak boleh nol. Karena bukan persamaan kuadrat.")
+    st.error("Nilai a tidak boleh nol (a ≠ 0) dalam persamaan kuadrat.")
 
+# Langkah 5: Verifikasi (Analisis Siswa)
+st.header("5️⃣ Verifikasi")
+st.write("Tuliskan hasil analisismu berdasarkan langkah-langkah penyelesaian yang kamu lakukan.")
+analisis = st.text_area("📝 Jawabanmu di sini")
+
+# Langkah 6: Menarik Kesimpulan dan Cek AI
+st.header("6️⃣ Menarik Kesimpulan")
+if analisis:
+    st.success("Terima kasih! Sekarang kamu bisa mengecek jawabanmu menggunakan AI.")
+    st.markdown(
+        '[🔍 Cek Jawabanmu di Perplexity](https://www.perplexity.ai/)'
+    )
+else:
+    st.info("Silakan isi analisis terlebih dahulu untuk membuka link cek jawaban AI.")
 # Refleksi akhir
 st.subheader("🔹 Refleksi")
 refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
