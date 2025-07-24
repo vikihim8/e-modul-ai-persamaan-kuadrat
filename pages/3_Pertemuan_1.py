@@ -17,11 +17,6 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
-# --- Input Identitas ---
-st.sidebar.header("🧑 Identitas Siswa")
-nama = st.sidebar.text_input("Nama Lengkap")
-kelas = st.sidebar.text_input("Kelas")
-
 # --- Judul ---
 st.title("📘 Pertemuan 1: Menemukan Konsep Fungsi Kuadrat dari Lintasan Bola")
 
