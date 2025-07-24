@@ -48,71 +48,55 @@ st.markdown("---")
 
 # LANGKAH 3: PENGUMPULAN & PENGOLAHAN DATA
 st.header("3. Pengumpulan Data")
-st.write("Masukkan nilai koefisien berikut dari persamaan kuadrat:")
+st.write("Masukkan nilai koefisien a, b, dan c dari bentuk persamaan kuadrat:")
+
 col1, col2, col3 = st.columns(3)
 with col1:
-    a = st.number_input("Masukkan nilai a", step=1.0)
+    a = st.number_input("a", format="%.2f")
 with col2:
-    b = st.number_input("Masukkan nilai b", step=1.0)
+    b = st.number_input("b", format="%.2f")
 with col3:
-    c = st.number_input("Masukkan nilai c", step=1.0)
+    c = st.number_input("c", format="%.2f")
 
 if a != 0:
-    x = sp.Symbol('x')
     diskriminan = b**2 - 4*a*c
     akar1 = (-b + sp.sqrt(diskriminan)) / (2*a)
     akar2 = (-b - sp.sqrt(diskriminan)) / (2*a)
-    
-    st.subheader("🔹 Bentuk Persamaan Kuadrat")
+
+    st.subheader("🔹 Persamaan Kuadrat")
     st.latex(f"{a}x^2 + {b}x + {c} = 0")
 
     st.subheader("🔹 Solusi dengan Rumus ABC")
     st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
-    st.latex(rf"x = \frac{{-{b} \pm \sqrt{{{b}^2 - 4({a})({c})}}}}{{2({a})}}")
     st.latex(rf"x_1 = {sp.simplify(akar1)}, \quad x_2 = {sp.simplify(akar2)}")
 
-    st.subheader("🔹 Faktorisasi Persamaan")
-    bentuk_faktorisasi = a * (x - akar1) * (x - akar2)
-    st.latex(f"{sp.expand(bentuk_faktorisasi)} = 0")
-st.markdown("**Eksplorasi Pengaruh Nilai Diskriminan (D) dan Koefisien a terhadap Bentuk Grafik Persamaan Kuadrat**")
-
-st.markdown("""
-Diskriminan \( D = b^2 - 4ac \) membantu kita memahami:
-- Apakah persamaan kuadrat memiliki akar real atau imajiner.
-- Seperti apa bentuk grafiknya (memotong sumbu-x atau tidak).
-""")
-
-a_input = st.number_input("Masukkan nilai a", format="%.2f")
-b_input = st.number_input("Masukkan nilai b", format="%.2f")
-c_input = st.number_input("Masukkan nilai c", format="%.2f")
-
-if a_input != 0:
-    D = b_input**2 - 4*a_input*c_input
-    st.latex(f"D = {b_input}^2 - 4×{a_input}×{c_input} = {D}")
-
-    # Interpretasi nilai D dan arah parabola
-    if D > 0:
-        akar = "D > 0 → Akar real dan berbeda"
-    elif D == 0:
-        akar = "D = 0 → Akar real dan sama (tunggal)"
+    if diskriminan >= 0:
+        st.subheader("🔹 Faktorisasi Persamaan")
+        bentuk_faktorisasi = a * (x - akar1) * (x - akar2)
+        st.latex(f"{sp.expand(bentuk_faktorisasi)} = 0")
     else:
-        akar = "D < 0 → Akar imajiner, grafik tidak memotong sumbu-x"
-    
-    if a_input > 0:
-        arah = "a > 0 → Grafik terbuka ke atas (senyum)"
-    else:
-        arah = "a < 0 → Grafik terbuka ke bawah (sedih)"
-    
-    st.success(f"Interpretasi Diskriminan dan Koefisien a:\n\n- {akar}\n- {arah}")
-else:
-    st.warning("Nilai a tidak boleh 0 dalam persamaan kuadrat.")
+        st.info("Diskriminan < 0 → tidak bisa difaktorkan dalam bilangan real.")
 
-# ✅ Masukan analisis siswa
-st.markdown("### 📌 Analisis Siswa")
-st.text_area("Tuliskan analisismu berdasarkan nilai a, b, c yang kamu masukkan di atas. Jelaskan bentuk grafiknya, banyaknya akar, dan arah parabolanya.")
+    # Interpretasi D dan arah grafik
+    st.markdown("### 📊 Eksplorasi Grafik Berdasarkan Nilai D dan a")
+    if diskriminan > 0:
+        keterangan = "Akar real dan berbeda"
+    elif diskriminan == 0:
+        keterangan = "Akar real dan kembar"
+    else:
+        keterangan = "Akar imajiner (tidak memotong sumbu-x)"
+
+    arah_parabola = "terbuka ke atas (a > 0)" if a > 0 else "terbuka ke bawah (a < 0)"
+    st.success(f"- Diskriminan = {diskriminan} → {keterangan}\n- Grafik {arah_parabola}")
+
+    analisis_pengolahan = st.text_area("📌 Analisismu berdasarkan hasil di atas:")
+
     if analisis_pengolahan:
         st.success("Kamu telah menyelesaikan analisis pengolahan data.")
-        st.markdown("[Cek validasi penjelasan di Preplexity](https://www.perplexity.ai)")
+        st.markdown("[Cek validasi penjelasan di Perplexity](https://www.perplexity.ai)")
+else:
+    st.warning("Nilai a tidak boleh 0")
+
 
 # Langkah 5: Verifikasi (Analisis Siswa)
 st.header("5️⃣ Verifikasi")
