@@ -45,32 +45,36 @@ else:
 
 # --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
-st.write("💡 Coba masukkan dua bilangan yang jika dikalikan hasilnya sama dengan a × c, dan jika dijumlahkan hasilnya b.")
+st.markdown("💡 Masukkan nilai *a*, *b*, dan *c* untuk melihat bentuk persamaan kuadrat dan faktornya.")
+
+# 1. Input a, b, c
 a = st.number_input("Masukkan nilai a", value=1)
 b = st.number_input("Masukkan nilai b", value=5)
 c = st.number_input("Masukkan nilai c", value=6)
 
-bil1 = st.number_input("Bilangan 1")
-bil2 = st.number_input("Bilangan 2")
+x = sp.Symbol('x')
+persamaan = a * x**2 + b * x + c
 
-if bil1 != 0 and bil2 != 0:
-    hasil_kali = bil1 * bil2
-    hasil_jumlah = bil1 + bil2
-    st.info(f"Hasil kali: {hasil_kali}, Hasil jumlah: {hasil_jumlah}")
+# 2. Tampilkan persamaan kuadrat
+st.latex(sp.latex(persamaan) + " = 0")
 
-    if hasil_kali == a * c and hasil_jumlah == b:
-        st.success("✅ Kedua bilangan sesuai untuk memfaktorkan.")
-        
-        # Bentuk faktornya
-        bentuk_faktorisasi = f"{a}x² + {b}x + {c} = ({a}x + {bil1})({a}x + {bil2})"
-        st.write("📘 Bentuk faktorisasi otomatis:")
-        st.latex(bentuk_faktorisasi)
-        
-        if st.button("🔍 Cek penjelasan dari AI", key="cek_ai_faktorisasi"):
-            st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/langkah-memfaktorkan-fungsi-kuadr-vc0R9Z.hTMWkgFLWTtnmwA)")
-    else:
-        st.warning("⚠️ Bilangan belum sesuai untuk a × c dan b. Coba lagi ya!")
-# --- 4. Pengolahan Data ---
+# 3. Coba faktorkan
+faktorisasi = sp.factor(persamaan)
+
+if faktorisasi == persamaan:
+    st.warning("❌ Tidak bisa difaktorkan dengan bilangan rasional.")
+else:
+    st.success("✅ Bentuk faktorisasi:")
+    st.latex(sp.latex(faktorisasi) + " = 0")
+
+# 4. Input analisis dari siswa
+analisis = st.text_area("📝 Tulis analisismu terhadap hasil faktorisasi di atas:")
+
+# 5. Cek AI muncul setelah siswa isi analisis
+if analisis.strip() != "":
+    st.markdown("🔍 [Klik di sini untuk melihat penjelasan dari AI](https://www.perplexity.ai/search/langkah-memfaktorkan-fungsi-kuadr-vc0R9Z.hTMWkgFLWTtnmwA)")
+
+
 st.header("4. Pengolahan Data")
 st.write("Faktorkan bentuk berikut:")
 st.latex(r"f(x) = x^2 - 7x + 10")
