@@ -25,107 +25,64 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# Langkah 1: Stimulus
-st.subheader("🔹 Langkah 1: Stimulus (Self-construction)")
-st.markdown("""
-Salin prompt berikut ke Gemini AI dan pelajari jawabannya.  
-Tuliskan pemahamanmu berdasarkan jawaban Gemini.  
-""")
-st.code("Apa yang dimaksud dengan bentuk faktor dari fungsi kuadrat dan bagaimana hubungannya dengan akar persamaan kuadrat?")
-st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-jawaban1 = st.text_area("📥 Ringkasan pemahamanmu dari hasil Gemini AI:")
-
-if jawaban1.strip():
-    st.success("✅ Jawaban diterima. Sekarang kamu dapat melanjutkan ke langkah berikutnya.")
-
-# Langkah 2: Identifikasi Masalah
-st.subheader("🔹 Langkah 2: Identifikasi Masalah")
-jawaban2 = st.text_area("📥 Menurutmu, mengapa penting mengetahui bentuk faktor dari persamaan kuadrat?")
-if jawaban2.strip():
-    st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
-
-# Langkah 3: Pengumpulan Data dan Materi
-st.subheader("🔹 Langkah 3: Pengumpulan Data dan Materi (Self-contained)")
-st.markdown(r"""
-**Materi: Faktor dan Akar Persamaan Kuadrat**
-
-Jika suatu fungsi kuadrat berbentuk $$f(x) = ax^2 + bx + c$$ dan dapat difaktorkan menjadi 
-$$f(x) = (x - p)(x - q)$$
-
-maka akar-akar persamaannya adalah:
-$$x1 = p$$  dan  $$x2 = q$$
-
-#### Contoh:
-$$x² - 5x + 6 = 0$$
- 
-Faktorkan:  
-$$(x - 2)(x - 3) = 0$$
-
-Jadi, akar-akarnya adalah:  
-$$x1 = 2$$   dan    $$x2 = 3$$
+# --- 1. STIMULUS ---
+st.header("1. Stimulus")
+st.write("""
+Perhatikan bentuk umum fungsi kuadrat berikut:  
+$$f(x) = x^2 - 5x + 6$$  
+Coba ingat kembali bagaimana bentuk ini bisa diubah menjadi bentuk faktor.
 """)
 
-contoh = st.text_input("✍️ Masukkan persamaan kuadratmu (contoh: x² - 5x + 6):")
-analisis = st.text_area("📥 Tuliskan faktorisasi dan akarnya berdasarkan persamaanmu:")
+# --- 2. IDENTIFIKASI MASALAH ---
+st.header("2. Identifikasi Masalah")
+masalah = st.text_area("❓ Apa yang menjadi pertanyaan atau masalah yang muncul dari stimulus di atas?")
 
-if analisis.strip():
-    with st.expander("🤖 Cek AI untuk Faktorisasi"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code(f"Faktorkan persamaan kuadrat {contoh} dan tentukan akar-akarnya.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("Bandingkan hasil dari AI dengan jawabanmu di atas.")
-
-
-# Langkah 4: Pengolahan Data
-st.subheader("🔹 Langkah 4: Pengolahan Data (Interactive)")
-st.markdown(r"""
-Misalnya kamu diberikan persamaan:  
-$$x^2 - 4x - 5 = 0$$
-
-Cobalah faktorkan dan tentukan akarnya.
-""")
-
-analisis_l4 = st.text_area("📥 Tuliskan faktorisasi dan akar dari soal tersebut:")
-if analisis_l4:
-    st.session_state.analisis_l4 = analisis_l4
-
-# Langkah 5: Verifikasi
-st.subheader("🔹 Langkah 5: Verifikasi")
-st.markdown("❗ *Jawab dulu pertanyaan di Langkah 4 agar dapat melakukan verifikasi.*")
-
-# Cek apakah siswa sudah menjawab Langkah 4
-if "analisis_l4" in st.session_state and st.session_state.analisis_l4.strip() != "":
-    with st.expander("🤖 Cek AI untuk Verifikasi Jawaban"):
-        st.markdown("Salin dan tempelkan prompt berikut ke Gemini AI:")
-        st.code("Jelaskan cara menyelesaikan persamaan kuadrat dengan metode pemfaktoran. Bandingkan hasilnya dengan jawaban saya sebelumnya.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        
-        st.markdown("🟩 Setelah membaca hasil Gemini AI, isilah bagian berikut:")
-
-        kesesuaian = st.selectbox(
-            "Apakah jawabanmu sesuai dengan hasil Gemini?",
-            ["Semua sama", "Sebagian sama", "Tidak sama sekali"]
-        )
-
-        refleksi = st.text_area("📥 Tulis refleksi atau perenunganmu setelah membandingkan:")
-
-        st.session_state.verifikasi_kesesuaian = kesesuaian
-        st.session_state.verifikasi_refleksi = refleksi
+if masalah.strip():
+    st.success("✅ Masalah telah dicatat.")
 else:
-    st.info("⛔ Silakan lengkapi jawaban di Langkah 4 terlebih dahulu agar dapat membuka verifikasi.")
+    st.warning("Silakan tulis masalah yang kamu temukan dari stimulus.")
 
+# --- 3. PENGUMPULAN DATA ---
+st.header("3. Pengumpulan Data")
+st.write("""
+Mari kita ingat rumus faktorisasi bentuk kuadrat:  
+Jika $f(x) = ax^2 + bx + c$, maka kita cari dua bilangan yang hasil kalinya $a×c$ dan jumlahnya $b$.
+""")
 
-# Langkah 6: Kesimpulan
-st.subheader("🔹 Langkah 6: Kesimpulan (Reflective & Self-regulated)")
-kesimpulan = st.text_area("📝 Tulis kesimpulanmu dari pembelajaran hari ini:")
+# --- 4. PENGOLAHAN DATA ---
+st.header("4. Pengolahan Data")
+st.write("Silakan faktorkan fungsi berikut secara manual:")
+soal_pengolahan = st.text_input("📝 Faktorkan:  \n$$f(x) = x^2 - 7x + 10$$")
+
+if soal_pengolahan.strip():
+    st.success("✅ Jawaban kamu disimpan.")
+else:
+    st.warning("Silakan faktorkan fungsi terlebih dahulu.")
+
+# --- 5. PEMBUKTIAN ---
+st.header("5. Pembuktian")
+st.write("Coba kerjakan soal berikut dan simak hasil dari AI setelah kamu menjawab:")
+st.write("**Soal:** Faktorkan bentuk:  \n$$f(x) = x^2 - 3x - 10$$")
+
+jawaban = st.text_input("🧠 Jawabanmu (dalam bentuk faktor):")
+
+if jawaban.strip():
+    st.success("✅ Jawaban kamu telah dicatat.")
+    if st.button("Buka Perplexity untuk klarifikasi", key="buka_ai_faktorisasi"):
+        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/faktorkan-x-kuadrat-minus-3x-minus-10-vV0n2C6WTLmaV6Sg_y-qGA)")
+else:
+    st.warning("Silakan isi jawaban terlebih dahulu sebelum membuka referensi AI.")
+
+# --- 6. PENARIKAN KESIMPULAN ---
+st.header("6. Penarikan Kesimpulan")
+kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas ini?")
 
 if kesimpulan.strip():
-    with st.expander("🤖 Cek AI untuk Simpulan"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code("Buatkan simpulan tentang cara memfaktorkan fungsi kuadrat dan menentukan akarnya.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("Bandingkan dengan simpulan yang kamu tulis.")
-
+    st.success("✅ Kesimpulan kamu tercatat.")
+    if st.button("Lihat rangkuman AI", key="buka_ai_kesimpulan_2"):
+        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/kesimpulan-materi-faktorisasi-fungsi-kuadrat-r1Az5zNSfTicI7hAo9FqBg)")
+else:
+    st.warning("Silakan isi kesimpulan terlebih dahulu sebelum membuka rangkuman AI.")
 # Refleksi akhir
 st.subheader("🔹 Refleksi")
 refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
