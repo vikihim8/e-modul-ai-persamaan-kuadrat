@@ -31,12 +31,15 @@ st.write("""
 Bayangkan kamu sedang bermain basket. Kamu melempar bola ke arah ring. Bola akan membentuk lintasan yang melengkung.
 Bagaimana kamu bisa mengetahui tinggi maksimum bola?
 """)
+
+
 try:
-   bola_image = Image.open("lintasan_bola.png")  # arahkan langsung ke pages/
+    bola_image = Image.open("pages/lintasan_bola.png")  # atau sesuaikan dengan lokasi gambar
     st.image(bola_image, caption="Lintasan Bola dalam Permainan Basket")
 except Exception as e:
     st.warning("⚠️ Gagal memuat gambar. Pastikan file 'lintasan_bola.png' ada di folder 'pages/'.")
     st.error(f"Detail error: {e}")
+
 
 
 jawaban1 = st.text_area("📝 Apa yang menarik dan membingungkan dari cerita di atas?")
