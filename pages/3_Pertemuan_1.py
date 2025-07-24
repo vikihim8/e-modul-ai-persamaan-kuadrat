@@ -26,7 +26,7 @@ kelas = st.sidebar.text_input("Kelas")
 st.title("📘 Pertemuan 1: Menemukan Konsep Fungsi Kuadrat dari Lintasan Bola")
 
 # --- 1. Pemberian Rangsangan ---
-st.header("1. Pemberian Rangsangan")
+st.header("1. Stimulus")
 st.write("""
 Bayangkan kamu sedang bermain basket. Kamu melempar bola ke arah ring. Bola akan membentuk lintasan yang melengkung.
 Bagaimana kamu bisa mengetahui tinggi maksimum bola?
