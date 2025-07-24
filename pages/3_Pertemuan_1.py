@@ -49,14 +49,14 @@ if jawaban2.strip():
 
 # --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
-st.markdown("## 1. Masukkan nilai untuk persamaan kuadrat")
+st.markdown("## Masukkan nilai untuk persamaan kuadrat")
 a = st.number_input("Masukkan nilai a", value=1.0)
 b = st.number_input("Masukkan nilai b", value=0.0)
 c = st.number_input("Masukkan nilai c", value=0.0)
 
 if a != 0:
     # ---------- Bagian Grafik ----------
-    st.markdown("## 2. Grafik Fungsi Kuadrat")
+    st.markdown("## Grafik Fungsi Kuadrat")
     x = np.linspace(-10, 10, 400)
     y = a * x**2 + b * x + c
 
@@ -71,7 +71,6 @@ if a != 0:
 analisis_siswa = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", placeholder="Misalnya: grafik terbuka ke atas, titik puncak ada di sekitar x = -1, dst.")
 if analisis_siswa.strip() != "":
     with st.expander("👉 Klik untuk cek AI (materi otomatis)", expanded=False):
-        st.markdown("### 4. Materi Otomatis dari AI")
         st.info(
             f"""
             Berdasarkan grafik fungsi kuadrat $$y = {a}x^2 + {b}x + {c}$$, berikut kesimpulan:
