@@ -32,7 +32,7 @@ Bayangkan kamu sedang bermain basket. Kamu melempar bola ke arah ring. Bola akan
 Bagaimana kamu bisa mengetahui tinggi maksimum bola?
 """)
 try:
-    bola_image = Image.open("images/lintasan_bola.png")
+    bola_image = pages.open("images/lintasan_bola.png")
     st.image(bola_image, caption="Lintasan Bola dalam Permainan Basket")
 except Exception as e:
     st.warning("⚠️ Gagal memuat gambar. Pastikan file 'lintasan_bola.png' ada di folder 'images'.")
