@@ -17,144 +17,102 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
-st.set_page_config(page_title="Pertemuan 1", layout="centered")
+# filename: pertemuan_1_fungsi_kuadrat.py
 
-st.title("🧮 Pertemuan 1: Bentuk Umum dan Grafik Fungsi Kuadrat")
-st.markdown("**Capaian Pembelajaran:** Siswa dapat menganalisis bentuk umum dan grafik fungsi kuadrat berdasarkan koefisien a, b, dan c.")
+import streamlit as st
+from PIL import Image
 
-# Identitas
-st.subheader("👤 Identitas Siswa")
-nama = st.text_input("Nama:")
-kelas = st.text_input("Kelas:")
+# Judul modul
+st.title("Pertemuan 1: Menemukan Konsep Fungsi Kuadrat dari Lintasan Bola")
 
-# Langkah 1: Stimulus
-st.subheader("🔹 Langkah 1: Stimulus (Self-construction)")
-st.markdown("Salin prompt di bawah ini ke Gemini AI dan **pelajari jawabannya**.")
-st.code("Jelaskan bentuk umum fungsi kuadrat dan hubungannya dengan grafik parabola.")
-st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-jawaban1 = st.text_area("📥 Tuliskan ringkasan pemahamanmu dari jawaban Gemini AI:")
-if jawaban1.strip():
-    st.success("✅ Jawaban diterima. Sekarang kamu dapat melanjutkan ke langkah berikutnya.")
-
-# Langkah 2: Identifikasi Masalah (Self-instruction)
-st.subheader("🔹 Langkah 2: Identifikasi Masalah")
-st.markdown("Apa yang kamu pahami tentang pengaruh nilai a, b, dan c terhadap bentuk grafik?")
-jawaban2 = st.text_area("📥 Tuliskan identifikasimu:")
-if jawaban2.strip():
-    st.success("✅ Bagus. Ayo lanjut ke langkah berikutnya.")
-
-
-# Langkah 3: Pengumpulan Data
-st.subheader("🔹 Langkah 3: Pengumpulan Data")
-
-st.markdown(r"""
-### 📘 Materi: Bentuk Umum Fungsi Kuadrat
-
-Fungsi kuadrat memiliki bentuk umum:  
-$$f(x) = ax^2 + bx + c$$
-
-Dengan:
-- **a** menentukan arah buka parabola dan lebarnya  
-- **b** memengaruhi posisi sumbu simetri  
-- **c** adalah titik potong dengan sumbu-Y  
-
-Beberapa karakteristik penting dari fungsi kuadrat:
-- **Arah buka parabola**:
-  - Jika \( a > 0 \), parabola membuka ke atas
-  - Jika \( a < 0 \), parabola membuka ke bawah  
-- **Titik puncak (vertex)** parabola:
-$$
-x = \frac{-b}{2a}
-$$
-
-  Lalu dihitung $$f(x) = ax^2 + bx + c$$
-- **Titik potong sumbu-Y** adalah $$(0, c)$$
-- **Titik potong sumbu-X** dapat dicari dengan menyelesaikan persamaan:
-  $$ax^2 + bx + c = 0$$
+# 1. Pemberian Rangsangan
+st.header("1. Pemberian Rangsangan")
+st.write("""
+Bayangkan kamu sedang bermain basket. Kamu melempar bola ke arah ring. Bola akan membentuk lintasan yang melengkung.
+Bagaimana kamu bisa mengetahui tinggi maksimum bola?
 """)
+bola_image = Image.open("images/lintasan_bola.jpg")  # Pastikan gambar ini ada di folder 'images'
+st.image(bola_image, caption="Lintasan Bola dalam Permainan Basket")
 
-st.markdown(r"""
-**Contoh:** Jika $$f(x) = x^2 - 2x + 1$$ maka:
-- a = 1
-- b = -2
-- c = 1
-""")
+st.write("Tuliskan hal-hal menarik atau membingungkan dari situasi di atas.")
+stimulus_reflection = st.text_area("Apa yang menarik dan membingungkan dari gambar dan cerita di atas?")
 
+# 2. Identifikasi Masalah
+st.header("2. Identifikasi Masalah")
+st.write("Tuliskan masalah atau pertanyaan yang muncul berdasarkan situasi tersebut.")
+problem_statement = st.text_area("Apa masalah atau pertanyaan yang ingin kamu selesaikan?")
 
-st.markdown("Silakan masukkan nilai a, b, dan c dari suatu fungsi kuadrat:")
-a = st.number_input("Nilai a", value=1.0, step=0.1, format="%.2f")
-b = st.number_input("Nilai b", value=-2.0, step=0.1, format="%.2f")
-c = st.number_input("Nilai c", value=1.0, step=0.1, format="%.2f")
+if problem_statement.strip() != "":
+    st.success("Kamu dapat mengeksplorasi masalah ini menggunakan Perplexity.")
+    st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai)")
 
-analisis = st.text_area("📥 Tuliskan analisismu berdasarkan nilai a, b, dan c:")
+# 3. Pengumpulan Data
+st.header("3. Pengumpulan Data")
+st.write("Jawablah pertanyaan berikut secara mandiri.")
 
-# Cek AI muncul hanya jika siswa sudah menganalisis
-if analisis.strip():
-    with st.expander("🤖 Cek AI untuk Grafik"):
-        st.markdown("Salin prompt ini ke Gemini AI:")
-        st.code(f"Jelaskan bentuk grafik dari fungsi f(x) = {a}x² + {b}x + {c}, termasuk arah buka, titik potong, dan titik puncaknya.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-        st.markdown("Bandingkan jawaban AI dengan analisismu.")
+q1 = st.text_input("Apa bentuk umum fungsi kuadrat?")
+q2 = st.text_input("Apa yang dimaksud dengan sumbu simetri pada grafik fungsi kuadrat?")
+q3 = st.text_input("Apa peran nilai a dalam bentuk umum fungsi kuadrat?")
 
+if all([q1.strip(), q2.strip(), q3.strip()]):
+    st.success("Jawaban terkumpul. Kamu sekarang bisa menggunakan Perplexity untuk eksplorasi lanjutan.")
+    st.markdown("[Gunakan Perplexity untuk Belajar Tambahan](https://www.perplexity.ai)")
 
-# Langkah 4: Pengolahan Data (Grafik)
-st.subheader("🔹 Langkah 4: Pengolahan Data")
+# 4. Pengolahan Data
+elif tahap == "4. Pengolahan Data":
+    st.subheader("🧮 Pengolahan Data")
+    st.markdown("Silakan analisis informasi yang telah kamu kumpulkan sebelumnya.")
+    
+    st.write("1. Dari tabel nilai berikut, susun persamaan kuadratnya:")
+    st.table({
+        "x": [-2, -1, 0, 1, 2],
+        "y": [4, 1, 0, 1, 4]
+    })
+    jawaban_analisis = st.text_area("Tulis bentuk persamaan kuadrat berdasarkan data di atas", key="analisis")
+    
+    if jawaban_analisis.strip():
+        st.success("✅ Jawaban kamu telah dicatat.")
+        if st.button("Lihat materi tambahan dari AI (Perplexity)"):
+            st.info("🔍 Contoh penyusunan persamaan kuadrat: Gunakan bentuk umum y = ax² + bx + c. Substitusi titik-titik untuk membentuk sistem persamaan.")
+    else:
+        st.warning("Silakan isi jawaban terlebih dahulu sebelum melihat materi AI.")
 
-# Penjelasan fungsi dan titik puncak
-st.markdown(r"""
-Grafik dari fungsi kuadrat $$f(x) = ax^2 + bx + c$$ memiliki bentuk **parabola**.  
+# 5. Pembuktian
+st.header("5. Pembuktian")
+st.write("Kerjakan soal ini: Diketahui grafik fungsi kuadrat memiliki titik puncak (2, 4) dan melalui titik (0, 0). Tentukan persamaan fungsi kuadratnya.")
 
-Titik puncak (**vertex**) dari grafik fungsi ini dapat ditentukan dengan rumus:
-$$
-x = \frac{-b}{2a}
-$$
-""")
+proof_jawab = st.text_input("Tulis jawabanmu di sini")
 
+if jawaban_bukti.strip():
+        st.success("✅ Jawaban kamu telah disimpan.")
+        if st.button("Buka Perplexity untuk klarifikasi atau refleksi mandiri"):
+            st.info("✏️ Ingat: gunakan rumus puncak = -b/2a, dan rumus diskriminan untuk menyelesaikan akar.")
+    else:
+        st.warning("Silakan isi jawaban terlebih dahulu sebelum membuka referensi AI.")
+        
+# 6. Penarikan Kesimpulan
+st.header("6. Penarikan Kesimpulan")
+kesimpulan = st.text_area("Apa kesimpulan yang kamu dapatkan tentang fungsi kuadrat dari aktivitas ini?")
 
-# Perhitungan dan plotting
-x_vals = np.linspace(-10, 10, 400)
-y_vals = a * x_vals**2 + b * x_vals + c
-xp = -b / (2 * a)
-yp = a * xp**2 + b * xp + c
+ if kesimpulan.strip():
+        st.success("✅ Kesimpulan kamu tercatat.")
+        if st.button("Lihat rangkuman AI setelah menuliskan kesimpulan"):
+            st.info("📘 Contoh Kesimpulan:\nFungsi kuadrat berbentuk y = ax² + bx + c membentuk grafik parabola. Titik puncak ditentukan oleh -b/2a dan arah parabola tergantung tanda koefisien a.")
+    else:
+        st.warning("Silakan tulis kesimpulanmu dahulu.")
 
-fig, ax = plt.subplots()
-ax.plot(x_vals, y_vals, label=r"$f(x) = ax^2 + bx + c$")
-ax.plot(xp, yp, 'ro', label=fr"Titik Puncak $({xp:.2f}, {yp:.2f})$")
-ax.axhline(0, color='gray', linestyle='--')
-ax.axvline(0, color='gray', linestyle='--')
-ax.grid(True)
-ax.legend()
-st.pyplot(fig)
+# Refleksi
+st.subheader("Refleksi Belajar")
+refleksi = st.radio("Seberapa yakin kamu memahami materi fungsi kuadrat?", ("Tidak yakin", "Kurang yakin", "Cukup yakin", "Yakin", "Sangat yakin"))
 
+kuis = st.radio("Fungsi kuadrat berbentuk y = ax² + bx + c. Jika a > 0, grafiknya berbentuk?", 
+                ("Melingkar", "Parabola terbuka ke atas", "Parabola terbuka ke bawah", "Garis lurus"))
 
-# Langkah 5: Verifikasi
-st.subheader("🔹 Langkah 5: Verifikasi")
-st.markdown("""
-Pada langkah sebelumnya, kamu telah membandingkan hasil analisis grafikmu dengan jawaban dari AI.
-
-Sekarang, saatnya melakukan refleksi:
-""")
-
-verifikasi = st.text_area("📥 Apa yang kamu pelajari dari perbandingan tersebut?\nMisalnya: Apakah ada hal baru yang kamu sadari? Adakah kesalahan dalam analisismu sebelumnya?")
-
-cek = st.radio("📌 Apakah hasil analisismu sudah sesuai dengan penjelasan AI?", ["Sudah sesuai", "Sebagian sesuai", "Belum sesuai"])
-
-st.markdown("✅ Refleksi ini membantumu memahami apakah pemahamanmu sudah tepat atau masih perlu diperbaiki.")
-
-
-# Langkah 6: Kesimpulan
-st.subheader("🔹 Langkah 6: Kesimpulan")
-kesimpulan = st.text_area("📝 Tuliskan simpulanmu mengenai bentuk umum fungsi kuadrat dan grafiknya:")
-
-if kesimpulan:
-    with st.expander("🤖 Cek AI untuk Validasi Kesimpulan"):
-        st.markdown("Salin dan tempelkan prompt berikut ke Gemini:")
-        st.code("Buat simpulan tentang bentuk umum fungsi kuadrat dan bagaimana grafiknya terbentuk berdasarkan nilai a, b, dan c.")
-        st.markdown("[🔎 Cek AI di Gemini](https://gemini.google.com/app)")
-
-# Refleksi akhir
-st.subheader("🔹 Refleksi")
-refleksi = st.text_area("💬 Apa yang kamu pelajari secara umum dari pertemuan ini? (Refleksi Akhir)")
+if kuis == "Parabola terbuka ke atas":
+    st.success("Jawaban benar!")
+elif kuis != "":
+    st.error("Jawaban belum tepat. Coba pelajari lagi grafik fungsi kuadrat.")
+ ini? (Refleksi Akhir)")
 
 # Simpan hasil ke spreadsheet (simulasi local)
 if st.button("📤 Kirim Jawaban"):
