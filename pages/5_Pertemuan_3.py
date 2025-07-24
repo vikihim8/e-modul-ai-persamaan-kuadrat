@@ -29,7 +29,7 @@ kelas = st.text_input("Kelas:")
 
 # 1. STIMULUS
 # -------------------
-st.header("1️⃣ Stimulus")
+st.header("1️. Stimulus")
 st.markdown("""
 Rumus ABC digunakan untuk menyelesaikan semua bentuk persamaan kuadrat, bahkan yang tidak bisa difaktorkan.
 
@@ -59,34 +59,34 @@ if a != 0:
     st.latex(sp.Eq(x, akar1))
     st.latex(sp.Eq(x, akar2))
 
-    # -------------------
-    # 2. IDENTIFIKASI MASALAH
-    # -------------------
-    st.header("2️⃣ Identifikasi Masalah")
-    st.markdown("""
+# -------------------
+# 2. IDENTIFIKASI MASALAH
+# -------------------
+st.header("2️. Identifikasi Masalah")
+st.markdown("""
 Apa jenis akar yang dihasilkan dari nilai D tersebut? Bagaimana jika D bernilai negatif, nol, atau positif?
 """)
 
-    # -------------------
-    # 3. PENGUMPULAN DATA
-    # -------------------
-    st.header("3️⃣ Pengumpulan Data")
-    st.markdown("Tuliskan prosesmu dalam menyelesaikan persamaan kuadrat di atas menggunakan rumus ABC.")
-    jawaban_siswa = st.text_area("✍️ Langkah-langkah penyelesaian versimu:")
+# -------------------
+# 3. PENGUMPULAN DATA
+# -------------------
+st.header("3️. Pengumpulan Data")
+st.markdown("Tuliskan prosesmu dalam menyelesaikan persamaan kuadrat di atas menggunakan rumus ABC.")
+jawaban_siswa = st.text_area("✍️ Langkah-langkah penyelesaian versimu:")
 
-    # -------------------
-    # 4. PENGOLAHAN DATA
-    # -------------------
-    if jawaban_siswa.strip() != "":
-        st.header("4️⃣ Pengolahan Data")
-        st.markdown("Bagus! Sekarang kamu bisa membandingkan jawabanmu dengan jawaban dari AI.")
-        st.markdown("### 🤖 [Klik di sini untuk cek ke Gemini AI](https://gemini.google.com/)")
+# -------------------
+# 4. PENGOLAHAN DATA
+# -------------------
+if jawaban_siswa.strip() != "":
+    st.header("4️. Pengolahan Data")
+    st.markdown("Bagus! Sekarang kamu bisa membandingkan jawabanmu dengan jawaban dari AI.")
+    st.markdown("### 🤖 [Klik di sini untuk cek ke Gemini AI](https://gemini.google.com/)")
 
-    # -------------------
-    # 5. GENERALISASI
-    # -------------------
-    st.header("5️⃣ Generalisasi")
-    st.markdown("""
+# -------------------
+# 5. GENERALISASI
+# -------------------
+st.header("5️. Generalisasi")
+st.markdown("""
 Dari kegiatan ini, kamu dapat menyimpulkan bahwa:
 - Rumus ABC selalu bisa digunakan untuk menyelesaikan persamaan kuadrat apa pun.
 - Jenis akar ditentukan oleh nilai diskriminan:
@@ -95,11 +95,11 @@ Dari kegiatan ini, kamu dapat menyimpulkan bahwa:
     - D < 0 → dua akar kompleks (tidak real)
 """)
 
-    # -------------------
-    # 6. PENARIKAN KESIMPULAN
-    # -------------------
-    st.header("6️⃣ Penarikan Kesimpulan")
-    st.markdown("Apa kelebihan dan kelemahan dari metode rumus ABC dibanding metode faktorisasi atau melengkapkan kuadrat?")
+# -------------------
+# 6. PENARIKAN KESIMPULAN
+# -------------------
+st.header("6️. Penarikan Kesimpulan")
+st.markdown("Apa kelebihan dan kelemahan dari metode rumus ABC dibanding metode faktorisasi atau melengkapkan kuadrat?")
 else:
     st.warning("Nilai a tidak boleh nol. Persamaan kuadrat harus memiliki suku x².")
 
