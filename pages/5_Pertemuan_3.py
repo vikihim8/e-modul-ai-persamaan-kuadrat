@@ -42,7 +42,7 @@ st.markdown("""
 identifikasi_jawaban = st.text_area("Tuliskan identifikasi masalah yang kamu temukan:")
 if identifikasi_jawaban:
     st.success("Masalah telah diidentifikasi. Kamu bisa eksplorasi lebih lanjut dengan bantuan AI.")
-    st.markdown("[Cek penjelasan AI di Preplexity](https://www.perplexity.ai)")
+    st.markdown("[Cek penjelasan AI di Preplexity](https://www.perplexity.ai/search/bagaimana-hubungan-antara-lint-jmJR_1UoSDSd12oB6nv_8A)")
 
 st.markdown("---")
 
@@ -93,7 +93,7 @@ if a != 0:
 
     if analisis_pengolahan:
         st.success("Kamu telah menyelesaikan analisis pengolahan data.")
-        st.markdown("[Cek validasi penjelasan di Perplexity](https://www.perplexity.ai)")
+        st.markdown("[Cek validasi penjelasan di Perplexity](https://www.perplexity.ai/search/materi-fungsi-kuadrat-dengan-m-rnq03xB5QseNmAcFeMQ.Uw)")
 else:
     st.warning("Nilai a tidak boleh 0")
 
@@ -106,7 +106,7 @@ Selesaikan persamaan berikut dengan rumus ABC:
 """)
 jawaban_pengolahan = st.text_area("Tulis jawabanmu di sini:")
 if jawaban_pengolahan:
-    st.markdown("[Cek jawabanmu di Perplexity AI](https://www.perplexity.ai/)", unsafe_allow_html=True)
+    st.markdown("[Cek jawabanmu di Perplexity AI](https://www.perplexity.ai/search/selesaikan-persamaan-berikut-d-nuMuhEe5T3m4nC7wuHTecw/)", unsafe_allow_html=True)
 
 # LANGKAH 5: VERIFIKASI
 st.header("5. Verifikasi")
@@ -116,7 +116,7 @@ Apakah terdapat perbedaan?
 """)
 verifikasi_input = st.text_area("Tuliskan hasil verifikasimu di sini:")
 if verifikasi_input:
-    st.markdown("[Diskusikan dengan AI di Perplexity](https://www.perplexity.ai/)", unsafe_allow_html=True)
+    st.markdown("[Diskusikan dengan AI di Perplexity](https://www.perplexity.ai/search/berikan-verifikasi-dan-diskusi-DdCrBk.uTkCU0QXm_WMTIg/)", unsafe_allow_html=True)
 
 # LANGKAH 6: KESIMPULAN
 st.header("6. Kesimpulan")
@@ -125,7 +125,7 @@ Buatlah kesimpulan dari pembelajaran hari ini, khususnya tentang cara penyelesai
 """)
 kesimpulan_input = st.text_area("Tuliskan kesimpulanmu:")
 if kesimpulan_input:
-    st.markdown("[Cek kesimpulan dengan Perplexity AI](https://www.perplexity.ai/)", unsafe_allow_html=True)
+    st.markdown("[Cek kesimpulan dengan Perplexity AI](https://www.perplexity.ai/search/kesimpulan-materi-persamaan-ku-RdlMiqRjQq6VedhRfHeqCw/)", unsafe_allow_html=True)
 
 # Refleksi akhir
 st.subheader("🔹 Refleksi")
