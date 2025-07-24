@@ -100,16 +100,20 @@ else:
         st.error("Nilai a tidak boleh 0. Fungsi kuadrat tidak valid jika a = 0.")
 
 # --- 5. Pembuktian ---
-st.header("5. Pembuktian")
+st.header("5. Verifikasi")
 st.write("Kerjakan soal ini: Grafik fungsi kuadrat memiliki titik puncak (2, 4) dan melalui titik (0, 0). Tentukan persamaan fungsinya.")
+
 verifikasi = st.text_input("🧠 Tulis jawabanmu di sini")
 
 if verifikasi.strip():
     st.success("✅ Jawaban kamu telah disimpan.")
-    if st.button("Buka Perplexity untuk klarifikasi atau refleksi", key="buka_ai_pembuktian"):
+    
+    # Tampilkan tombol hanya setelah ada jawaban
+    if st.button("🔎 Buka Perplexity untuk klarifikasi/refleksi", key="buka_ai_pembuktian"):
         st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/selesaikan-grafik-fungsi-kuadr-c5uvbD.7SDqcc9vDc_yV0Q)")
 else:
-    st.warning("Silakan isi jawaban sebelum membuka referensi AI.")
+    st.warning("Silakan isi jawaban terlebih dahulu untuk membuka bantuan AI.")
+
 
 # --- 6. Penarikan Kesimpulan ---
 st.header("6. Penarikan Kesimpulan")
@@ -117,10 +121,13 @@ kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas
 
 if kesimpulan.strip():
     st.success("✅ Kesimpulan kamu tercatat.")
-    if st.button("Lihat rangkuman dari AI", key="buka_ai_kesimpulan"):
+    
+    # Tampilkan tombol hanya setelah ada kesimpulan
+    if st.button("🧠 Lihat rangkuman AI", key="buka_ai_kesimpulan"):
         st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/kesimpulan-materi-bentuk-umum-wngG3ZztQfSJDu1vq._F_g)")
 else:
-    st.warning("Silakan isi kesimpulan terlebih dahulu sebelum lanjut.")
+    st.warning("Silakan isi kesimpulan terlebih dahulu sebelum membuka rangkuman AI.")
+✨ Hasil:
 
 # --- Refleksi Akhir ---
 st.subheader("🪞 Refleksi Belajar")
