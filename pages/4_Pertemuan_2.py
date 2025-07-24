@@ -45,62 +45,31 @@ else:
 
 # --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
-st.write("""
-Untuk memfaktorkan fungsi kuadrat dari bentuk:
-$$f(x) = ax^2 + bx + c$$  
-Kita harus mencari dua bilangan yang hasil kalinya $a \\cdot c$ dan jumlahnya $b$.
-""")
+st.write("💡 Coba masukkan dua bilangan yang jika dikalikan hasilnya sama dengan a × c, dan jika dijumlahkan hasilnya b.")
+a = st.number_input("Masukkan nilai a", value=1)
+b = st.number_input("Masukkan nilai b", value=5)
+c = st.number_input("Masukkan nilai c", value=6)
 
-# Koefisien fungsi kuadrat (ubah sesuai soalmu)
-a, b, c = 2, 5, 3  # Contoh: f(x) = 2x² + 5x + 3
+bil1 = st.number_input("Bilangan 1")
+bil2 = st.number_input("Bilangan 2")
 
-st.markdown("💡 **Eksplorasi:** Cari dua bilangan yang hasil kalinya sama dengan `a·c` dan jumlahnya sama dengan `b`.")
-st.latex(f"\\text{{Hasil kali}} = a \\cdot c = {a} \\cdot {c} = {a*c}")
-st.latex(f"\\text{{Jumlah}} = b = {b}")
-
-# Input dua bilangan dari siswa
-bil1 = st.number_input("Bilangan 1", step=1, key="bilangan1")
-bil2 = st.number_input("Bilangan 2", step=1, key="bilangan2")
-
-if bil1 and bil2:
+if bil1 != 0 and bil2 != 0:
     hasil_kali = bil1 * bil2
-    jumlah = bil1 + bil2
+    hasil_jumlah = bil1 + bil2
+    st.info(f"Hasil kali: {hasil_kali}, Hasil jumlah: {hasil_jumlah}")
 
-    st.write(f"✅ **Hasil kali:** {bil1} × {bil2} = {hasil_kali}")
-    st.write(f"✅ **Jumlah:** {bil1} + {bil2} = {jumlah}")
-
-    if hasil_kali == a * c and jumlah == b:
-        st.success("🎉 Dua bilangan **BENAR**! Cocok untuk faktorisasi.")
-
-        # Bentuk baru dari suku tengah
-        st.markdown("### 🔄 Ubah Bentuk Persamaan")
-        st.latex(f"f(x) = {a}x^2 + {bil1}x + {bil2}x + {c}")
-
-        # Faktorisasi tahap selanjutnya (pengelompokan)
-        from math import gcd
-        def faktorkan(a1, b1):
-            g = gcd(a1, b1)
-            return f"{g}(x + {b1//g})"
-
-        # Kelompokkan dua pasang
-        kelompok_1 = f"{a}x^2 + {bil1}x"
-        kelompok_2 = f"{bil2}x + {c}"
-
-        st.markdown("### 🧩 Faktorisasi Parsial")
-        st.latex(f"= ({a}x^2 + {bil1}x) + ({bil2}x + {c})")
-
-        # Faktorisasi akhir (dalam bentuk (px + q)(rx + s))
-        # Kamu bisa buat fungsi umum, tapi ini versi statis:
-        # Misal hasilnya: (2x + 3)(x + 1)
-        st.markdown("### ✅ **Hasil Faktorisasi:**")
-        st.latex(f"f(x) = ({a}x + {int(c/bil2)}) (x + 1)")
-
-        # Cek AI
-        with st.expander("🤖 Penjelasan AI (Perplexity)"):
-            st.markdown("[Klik untuk membuka penjelasan AI tentang faktorisasi fungsi kuadrat](https://www.perplexity.ai/search/mengapa-dua-bilangan-dalam-faktorisasi-fungsi-kuadrat-EiTiQJPzRguRTTYoKk_PGQ)")
-    else:
-        st.warning("❗ Bilangan belum cocok. Coba lagi hingga hasil kali dan jumlah sesuai.")
+    if hasil_kali == a * c and hasil_jumlah == b:
+        st.success("✅ Kedua bilangan sesuai untuk memfaktorkan.")
         
+        # Bentuk faktornya
+        bentuk_faktorisasi = f"{a}x² + {b}x + {c} = ({a}x + {bil1})({a}x + {bil2})"
+        st.write("📘 Bentuk faktorisasi otomatis:")
+        st.latex(bentuk_faktorisasi)
+        
+        if st.button("🔍 Cek penjelasan dari AI", key="cek_ai_faktorisasi"):
+            st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/langkah-memfaktorkan-fungsi-kuadr-vc0R9Z.hTMWkgFLWTtnmwA)")
+    else:
+        st.warning("⚠️ Bilangan belum sesuai untuk a × c dan b. Coba lagi ya!")
 # --- 4. Pengolahan Data ---
 st.header("4. Pengolahan Data")
 st.write("Faktorkan bentuk berikut:")
@@ -113,6 +82,7 @@ if analisis.strip():
         st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
 else:
     st.warning("Silakan faktorkan dulu sebelum cek AI.")
+    
 
 # --- 5. Pembuktian (Verifikasi) ---
 st.header("5. Pembuktian")
