@@ -120,6 +120,7 @@ if kesimpulan.strip():
     if st.button("Lihat rangkuman dari AI", key="buka_ai_kesimpulan"):
         st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/kesimpulan-materi-bentuk-umum-wngG3ZztQfSJDu1vq._F_g)")
 else:
+    st.warning("Silakan isi kesimpulan terlebih dahulu sebelum lanjut.")
 
 # --- Refleksi Akhir ---
 st.subheader("🪞 Refleksi Belajar")
