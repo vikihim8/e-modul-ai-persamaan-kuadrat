@@ -68,19 +68,9 @@ if a != 0:
     ax.legend()
     st.pyplot(fig)
 
-    # ---------- Penjelasan Materi dari AI ----------
-    st.markdown("## 3. Materi Otomatis dari AI (berbasis fungsi)")
-    st.info(
-        f"""
-        Berdasarkan grafik fungsi kuadrat \( y = {a}x^2 + {b}x + {c} \), berikut kesimpulan:
-        
-        - Grafik akan terbuka ke **atas** jika nilai **a > 0** dan ke **bawah** jika **a < 0**.
-        - Titik puncak (vertex) fungsi kuadrat berada di:
-          \n\\( x = -\\frac{{b}}{{2a}} \\)
-        - Sumbu simetri grafik adalah garis vertikal melalui titik puncak.
-        - Nilai minimum/maksimum fungsi ditentukan oleh nilai \( y \) pada titik puncak.
-        """
-    )
+analisis_siswa = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", placeholder="Misalnya: grafik terbuka ke atas, titik puncak ada di sekitar x = -1, dst.")
+
+
 # ---------- Latihan Soal ----------
 st.markdown("## 4. Latihan Soal")
 soal = "Berapakah nilai koordinat titik puncak dari fungsi kuadrat ini?"
