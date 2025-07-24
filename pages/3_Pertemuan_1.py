@@ -32,14 +32,6 @@ Bayangkan kamu sedang bermain basket. Kamu melempar bola ke arah ring. Bola akan
 Bagaimana kamu bisa mengetahui tinggi maksimum bola?
 """)
 
-try:
-    bola_image = Image.open("lintasan_bola.png")  # karena kamu sudah berada di folder 'pages'
-    st.image(bola_image, caption="Lintasan Bola dalam Permainan Basket")
-except Exception as e:
-    st.warning("⚠️ Gagal memuat gambar. Pastikan file 'lintasan_bola.png' ada di folder 'pages/'.")
-    st.error(f"Detail error: {e}")
-
-
 jawaban1 = st.text_area("📝 Apa yang menarik dan membingungkan dari cerita di atas?")
 
 # --- 2. Identifikasi Masalah ---
@@ -48,7 +40,7 @@ jawaban2 = st.text_area("❓ Apa masalah atau pertanyaan yang ingin kamu selesai
 
 if jawaban2.strip():
     st.success("Kamu dapat mengeksplorasi masalah ini menggunakan Perplexity.")
-    st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai)")
+    st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/bayangkan-kamu-sedang-bermain-ZtKUkcimR8eBfPTulaVLhQ)")
 
 # --- 3. Pengumpulan Data ---
 st.header("3. Pengumpulan Data")
@@ -85,7 +77,7 @@ if analisis_siswa.strip() != "":
               $$y = {a*(-b/(2*a))**2 + b*(-b/(2*a)) + c:.2f}$$
             """
         )
-        st.success("Untuk materi lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai)")
+        st.success("Untuk materi lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai/search/materi-analisis-grafik-berdasa-lpxD.jhxQJSogx7G7Gjdgw)")
 
 # ---------- Latihan Soal ----------
 st.markdown("## 4. Pengolahan Data")
@@ -115,7 +107,7 @@ verifikasi = st.text_input("🧠 Tulis jawabanmu di sini")
 if verifikasi.strip():
     st.success("✅ Jawaban kamu telah disimpan.")
     if st.button("Buka Perplexity untuk klarifikasi atau refleksi", key="buka_ai_pembuktian"):
-        st.info("💡 Gunakan rumus puncak -b/2a dan bentuk umum y = ax² + bx + c.")
+        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/selesaikan-grafik-fungsi-kuadr-c5uvbD.7SDqcc9vDc_yV0Q)")
 else:
     st.warning("Silakan isi jawaban sebelum membuka referensi AI.")
 
@@ -126,7 +118,8 @@ kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas
 if kesimpulan.strip():
     st.success("✅ Kesimpulan kamu tercatat.")
     if st.button("Lihat rangkuman dari AI", key="buka_ai_kesimpulan"):
-        st.info("📘 Contoh: Fungsi kuadrat berbentuk y = ax² + bx + c membentuk grafik parabola. Titik puncak ditentukan oleh -b/2a.")
+        st.markdown("[Klik untuk Buka Perplexity](https://www.perplexity.ai/search/kesimpulan-materi-bentuk-umum-wngG3ZztQfSJDu1vq._F_g)")
+else:
 
 # --- Refleksi Akhir ---
 st.subheader("🪞 Refleksi Belajar")
