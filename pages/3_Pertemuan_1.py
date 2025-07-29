@@ -42,7 +42,7 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
     
     if "grafik1_ditampilkan" not in st.session_state:
-    st.session_state.grafik1_ditampilkan = False
+        st.session_state.grafik1_ditampilkan = False
 
     if st.button("Tampilkan Grafik Eksplorasi 1"):
         st.session_state.grafik1_ditampilkan = True
