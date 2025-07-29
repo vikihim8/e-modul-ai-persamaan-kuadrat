@@ -32,7 +32,7 @@ st.title("3. Pengumpulan Data")
 st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$ dengan $$a$$ adalah koefien variabel $$x^2$$, b adalah koefisien variabel $$x$$ dan c adalah konstanta dari persamaan kuadrat. Mari kita lakukan eksplorasi berikut")
 
 # Eksplorasi 1
-with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Bagaimana jika a = 0? Apa yang akan terjadi? Masukan nilai a = 0 untuk mengetahui jawabannya"):
+with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika a = 0? Masukan nilai a = 0 untuk mengetahui jawabannya"):
     a1 = st.number_input("Masukkan nilai $a$ (koefisien x²):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien x):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
@@ -75,14 +75,13 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
 
 📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
-refleksi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 """)
-
+refleksi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
-    with st.expander("Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
+    with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
         b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
         
         if "grafik2_ditampilkan" not in st.session_state:
@@ -125,7 +124,7 @@ Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y 
 
 # Eksplorasi 3: Nilai b negatif
 if st.session_state.get("analisis2"):
-    with st.expander("Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
+    with st.expander("💡Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
         b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
         a3 = st.session_state.get("a1", 1)
         c3 = st.session_state.get("c1", 1)
@@ -165,7 +164,7 @@ eksplorasi_3_terjawab = True
 
 # Eksplorasi 4: Nilai b positif
 if 'eksplorasi_3_terjawab' in locals() and eksplorasi_3_terjawab:
-    st.markdown("### Eksplorasi 4: Nilai b positif")
+    st.markdown("💡Eksplorasi 4: Nilai b positif")
     b_positif = st.number_input("Masukkan nilai b (positif):", key="b4")
     a4 = a3
     c4 = c3
@@ -181,7 +180,7 @@ if 'eksplorasi_3_terjawab' in locals() and eksplorasi_3_terjawab:
 
 # Eksplorasi 5: Nilai c negatif
 if 'eksplorasi_4_terjawab' in locals() and eksplorasi_4_terjawab:
-    st.markdown("### Eksplorasi 5: Nilai c negatif")
+    st.markdown("💡Eksplorasi 5: Nilai c negatif")
     c_negatif = st.number_input("Masukkan nilai c (negatif):", key="c5")
     b5 = b_positif
     y_vals5 = a4 * x_vals3**2 + b5 * x_vals3 + c_negatif
@@ -196,7 +195,7 @@ if 'eksplorasi_4_terjawab' in locals() and eksplorasi_4_terjawab:
 
 # Eksplorasi 6: Nilai c positif
 if 'eksplorasi_5_terjawab' in locals() and eksplorasi_5_terjawab:
-    st.markdown("### Eksplorasi 6: Nilai c positif")
+    st.markdown("💡Eksplorasi 6: Nilai c positif")
     c_positif = st.number_input("Masukkan nilai c (positif):", key="c6")
     y_vals6 = a4 * x_vals3**2 + b5 * x_vals3 + c_positif
     y_graph6 = [float(y_vals6.subs(x_vals3, i)) for i in x_graph3]
@@ -210,7 +209,7 @@ if 'eksplorasi_5_terjawab' in locals() and eksplorasi_5_terjawab:
 
 # Eksplorasi 7: Semua koefisien negatif
 if 'eksplorasi_6_terjawab' in locals() and eksplorasi_6_terjawab:
-    st.markdown("### Eksplorasi 7: Semua koefisien negatif")
+    st.markdown("💡Eksplorasi 7: Semua koefisien negatif")
     a7 = st.number_input("Masukkan nilai a (negatif):", key="a7")
     b7 = st.number_input("Masukkan nilai b (negatif):", key="b7")
     c7 = st.number_input("Masukkan nilai c (negatif):", key="c7")
@@ -226,7 +225,7 @@ if 'eksplorasi_6_terjawab' in locals() and eksplorasi_6_terjawab:
 
 # Eksplorasi 8: Semua koefisien positif
 if 'eksplorasi_7_terjawab' in locals() and eksplorasi_7_terjawab:
-    st.markdown("### Eksplorasi 8: Semua koefisien positif")
+    st.markdown("💡Eksplorasi 8: Semua koefisien positif")
     a8 = st.number_input("Masukkan nilai a (positif):", key="a8")
     b8 = st.number_input("Masukkan nilai b (positif):", key="b8")
     c8 = st.number_input("Masukkan nilai c (positif):", key="c8")
