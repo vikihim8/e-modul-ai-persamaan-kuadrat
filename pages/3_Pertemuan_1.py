@@ -203,12 +203,13 @@ if st.session_state.get("analisis3"):
         b_positif = st.number_input("Masukkan nilai $b$ (positif):", value=1, step=1, key="b4")
         a4 = st.number_input("Masukkan nilai a:", key="a4", value=0)
         c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
-            x_vals4 = sp.Symbol('x')
-            y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
-            st.write("Persamaan y =", y_vals4)
-            y_graph4 = [float(y_vals4.subs(x_vals4, i)) for i in x_graph3]
+        x_vals4 = sp.Symbol('x')
+        y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
+        st.write("Persamaan y =", y_vals4)
+        x_graph3 = list(range(-10, 11))
+        y_graph4 = [float(y_vals4.subs(x_vals4, i)) for i in x_graph3]
 
-            st.line_chart({"x": x_graph3, "y": y_graph4})
+        st.line_chart({"x": x_graph3, "y": y_graph4})
 
         analisis4 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis4")
 
