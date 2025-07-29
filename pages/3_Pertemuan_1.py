@@ -16,13 +16,9 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
-# --- Sidebar untuk Nama dan Kelas ---
-st.sidebar.header("Identitas")
-nama = st.sidebar.text_input("Nama")
-kelas = st.sidebar.text_input("Kelas")
 
 # --- Judul Halaman ---
-st.title("📘 Pertemuan 1: Menemukan Konsep Umum dan Grafik Fungsi Kuadrat")
+st.title("📘 Pertemuan 1: Menemukan Bentuk Umum dan Grafik Fungsi Kuadrat")
 
 # --- Stimulus dan Identifikasi Masalah ---
 st.header("1. Stimulus")
@@ -77,9 +73,11 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 - 0x² + 3x + 1
 
 📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
+
+📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
 """)
-st.write("📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
 refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
+
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
