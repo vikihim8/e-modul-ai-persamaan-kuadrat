@@ -33,24 +33,29 @@ st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
 
 st.title("3. Pengumpulan Data")
-st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$. Mari kita lakukan eksplorasi berikut")
+st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$ dengan $$a$$ adalah koefien variabel $$x^2$$, b adalah koefisien variabel $$x$$ dan c adalah konstanta dari persamaan kuadrat. Mari kita lakukan eksplorasi berikut")
 
 # Eksplorasi 1
 with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Bagaimana jika a = 0? Apa yang akan terjadi? Masukan nilai a = 0 untuk mengetahui jawabannya"):
-    a1 = st.number_input("Masukkan nilai $a$ = 0 :", key="a1")
+    a1 = st.number_input("Masukkan nilai $a$ (koefisien x²):", value=1.0, step=0.1, key="a1")
+    b1 = st.number_input("Masukkan nilai $b$ (koefisien x):", value=0.0, step=0.1, key="b1")
+    c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0.0, step=0.1, key="c1")
     
     if "grafik1_ditampilkan" not in st.session_state:
         st.session_state.grafik1_ditampilkan = False
 
     if st.button("Tampilkan Grafik Eksplorasi 1"):
         x = np.linspace(-10, 10, 400)
-        y = a1 * x**2
+        y = a1 * x**2 + b1 * x + c1
         fig, ax = plt.subplots()
-        ax.plot(x, y)
+        ax.plot(x, y, label=f"$y = {a1}x^2 + {b1}x + {c1}$")
         ax.axhline(0, color='black', linewidth=0.5)
         ax.axvline(0, color='black', linewidth=0.5)
-        ax.set_title(f"Grafik y = {a1}x²")
+        ax.grid(True)
+        ax.legend()
+        ax.set_title("Grafik Fungsi Kuadrat")
         st.pyplot(fig)
+
         st.session_state.grafik1_ditampilkan = True
 
     if st.session_state.grafik1_ditampilkan:
@@ -58,7 +63,8 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
                                  placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
         if analisis1.strip() != "":
             with st.expander("Cek Hasil Verifikasi AI Eksplorasi 1"):
-                st.success("Untuk penjelasan lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai/search/materi-grafik-nilai-a)")
+                st.success("Untuk penjelasan lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai/search/Jelaskan%20apa%20yang%20terjadi%20pada%20grafik%20fungsi%20kuadrat%20jika%20a%20%3D%200)")
+
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
