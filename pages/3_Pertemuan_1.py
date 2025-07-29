@@ -394,27 +394,16 @@ x² + 4x + 5
 
 
 
-# Inisialisasi session state untuk setiap eksplorasi
-for i in range(1, 9):
-    if f"eksplorasi_{i}_selesai" not in st.session_state:
-        st.session_state[f"eksplorasi_{i}_selesai"] = False
-
-if "kesimpulan_selesai" not in st.session_state:
-    st.session_state["kesimpulan_selesai"] = False
-if "refleksi_selesai" not in st.session_state:
-    st.session_state["refleksi_selesai"] = False
-
 
 def eksplorasi_form(i, judul):
     st.header(f"🔎 Eksplorasi {i}: {judul}")
     jawaban = st.text_area(f"Tuliskan hasil eksplorasimu untuk Eksplorasi {i}:", key=f"eksplorasi_{i}_jawaban")
     if st.button(f"Simpan Eksplorasi {i}", key=f"btn_eksplorasi_{i}"):
-        if jawaban.strip() != "":
+        if jawaban.strip():
             st.session_state[f"eksplorasi_{i}_selesai"] = True
             st.success(f"Eksplorasi {i} selesai.")
         else:
             st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
-
 
 eksplorasi_titles = [
     "Jika a = 0",
@@ -427,35 +416,37 @@ eksplorasi_titles = [
     "Semua koefisien positif"
 ]
 
-# Tampilkan eksplorasi satu per satu
+# 🔁 Tampilkan eksplorasi satu per satu
 for i in range(1, 9):
     if i == 1 or st.session_state.get(f"eksplorasi_{i-1}_selesai", False):
-        if not st.session_state[f"eksplorasi_{i}_selesai"]:
+        if not st.session_state.get(f"eksplorasi_{i}_selesai", False):
             eksplorasi_form(i, eksplorasi_titles[i-1])
-            break
+            st.stop()  # ⛔ Hentikan render di sini sampai eksplorasi ini selesai
 
-# Setelah eksplorasi 1–8 selesai, munculkan kesimpulan eksplorasi
-if all(st.session_state[f"eksplorasi_{i}_selesai"] for i in range(1, 9)):
-    st.subheader("🧠 Kesimpulan Eksplorasi")
-    kesimpulan = st.text_area("Tuliskan kesimpulanmu setelah menyelesaikan seluruh eksplorasi:", key="kesimpulan_jawaban")
-    if st.button("Simpan Kesimpulan"):
-        if kesimpulan.strip() != "":
-            st.session_state["kesimpulan_selesai"] = True
-            st.success("Kesimpulan eksplorasi telah disimpan.")
-        else:
-            st.warning("Isi kesimpulan terlebih dahulu.")
+# ✅ Setelah semua eksplorasi selesai, tampilkan form kesimpulan
+if all(st.session_state.get(f"eksplorasi_{i}_selesai", False) for i in range(1, 9)):
+    st.subheader("🧠 Kesimpulan Analisis dari Semua Eksplorasi 1–8")
 
+    kesimpulan = st.text_area("Tuliskan pola umum pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat.", key="kesimpulan_jawaban")
 
-# Setelah kesimpulan eksplorasi selesai, munculkan refleksi akhir
-if st.session_state["kesimpulan_selesai"]:
-    st.subheader("🪞 Refleksi Akhir")
-    refleksi = st.text_area("Apa yang kamu pelajari dari seluruh kegiatan eksplorasi ini?", key="refleksi_jawaban")
-    if st.button("Simpan Refleksi"):
-        if refleksi.strip() != "":
-            st.session_state["refleksi_selesai"] = True
-            st.success("Refleksi akhir telah disimpan.")
-        else:
-            st.warning("Isi refleksi terlebih dahulu.")
+    if kesimpulan.strip():
+        st.session_state["kesimpulan_selesai"] = True
+        st.success("Kesimpulan telah dicatat.")
+
+    # ✅ Setelah isi kesimpulan, tampilkan prompt verifikasi
+    if st.session_state.get("kesimpulan_selesai"):
+        st.markdown("## 🤖 Verifikasi dengan AI dan Grafik")
+
+        st.markdown("### 🧠 Cek Bantuan AI (Perplexity)")
+        st.write("Jika kamu ingin memverifikasi atau memperdalam kesimpulanmu, salin prompt berikut dan tempel di [Perplexity.ai](https://www.perplexity.ai):")
+        st.code("Apa pola umum pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat?", language="markdown")
+        st.markdown("[🔗 Klik untuk buka Perplexity](https://www.perplexity.ai/search/Apa-pola-umum-pengaruh-nilai-a,-b,-dan-c-terhadap-grafik-fungsi-kuadrat)")
+
+        st.markdown("### 📊 Verifikasi Grafik di Desmos")
+        st.write("Coba masukkan fungsi-fungsi berikut ke [Desmos](https://www.desmos.com/calculator):")
+        st.code("x² + 4x + 1\nx² - 4x + 1\n-x² + 3x - 5", language="text")
+        st.write("Amati arah bukaannya, titik puncaknya, dan apakah grafik menyentuh sumbu x.")
+
 
 
 
