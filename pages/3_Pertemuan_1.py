@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import datetime
+import sympy as sp
+
 
 # --- Setup Spreadsheet ---
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
