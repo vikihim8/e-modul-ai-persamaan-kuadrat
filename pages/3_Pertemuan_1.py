@@ -412,7 +412,6 @@ with st.expander("Kesimpulan Eksplorasi"):
 
     kesimpulan = st.text_area(
         "✍️ Masukkan kesimpulan eksplorasimu di sini:",
-        placeholder="Contoh: Bentuk umum persamaan kuadrat adalah y = ax² + bx + c, dengan a ≠ 0. Nilai a memengaruhi bentuk grafik (parabola terbuka ke atas jika a > 0 dan ke bawah jika a < 0), nilai b memengaruhi arah sumbu simetri, dan nilai c menunjukkan titik potong dengan sumbu y..."
     )
 
     if kesimpulan:
@@ -447,7 +446,7 @@ st.markdown("**✅ Jawaban AI untuk soal ini:**")
 with st.expander("📘 Tampilkan Jawaban dari AI"):
     st.write("""
     Fungsi kuadratnya: $$h(t) = -5t² + 20t + 1$$  
-    Titik puncaknya: $$t = -b/2a = -20/(2×-5) = 2$$ detik  
+    Titik puncaknya: $$t = \frac{-b}{2a} = \frac{-20}{2 \times (-5)} = \frac{-20}{-10} = 2$$ detik  
     Tinggi maksimum: $$h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21$$ meter
     """)
 
