@@ -63,7 +63,7 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
                                  placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
         if analisis1.strip() != "":
             with st.expander("Cek Hasil Verifikasi AI Eksplorasi 1"):
-                st.success("Untuk penjelasan lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai/search/Jelaskan%20apa%20yang%20terjadi%20pada%20grafik%20fungsi%20kuadrat%20jika%20a%20%3D%200)")
+                st.success("📋 Untuk penjelasan lebih lanjut, salin dan tempel prompt berikut ke Perplexity AI:\n\n**Jelaskan apa yang terjadi pada grafik fungsi kuadrat jika a = 0**")
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
