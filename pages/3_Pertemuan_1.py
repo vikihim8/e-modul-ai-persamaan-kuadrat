@@ -33,8 +33,7 @@ st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
 
 st.title("3. Pengumpulan Data")
-st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$
-        Mari kita lakukan eksplorasi berikut")
+st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$. Mari kita lakukan eksplorasi berikut")
 
 # Eksplorasi 1
 with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik?
