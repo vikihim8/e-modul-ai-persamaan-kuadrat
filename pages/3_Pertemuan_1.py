@@ -159,10 +159,10 @@ Jelaskan bagaimana pengaruh nilai b yang negatif terhadap letak sumbu simetri da
 📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
 """)
                 
-        st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
-        refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
+st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
+refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
 
-        eksplorasi_3_terjawab = True
+eksplorasi_3_terjawab = True
 
 
 # Eksplorasi 4: Nilai b positif
