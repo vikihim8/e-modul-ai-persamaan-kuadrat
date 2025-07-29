@@ -205,6 +205,7 @@ if st.session_state.get("analisis3"):
         c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
             x_vals4 = sp.Symbol('x')
             y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
+            st.write("Persamaan y =", y_vals4)
             y_graph4 = [float(y_vals4.subs(x_vals4, i)) for i in x_graph3]
 
             st.line_chart({"x": x_graph3, "y": y_graph4})
