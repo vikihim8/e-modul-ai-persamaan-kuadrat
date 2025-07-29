@@ -94,7 +94,7 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
     with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
         b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
-        
+
         if "grafik2_ditampilkan" not in st.session_state:
             st.session_state.grafik2_ditampilkan = False
 
@@ -110,28 +110,37 @@ if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
             st.session_state.grafik2_ditampilkan = True
 
         if st.session_state.grafik2_ditampilkan:
-            analisis2 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", 
-                                     placeholder="Misalnya: nilai b menggeser grafik ke kiri atau kanan.", key="analisis2")
+            analisis2 = st.text_area(
+                "Tuliskan analisismu berdasarkan grafik di atas.",
+                placeholder="Misalnya: nilai b menggeser grafik ke kiri atau kanan.",
+                key="analisis2"
+            )
+
             if analisis2.strip() != "":
                 with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
-                        st.info("""
+                    st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**  
-Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak. Berikan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda, serta bandingkan pergeseran posisi grafiknya
+Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak. Berikan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda, serta bandingkan pergeseran posisi grafiknya.
 
 ---
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
 - x² + 4x + 1  
-- x² + 7x + 1 
+- x² + 7x + 1  
 - x² + 0x + 1
 
 📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai b berbeda.
-""")
 
-    st.write("📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai b berubah?")
-    refleksi_b = st.text_area("Tulis jawabanmu di sini...", height=150, key="refleksi_b")
+📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai b berubah?
+""")
+                    st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
+
+
+
+
+
 
 # Eksplorasi 3: Nilai b negatif
 if st.session_state.get("analisis2"):
