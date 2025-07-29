@@ -394,17 +394,27 @@ x² + 4x + 5
 
 
 
-def eksplorasi_form(index, judul):
-    with st.form(key=f"form_eksplorasi_{index}"):
-        st.subheader(f"Eksplorasi {index}: {judul}")
-        jawaban = st.text_area("Jawaban eksplorasimu di sini:", key=f"jawaban_{index}")
-        simpan = st.form_submit_button("Simpan Eksplorasi")
-        if simpan:
-            if jawaban.strip() != "":
-                st.session_state[f"eksplorasi_{index}_selesai"] = True
-                st.success(f"Eksplorasi {index} berhasil disimpan.")
-            else:
-                st.warning("Silakan isi jawaban terlebih dahulu.")
+# Inisialisasi session state untuk setiap eksplorasi
+for i in range(1, 9):
+    if f"eksplorasi_{i}_selesai" not in st.session_state:
+        st.session_state[f"eksplorasi_{i}_selesai"] = False
+
+if "kesimpulan_selesai" not in st.session_state:
+    st.session_state["kesimpulan_selesai"] = False
+if "refleksi_selesai" not in st.session_state:
+    st.session_state["refleksi_selesai"] = False
+
+
+def eksplorasi_form(i, judul):
+    st.header(f"🔎 Eksplorasi {i}: {judul}")
+    jawaban = st.text_area(f"Tuliskan hasil eksplorasimu untuk Eksplorasi {i}:", key=f"eksplorasi_{i}_jawaban")
+    if st.button(f"Simpan Eksplorasi {i}", key=f"btn_eksplorasi_{i}"):
+        if jawaban.strip() != "":
+            st.session_state[f"eksplorasi_{i}_selesai"] = True
+            st.success(f"Eksplorasi {i} selesai.")
+        else:
+            st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
+
 
 eksplorasi_titles = [
     "Jika a = 0",
@@ -418,46 +428,34 @@ eksplorasi_titles = [
 ]
 
 # Tampilkan eksplorasi satu per satu
-for i, judul in enumerate(eksplorasi_titles, start=1):
-    state_key = f"eksplorasi_{i}_selesai"
-    
-    if state_key not in st.session_state:
-        st.session_state[state_key] = False
-
-    # Tampilkan hanya eksplorasi pertama atau jika sebelumnya sudah selesai
+for i in range(1, 9):
     if i == 1 or st.session_state.get(f"eksplorasi_{i-1}_selesai", False):
-        eksplorasi_form(i, judul)
-    
-    # Stop loop jika eksplorasi ini belum selesai
-    if not st.session_state[state_key]:
-        break
+        if not st.session_state[f"eksplorasi_{i}_selesai"]:
+            eksplorasi_form(i, eksplorasi_titles[i-1])
+            break
 
 # Setelah eksplorasi 1–8 selesai, munculkan kesimpulan eksplorasi
-if all(st.session_state.get(f"eksplorasi_{i}_selesai", False) for i in range(1, 9)):
-    st.markdown("### Kesimpulan Eksplorasi")
-    kesimpulan = st.text_area("Apa kesimpulanmu setelah melakukan semua eksplorasi?")
-    if "kesimpulan_selesai" not in st.session_state:
-        st.session_state.kesimpulan_selesai = False
-
+if all(st.session_state[f"eksplorasi_{i}_selesai"] for i in range(1, 9)):
+    st.subheader("🧠 Kesimpulan Eksplorasi")
+    kesimpulan = st.text_area("Tuliskan kesimpulanmu setelah menyelesaikan seluruh eksplorasi:", key="kesimpulan_jawaban")
     if st.button("Simpan Kesimpulan"):
         if kesimpulan.strip() != "":
-            st.session_state.kesimpulan = kesimpulan
-            st.session_state.kesimpulan_selesai = True
-            st.success("Kesimpulan eksplorasi berhasil disimpan.")
+            st.session_state["kesimpulan_selesai"] = True
+            st.success("Kesimpulan eksplorasi telah disimpan.")
         else:
-            st.warning("Silakan isi kesimpulan terlebih dahulu.")
+            st.warning("Isi kesimpulan terlebih dahulu.")
+
 
 # Setelah kesimpulan eksplorasi selesai, munculkan refleksi akhir
-if st.session_state.get("kesimpulan_selesai", False):
-    st.markdown("### Refleksi Akhir")
-    refleksi = st.text_area("Apa hal baru yang kamu pelajari hari ini?")
-
+if st.session_state["kesimpulan_selesai"]:
+    st.subheader("🪞 Refleksi Akhir")
+    refleksi = st.text_area("Apa yang kamu pelajari dari seluruh kegiatan eksplorasi ini?", key="refleksi_jawaban")
     if st.button("Simpan Refleksi"):
         if refleksi.strip() != "":
-            st.session_state.refleksi = refleksi
-            st.success("Refleksi akhir berhasil disimpan.")
+            st.session_state["refleksi_selesai"] = True
+            st.success("Refleksi akhir telah disimpan.")
         else:
-            st.warning("Silakan isi refleksi terlebih dahulu.")
+            st.warning("Isi refleksi terlebih dahulu.")
 
 
 
