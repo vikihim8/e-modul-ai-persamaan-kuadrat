@@ -406,6 +406,17 @@ def eksplorasi_form(i, judul):
         else:
             st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
 
+eksplorasi_titles = {
+    1: "Eksplorasi 1: Jika nilai a = 0",
+    2: "Eksplorasi 2: Nilai b berubah-ubah (a tetap, c tetap)",
+    3: "Eksplorasi 3: Nilai b negatif",
+    4: "Eksplorasi 4: Nilai b positif",
+    5: "Eksplorasi 5: Nilai c negatif",
+    6: "Eksplorasi 6: Nilai c positif",
+    7: "Eksplorasi 7: Semua koefisien negatif",
+    8: "Eksplorasi 8: Semua koefisien positif"
+}
+
 # Jalankan eksplorasi 1–7 dan analisis8 secara berurutan
 for i in range(1, 9):
     if i == 1 or st.session_state.get(f'eksplorasi_{i-1}_selesai') or (i == 8 and st.session_state.get('eksplorasi_7_selesai')):
