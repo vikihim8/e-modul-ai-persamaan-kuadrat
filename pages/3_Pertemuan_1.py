@@ -156,7 +156,7 @@ if st.session_state.get("analisis2"):
         import matplotlib.pyplot as plt
 
         b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
-        a3 = st.number_input("Masukkan nilai a:", key="a3", value=0)
+        a3 = st.number_input("Masukkan nilai a:", key="a3", value=1)
         c3 = st.number_input("Masukkan nilai c:", key="c3", value=0)
 
         # Buat grafik fungsi kuadrat
@@ -203,7 +203,7 @@ if st.session_state.get("analisis3"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai b bernilai **positif**.")
 
         b_positif = st.number_input("Masukkan nilai $b$ (positif):", value=1, step=1, key="b4")
-        a4 = st.number_input("Masukkan nilai a:", key="a4", value=0)
+        a4 = st.number_input("Masukkan nilai a:", key="a4", value=1)
         c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
         x_vals4 = sp.Symbol('x')
         y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
@@ -244,7 +244,7 @@ if st.session_state.get("analisis4"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **negatif**")
 
         c5 = st.number_input("Masukkan nilai $$c$$ (negatif):", value=-1, step=1, key="c5")
-        a5 = st.number_input("Masukkan nilai $$a$$ :", value=0, step=1, key="a5")
+        a5 = st.number_input("Masukkan nilai $$a$$ :", value=1, step=1, key="a5")
         b5 = st.number_input("Masukkan nilai $$b$$ :", value=0, step=1, key="b5")
         
         # Gunakan x_vals3 dan x_graph3 jika sudah didefinisikan sebelumnya
@@ -395,6 +395,29 @@ x² + 4x + 5
         st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
         refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
 
+with st.expander("Kesimpulan Eksplorasi"):
+
+    st.markdown(
+        """
+        ✅ **Petunjuk:**
+        
+        Silakan cek kembali hasil analisismu dan jawaban dari AI yang telah kamu pelajari dari eksplorasi sebelumnya.
+        
+        Tuliskan **kesimpulan eksplorasi** ke dalam kotak di bawah ini. Pastikan kesimpulanmu mencakup:
+        
+        - Bentuk umum persamaan kuadrat beserta syaratnya.
+        - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien (a, b, dan c).
+        """
+    )
+
+    kesimpulan = st.text_area(
+        "✍️ Masukkan kesimpulan eksplorasimu di sini:",
+        placeholder="Contoh: Bentuk umum persamaan kuadrat adalah y = ax² + bx + c, dengan a ≠ 0. Nilai a memengaruhi bentuk grafik (parabola terbuka ke atas jika a > 0 dan ke bawah jika a < 0), nilai b memengaruhi arah sumbu simetri, dan nilai c menunjukkan titik potong dengan sumbu y..."
+    )
+
+    if kesimpulan:
+        st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
+
 
 
 # --- Pengolahan Data (Soal Latihan) ---
@@ -423,28 +446,26 @@ st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
 st.markdown("**✅ Jawaban AI untuk soal ini:**")
 with st.expander("📘 Tampilkan Jawaban dari AI"):
     st.write("""
-    Fungsi kuadratnya: h(t) = -5t² + 20t + 1  
-    Titik puncaknya: t = -b/2a = -20/(2×-5) = 2 detik  
-    Tinggi maksimum: h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21 meter
+    Fungsi kuadratnya: $$h(t) = -5t² + 20t + 1$$  
+    Titik puncaknya: $$t = -b/2a = -20/(2×-5) = 2$$ detik  
+    Tinggi maksimum: $$h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21$$ meter
     """)
 
 st.markdown("**🔎 Cek ulang keakuratan dengan AI eksternal:**")
 st.markdown("""
-> 📋 *Salin dan tempelkan prompt ini ke Perplexity atau AI lainnya:*  
-```
+> 📋 *Salin dan tempelkan prompt ini ke [🔗Perplexity](https://www.perplexity.ai):*  
+
 Diketahui fungsi kuadrat h(t) = -5t² + 20t + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
-    ```
-[🔗 Klik ke Perplexity](https://www.perplexity.ai)
     """)
 
 st.markdown("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
 st.markdown("""
 - [🌐 Buka Desmos Graphing Calculator](https://www.desmos.com/calculator)
-- Masukkan fungsi: `h(t) = -5t^2 + 20t + 1`
+- Masukkan fungsi: `-5t^2 + 20t + 1`
 - Perhatikan:  
     • Apakah grafik berbentuk parabola terbuka ke bawah?  
     • Apakah titik puncaknya sesuai?  
-    • Apakah titik potong sumbu Y = 1?
+    • Apakah titik potong sumbu y = 1?
 
 Cek semua ini untuk memverifikasi pemahamanmu.
 """)
@@ -459,6 +480,7 @@ if verifikasi:
 # --- 7. Kesimpulan ---
 st.title("6. Penarikan Kesimpulan")
 kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
+
 if kesimpulan.strip() != "":
     st.success("Kesimpulan kamu telah dicatat. Selesai.")
 
@@ -466,7 +488,7 @@ with st.expander("📖 Bandingkan dengan Kesimpulan Versi AI"):
     st.markdown("""
     🔗 [Klik untuk melihat jawaban versi AI di Perplexity](https://www.perplexity.ai/search/kesimpulan-bentuk-umum-fung-3bCVmPvZTa2mjJdTMEPPrg)
 
-    💡 *Kamu juga bisa menyalin prompt ini ke AI:*
+    💡 *Sebelumnya, salin dan tempelkan prompt ini ke AI:*
     ```
     Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
     ```
