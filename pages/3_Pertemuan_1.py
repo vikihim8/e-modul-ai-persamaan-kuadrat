@@ -488,7 +488,8 @@ if st.session_state.get("refleksi_akhir_selesai"):
 # Pengolahan Data (Soal Latihan) ---
 if st.session_state.explore_8_done:
     st.title("4. Pengolahan Data")
-    st.write("Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
+    st.write("""
+    Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
     $$h(t) = -5t^2 + 20t + 1$$
     Tentukan:
     1. Waktu ketika bola mencapai tinggi maksimum
