@@ -37,9 +37,9 @@ st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0
 
 # Eksplorasi 1
 with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Bagaimana jika a = 0? Apa yang akan terjadi? Masukan nilai a = 0 untuk mengetahui jawabannya"):
-    a1 = st.number_input("Masukkan nilai $a$ (koefisien x²):", value=1.0, step=0.1, key="a1")
-    b1 = st.number_input("Masukkan nilai $b$ (koefisien x):", value=0.0, step=0.1, key="b1")
-    c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0.0, step=0.1, key="c1")
+    a1 = st.number_input("Masukkan nilai $a$ (koefisien x²):", value=0, step=1, key="a1")
+    b1 = st.number_input("Masukkan nilai $b$ (koefisien x):", value=0, step=1, key="b1")
+    c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
     
     if "grafik1_ditampilkan" not in st.session_state:
         st.session_state.grafik1_ditampilkan = False
@@ -63,7 +63,21 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
                                  placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
         if analisis1.strip() != "":
             with st.expander("Cek Hasil Verifikasi AI Eksplorasi 1"):
-                st.success("📋 Untuk penjelasan lebih lanjut, salin dan tempel prompt berikut ke [Perplexity AI](https://www.perplexity.ai):\n\n**Jelaskan apa yang terjadi pada grafik fungsi kuadrat jika a = 0**")
+                st.info("""
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**  
+Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dalam persamaan y = ax² + bx + c. Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan berikan perbandingan visual antara grafik saat a = 0 dan a ≠ 0.
+
+---
+
+✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+- y = 2x² + 3x + 1
+- y = 0x² + 3x + 1
+
+📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
+""")
+st.write("📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
