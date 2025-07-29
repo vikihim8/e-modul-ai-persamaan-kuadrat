@@ -455,7 +455,6 @@ if st.session_state.get('analisis8_selesai'):
 
 
 # Pengolahan Data (Soal Latihan) ---
-if st.session_state.analisis_done:
     st.title("4. Pengolahan Data")
     st.write("""
     Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
