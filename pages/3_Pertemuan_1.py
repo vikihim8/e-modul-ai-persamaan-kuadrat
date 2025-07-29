@@ -446,7 +446,7 @@ st.markdown("**✅ Jawaban AI untuk soal ini:**")
 with st.expander("📘 Tampilkan Jawaban dari AI"):
     st.write("""
     Fungsi kuadratnya: $$h(t) = -5t² + 20t + 1$$  
-    Titik puncaknya: $$t = {-b}/{2a} = {-20}/{2*(-5)} = {-20}/{-10} = 2$$ detik  
+    Titik puncaknya: $$t = {-b}/{2a} = {-20}/{2(-5)} = {-20}/{-10} = 2$$ detik  
     Tinggi maksimum: $$h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21$$ meter
     """)
 
@@ -478,20 +478,25 @@ if verifikasi:
 
 # --- 7. Kesimpulan ---
 st.title("6. Penarikan Kesimpulan")
+
+# Input kesimpulan dari pengguna
 kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
 
+# Tampilkan notifikasi jika kesimpulan sudah diisi
 if kesimpulan.strip() != "":
     st.success("Kesimpulan kamu telah dicatat. Selesai.")
 
-with st.expander("📖 Bandingkan dengan Kesimpulan Versi AI"):
-    st.markdown("""
-    🔗 [Klik untuk melihat jawaban versi AI di Perplexity](https://www.perplexity.ai/search/kesimpulan-bentuk-umum-fung-3bCVmPvZTa2mjJdTMEPPrg)
+    # Baru tampilkan opsi bandingkan dengan AI jika sudah mengisi kesimpulan
+    with st.expander("📖 Bandingkan dengan Kesimpulan Versi AI"):
+        st.markdown("""
+        🔗 [Klik untuk melihat jawaban versi AI di Perplexity](https://www.perplexity.ai/search/kesimpulan-bentuk-umum-fung-3bCVmPvZTa2mjJdTMEPPrg)
 
-    💡 *Sebelumnya, salin dan tempelkan prompt ini ke AI:*
-    ```
-    Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
-    ```
-    """)
+        💡 *Sebelumnya, salin dan tempelkan prompt ini ke AI:*
+        ```
+        Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
+        ```
+        """)
+
 
 
 
