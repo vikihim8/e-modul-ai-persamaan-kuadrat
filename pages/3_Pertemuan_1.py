@@ -32,11 +32,14 @@ stimulus = st.text_area("📝 Apa yang kamu pikirkan tentang bentuk lintasan par
 st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
 
-st.title("Eksplorasi Fungsi Kuadrat")
+st.title("3. Pengumpulan Data")
+st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$
+        Mari kita lakukan eksplorasi berikut")
 
 # Eksplorasi 1
-with st.expander("Eksplorasi 1: Pengaruh nilai a terhadap bentuk grafik"):
-    a1 = st.number_input("Masukkan nilai a (misal: 1 atau -2):", key="a1")
+with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik?
+Bagaimana jika $$a$$ = 0? Apa yang akan terjadi? Masukan nilai $$a$$ = 0 untuk mengetahui jawabannya"):
+    a1 = st.number_input("Masukkan nilai $a$ = 0 :", key="a1")
     
     if "grafik1_ditampilkan" not in st.session_state:
         st.session_state.grafik1_ditampilkan = False
