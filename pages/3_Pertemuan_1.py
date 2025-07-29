@@ -81,12 +81,13 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+
 2x² + 3x + 1  
 0x² + 3x + 1
 
-📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
+📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika $$a = 0$$?
 
-📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?
+📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat $$a ≠ 0$$ dan saat $$a = 0$$?
 """
                 )
                 st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
@@ -132,13 +133,14 @@ if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
 Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak. Berikan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda, serta bandingkan pergeseran posisi grafiknya.
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+
 x² + 4x + 1  
 x² + 7x + 1  
 x² + 0x + 1
 
-📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai b berbeda.
+📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai $$b$$ berbeda.
 
-📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai b berubah?
+📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai $$b$$ berubah?
 """
                     )
                     st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi2", height=80)
@@ -152,8 +154,8 @@ if st.session_state.get("analisis2"):
         import matplotlib.pyplot as plt
 
         b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
-        a3 = st.session_state.get("a1", 1)
-        c3 = st.session_state.get("c1", 1)
+        a3 = st.number_input("Masukkan nilai a:", key="a3", value=0)
+        c3 = st.number_input("Masukkan nilai c:", key="c3", value=0)
 
         # Buat grafik fungsi kuadrat
         x_vals3 = [x for x in range(-10, 11)]
@@ -201,8 +203,8 @@ if st.session_state.get("analisis3"):
         b_positif = st.number_input("Masukkan nilai $b$ (positif):", value=1, step=1, key="b4")
 
         if b_positif != 0:
-            a4 = a3
-            c4 = c3
+        a4 = st.number_input("Masukkan nilai a:", key="a4", value=0)
+        c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
             x_vals4 = sp.Symbol('x')
             y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
             y_graph4 = [float(y_vals4.subs(x_vals4, i)) for i in x_graph3]
