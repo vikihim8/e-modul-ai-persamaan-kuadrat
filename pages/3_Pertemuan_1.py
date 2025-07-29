@@ -126,7 +126,7 @@ Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y 
     refleksi_b = st.text_area("Tulis jawabanmu di sini...", height=150, key="refleksi_b")
 
 # Eksplorasi 3: Nilai b negatif
-if eksplorasi_2_terjawab:
+if st.session_state.get("analisis2"):
     with st.expander("Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
         b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
         a3 = st.session_state.get("a1", 1)
@@ -142,7 +142,7 @@ if eksplorasi_2_terjawab:
         analisis_3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
 
         if analisis_3:
-            with st.expander("Cek Hasil Verifikasi AI Eksplorasi 3"):
+            with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 3"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
@@ -159,7 +159,7 @@ Jelaskan bagaimana pengaruh nilai b yang negatif terhadap letak sumbu simetri da
 📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
 """)
                 
-st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
+st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
 refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
 
 eksplorasi_3_terjawab = True
