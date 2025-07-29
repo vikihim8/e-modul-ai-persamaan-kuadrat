@@ -93,8 +93,6 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 
 
 
-
-
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
     with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
@@ -391,61 +389,6 @@ x² + 4x + 5
 
         st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
         refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
-
-
-
-
-def eksplorasi_form(i, judul):
-    st.header(f"🔎 Eksplorasi {i}: {judul}")
-    jawaban = st.text_area(f"Tuliskan hasil eksplorasimu untuk Eksplorasi {i}:", key=f"eksplorasi_{i}_jawaban")
-    if st.button(f"Simpan Eksplorasi {i}", key=f"btn_eksplorasi_{i}"):
-        if jawaban.strip():
-            st.session_state[f"eksplorasi_{i}_selesai"] = True
-            st.success(f"Eksplorasi {i} selesai.")
-        else:
-            st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
-
-eksplorasi_titles = [
-    "Jika a = 0",
-    "Nilai b berubah-ubah",
-    "Nilai b negatif",
-    "Nilai b positif",
-    "Nilai c negatif",
-    "Nilai c positif",
-    "Semua koefisien negatif",
-    "Semua koefisien positif"
-]
-
-# 🔁 Tampilkan eksplorasi satu per satu
-for i in range(1, 9):
-    if i == 1 or st.session_state.get(f"eksplorasi_{i-1}_selesai", False):
-        if not st.session_state.get(f"eksplorasi_{i}_selesai", False):
-            eksplorasi_form(i, eksplorasi_titles[i-1])
-            st.stop()  # ⛔ Hentikan render di sini sampai eksplorasi ini selesai
-
-# ✅ Setelah semua eksplorasi selesai, tampilkan form kesimpulan
-if all(st.session_state.get(f"eksplorasi_{i}_selesai", False) for i in range(1, 9)):
-    st.subheader("🧠 Kesimpulan Analisis dari Semua Eksplorasi 1–8")
-
-    kesimpulan = st.text_area("Tuliskan pola umum pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat.", key="kesimpulan_jawaban")
-
-    if kesimpulan.strip():
-        st.session_state["kesimpulan_selesai"] = True
-        st.success("Kesimpulan telah dicatat.")
-
-    # ✅ Setelah isi kesimpulan, tampilkan prompt verifikasi
-    if st.session_state.get("kesimpulan_selesai"):
-        st.markdown("## 🤖 Verifikasi dengan AI dan Grafik")
-
-        st.markdown("### 🧠 Cek Bantuan AI (Perplexity)")
-        st.write("Jika kamu ingin memverifikasi atau memperdalam kesimpulanmu, salin prompt berikut dan tempel di [Perplexity.ai](https://www.perplexity.ai):")
-        st.code("Apa pola umum pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat?", language="markdown")
-        st.markdown("[🔗 Klik untuk buka Perplexity](https://www.perplexity.ai/search/Apa-pola-umum-pengaruh-nilai-a,-b,-dan-c-terhadap-grafik-fungsi-kuadrat)")
-
-        st.markdown("### 📊 Verifikasi Grafik di Desmos")
-        st.write("Coba masukkan fungsi-fungsi berikut ke [Desmos](https://www.desmos.com/calculator):")
-        st.code("x² + 4x + 1\nx² - 4x + 1\n-x² + 3x - 5", language="text")
-        st.write("Amati arah bukaannya, titik puncaknya, dan apakah grafik menyentuh sumbu x.")
 
 
 
