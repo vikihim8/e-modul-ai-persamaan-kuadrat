@@ -63,7 +63,7 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
         analisis1 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", 
                                  placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
         if analisis1.strip() != "":
-            with st.expander("Cek Hasil Verifikasi AI Eksplorasi 1"):
+            with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
@@ -105,7 +105,7 @@ if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
             analisis2 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", 
                                      placeholder="Misalnya: nilai b menggeser grafik ke kiri atau kanan.", key="analisis2")
             if analisis2.strip() != "":
-                with st.expander("Cek Hasil Verifikasi AI Eksplorasi 2"):
+                with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
                         st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
@@ -126,21 +126,27 @@ Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y 
     refleksi_b = st.text_area("Tulis jawabanmu di sini...", height=150, key="refleksi_b")
 
 # Eksplorasi 3: Nilai b negatif
+# Eksplorasi 3: Nilai b negatif
 if eksplorasi_2_terjawab:
     with st.expander("Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
-    b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=0, step=1, key="b3")
-    a3 = st.session_state.get("a1", 1)
-    c3 = st.session_state.get("c1", 1)
-    x_vals3 = sp.Symbol('x')
-    y_vals3 = a3 * x_vals3**2 + b_negatif * x_vals3 + c3
-    x_graph3 = [i for i in range(-10, 11)]
-    y_graph3 = [float(y_vals3.subs(x_vals3, i)) for i in x_graph3]
-    st.line_chart({"x": x_graph3, "y": y_graph3})
+        b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
+        a3 = st.session_state.get("a1", 1)
+        c3 = st.session_state.get("c1", 1)
+        
+        x_vals3 = sp.Symbol('x')
+        y_vals3 = a3 * x_vals3**2 + b_negatif * x_vals3 + c3
+        x_graph3 = [i for i in range(-10, 11)]
+        y_graph3 = [float(y_vals3.subs(x_vals3, i)) for i in x_graph3]
 
-    analisis_3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
-    if analisis_3:
-        with st.expander("Cek Hasil Verifikasi AI Eksplorasi 3"):
-        st.info("""
+        # Tampilkan grafik
+        st.line_chart({"x": x_graph3, "y": y_graph3})
+
+        # Analisis siswa
+        analisis_3 = st.text_area("🧠 Tuliskan analisismu berdasarkan grafik di atas:", key="analisis3")
+
+        if analisis_3:
+            with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 3"):
+                st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**  
@@ -156,10 +162,12 @@ Jelaskan bagaimana pengaruh nilai b yang negatif terhadap letak sumbu simetri da
 📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
 """)
 
-    st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
-    refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
+        # Refleksi akhir
+        st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
+        refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
 
         eksplorasi_3_terjawab = True
+
 
 # Eksplorasi 4: Nilai b positif
 if 'eksplorasi_3_terjawab' in locals() and eksplorasi_3_terjawab:
