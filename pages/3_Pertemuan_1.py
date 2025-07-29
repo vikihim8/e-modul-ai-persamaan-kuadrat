@@ -201,8 +201,6 @@ if st.session_state.get("analisis3"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai b bernilai **positif**.")
 
         b_positif = st.number_input("Masukkan nilai $b$ (positif):", value=1, step=1, key="b4")
-
-        if b_positif != 0:
         a4 = st.number_input("Masukkan nilai a:", key="a4", value=0)
         c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
             x_vals4 = sp.Symbol('x')
