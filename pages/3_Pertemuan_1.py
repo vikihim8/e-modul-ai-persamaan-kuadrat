@@ -394,11 +394,18 @@ x² + 4x + 5
 
 
 
+for i in range(1, 9):
+    if f"eksplorasi_{i}_selesai" not in st.session_state:
+        st.session_state[f"eksplorasi_{i}_selesai"] = False
+if "analisis8_selesai" not in st.session_state:
+    st.session_state["analisis8_selesai"] = False
+if "olah_data_done" not in st.session_state:
+    st.session_state["olah_data_done"] = False
+
+# Fungsi eksplorasi
 def eksplorasi_form(i, judul):
     st.header(f"🔎 Eksplorasi {i}: {judul}")
-    # Tambahkan isi eksplorasi sesuai nomor
     jawaban = st.text_area(f"Tuliskan hasil eksplorasimu untuk Eksplorasi {i}:", key=f"eksplorasi_{i}_jawaban")
-    
     if st.button(f"Simpan Eksplorasi {i}", key=f"btn_eksplorasi_{i}"):
         if jawaban.strip() != "":
             st.session_state[f"eksplorasi_{i}_selesai"] = True
@@ -406,28 +413,52 @@ def eksplorasi_form(i, judul):
         else:
             st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
 
+# Fungsi analisis eksplorasi 8
+def analisis_form(i, judul):
+    st.header(f"🔎 {judul}")
+    analisis = st.text_area("Tuliskan analisismu berdasarkan grafik koefisien a, b, dan c semuanya positif.", key="analisis8")
+    if analisis:
+        with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 8"):
+            st.info("""
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**
+Jelaskan bagaimana grafik fungsi kuadrat y = ax² + bx + c berubah jika semua koefisien a, b, dan c bernilai positif. Jelaskan arah bukaannya, bentuk parabola, letak titik potong terhadap sumbu y, dan apakah grafik memotong sumbu x. Sertakan contoh fungsi dan gambar grafik jika memungkinkan.
+
+✅ Setelah membaca penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan masukkan fungsi-fungsi berikut:
+x² + 2x + 3  
+x² + 4x + 5
+
+📊 Perhatikan arah bukaannya (menghadap ke atas), posisi minimum (titik puncak), dan apakah grafik menyentuh atau tidak menyentuh sumbu x. Apa pola yang bisa kamu simpulkan?
+""")
+        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
+        refleksi_8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
+        if refleksi_8.strip():
+            st.session_state["analisis8_selesai"] = True
+            st.success("Refleksi eksplorasi 8 selesai.")
+
+# Judul eksplorasi
 eksplorasi_titles = {
-    1: "Eksplorasi 1: Jika nilai a = 0",
-    2: "Eksplorasi 2: Nilai b berubah-ubah (a tetap, c tetap)",
-    3: "Eksplorasi 3: Nilai b negatif",
-    4: "Eksplorasi 4: Nilai b positif",
-    5: "Eksplorasi 5: Nilai c negatif",
-    6: "Eksplorasi 6: Nilai c positif",
-    7: "Eksplorasi 7: Semua koefisien negatif",
-    8: "Eksplorasi 8: Semua koefisien positif"
+    1: "Jika nilai a = 0",
+    2: "Nilai b berubah-ubah (a tetap, c tetap)",
+    3: "Nilai b negatif",
+    4: "Nilai b positif",
+    5: "Nilai c negatif",
+    6: "Nilai c positif",
+    7: "Semua koefisien negatif",
+    8: "Semua koefisien positif"
 }
 
-# Jalankan eksplorasi 1–7 dan analisis8 secara berurutan
+# Jalankan eksplorasi 1–7 dan analisis 8 secara berurutan
 for i in range(1, 9):
     if i == 1 or st.session_state.get(f'eksplorasi_{i-1}_selesai') or (i == 8 and st.session_state.get('eksplorasi_7_selesai')):
         if i == 8:
-            analisis_form(8, eksplorasi_titles[8])  # pastikan eksplorasi_titles[8] memang berisi judul analisis 8
+            analisis_form(8, f"Eksplorasi 8: {eksplorasi_titles[8]}")
         else:
             eksplorasi_form(i, eksplorasi_titles[i])
 
-# Tampilkan kesimpulan eksplorasi dan refleksi akhir hanya jika analisis8 selesai
-if st.session_state.get('analisis8_selesai'):
-
+# Tampilkan kesimpulan eksplorasi dan refleksi akhir hanya jika analisis eksplorasi 8 selesai
+if st.session_state.get("analisis8_selesai"):
     st.title("Kesimpulan Eksplorasi")
     st.markdown("## 🔍 Eksplorasi Akhir: Penarikan Kesimpulan dari Eksplorasi 1–8")
 
@@ -451,26 +482,23 @@ if st.session_state.get('analisis8_selesai'):
         st.success("Refleksi akhirmu telah dicatat.")
         st.session_state["refleksi_akhir_selesai"] = True
 
+# --- Pengolahan Data (Soal Latihan) ---
+st.title("4. Pengolahan Data")
+st.write("""
+Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
+$$h(t) = -5t^2 + 20t + 1$$
+Tentukan:
+1. Waktu ketika bola mencapai tinggi maksimum
+2. Tinggi maksimum bola
+""")
 
-
-
-# Pengolahan Data (Soal Latihan) ---
-    st.title("4. Pengolahan Data")
-    st.write("""
-    Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
-    $$h(t) = -5t^2 + 20t + 1$$
-    Tentukan:
-    1. Waktu ketika bola mencapai tinggi maksimum
-    2. Tinggi maksimum bola
-    """)
-
-    jawaban_olah = st.text_area("Tuliskan langkah dan jawabanmu di sini:", key="olah_data")
-    if st.button("Kirim Pengolahan Data"):
-        if jawaban_olah.strip() != "":
-            st.session_state.olah_data_done = True
-            st.success("Jawaban pengolahan data disimpan.")
-        else:
-            st.warning("Isi dulu jawaban kamu.")
+jawaban_olah = st.text_area("Tuliskan langkah dan jawabanmu di sini:", key="olah_data")
+if st.button("Kirim Pengolahan Data"):
+    if jawaban_olah.strip() != "":
+        st.session_state.olah_data_done = True
+        st.success("Jawaban pengolahan data disimpan.")
+    else:
+        st.warning("Isi dulu jawaban kamu.")
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
