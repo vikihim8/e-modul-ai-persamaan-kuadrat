@@ -276,7 +276,6 @@ x² + 4x - 3
 
 
 
-
 # Eksplorasi 6: Nilai c positif
 if st.session_state.get("analisis5"):
     with st.expander("💡Eksplorasi 6: Apa pengaruh nilai c positif terhadap grafik fungsi kuadrat?"):
@@ -395,8 +394,6 @@ x² + 4x + 5
 
         st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
         refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
-
-
 
 
 
