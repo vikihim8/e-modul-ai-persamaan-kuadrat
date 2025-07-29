@@ -36,8 +36,7 @@ st.title("3. Pengumpulan Data")
 st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$. Mari kita lakukan eksplorasi berikut")
 
 # Eksplorasi 1
-with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik?
-Bagaimana jika a = 0? Apa yang akan terjadi? Masukan nilai a = 0 untuk mengetahui jawabannya"""):
+with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Bagaimana jika a = 0? Apa yang akan terjadi? Masukan nilai a = 0 untuk mengetahui jawabannya"):
     a1 = st.number_input("Masukkan nilai $a$ = 0 :", key="a1")
     
     if "grafik1_ditampilkan" not in st.session_state:
