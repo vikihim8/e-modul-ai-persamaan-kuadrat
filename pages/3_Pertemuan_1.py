@@ -474,7 +474,6 @@ if st.session_state.get('analisis8_selesai'):
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
-if st.session_state.jawaban_olah_done:
     st.title("5. Verifikasi")
     st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
     
@@ -515,7 +514,6 @@ if st.session_state.jawaban_olah_done:
 
 
 # --- 7. Kesimpulan ---
-if st.session_state.verifikasi_done:
     st.title("6. Penarikan Kesimpulan")
     kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
     if kesimpulan.strip() != "":
