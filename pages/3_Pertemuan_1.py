@@ -394,6 +394,18 @@ x² + 4x + 5
 
 
 
+def eksplorasi_form(i, judul):
+    st.header(f"🔎 Eksplorasi {i}: {judul}")
+    # Tambahkan isi eksplorasi sesuai nomor
+    jawaban = st.text_area(f"Tuliskan hasil eksplorasimu untuk Eksplorasi {i}:", key=f"eksplorasi_{i}_jawaban")
+    
+    if st.button(f"Simpan Eksplorasi {i}", key=f"btn_eksplorasi_{i}"):
+        if jawaban.strip() != "":
+            st.session_state[f"eksplorasi_{i}_selesai"] = True
+            st.success(f"Eksplorasi {i} selesai.")
+        else:
+            st.warning("Silakan isi jawaban terlebih dahulu sebelum menyimpan.")
+
 # Jalankan eksplorasi 1–7 dan analisis8 secara berurutan
 for i in range(1, 9):
     if i == 1 or st.session_state.get(f'eksplorasi_{i-1}_selesai') or (i == 8 and st.session_state.get('eksplorasi_7_selesai')):
