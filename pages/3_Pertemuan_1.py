@@ -215,7 +215,7 @@ if st.session_state.get("analisis3"):
 
         analisis4 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis4")
 
-        if analisis4:
+        if analisis4.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 4"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -244,17 +244,19 @@ if st.session_state.get("analisis4"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **negatif**")
 
         c5 = st.number_input("Masukkan nilai $$c$$ (negatif):", value=-1, step=1, key="c5")
-        a5 = st.session_state.get("a4", 1)
-        b5 = st.session_state.get("b_positif", 1)
-
+        a5 = st.number_input("Masukkan nilai $$a$$ :", value=0, step=1, key="a5")
+        b5 = st.number_input("Masukkan nilai $$b$$ :", value=0, step=1, key="b5")
+        
         # Gunakan x_vals3 dan x_graph3 jika sudah didefinisikan sebelumnya
+        x_vals3 = sp.Symbol('x')  # tambahkan ini sebelum y_vals5
+        x_graph3 = list(range(-10, 11)) 
         y_vals5 = a5 * x_vals3**2 + b5 * x_vals3 + c5
         y_graph5 = [float(y_vals5.subs(x_vals3, i)) for i in x_graph3]
         st.line_chart({"x": x_graph3, "y": y_graph5})
         
         analisis5 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis5")
 
-        if analisis5:
+        if analisis5.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 5"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -294,7 +296,7 @@ if st.session_state.get("analisis5"):
 
         analisis6 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis6")
 
-        if analisis6:
+        if analisis6.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 6"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -335,7 +337,7 @@ if st.session_state.get("analisis6"):
             st.line_chart({"x": x_graph3, "y": y_graph7})
 
             analisis7 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis7")
-            if analisis7:
+            if analisis7.strip() != "":
                 with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 7"):
                     st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -376,7 +378,7 @@ if st.session_state.get("analisis7"):
             st.line_chart({"x": x_graph3, "y": y_graph8})
 
             analisis8 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis8")
-            if analisis8:
+            if analisis8.strip() != "":
                 with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 8"):
                     st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
