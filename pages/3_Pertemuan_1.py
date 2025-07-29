@@ -76,8 +76,7 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 
 📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
 """)
-refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
-
+refleksi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
