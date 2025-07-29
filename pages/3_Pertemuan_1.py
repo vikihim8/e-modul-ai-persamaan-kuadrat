@@ -394,99 +394,45 @@ x² + 4x + 5
 
 
 
-st.title("Eksplorasi Fungsi Kuadrat")
-
-# Inisialisasi session state
-for i in range(1, 10):
-    if f'eksplorasi_{i}_selesai' not in st.session_state:
-        st.session_state[f'eksplorasi_{i}_selesai'] = False
-
-# Fungsi plot
-def plot_graph(a, b, c):
-    x_vals = np.linspace(-10, 10, 400)
-    y_vals = a * x_vals**2 + b * x_vals + c
-    fig, ax = plt.subplots()
-    ax.plot(x_vals, y_vals, label=f'{a}x² + {b}x + {c}')
-    ax.axhline(0, color='black', linewidth=0.5)
-    ax.axvline(0, color='black', linewidth=0.5)
-    ax.set_title("Grafik Fungsi Kuadrat")
-    ax.legend()
-    st.pyplot(fig)
-
-# Fungsi form eksplorasi
-def eksplorasi_form(id, title):
-    st.subheader(title)
-    a = st.number_input(f"Masukkan nilai a (eksplorasi {id})", key=f'a_{id}')
-    b = st.number_input(f"Masukkan nilai b (eksplorasi {id})", key=f'b_{id}')
-    c = st.number_input(f"Masukkan nilai c (eksplorasi {id})", key=f'c_{id}')
-    
-    if st.button(f"Plot grafik eksplorasi {id}"):
-        st.session_state[f'eksplorasi_{id}_plotted'] = True
-        st.session_state[f'eksplorasi_{id}_abc'] = (a, b, c)
-
-    if st.session_state.get(f'eksplorasi_{id}_plotted'):
-        a, b, c = st.session_state[f'eksplorasi_{id}_abc']
-        plot_graph(a, b, c)
-        analisis9 = st.text_area(
-            "Tuliskan analisismu berdasarkan grafik di atas.",
-            key=f'analisis_{id}',
-            placeholder="Misalnya: grafik terbuka ke atas, titik puncak ada di sekitar x = -1, dst."
-        )
-        
-        if analisis:
-            st.success("Analisismu telah dicatat. Kamu dapat memperdalam materi melalui [Perplexity AI](https://www.perplexity.ai/search/materi-analisis-grafik)")
-            st.session_state[f'eksplorasi_{id}_selesai'] = True
-
-# Judul eksplorasi yang diperbarui
-eksplorasi_titles = {
-    1: "Eksplorasi 1: Jika nilai a = 0",
-    2: "Eksplorasi 2: Nilai b berubah-ubah (a tetap, c tetap)",
-    3: "Eksplorasi 3: Nilai b negatif",
-    4: "Eksplorasi 4: Nilai b positif",
-    5: "Eksplorasi 5: Nilai c negatif",
-    6: "Eksplorasi 6: Nilai c positif",
-    7: "Eksplorasi 7: Semua koefisien negatif",
-    8: "Eksplorasi 8: Semua koefisien positif",
-    9: "Eksplorasi 9: Kesimpulan dan Karakteristik Umum"
-}
-
-# Jalankan eksplorasi 1-8
+# Jalankan eksplorasi 1–7 dan analisis8 secara berurutan
 for i in range(1, 9):
-    if i == 1 or st.session_state.get(f'eksplorasi_{i-1}_selesai'):
-        eksplorasi_form(i, eksplorasi_titles[i])
+    if i == 1 or st.session_state.get(f'eksplorasi_{i-1}_selesai') or (i == 8 and st.session_state.get('eksplorasi_7_selesai')):
+        if i == 8:
+            analisis_form(8, eksplorasi_titles[8])  # pastikan eksplorasi_titles[8] memang berisi judul analisis 8
+        else:
+            eksplorasi_form(i, eksplorasi_titles[i])
 
-# Tambahkan refleksi akhir setelah eksplorasi 8 selesai
-if st.session_state.get(analisis8) and not st.session_state.get('refleksi_akhir_selesai'):
-    with st.expander("💬 Refleksi Akhir"):
-        st.markdown("### 🔁 Cek Bantuan AI")
+# Tampilkan kesimpulan eksplorasi dan refleksi akhir hanya jika analisis8 selesai
+if st.session_state.get('analisis8_selesai'):
+
+    st.title("Kesimpulan Eksplorasi")
+    st.markdown("## 🔍 Eksplorasi Akhir: Penarikan Kesimpulan dari Eksplorasi 1–8")
+
+    with st.expander("💬 Refleksi & Cek AI"):
+        st.markdown("### 🧠 Cek Bantuan AI")
         st.write("Jika kamu mengalami kesulitan menyimpulkan, kamu bisa menyalin dan tempel pertanyaan berikut ke AI seperti Perplexity:")
         st.code("Apa pola umum pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat?")
-        st.markdown("[Klik di sini untuk bertanya langsung ke AI](https://www.perplexity.ai/search/Apa-pola-umum-pengaruh-nilai-a,-b,-dan-c-terhadap-grafik-fungsi-kuadrat)")
+        st.markdown("[Klik untuk cek AI](https://www.perplexity.ai/search/Apa-pola-umum-pengaruh-nilai-a,-b,-dan-c-terhadap-grafik-fungsi-kuadrat)")
 
-        st.markdown("### 📊 Verifikasi Grafik")
-        st.write("Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan beberapa fungsi seperti:")
+        st.markdown("### 📊 Verifikasi Grafik di Desmos")
+        st.write("Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan beberapa fungsi berikut:")
         st.code("x² + 4x + 1\nx² - 4x + 1\n-x² + 3x - 5", language="text")
-        st.write("Perhatikan bentuk grafik, arah bukaannya, dan letak titik puncaknya.")
+        st.write("Amati bentuk grafiknya, arah bukaannya, dan titik puncaknya.")
 
-        st.markdown("### ✍️ Refleksi Akhir")
-        refleksi_akhir = st.text_area(
-            "Apa pola umum yang kamu temukan dari pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat?",
-            key="refleksi_akhir"
-        )
-        if refleksi_akhir:
-            st.success("Refleksi akhirmu telah dicatat.")
-            st.session_state["refleksi_akhir_selesai"] = True
-
-# Jalankan eksplorasi 9 hanya jika refleksi akhir sudah selesai
-if st.session_state.get("refleksi_akhir_selesai"):
-    eksplorasi_form(9, eksplorasi_titles[9])
+    st.markdown("### ✍️ Refleksi Akhir")
+    refleksi_akhir = st.text_area(
+        "Apa pola umum yang kamu temukan dari pengaruh nilai a, b, dan c terhadap grafik fungsi kuadrat?",
+        key="refleksi_akhir"
+    )
+    if refleksi_akhir:
+        st.success("Refleksi akhirmu telah dicatat.")
+        st.session_state["refleksi_akhir_selesai"] = True
 
 
 
-    
 
 # Pengolahan Data (Soal Latihan) ---
-if st.session_state.analisis9_done:
+if st.session_state.analisis_done:
     st.title("4. Pengolahan Data")
     st.write("""
     Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
