@@ -25,8 +25,13 @@ st.header("1. Stimulus")
 st.write("Bayangkan kamu sedang menonton lintasan bola dilempar ke udara. Bentuknya seperti parabola. Mari kita pelajari grafik fungsi kuadrat dari fenomena tersebut.")
 stimulus = st.text_area("📝 Apa yang kamu pikirkan tentang bentuk lintasan parabola ini?", key="stimulus")
 
+
+
 st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
+
+
+
 
 st.title("3. Pengumpulan Data")
 st.write("Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$ dengan $$a$$ adalah koefien variabel $$x^2$$, b adalah koefisien variabel $$x$$ dan c adalah konstanta dari persamaan kuadrat. Mari kita lakukan eksplorasi berikut")
@@ -36,7 +41,7 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
     a1 = st.number_input("Masukkan nilai $a$ (koefisien x²):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien x):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
-    
+
     if "grafik1_ditampilkan" not in st.session_state:
         st.session_state.grafik1_ditampilkan = False
 
@@ -54,11 +59,14 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         ax.legend()
         ax.set_title("Grafik Fungsi Kuadrat")
         st.pyplot(fig)
-        
-    if st.session_state.grafik1_ditampilkan:
-        analisis1 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", 
-                                 placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
-        if analisis1.strip() != "":
+
+        analisis1 = st.text_area(
+            "Tuliskan analisismu berdasarkan grafik di atas.",
+            placeholder="Misalnya: grafik membuka ke atas saat a positif.",
+            key="analisis1"
+        )
+
+        if analisis1.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -69,14 +77,17 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 ---
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
-- 2x² + 3x + 1
+- 2x² + 3x + 1  
 - 0x² + 3x + 1
 
 📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
 
-📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
+📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?
 """)
-refleksi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
+
+
+
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
