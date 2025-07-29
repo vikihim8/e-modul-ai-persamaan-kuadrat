@@ -42,9 +42,12 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
     
     if "grafik1_ditampilkan" not in st.session_state:
-        st.session_state.grafik1_ditampilkan = False
+    st.session_state.grafik1_ditampilkan = False
 
     if st.button("Tampilkan Grafik Eksplorasi 1"):
+        st.session_state.grafik1_ditampilkan = True
+
+    if st.session_state.grafik1_ditampilkan:
         x = np.linspace(-10, 10, 400)
         y = a1 * x**2 + b1 * x + c1
         fig, ax = plt.subplots()
@@ -55,9 +58,7 @@ with st.expander("Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafi
         ax.legend()
         ax.set_title("Grafik Fungsi Kuadrat")
         st.pyplot(fig)
-
-        st.session_state.grafik1_ditampilkan = True
-
+        
     if st.session_state.grafik1_ditampilkan:
         analisis1 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", 
                                  placeholder="Misalnya: grafik membuka ke atas saat a positif.", key="analisis1")
@@ -72,18 +73,19 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dal
 ---
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
-- y = 2x² + 3x + 1
-- y = 0x² + 3x + 1
+- 2x² + 3x + 1
+- 0x² + 3x + 1
 
 📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika a = 0?
 """)
 st.write("📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat a ≠ 0 dan saat a = 0?")
+refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
-    with st.expander("Eksplorasi 2: Pengaruh nilai b terhadap posisi grafik"):
-        b2 = st.number_input("Masukkan nilai b (misal: 2 atau -3):", key="b2")
+    with st.expander("Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
+        b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
         
         if "grafik2_ditampilkan" not in st.session_state:
             st.session_state.grafik2_ditampilkan = False
@@ -104,12 +106,29 @@ if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
                                      placeholder="Misalnya: nilai b menggeser grafik ke kiri atau kanan.", key="analisis2")
             if analisis2.strip() != "":
                 with st.expander("Cek Hasil Verifikasi AI Eksplorasi 2"):
-                    st.success("Untuk penjelasan lengkap, kamu dapat membuka: [Perplexity AI](https://www.perplexity.ai/search/materi-grafik-nilai-b)")
+                        st.info("""
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**  
+Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak. Berikan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda, serta bandingkan pergeseran posisi grafiknya
+
+---
+
+✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+- x² + 4x + 1  
+- x² + 7x + 1 
+- x² + 0x + 1
+
+📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai b berbeda.
+""")
+
+    st.write("📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai b berubah?")
+    refleksi_b = st.text_area("Tulis jawabanmu di sini...", height=150, key="refleksi_b")
 
 # Eksplorasi 3: Nilai b negatif
 if eksplorasi_2_terjawab:
-    st.markdown("### Eksplorasi 3: Nilai b negatif")
-    b_negatif = st.number_input("Masukkan nilai b (negatif):", key="b3")
+    with st.expander("Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
+    b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=0, step=1, key="b3")
     a3 = st.session_state.get("a1", 1)
     c3 = st.session_state.get("c1", 1)
     x_vals3 = sp.Symbol('x')
@@ -120,7 +139,25 @@ if eksplorasi_2_terjawab:
 
     analisis_3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
     if analisis_3:
-        st.success("Untuk materi lengkap, kamu dapat membuka: [Perplexity AI - Eksplorasi 3](https://www.perplexity.ai/search/materi-eksplorasi-3)")
+        with st.expander("Cek Hasil Verifikasi AI Eksplorasi 3"):
+        st.info("""
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**  
+Jelaskan bagaimana pengaruh nilai b yang negatif terhadap letak sumbu simetri dan posisi grafik fungsi kuadrat y = ax² + bx + c. Sertakan penjelasan visual jika memungkinkan. Apa yang terjadi saat b bernilai negatif dibandingkan b positif?
+
+---
+
+✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan beberapa fungsi berikut:
+- y = x² + 4x + 1
+- y = x² - 4x + 1
+- y = x² - 2x + 1
+
+📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
+""")
+
+    st.write("📝 **Refleksi:** Setelah mencoba di Desmos, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
+    refleksi = st.text_area("Tulis jawabanmu di sini...", height=150)
 
         eksplorasi_3_terjawab = True
 
