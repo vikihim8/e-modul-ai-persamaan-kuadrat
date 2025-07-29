@@ -172,9 +172,9 @@ if st.session_state.get("analisis2"):
         ax3.legend()
         st.pyplot(fig3)
 
-        analisis_3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
+        analisis3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
 
-        if analisis_3.strip() != "":
+        if analisis3.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 3"):
                 st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
@@ -196,7 +196,7 @@ x² - 2x + 1
 
 
 # Eksplorasi 4: Nilai b positif
-if st.session_state.get("analisis_3"):
+if st.session_state.get("analisis3"):
     with st.expander("💡Eksplorasi 4: Apa pengaruh nilai b positif terhadap arah dan letak grafik fungsi kuadrat?"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai b bernilai **positif**.")
 
@@ -237,7 +237,7 @@ x² + 4x + 1
             
 
 # Eksplorasi 5: Nilai c negatif
-if st.session_state.get("analisis_4"):
+if st.session_state.get("analisis4"):
     with st.expander("💡Eksplorasi 5: Apa pengaruh nilai c negatif terhadap grafik fungsi kuadrat?"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **negatif**")
 
@@ -274,7 +274,7 @@ x² + 4x - 3
 
 
 # Eksplorasi 6: Nilai c positif
-if st.session_state.get("analisis_5"):
+if st.session_state.get("analisis5"):
     with st.expander("💡Eksplorasi 6: Apa pengaruh nilai c positif terhadap grafik fungsi kuadrat?"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **positif**")
 
@@ -314,7 +314,7 @@ x² + 4x + 1
 
 
 # Eksplorasi 7: Semua koefisien negatif
-if st.session_state.get("analisis_6"):
+if st.session_state.get("analisis6"):
     with st.expander("💡Eksplorasi 7: Apa pengaruh nilai semua koefisien negatif terhadap grafik fungsi kuadrat?"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien **negatif**")
 
@@ -355,7 +355,7 @@ Apa yang terjadi pada grafik fungsi kuadrat y = ax² + bx + c jika semua koefisi
 
 
 # Eksplorasi 8: Semua koefisien positif
-if st.session_state.get("analisis_7"):
+if st.session_state.get("analisis7"):
     with st.expander("💡Eksplorasi 8: Apa pengaruh nilai semua koefisien positif terhadap grafik fungsi kuadrat?"):
         st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien **positif**")
 
@@ -427,7 +427,7 @@ def eksplorasi_form(id, title):
     if st.session_state.get(f'eksplorasi_{id}_plotted'):
         a, b, c = st.session_state[f'eksplorasi_{id}_abc']
         plot_graph(a, b, c)
-        analisis = st.text_area(
+        analisis9 = st.text_area(
             "Tuliskan analisismu berdasarkan grafik di atas.",
             key=f'analisis_{id}',
             placeholder="Misalnya: grafik terbuka ke atas, titik puncak ada di sekitar x = -1, dst."
@@ -456,7 +456,7 @@ for i in range(1, 9):
         eksplorasi_form(i, eksplorasi_titles[i])
 
 # Tambahkan refleksi akhir setelah eksplorasi 8 selesai
-if st.session_state.get('eksplorasi_8_selesai') and not st.session_state.get('refleksi_akhir_selesai'):
+if st.session_state.get(analisis8) and not st.session_state.get('refleksi_akhir_selesai'):
     with st.expander("💬 Refleksi Akhir"):
         st.markdown("### 🔁 Cek Bantuan AI")
         st.write("Jika kamu mengalami kesulitan menyimpulkan, kamu bisa menyalin dan tempel pertanyaan berikut ke AI seperti Perplexity:")
@@ -486,7 +486,7 @@ if st.session_state.get("refleksi_akhir_selesai"):
     
 
 # Pengolahan Data (Soal Latihan) ---
-if st.session_state.explore_8_done:
+if st.session_state.analisis9_done:
     st.title("4. Pengolahan Data")
     st.write("""
     Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
@@ -506,7 +506,7 @@ if st.session_state.explore_8_done:
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
-if st.session_state.olah_data_done:
+if st.session_state.jawaban_olah_done:
     st.title("5. Verifikasi")
     st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
     
