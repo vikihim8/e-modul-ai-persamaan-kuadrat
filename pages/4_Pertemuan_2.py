@@ -86,8 +86,8 @@ if st.session_state.get("analisis1"):
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
     st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu:")
     
-akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar1_input")
-akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar2_input")
+akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar(1)_input")
+akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar(2)_input")
 
 if akar1 and akar2:
     # Menampilkan hasil bentuk fungsi kuadrat
