@@ -156,28 +156,54 @@ if (
 
 
 # Eksplorasi 4
-from sympy import latex
+from sympy import symbols, expand, latex
+import streamlit as st
 
-if st.session_state.get("analisis3"):
-    st.subheader("🔬 Eksplorasi 4: Menemukan $$p$$ dan $$q$$ dari $$a$$, $$b$$, dan $$c$$")
-    st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
-    f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
-    latex_str = latex(f_expand)
-    tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", value=0, step=1, key="tebakan_p")
-    tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", value=0, step=1, key="tebakan_q")
-   
-    analisis4 = st.text_area("Apa alasanmu memilih nilai $$p$$ dan $$q$$ tersebut?", key="analisis4")
+x = symbols('x')
 
-    if analisis4:
-        if st.button("Cek Tebakan"):
-            hasil_c = tebakan_p * tebakan_q
-            hasil_b = -1 * (tebakan_p + tebakan_q)
-            st.write(f"Hasil perkalian $$p \\times q$$ = {hasil_c}")
-            st.write(f"Hasil penjumlahan $$(p + q)$$ = {hasil_b}")
-            st.info("Bandingkan hasil ini dengan nilai $$b$$ dan $$c$$ dari bentuk umum.")
-            st.markdown("##### 🔎 Cek AI")
-            st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum?")
-            st.info("💬 Coba bandingkan hasil tebakanmu dengan penjelasan dari AI.")
+st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
+
+# Buat bentuk hasil expand dari (x - p)(x - q)
+f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
+latex_str = latex(f_expand)
+
+# Siswa menebak nilai p dan q
+tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", value=0, step=1, key="tebakan_p")
+tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", value=0, step=1, key="tebakan_q")
+
+analisis4 = st.text_area("Apa alasanmu memilih nilai $$p$$ dan $$q$$ tersebut?", key="analisis4")
+
+# Jika siswa menjelaskan alasannya dan menekan tombol
+if analisis4:
+    if st.button("Cek Tebakan"):
+        hasil_c = tebakan_p * tebakan_q
+        hasil_b = -1 * (tebakan_p + tebakan_q)
+        st.write(f"Hasil perkalian $$p \\times q$$ = {hasil_c}")
+        st.write(f"Hasil penjumlahan $$(p + q)$$ = {hasil_b}")
+
+        st.write("💡 Sekarang kita cek apakah hasil tebakanmu sesuai dengan bentuk umum fungsi kuadrat.")
+        st.latex(f"f(x) = {latex_str}")
+
+        st.write("Bandingkan hasil yang kamu dapatkan dengan koefisien dari bentuk umum tersebut.")
+
+        cek_koefisien = st.text_area("🔍 Apa hubungan yang kamu temukan antara hasil penjumlahan/perkalian akar dan koefisien fungsi kuadrat?", key="analisis5")
+
+        if cek_koefisien:
+            st.write("🎯 Keren! Sekarang kamu mungkin mulai menyadari bahwa:")
+            st.latex("p + q = -\\frac{b}{a} \\quad \\text{dan} \\quad p \\times q = \\frac{c}{a}")
+            st.write("Hubungan ini disebut sebagai **hubungan akar-akar persamaan kuadrat dengan koefisiennya.**")
+            st.info("Nantinya kamu bisa gunakan hubungan ini untuk menentukan akar-akar suatu fungsi kuadrat tanpa perlu memfaktorkan.")
+
+# Prompt AI
+st.markdown("##### 🔎 Cek AI")
+st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?")
+st.info("Gunakan jawaban AI sebagai referensi. Bandingkan dengan tebakkanmu, lalu simpulkan insight yang kamu temukan.")
+
+# Refleksi setelah membaca jawaban AI
+refleksi_ai = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi_pq")
+if refleksi_ai:
+    st.success("Bagus! Kamu sedang membangun pemahaman yang lebih dalam tentang pola dalam fungsi kuadrat.")
+
 
 
 # Eksplorasi 5
