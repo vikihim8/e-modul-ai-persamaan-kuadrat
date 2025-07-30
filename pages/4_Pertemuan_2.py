@@ -80,21 +80,30 @@ if analisis1.strip() != "":
     st.session_state.refleksi_akhir = refleksi_eksplorasi1
 
 
+
 # Eksplorasi 2 (muncul jika analisis1 sudah diisi)
 if st.session_state.get("analisis1"):
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
     st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu:")
     
-akar1 = st.text_input("Masukkan akar pertama:")
-akar2 = st.text_input("Masukkan akar kedua:")
+akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar1_input")
+akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar2_input")
 
 if akar1 and akar2:
-    st.markdown("### 🧪 Susun Fungsi Kuadrat dari Akar yang Diketahui")
-    st.markdown("Gunakan bentuk faktorisasi: \\( f(x) = (x - akar1)(x - akar2) \\) lalu kalikan bentuk tersebut.")
-    
-    analisis2 = st.text_input("Tulis bentuk fungsi kuadrat hasil perkalianmu:", key="analisis2_input")
-    st.session_state.analisis2 = analisis2
+    # Menampilkan hasil bentuk fungsi kuadrat
+    st.markdown("### ✍️ Bentuk Umum Fungsi Kuadrat")
+    st.latex(rf"f(x) = (x - {akar1})(x - {akar2})")
 
+    # Hitung koefisien
+    a = 1
+    b = -(akar1 + akar2)
+    c = akar1 * akar2
+    st.latex(rf"f(x) = x^2 + ({b})x + ({c})")
+
+    # Input analisis eksplorasi
+    analisis2 = st.text_area("🔎 Tuliskan penjelasanmu: bagaimana kamu menyusun fungsi kuadrat tersebut?", key="analisis2_input")
+    st.session_state.analisis2 = analisis2
+    
     if analisis2:
         st.markdown("##### 🔎 Cek AI (Perplexity)")
         st.write("Salin dan tempelkan prompt berikut ke [Perplexity.ai](https://www.perplexity.ai):")
