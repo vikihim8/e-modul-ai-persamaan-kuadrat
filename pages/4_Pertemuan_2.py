@@ -27,54 +27,110 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# --- 1. Stimulus ---
-st.header("1. Stimulus)")
-st.write("Perhatikan bentuk fungsi kuadrat berikut:")
-st.latex(r"f(x) = x^2 - 5x + 6")
-st.write("Bentuk tersebut adalah bentuk umum fungsi kuadrat. Apakah kamu bisa mengubahnya menjadi bentuk faktor?")
-jawaban1 = st.text_area("📝 Tuliskan hal yang menarik atau membingungkan dari bentuk kuadrat di atas:")
+import streamlit as st
+from sympy import symbols, expand
 
-# --- 2. Identifikasi Masalah ---
-st.header("2. Identifikasi Masalah")
-jawaban2 = st.text_area("❓ Apa pertanyaan atau masalah yang muncul dari stimulus di atas?")
+# Halaman
+pages = ["Stimulus", "Identifikasi Masalah", "Eksplorasi 1", "Eksplorasi 2", "Eksplorasi 3", "Eksplorasi 4", "Eksplorasi 5", "Refleksi dan Kuis"]
+page = st.selectbox("Pilih Halaman", pages)
 
-if jawaban2.strip():
-    st.success("✅ Jawaban dicatat.")
-    with st.expander("👉 Lihat referensi AI (setelah mengisi jawaban)"):
-        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/perhatikan-bentuk-fungsi-kuadr-6B4Ys2oFSY2k7brcauEtHA)")
-else:
-    st.warning("Silakan isi jawaban terlebih dahulu.")
+# State antar halaman
+if "analisis1" not in st.session_state:
+    st.session_state.analisis1 = ""
+if "akar1" not in st.session_state:
+    st.session_state.akar1 = 0
+if "akar2" not in st.session_state:
+    st.session_state.akar2 = 0
+if "nilai_a" not in st.session_state:
+    st.session_state.nilai_a = 1
 
-# --- 3. Pengumpulan Data ---
-st.header("3. Pengumpulan Data")
-st.markdown("💡 Masukkan nilai *a*, *b*, dan *c* untuk melihat bentuk persamaan kuadrat dan faktornya.")
+# Stimulus
+if page == "Stimulus":
+    st.subheader("📍 Stimulus")
+    st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3.")
+    st.image("https://i.ibb.co/ZYW3DYn/graph.png", caption="Grafik fungsi kuadrat")
+    st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
 
-# 1. Input a, b, c
-a = st.number_input("Masukkan nilai a", value=1)
-b = st.number_input("Masukkan nilai b", value=5)
-c = st.number_input("Masukkan nilai c", value=6)
+# Identifikasi Masalah
+elif page == "Identifikasi Masalah":
+    st.subheader("🔍 Identifikasi Masalah")
+    identifikasi = st.text_area("Apa yang ingin kamu ketahui atau cari berdasarkan grafik di atas?")
+    st.text_input("Tuliskan satu pertanyaan utamamu di sini:", key="pertanyaan")
 
-x = sp.Symbol('x')
-persamaan = a * x**2 + b * x + c
+# Eksplorasi 1
+elif page == "Eksplorasi 1":
+    st.subheader("🔬 Eksplorasi 1: Menentukan Akar-akar dari Grafik")
+    st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x$$ = 2 dan $$x$$ = 3. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
+    st.session_state.akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input")
+    st.session_state.akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input")
+    st.session_state.analisis1 = st.text_area("Apa hubungan antara titik potong grafik dan akar-akar fungsi kuadrat?")
 
-# 2. Tampilkan persamaan kuadrat
-st.latex(sp.latex(persamaan) + " = 0")
+    if st.session_state.analisis1:
+        st.markdown("##### 🔎 Cek AI (Perplexity)")
+        st.code("Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?")
+        st.info("💡 Salin dan tempelkan prompt di atas ke Perplexity.ai untuk membandingkan pemahamanmu.")
 
-# 3. Coba faktorkan
-faktorisasi = sp.factor(persamaan)
+# Eksplorasi 2 (muncul jika analisis1 sudah diisi)
+elif page == "Eksplorasi 2" and st.session_state.analisis1:
+    st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
+    st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu: $$f(x) = a(x - akar1)(x - akar2)$$")
+    st.latex("f(x) = a(x - %s)(x - %s)" % (st.session_state.akar1, st.session_state.akar2))
+    st.session_state.nilai_a = st.number_input("Tentukan nilai $$a$$ (gunakan $$a$$ = 1 untuk sementara):", key="nilai_a_input")
+    analisis2 = st.text_area("Apa pendapatmu tentang hubungan antara akar dan bentuk faktornya?")
 
-if faktorisasi == persamaan:
-    st.warning("❌ Tidak bisa difaktorkan dengan bilangan rasional.")
-else:
-    st.success("✅ Bentuk faktorisasi:")
-    st.latex(sp.latex(faktorisasi) + " = 0")
+    if analisis2:
+        st.markdown("##### 🔎 Cek AI (Perplexity)")
+        st.code("Bagaimana menyusun fungsi kuadrat dari dua akar yang diketahui?")
+        st.info("🧠 Salin dan tempelkan prompt tersebut ke Perplexity.ai.")
 
-# 4. Input analisis dari siswa
-analisis = st.text_area("📝 Tulis analisismu terhadap hasil faktorisasi di atas:")
+# Eksplorasi 3
+elif page == "Eksplorasi 3":
+    st.subheader("🔬 Eksplorasi 3: Mengalikan Bentuk Faktor menjadi Bentuk Umum")
+    a = st.session_state.nilai_a
+    akar1 = st.session_state.akar1
+    akar2 = st.session_state.akar2
+    x = symbols('x')
+    f = a * (x - akar1) * (x - akar2)
+    f_expand = expand(f)
+    st.latex(f"f(x) = {f_expand}")
+    st.write("Sekarang kamu sudah mendapatkan bentuk umum dari fungsi kuadrat.")
+    analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian bentuk faktor ini?")
 
-# 5. Cek AI muncul setelah siswa isi analisis
-if analisis.strip() != "":
-    st.markdown("🔍 [Klik di sini untuk melihat penjelasan dari AI](https://www.perplexity.ai/search/materi-faktorisasi-dari-fungsi-9xV92TI5QQOZA0wFxQFUfg)")
+    if analisis3:
+        st.markdown("##### 🔎 Cek AI")
+        st.code("Bagaimana cara mengalikan bentuk faktorisasi fungsi kuadrat menjadi bentuk umum?")
+        st.info("🔍 Salin dan tempelkan ke Perplexity untuk mengecek pemahamanmu.")
+
+# Eksplorasi 4
+elif page == "Eksplorasi 4":
+    st.subheader("🔬 Eksplorasi 4: Menemukan $$p$$ dan $$q dari $$a$$, $$b$$, dan $$c$$")
+    st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
+    f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
+    st.latex(f"f(x) = {f_expand}")
+    tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", key="tebakan_p")
+    tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", key="tebakan_q")
+    analisis4 = st.text_area("Apa alasanmu memilih nilai $$p$$ dan $$q$$ tersebut?")
+
+    if analisis4:
+        if st.button("Cek Tebakan"):
+            hasil_c = tebakan_p * tebakan_q
+            hasil_b = -1 * (tebakan_p + tebakan_q)
+            st.write(f"Hasil perkalian $$p*q$$ = {hasil_c}")
+            st.write(f"Hasil penjumlahan $$(p+q)$$ = {hasil_b}")
+            st.info("Bandingkan hasil ini dengan nilai $$b$$ dan $$c$$ dari bentuk umum.")
+            st.markdown("##### 🔎 Cek AI")
+            st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum?")
+            st.info("💬 Coba bandingkan hasil tebakanmu dengan penjelasan dari AI.")
+
+# Eksplorasi 5
+elif page == "Eksplorasi 5":
+    st.subheader("🔬 Eksplorasi 5: Buat Kesimpulan Umum")
+    st.write("Setelah melakukan semua eksplorasi, apa kesimpulanmu untuk menentukan bentuk umum fungsi kuadrat dari grafiknya?")
+    kesimpulan = st.text_area("Tuliskan kesimpulanmu:")
+    if kesimpulan:
+        st.markdown("##### 🔎 Cek AI")
+        st.code("Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?")
+        st.info("📝 Bandingkan kesimpulanmu dengan versi AI.")
 
 
 st.header("4. Pengolahan Data")
