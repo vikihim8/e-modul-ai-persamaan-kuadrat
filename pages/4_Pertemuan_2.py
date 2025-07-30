@@ -85,10 +85,12 @@ if st.session_state.get("analisis1"):
 
 
 # Eksplorasi 3 (muncul jika nilai a dan akar sudah tersedia)
-if st.session_state.get("analisis2"):
-   st.session_state.get("nilai_a") is not None and \
-   st.session_state.get("akar1") is not None and \
-   st.session_state.get("akar2") is not None:
+if (
+    st.session_state.get("analisis2") and
+    st.session_state.get("nilai_a") is not None and
+    st.session_state.get("akar1") is not None and
+    st.session_state.get("akar2") is not None
+):
 
     st.subheader("🔬 Eksplorasi 3: Mengalikan Bentuk Faktor menjadi Bentuk Umum")
 
