@@ -48,13 +48,13 @@ st.session_state.akar1 = st.number_input("Masukkan akar pertama:", key="akar1_in
 st.session_state.akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input")
 st.session_state.analisis1 = st.text_area("Apa hubungan antara titik potong grafik dan akar-akar fungsi kuadrat?")
 
-if st.session_state.analisis1:
+if st.session_state.analisis1
     st.markdown("##### 🔎 Cek AI (Perplexity)")
     st.code("Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?")
     st.info("💡 Salin dan tempelkan prompt di atas ke Perplexity.ai untuk membandingkan pemahamanmu.")
 
 # Eksplorasi 2 (muncul jika analisis1 sudah diisi)
-st.session_state.analisis1:
+st.session_state.analisis1
 st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
 st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu: $$f(x) = a(x - akar1)(x - akar2)$$")
 st.latex("f(x) = a(x - %s)(x - %s)" % (st.session_state.akar1, st.session_state.akar2))
