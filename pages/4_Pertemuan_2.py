@@ -197,7 +197,7 @@ if analisis4:
 # Prompt AI
 st.markdown("##### 🔎 Cek AI")
 st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?")
-st.info("Gunakan jawaban AI sebagai referensi. Bandingkan dengan tebakkanmu, lalu simpulkan insight yang kamu temukan.")
+st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
 
 # Refleksi setelah membaca jawaban AI
 refleksi_ai = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi_pq")
