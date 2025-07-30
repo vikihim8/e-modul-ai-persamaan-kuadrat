@@ -231,18 +231,13 @@ analisisdata = st.text_input("Tulis bentuk faktornya:")
 
 if analisisdata.strip():
     st.success("✅ Jawaban disimpan.")
-    with st.expander("🔍 Cek AI setelah menjawab"):
-        st.markdown("#### 🔗 Periksa pemahamanmu dengan AI")
-        st.code("Faktorkan bentuk f(x) = x^2 - 7x + 10")
-        st.markdown("[Buka Perplexity](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
-else:
-    st.info("✍️ Silakan faktorkan terlebih dahulu sebelum mengecek ke AI.")
 
     
 
 # --- 5. Pembuktian (Verifikasi) ---
 st.header("Verifikasi")
-with st.expander("🔍 Lihat pembahasan AI setelah menjawab"):
+with st.expander("🔍 Cek AI setelah menjawab"):
+        st.markdown("#### 🔗 Periksa pemahamanmu dengan AI")
     prompt = (
         "Sebuah fungsi kuadrat diberikan dalam bentuk umum f(x) = x² - 7x + 10. "
         "Faktorkan fungsi tersebut menjadi bentuk (x - p)(x - q). "
