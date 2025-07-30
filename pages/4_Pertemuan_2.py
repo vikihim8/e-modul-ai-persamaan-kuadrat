@@ -47,7 +47,7 @@ if "nilai_a" not in st.session_state:
 # Stimulus
 if page == "Stimulus":
     st.subheader("📍 Stimulus")
-    st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3.")
+    st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
     st.image("https://i.ibb.co/ZYW3DYn/graph.png", caption="Grafik fungsi kuadrat")
     st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
 
