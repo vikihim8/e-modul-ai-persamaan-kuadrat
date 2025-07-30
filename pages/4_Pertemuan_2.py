@@ -117,6 +117,11 @@ if akar1 and akar2:
 
 
 # Eksplorasi 3: Mengalikan bentuk faktor menjadi bentuk umum
+from sympy import symbols, expand, simplify
+import streamlit as st
+
+x = symbols('x')
+
 if (
     st.session_state.get("analisis2") and
     st.session_state.get("nilai_a") is not None and
@@ -129,18 +134,15 @@ if (
     akar1 = st.session_state.akar1
     akar2 = st.session_state.akar2
 
-    x = symbols('x')
-    faktor = a * (x - akar1) * (x - akar2)
+    st.markdown("**Langkah 1:** Bentuk fungsi kuadrat dalam bentuk faktor berdasarkan akar yang kamu temukan.")
+    bentuk_faktorisasi = f"{a}(x - ({akar1}))(x - ({akar2}))"
+    st.latex(f"f(x) = {bentuk_faktorisasi}")
 
-    st.latex(f"f(x) = {a}(x - {akar1})(x - {akar2})")
-
-    hitung = st.button("🔁 Klik untuk melihat hasil perkalian (expand)")
-    if hitung:
-        f_expand = expand(faktor)
+    if st.button("💡 Lihat Hasil Perkalian (Expand)"):
+        f = a * (x - akar1) * (x - akar2)
+        f_expand = expand(f)
         st.latex(f"f(x) = {f_expand}")
-        st.success("Fungsi kuadrat dalam bentuk umum berhasil diperoleh!")
 
-        st.markdown("### ✍️ Analisis dan Refleksi")
         analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
         st.session_state.analisis3 = analisis3
 
