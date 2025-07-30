@@ -28,104 +28,48 @@ st.subheader("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
-# LANGKAH 1: STIMULUS
-st.header("1. Stimulus")
-st.image("pages/lintasan_bola.png", caption="Lintasan Gerak Parabola", use_container_width=True)
-st.write("Perhatikan gambar di atas! Bagaimana hubungan antara lintasan bola dengan bentuk persamaan kuadrat?")
-jawaban1 = st.text_area("Tuliskan analisismu berdasarkan stimulus tersebut di sini:")
-st.markdown("---")
+st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat")
 
-# LANGKAH 2: IDENTIFIKASI MASALAH
-st.header("2. Identifikasi Masalah")
-st.write("Diberikan permasalahan berikut:")
-st.markdown("""
-> Sebuah bola dilempar ke atas membentuk lintasan parabola. Persamaan lintasan tersebut dinyatakan dalam bentuk umum persamaan kuadrat. Tentukan akar-akar dari persamaan tersebut menggunakan rumus ABC!
-""")
-jawaban2 = st.text_area("Tuliskan identifikasi masalah yang kamu temukan:")
-if jawaban2:
-    st.success("Masalah telah diidentifikasi. Kamu bisa eksplorasi lebih lanjut dengan bantuan AI.")
-    st.markdown("[Cek penjelasan AI di Preplexity](https://www.perplexity.ai/search/bagaimana-hubungan-antara-lint-jmJR_1UoSDSd12oB6nv_8A)")
+st.markdown("**Capaian:** Siswa dapat menyelesaikan soal persamaan kuadrat menggunakan metode pemfaktoran dan rumus ABC.")
 
-st.markdown("---")
+# --- 1. Stimulus ---
+st.header("Stimulus")
+st.markdown("Seorang siswa ingin menyelesaikan persamaan kuadrat \( x^2 - 5x + 6 = 0 \). Ia mencoba menggunakan dua cara berbeda: pemfaktoran dan rumus ABC. Yuk, pelajari bagaimana prosesnya dan bandingkan kedua metode ini.")
 
-# LANGKAH 3: PENGUMPULAN & PENGOLAHAN DATA
-st.header("3. Pengumpulan Data")
-st.write("Masukkan nilai koefisien a, b, dan c dari bentuk persamaan kuadrat:")
+# --- 2. Identifikasi Masalah ---
+st.header("Identifikasi Masalah")
+st.markdown("Apa yang perlu dilakukan untuk menyelesaikan persamaan kuadrat \( x^2 - 5x + 6 = 0 \)? Metode apa saja yang dapat digunakan? Apakah keduanya menghasilkan solusi yang sama?")
 
-col1, col2, col3 = st.columns(3)
-with col1:
-    a = st.number_input("a", format="%.2f")
-with col2:
-    b = st.number_input("b", format="%.2f")
-with col3:
-    c = st.number_input("c", format="%.2f")
+# --- 3. Eksplorasi ---
+st.header("Eksplorasi")
+st.markdown("#### ✍️ Eksplorasi 1: Selesaikan dengan Pemfaktoran")
+st.latex("x^2 - 5x + 6 = 0")
+st.markdown("**Langkah:** Temukan dua bilangan yang hasil kalinya 6 (konstanta \( c \)) dan jumlahnya -5 (koefisien \( b \)).")
+st.text_input("Tulis pasangan bilangan yang mungkin:", key="faktor")
+st.text_input("Tuliskan bentuk faktornya:", placeholder="Contoh: (x - 2)(x - 3)", key="faktorisasi")
 
-analisis = ""
-if a != 0:
-    diskriminan = b**2 - 4*a*c
-    akar1 = (-b + sp.sqrt(diskriminan)) / (2*a)
-    akar2 = (-b - sp.sqrt(diskriminan)) / (2*a)
+st.markdown("#### ✍️ Eksplorasi 2: Gunakan Rumus ABC")
+st.latex("x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
+st.markdown("Diketahui \( a = 1, b = -5, c = 6 \)")
+st.text_input("Tentukan nilai diskriminan (\( b^2 - 4ac \)):", key="diskriminan")
+st.text_input("Hitung akarnya menggunakan rumus ABC:", key="rumus_abc")
 
-    st.subheader("🔹 Persamaan Kuadrat")
-    st.latex(f"{a}x^2 + {b}x + {c} = 0")
+# --- 4. Pengolahan Data ---
+st.header("Pengolahan Data")
+st.markdown("Bandingkan hasil dari kedua metode. Apakah akarnya sama? Tuliskan hasil akarnya di bawah ini.")
+st.text_area("📝 Akar dari metode faktorisasi:", key="hasil_faktorisasi")
+st.text_area("📝 Akar dari metode rumus ABC:", key="hasil_abc")
 
-    st.subheader("🔹 Solusi dengan Rumus ABC")
-    st.latex(r"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
-    st.latex(rf"x_1 = {sp.simplify(akar1)}, \quad x_2 = {sp.simplify(akar2)}")
+# --- 5. Verifikasi ---
+st.header("Verifikasi")
+st.markdown("#### 🔎 Cek AI")
+st.code("Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 5x + 6 = 0 dengan dua metode: pemfaktoran dan rumus ABC?")
+st.info("Gunakan jawaban AI sebagai referensi. Bandingkan dengan jawabanmu dan perhatikan perbedaan langkah atau hasil yang ditemukan.")
+st.markdown("[🔗 Lihat jawaban AI di Perplexity](https://www.perplexity.ai/search/persamaan-kuadrat-dengan-pemfaktoran-dan-abc-H6DRKHO2RYKW6hZgAVk6eQ)")
 
-    if st.button("Tampilkan Persamaan dan Grafik"):
-        st.write(f"Persamaan kuadrat: {a}x² + ({b})x + ({c}) = 0")
-        st.write(f"Diskriminan: D = {diskriminan}")
-        
-        if diskriminan > 0:
-            hasil = "Memiliki 2 akar real berbeda."
-        elif diskriminan == 0:
-            hasil = "Memiliki 2 akar real kembar."
-        else:
-            hasil = "Tidak memiliki akar real (akar imajiner)."
-        st.info(f"Bentuk akar berdasarkan diskriminan: {hasil}")
-
-        # Tampilkan grafik parabola
-        x_vals = np.linspace(-10, 10, 400)
-        y_vals = a * x_vals**2 + b * x_vals + c
-        fig, ax = plt.subplots()
-        ax.plot(x_vals, y_vals, label=f'{a}x² + {b}x + {c}')
-        ax.axhline(0, color='gray', lw=1)
-        ax.axvline(0, color='gray', lw=1)
-        ax.set_title("Grafik Persamaan Kuadrat")
-        ax.legend()
-        st.pyplot(fig)
-
-    analisis = st.text_area("📌 Analisismu berdasarkan hasil di atas:")
-    if analisis:
-        st.success("Kamu telah menyelesaikan analisis pengolahan data.")
-        st.markdown("[Cek validasi penjelasan di Perplexity](https://www.perplexity.ai/search/materi-fungsi-kuadrat-dengan-m-rnq03xB5QseNmAcFeMQ.Uw)")
-else:
-    st.warning("Nilai a tidak boleh 0")
-
-# LANGKAH 4: LATIHAN PENGOLAHAN
-st.header("4. Pengolahan Data")
-st.write("""
-Latihan Soal:
-Selesaikan persamaan berikut dengan rumus ABC:
-
-> 2x² - 4x - 6 = 0
-""")
-analisis_l4 = st.text_area("Tulis jawabanmu di sini:")
-if analisis_l4:
-    st.markdown("[Cek jawabanmu di Perplexity AI](https://www.perplexity.ai/search/selesaikan-persamaan-berikut-d-nuMuhEe5T3m4nC7wuHTecw/)", unsafe_allow_html=True)
-
-# LANGKAH 5: VERIFIKASI
-st.header("5. Verifikasi")
-kesesuaian = st.text_area("Tuliskan hasil verifikasimu di sini:")
-if kesesuaian:
-    st.markdown("[Diskusikan dengan AI di Perplexity](https://www.perplexity.ai/search/berikan-verifikasi-dan-diskusi-DdCrBk.uTkCU0QXm_WMTIg/)", unsafe_allow_html=True)
-
-# LANGKAH 6: KESIMPULAN
-st.header("6. Kesimpulan")
-kesimpulan = st.text_area("Tuliskan kesimpulanmu:")
-if kesimpulan:
-    st.markdown("[Cek kesimpulan dengan Perplexity AI](https://www.perplexity.ai/search/kesimpulan-materi-persamaan-ku-RdlMiqRjQq6VedhRfHeqCw/)", unsafe_allow_html=True)
+# --- 6. Penarikan Kesimpulan ---
+st.header("Penarikan Kesimpulan")
+st.text_area("🎯 Apa kesimpulanmu dari hasil eksplorasi dua metode tersebut? Manakah yang menurutmu lebih mudah atau lebih cepat?")
 
 # --- Refleksi & Kuis ---
 st.subheader("🪞 Refleksi Belajar")
