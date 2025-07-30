@@ -31,20 +31,17 @@ import streamlit as st
 from sympy import symbols, expand
 
 # Stimulus
-if page == "Stimulus":
-    st.subheader("📍 Stimulus")
-    st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
-    st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_container_width=True)
-    st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
+st.subheader("📍 Stimulus")
+st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
+st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_container_width=True)
+st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
 
 # Identifikasi Masalah
-elif page == "Identifikasi Masalah":
-    st.subheader("🔍 Identifikasi Masalah")
-    identifikasi = st.text_area("Apa yang ingin kamu ketahui atau cari berdasarkan grafik di atas?")
-    st.text_input("Tuliskan satu pertanyaan utamamu di sini:", key="pertanyaan")
+st.subheader("🔍 Identifikasi Masalah")
+identifikasi = st.text_area("Apa yang ingin kamu ketahui atau cari berdasarkan grafik di atas?")
+st.text_input("Tuliskan satu pertanyaan utamamu di sini:", key="pertanyaan")
 
 # Eksplorasi 1
-elif page == "Eksplorasi 1":
     st.subheader("🔬 Eksplorasi 1: Menentukan Akar-akar dari Grafik")
     st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x$$ = 2 dan $$x$$ = 3. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
     st.session_state.akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input")
@@ -57,7 +54,7 @@ elif page == "Eksplorasi 1":
         st.info("💡 Salin dan tempelkan prompt di atas ke Perplexity.ai untuk membandingkan pemahamanmu.")
 
 # Eksplorasi 2 (muncul jika analisis1 sudah diisi)
-elif page == "Eksplorasi 2" and st.session_state.analisis1:
+    st.session_state.analisis1:
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
     st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu: $$f(x) = a(x - akar1)(x - akar2)$$")
     st.latex("f(x) = a(x - %s)(x - %s)" % (st.session_state.akar1, st.session_state.akar2))
@@ -70,7 +67,6 @@ elif page == "Eksplorasi 2" and st.session_state.analisis1:
         st.info("🧠 Salin dan tempelkan prompt tersebut ke Perplexity.ai.")
 
 # Eksplorasi 3
-elif page == "Eksplorasi 3":
     st.subheader("🔬 Eksplorasi 3: Mengalikan Bentuk Faktor menjadi Bentuk Umum")
     a = st.session_state.nilai_a
     akar1 = st.session_state.akar1
@@ -88,7 +84,6 @@ elif page == "Eksplorasi 3":
         st.info("🔍 Salin dan tempelkan ke Perplexity untuk mengecek pemahamanmu.")
 
 # Eksplorasi 4
-elif page == "Eksplorasi 4":
     st.subheader("🔬 Eksplorasi 4: Menemukan $$p$$ dan $$q dari $$a$$, $$b$$, dan $$c$$")
     st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
     f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
@@ -109,7 +104,6 @@ elif page == "Eksplorasi 4":
             st.info("💬 Coba bandingkan hasil tebakanmu dengan penjelasan dari AI.")
 
 # Eksplorasi 5
-elif page == "Eksplorasi 5":
     st.subheader("🔬 Eksplorasi 5: Buat Kesimpulan Umum")
     st.write("Setelah melakukan semua eksplorasi, apa kesimpulanmu untuk menentukan bentuk umum fungsi kuadrat dari grafiknya?")
     kesimpulan = st.text_area("Tuliskan kesimpulanmu:")
