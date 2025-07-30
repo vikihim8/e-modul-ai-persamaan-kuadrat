@@ -149,7 +149,9 @@ if (
         st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
             
         refleksi3 = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi3")
-        st.session_state.refleksi3 = refleksi3
+# langsung gunakan refleksi3 tanpa mengatur session_state lagi
+    if refleksi3:
+        st.success(f"Terima kasih atas refleksinya: {refleksi3}")
 
 
 
