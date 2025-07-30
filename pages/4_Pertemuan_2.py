@@ -156,13 +156,15 @@ if (
 
 
 # Eksplorasi 4
+from sympy import latex
+
 if st.session_state.get("analisis3"):
     st.subheader("🔬 Eksplorasi 4: Menemukan $$p$$ dan $$q$$ dari $$a$$, $$b$$, dan $$c$$")
     st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
     f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
-    st.latex(f"f(x) = {f_expand}")
-    tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", key="tebakan_p")
-    tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", key="tebakan_q")
+    latex_str = latex(f_expand)
+    tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", value=0, step=1, key="tebakan_p")
+    tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", value=0, step=1, key="tebakan_q")
    
     analisis4 = st.text_area("Apa alasanmu memilih nilai $$p$$ dan $$q$$ tersebut?", key="analisis4")
 
