@@ -85,35 +85,25 @@ if st.session_state.get("analisis1"):
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
     st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu:")
     
-    # Pastikan akar1 dan akar2 sudah ada
-    akar1 = st.session_state.get("akar1", "akar1")
-    akar2 = st.session_state.get("akar2", "akar2")
-    st.latex(r"f(x) = (x - \text{akar1})(x - \text{akar2})")
+akar1 = st.text_input("Masukkan akar pertama:")
+akar2 = st.text_input("Masukkan akar kedua:")
 
-    st.latex(f"f(x) = (x - {akar1})(x - {akar2})")
-    st.session_state.nilai_akar1 = st.number_input(
-        "Tentukan nilai akar1:", 
-        key="nilai_akar1_input",
-        value=0, step=1
-    )
-    st.session_state.nilai_akar2 = st.number_input(
-        "Tentukan nilai akar2:", 
-        key="nilai_akar2_input",
-        value=0, step=1
-    )
+if akar1 and akar2:
+    st.markdown("### 🧪 Susun Fungsi Kuadrat dari Akar yang Diketahui")
+    st.markdown("Gunakan bentuk faktorisasi: \\( f(x) = (x - akar1)(x - akar2) \\) lalu kalikan bentuk tersebut.")
     
-    analisis2 = st.text_area("Apa pendapatmu tentang hubungan antara akar dan bentuk faktornya?")
-    
-# Cek AI untuk Eksplorasi 2 (jika analisis sudah diisi)
-if analisis2:
-    st.markdown("##### 🔎 Cek AI (Perplexity)")
-    st.write("Salin dan tempelkan prompt berikut ke [Perplexity.ai](https://www.perplexity.ai):")
-    st.code("Bagaimana cara menyusun fungsi kuadrat jika diketahui dua akarnya?")
-    st.info("💡 Bandingkan jawabanmu dengan hasil dari AI untuk memperkuat pemahamanmu.")
+    analisis2 = st.text_input("Tulis bentuk fungsi kuadrat hasil perkalianmu:", key="analisis2_input")
+    st.session_state.analisis2 = analisis2
 
-    # Tambahkan kotak refleksi setelah cek AI
-    refleksi2 = st.text_area("💭 Setelah membandingkan dengan AI, apa yang kamu pelajari dari eksplorasi ini?", key="refleksi2_input")
-    st.session_state.refleksi2 = refleksi2
+    if analisis2:
+        st.markdown("##### 🔎 Cek AI (Perplexity)")
+        st.write("Salin dan tempelkan prompt berikut ke [Perplexity.ai](https://www.perplexity.ai):")
+        st.code("Bagaimana cara menyusun fungsi kuadrat jika diketahui dua akarnya?")
+        st.info("💡 Bandingkan jawabanmu dengan hasil dari AI untuk memperkuat pemahamanmu.")
+
+        # Tambahkan refleksi
+        refleksi2 = st.text_area("💭 Setelah membandingkan dengan AI, apa yang kamu pelajari dari eksplorasi ini?", key="refleksi2_input")
+        st.session_state.refleksi2 = refleksi2
 
 
 
