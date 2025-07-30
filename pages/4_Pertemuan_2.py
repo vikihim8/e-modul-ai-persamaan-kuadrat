@@ -116,14 +116,13 @@ if akar1 and akar2:
 
 
 
-# Eksplorasi 3 (muncul jika nilai a dan akar sudah tersedia)
+# Eksplorasi 3: Mengalikan bentuk faktor menjadi bentuk umum
 if (
     st.session_state.get("analisis2") and
     st.session_state.get("nilai_a") is not None and
     st.session_state.get("akar1") is not None and
     st.session_state.get("akar2") is not None
 ):
-
     st.subheader("🔬 Eksplorasi 3: Mengalikan Bentuk Faktor menjadi Bentuk Umum")
 
     a = st.session_state.nilai_a
@@ -131,18 +130,30 @@ if (
     akar2 = st.session_state.akar2
 
     x = symbols('x')
-    f = a * (x - akar1) * (x - akar2)
-    f_expand = expand(f)
+    faktor = a * (x - akar1) * (x - akar2)
 
-    st.latex(f"f(x) = {f_expand}")
-    st.write("Sekarang kamu sudah mendapatkan bentuk umum dari fungsi kuadrat.")
+    st.latex(f"f(x) = {a}(x - {akar1})(x - {akar2})")
 
-    analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian bentuk faktor ini?", key="analisis3")
+    hitung = st.button("🔁 Klik untuk melihat hasil perkalian (expand)")
+    if hitung:
+        f_expand = expand(faktor)
+        st.latex(f"f(x) = {f_expand}")
+        st.success("Fungsi kuadrat dalam bentuk umum berhasil diperoleh!")
 
-    if analisis3:
-        st.markdown("##### 🔎 Cek AI")
-        st.code("Bagaimana cara mengalikan bentuk faktorisasi fungsi kuadrat menjadi bentuk umum?")
-        st.info("🔍 Salin dan tempelkan ke Perplexity untuk mengecek pemahamanmu.")
+        st.markdown("### ✍️ Analisis dan Refleksi")
+        analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
+        st.session_state.analisis3 = analisis3
+
+        if analisis3:
+            st.markdown("### 🔎 Cek AI (Perplexity.ai)")
+            st.write("Bandingkan pemahamanmu dengan AI menggunakan prompt berikut:")
+            st.code("Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?")
+            st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
+            
+            refleksi3 = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi3")
+            st.session_state.refleksi3 = refleksi3
+
+
 
 # Eksplorasi 4
 if st.session_state.get("analisis3"):
