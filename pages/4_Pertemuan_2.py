@@ -244,6 +244,7 @@ with st.expander("🔍 Cek AI setelah menjawab"):
         "Tunjukkan proses langkah demi langkah bagaimana kamu menemukan nilai p dan q, "
         "beserta alasan matematisnya."
     )
+
     st.code(prompt, language="markdown")
     st.markdown("[🔗 Buka Perplexity untuk melihat jawaban AI](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
 
