@@ -124,15 +124,15 @@ if (
 ):
     st.subheader("🔬 Eksplorasi 3: Pengaruh Nilai a terhadap Bentuk Umum Fungsi Kuadrat")
 
-    akar1 = st.session_state.akar1
-    akar2 = st.session_state.akar2
-
+    akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar(1)_input")
+    akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar(2)_input")
+    
     st.markdown("Sekarang kita akan mencoba **mengubah-ubah nilai a** dan melihat bagaimana bentuk fungsi kuadrat berubah.")
     
     a_eksplorasi = st.number_input("🔢 Coba masukkan nilai a yang berbeda", value=1, key="a_eksplorasi3")
     
     x = symbols('x')
-    f_eksplorasi = a_eksplorasi * (x - akar1) * (x - akar2)
+    $$f_eksplorasi = a_eksplorasi * (x - akar1) * (x - akar2)$$
     f_eksplorasi_expand = expand(f_eksplorasi)
 
     st.latex(f"f(x) = {f_eksplorasi_expand}")
