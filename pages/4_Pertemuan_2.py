@@ -30,25 +30,11 @@ kelas = st.text_input("Kelas:")
 import streamlit as st
 from sympy import symbols, expand
 
-# Halaman
-pages = ["Stimulus", "Identifikasi Masalah", "Eksplorasi 1", "Eksplorasi 2", "Eksplorasi 3", "Eksplorasi 4", "Eksplorasi 5", "Refleksi dan Kuis"]
-page = st.selectbox("Pilih Halaman", pages)
-
-# State antar halaman
-if "analisis1" not in st.session_state:
-    st.session_state.analisis1 = ""
-if "akar1" not in st.session_state:
-    st.session_state.akar1 = 0
-if "akar2" not in st.session_state:
-    st.session_state.akar2 = 0
-if "nilai_a" not in st.session_state:
-    st.session_state.nilai_a = 1
-
 # Stimulus
 if page == "Stimulus":
     st.subheader("📍 Stimulus")
     st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
-    st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_column_width=True)
+    st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_container_width=True)
     st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
 
 # Identifikasi Masalah
