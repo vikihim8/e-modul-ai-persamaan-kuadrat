@@ -128,8 +128,8 @@ if (
     st.markdown("Sekarang kita akan mencoba **mengubah-ubah nilai $$a$$** dan melihat bagaimana bentuk fungsi kuadrat berubah.")
     
     a_eksplorasi = st.number_input("🔢 Coba masukkan nilai a yang berbeda", value=1, key="a_eksplorasi3")
-    akar1 = st.number_input("🧮 Masukkan akar pertama", value=1.0, key="akar1_eksplorasi3")
-    akar2 = st.number_input("🧮 Masukkan akar kedua", value=-2.0, key="akar2_eksplorasi3")
+    akar1 = st.number_input("🧮 Masukkan akar pertama", value=0, step=1, key="akar1_eksplorasi3")
+    akar2 = st.number_input("🧮 Masukkan akar kedua", value=0, step=1, key="akar2_eksplorasi3")
 
     x = symbols('x')
     f_eksplorasi = a_eksplorasi * (x - akar1) * (x - akar2)
@@ -141,7 +141,6 @@ if (
     st.write("Apakah bentuk umum fungsi kuadrat berubah saat kamu mengubah nilai a? Coba ganti nilai a beberapa kali.")
 
     analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
-    st.session_state.analisis3 = analisis3
 
     if analisis3:
         st.markdown("### 🔎 Cek AI (Perplexity.ai)")
