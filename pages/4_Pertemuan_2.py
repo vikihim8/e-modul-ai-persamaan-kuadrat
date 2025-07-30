@@ -117,43 +117,39 @@ if akar1 and akar2:
 
 
 # Eksplorasi 3: Mengalikan bentuk faktor menjadi bentuk umum
-from sympy import symbols, expand, simplify
-import streamlit as st
-
-x = symbols('x')
-
 if (
     st.session_state.get("analisis2") and
-    st.session_state.get("nilai_a") is not None and
     st.session_state.get("akar1") is not None and
     st.session_state.get("akar2") is not None
 ):
-    st.subheader("🔬 Eksplorasi 3: Mengalikan Bentuk Faktor menjadi Bentuk Umum")
+    st.subheader("🔬 Eksplorasi 3: Pengaruh Nilai a terhadap Bentuk Umum Fungsi Kuadrat")
 
-    a = st.session_state.nilai_a
     akar1 = st.session_state.akar1
     akar2 = st.session_state.akar2
 
-    st.markdown("**Langkah 1:** Bentuk fungsi kuadrat dalam bentuk faktor berdasarkan akar yang kamu temukan.")
-    bentuk_faktorisasi = f"{a}(x - ({akar1}))(x - ({akar2}))"
-    st.latex(f"f(x) = {bentuk_faktorisasi}")
+    st.markdown("Sekarang kita akan mencoba **mengubah-ubah nilai a** dan melihat bagaimana bentuk fungsi kuadrat berubah.")
+    
+    a_eksplorasi = st.number_input("🔢 Coba masukkan nilai a yang berbeda", value=1, key="a_eksplorasi3")
+    
+    x = symbols('x')
+    f_eksplorasi = a_eksplorasi * (x - akar1) * (x - akar2)
+    f_eksplorasi_expand = expand(f_eksplorasi)
 
-    if st.button("💡 Lihat Hasil Perkalian (Expand)"):
-        f = a * (x - akar1) * (x - akar2)
-        f_expand = expand(f)
-        st.latex(f"f(x) = {f_expand}")
+    st.latex(f"f(x) = {f_eksplorasi_expand}")
+    
+    st.write("Apakah bentuk umum fungsi kuadrat berubah saat kamu mengubah nilai a? Coba ganti nilai a beberapa kali.")
 
-        analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
-        st.session_state.analisis3 = analisis3
+    analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
+    st.session_state.analisis3 = analisis3
 
-        if analisis3:
-            st.markdown("### 🔎 Cek AI (Perplexity.ai)")
-            st.write("Bandingkan pemahamanmu dengan AI menggunakan prompt berikut:")
-            st.code("Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?")
-            st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
+    if analisis3:
+        st.markdown("### 🔎 Cek AI (Perplexity.ai)")
+        st.write("Bandingkan pemahamanmu dengan AI menggunakan prompt berikut:")
+        st.code("Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?")
+        st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
             
-            refleksi3 = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi3")
-            st.session_state.refleksi3 = refleksi3
+        refleksi3 = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi3")
+        st.session_state.refleksi3 = refleksi3
 
 
 
