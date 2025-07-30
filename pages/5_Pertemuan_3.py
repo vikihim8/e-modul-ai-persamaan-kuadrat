@@ -21,13 +21,6 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
 x = sp.Symbol('x')
 st.set_page_config(page_title="Pertemuan 3", layout="centered")
 
-st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat dengan Rumus ABC")
-
-# Identitas
-st.subheader("👤 Identitas")
-nama = st.text_input("Nama Siswa:")
-kelas = st.text_input("Kelas:")
-
 st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat")
 
 st.markdown("**Capaian:** Siswa dapat menyelesaikan soal persamaan kuadrat menggunakan metode pemfaktoran dan rumus ABC.")
