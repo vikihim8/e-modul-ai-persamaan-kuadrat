@@ -43,19 +43,41 @@ st.text_input("Tuliskan satu pertanyaan utamamu di sini:", key="pertanyaan")
 
 # Eksplorasi 1
 st.subheader("🔬 Eksplorasi 1: Menentukan Akar-akar dari Grafik")
-st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x$$ = 2 dan $$x$$ = 3. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
-akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input")
-akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input")
+st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x = 2$$ dan $$x = 3$$. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
+
+akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
+akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
+
+# Simpan ke session state
 st.session_state.akar1 = akar1
 st.session_state.akar2 = akar2
 
-analisis1 = st.text_area("Apa hubungan antara titik potong grafik dan akar-akar fungsi kuadrat?", key="analisis1_input")
+# Tampilkan bentuk faktornya langsung
+if akar1 != 0 or akar2 != 0:  # atau bisa pakai kondisi yang lebih ketat
+    st.latex(f"f(x) = a(x - {akar1})(x - {akar2})")
+    st.write("Bentuk ini disebut *bentuk faktor* dari fungsi kuadrat.")
+
+# Analisis konsep
+analisis1 = st.text_area(
+    "Apa hubungan antara titik potong grafik dan akar-akar fungsi kuadrat?", 
+    key="analisis1_input"
+)
 st.session_state.analisis1 = analisis1
 
-if analisis1:
-    st.markdown("##### 🔎 Cek AI (Perplexity)")
+# Jika sudah menuliskan analisis awal, baru tampilkan bagian AI
+if analisis1.strip() != "":
+    st.markdown("---")
+    st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
+    st.write("Salin dan tempelkan pertanyaan berikut ke [Perplexity AI](https://www.perplexity.ai):")
     st.code("Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?")
-    st.info("💡 Salin dan tempelkan prompt di atas ke Perplexity.ai untuk membandingkan pemahamanmu.")
+    st.info("💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?")
+
+    # Tambahkan kotak refleksi setelah membandingkan
+    refleksi_eksplorasi1 = st.text_area(
+        "✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:",
+        key="refleksi_eksplorasi1_input"
+    )
+    st.session_state.refleksi_akhir = refleksi_eksplorasi1
 
 
 # Eksplorasi 2 (muncul jika analisis1 sudah diisi)
@@ -147,8 +169,6 @@ if st.session_state.get("analisis4"):  # Pastikan Eksplorasi 4 sudah dijawab
             st.markdown("##### 🔎 Cek AI")
             st.code("Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?")
             st.info("📝 Bandingkan kesimpulanmu dengan versi AI.")
-else:
-    st.warning("Silakan selesaikan Eksplorasi 4 terlebih dahulu sebelum lanjut ke Eksplorasi 5.")
 
 
 
