@@ -237,15 +237,15 @@ if analisisdata.strip():
 # --- 5. Pembuktian (Verifikasi) ---
 st.header("Verifikasi")
 with st.expander("🔍 Cek AI setelah menjawab"):
-        st.markdown("#### 🔗 Periksa pemahamanmu dengan AI")
-    prompt = (
-        "Sebuah fungsi kuadrat diberikan dalam bentuk umum f(x) = x² - 7x + 10. "
-        "Faktorkan fungsi tersebut menjadi bentuk (x - p)(x - q). "
-        "Tunjukkan proses langkah demi langkah bagaimana kamu menemukan nilai p dan q, "
-        "beserta alasan matematisnya."
-    )
+    st.markdown("#### 🔗 Periksa pemahamanmu dengan AI")
 
-    st.code(prompt, language="markdown")
+    # Prompt AI
+    st.markdown("##### 🔎 Cek AI")
+    st.code("Sebuah fungsi kuadrat diberikan dalam bentuk umum f(x) = x² - 7x + 10. "
+            "Faktorkan fungsi tersebut menjadi bentuk (x - p)(x - q). "
+            "Tunjukkan proses langkah demi langkah bagaimana kamu menemukan nilai p dan q, "
+            "beserta alasan matematisnya.")
+    
     st.markdown("[🔗 Buka Perplexity untuk melihat jawaban AI](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
 
 
