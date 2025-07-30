@@ -71,7 +71,7 @@ if st.session_state.get("analisis1"):
     st.latex(f"f(x) = a(x - {akar1})(x - {akar2})")
     st.session_state.nilai_a = st.number_input(
         "Tentukan nilai $$a$$ (gunakan $$a$$ = 1 untuk sementara):", 
-        key="nilai_a_input"
+        key="nilai_a_input",
         value=1.0
     )
 
