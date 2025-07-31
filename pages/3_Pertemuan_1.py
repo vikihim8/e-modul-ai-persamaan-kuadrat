@@ -49,7 +49,7 @@ st.write(
 )
 
 # Eksplorasi 1
-with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika a = 0?"):
+with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika a = 0? Apa yang terjadi jika a ≠ 0?"):
     a1 = st.number_input("Masukkan nilai $a$ (koefisien $x^2$):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien $x$):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
@@ -85,7 +85,7 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**  
-Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dalam persamaan y = ax² + bx + c. Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan berikan perbandingan visual antara grafik saat a = 0 dan a ≠ 0.
+Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan apa yang terjadi pada grafik fungsi kuadrat jika a ≠ 0 dalam persamaan y = ax² + bx + c. Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan berikan perbandingan visual antara grafik saat a = 0 dan a ≠ 0.
 
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
