@@ -175,8 +175,8 @@ Kamu akan menebak nilai akar-akar \( p \) dan \( q \) dari ekspansi faktorisasi 
 
 # ✅ Input nilai a, p, dan q secara bertahap
 nilai_a = st.number_input("Masukkan nilai koefisien a:", value=1, step=1, key="nilai_a_input")
-akar1 = st.number_input("Masukkan nilai akar pertama (p):", value=1, step=1, key="akar1_input")
-akar2 = st.number_input("Masukkan nilai akar kedua (q):", value=2, step=1, key="akar2_input")
+akar1 = st.number_input("Masukkan nilai akar pertama (p):", value=1, step=1, key="akar1eks4_input")
+akar2 = st.number_input("Masukkan nilai akar kedua (q):", value=2, step=1, key="akar2eks4_input")
 
 # Simpan ke session_state
 st.session_state.nilai_a = nilai_a
