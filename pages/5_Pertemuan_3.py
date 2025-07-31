@@ -143,7 +143,7 @@ if akar1 and akar2:
     st.success(f"✅ Akar-akar yang kamu masukkan: {akar1} dan {akar2}")
 
 # --- Input Langkah Faktorisasi (jika dibutuhkan) ---
-langkah_faktorisasi = st.text_area("🧮 Tuliskan langkah-langkah faktorisasi yang kamu lakukan:", key="faktorisasi")
+langkah_faktorisasi = st.text_area("🧮 Tuliskan langkah-langkah faktorisasi yang kamu lakukan:", key="langkah_faktorisasi")
 
 
 # --- Eksplorasi 2: Gunakan Rumus ABC ---
