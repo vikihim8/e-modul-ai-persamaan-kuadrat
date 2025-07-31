@@ -155,49 +155,79 @@ if (
 
 
 
-# Eksplorasi 4
+# ------------------------- Eksplorasi 4: Menyelidiki Peran Koefisien --------------------------
 from sympy import symbols, expand, latex
 import streamlit as st
 
 x = symbols('x')
 
-st.write("Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati koefisien dari bentuk umum $$ax^2 + bx + c$$")
+st.header("✍️ Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum")
 
-# Buat bentuk hasil expand dari (x - p)(x - q)
-f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1)*(x - st.session_state.akar2))
+st.markdown("""
+Tanpa diberitahu bagaimana mencari nilai \( p \) dan \( q \), coba amati bentuk umum fungsi kuadrat:
+
+$$
+f(x) = ax^2 + bx + c
+$$
+
+Kamu akan menebak nilai akar-akar \( p \) dan \( q \) dari ekspansi faktorisasi dan melihat bagaimana hubungannya dengan koefisien.
+""")
+
+# ✅ Input nilai a, p, dan q secara bertahap
+nilai_a = st.number_input("Masukkan nilai koefisien a:", value=1, step=1, key="nilai_a_input")
+akar1 = st.number_input("Masukkan nilai akar pertama (p):", value=1, step=1, key="akar1_input")
+akar2 = st.number_input("Masukkan nilai akar kedua (q):", value=2, step=1, key="akar2_input")
+
+# Simpan ke session_state
+st.session_state.nilai_a = nilai_a
+st.session_state.akar1 = akar1
+st.session_state.akar2 = akar2
+
+# 🌱 Expand bentuk faktornya
+f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1) * (x - st.session_state.akar2))
 latex_str = latex(f_expand)
 
-# Siswa menebak nilai p dan q
-tebakan_p = st.number_input("Tebak nilai $$p$$ (akar pertama):", value=0, step=1, key="tebakan_p")
-tebakan_q = st.number_input("Tebak nilai $$q$$ (akar kedua):", value=0, step=1, key="tebakan_q")
+st.markdown("Berikut bentuk hasil ekspansinya:")
+st.latex(f"f(x) = {latex_str}")
 
-analisis4 = st.text_area("Apa alasanmu memilih nilai $$p$$ dan $$q$$ tersebut?", key="analisis4")
+# 🔍 Siswa menebak kembali nilai p dan q
+st.markdown("Sekarang, tanpa melihat kembali, coba **tebak** nilai akar-akar dari fungsi tersebut.")
 
-# Jika siswa menjelaskan alasannya dan menekan tombol
-if analisis4:
+tebakan_p = st.number_input("Tebak nilai akar pertama (p):", value=0, step=1, key="tebakan_p")
+tebakan_q = st.number_input("Tebak nilai akar kedua (q):", value=0, step=1, key="tebakan_q")
+
+analisis4 = st.text_area("Apa alasanmu memilih nilai p dan q tersebut?", key="analisis4")
+
+# Jika sudah menjelaskan, munculkan tombol
+if analisis4.strip():
     if st.button("Cek Tebakan"):
         hasil_c = tebakan_p * tebakan_q
         hasil_b = -1 * (tebakan_p + tebakan_q)
-        st.write(f"Hasil perkalian $$p \\times q$$ = {hasil_c}")
-        st.write(f"Hasil penjumlahan $$(p + q)$$ = {hasil_b}")
 
-        st.write("💡 Sekarang kita cek apakah hasil tebakanmu sesuai dengan bentuk umum fungsi kuadrat.")
+        st.write(f"Hasil perkalian akar: $$p \\times q = {hasil_c}$$")
+        st.write(f"Hasil penjumlahan akar: $$p + q = {tebakan_p + tebakan_q}$$")
+        st.write(f"Hasil negatif jumlah akar: $$- (p + q) = {hasil_b}$$")
+
+        st.write("💡 Sekarang kita cek apakah hasil tebakanmu sesuai dengan bentuk umum fungsi kuadrat:")
         st.latex(f"f(x) = {latex_str}")
 
-        st.write("Bandingkan hasil yang kamu dapatkan dengan koefisien dari bentuk umum tersebut.")
+        st.markdown("Bandingkan hasil yang kamu dapatkan dengan koefisien dari bentuk umum tersebut.")
 
-        cek_koefisien = st.text_area("🔍 Apa hubungan yang kamu temukan antara hasil penjumlahan/perkalian akar dan koefisien fungsi kuadrat?", key="analisis5")
+        cek_koefisien = st.text_area(
+            "🔍 Refleksi: Apa hubungan yang kamu temukan antara hasil penjumlahan/perkalian akar dan koefisien fungsi kuadrat?",
+            key="analisis5"
+        )
 
-        if cek_koefisien:
-            st.write("🎯 Keren! Sekarang kamu mungkin mulai menyadari bahwa:")
-            st.latex("p + q = -\\frac{b}{a} \\quad \\text{dan} \\quad p \\times q = \\frac{c}{a}")
-            st.write("Hubungan ini disebut sebagai **hubungan akar-akar persamaan kuadrat dengan koefisiennya.**")
-            st.info("Nantinya kamu bisa gunakan hubungan ini untuk menentukan akar-akar suatu fungsi kuadrat tanpa perlu memfaktorkan.")
+        if cek_koefisien.strip():
+            st.success("🎯 Keren! Sekarang kamu mungkin mulai menyadari bahwa:")
+            st.latex(r"p + q = -\frac{b}{a} \quad \text{dan} \quad p \times q = \frac{c}{a}")
+            st.info("Hubungan ini disebut sebagai **hubungan akar-akar persamaan kuadrat dengan koefisiennya.**")
 
-# Prompt AI
-st.markdown("##### 🔎 Cek AI")
+# 🤖 Prompt ke AI
+st.markdown("#### 🤖 Cek AI")
 st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?")
-st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
+st.markdown("[🔗 Kunjungi Perplexity.ai](https://www.perplexity.ai)")
+
 
 # Refleksi setelah membaca jawaban AI
 refleksi_ai = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi_pq")
