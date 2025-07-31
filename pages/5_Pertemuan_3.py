@@ -164,8 +164,8 @@ st.text_input("Tulis hasil perhitungan diskriminan:", key="diskriminan_input")
 # Step 3: Akar-akar kuadrat
 st.markdown("**Langkah 3: Hitung akar-akar menggunakan rumus ABC**")
 st.markdown("Gunakan nilai $$a$$, $$b$$, dan diskriminan yang sudah kamu temukan.")
-st.text_input("Tulis akar pertama (x₁):", key="akar1")
-st.text_input("Tulis akar kedua (x₂):", key="akar2")
+st.text_input("Tulis akar pertama (x₁):", key="akar1_diskriminan")
+st.text_input("Tulis akar kedua (x₂):", key="akar2_diskriminan")
 
 # Opsional: Umpan balik reflektif
 st.markdown("**🧠 Refleksi:**")
