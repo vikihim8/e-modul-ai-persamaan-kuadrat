@@ -131,21 +131,29 @@ if valid_faktor:
 # ------------------------- Eksplorasi 2 --------------------------
 hubungan = ""
 if analisis1.strip():
-    st.subheader("✍️ Eksplorasi 2: Menemukan Pola dari Bentuk Umum")
+    st.subheader("✍️ Eksplorasi 2: Menemukan Pola Akar dari Faktorisasi")
 
-    st.markdown(
-        """
-        Sekarang kamu sudah menemukan akar-akar dari faktorisasi.
+    st.markdown("""
+    Kamu sudah tahu bahwa persamaan kuadrat bisa difaktorkan menjadi:  
+    $$(x - p)(x - q) = 0$$
 
-        Pernahkah kamu bertanya:
-        > "Bagaimana caranya jika bentuk kuadratnya **tidak bisa difaktorkan** dengan mudah?"
+    **Sekarang coba hal berikut:**
+    1. Masukkan dua bilangan berbeda \( p \) dan \( q \) di bawah ini.
+    2. Lihat bentuk persamaan kuadrat hasil dari faktorisasi tersebut.
+    3. Amati hubungan antara koefisien \( a, b, c \) dengan \( p \) dan \( q \).
 
-        Mari kita coba kembangkan pola dari bentuk akar.
-        """
-    )
+    Apa yang bisa kamu simpulkan?
+    """)
 
-    st.markdown("Tulis ekspresi kuadrat dalam bentuk: $(x - p)(x - q)$ dan kembangkan bentuknya.")
-    ekspansi = st.text_input("Hasil ekspansi dari (x - p)(x - q):", key="eks2_expand")
+    p = st.number_input("Masukkan nilai p", key="eks2_p")
+    q = st.number_input("Masukkan nilai q", key="eks2_q")
+
+    if p != q:
+        x = sp.Symbol('x')
+        expanded = sp.expand((x - p) * (x - q))
+        st.latex(f"{sp.latex((x - p)*(x - q))} = {sp.latex(expanded)}")
+
+        analisis2 = st.text_area("🧠 Apa hubungan antara p, q, dan koefisien a, b, c dalam bentuk umum ax² + bx + c?", key="eks2_analisis")
 
     if ekspansi.strip():
         st.markdown("Bandingkan hasil ekspansimu dengan bentuk umum kuadrat: $ax^2 + bx + c$")
@@ -165,50 +173,65 @@ langkah_rumus = ""
 if hubungan.strip():
     st.subheader("✍️ Eksplorasi 3: Menemukan Rumus Umum dari Akar")
 
-    st.markdown(
-        """
-        Misalkan persamaan kuadratnya:
-        $$ax^2 + bx + c = 0$$
+    st.markdown("""
+    Misalkan persamaan kuadrat:
+    $$ax^2 + bx + c = 0$$
 
-        Jika tidak bisa difaktorkan, bagaimana kamu bisa menyelesaikan persamaan itu?
+    ⚡ **Aktivitas Menemukan:**
+    1. Coba ubah bentuk umum tersebut ke bentuk kuadrat sempurna (completing the square).
+    2. Masukkan langkah-langkahmu.
+    3. Lihat bagaimana muncul rumus ABC dari situ.
 
-        Gunakan ide dari menyelesaikan bentuk kuadrat sederhana.
-        """
-    )
+    > Jika kamu kesulitan, klik tombol AI untuk mendapat petunjuk langkah-langkahnya.
+    """)
 
-    langkah_rumus = st.text_area("🔍 Refleksi: Coba uraikan idemu untuk menyusun rumus mencari akar (tanpa faktorisasi):", key="eks3_ide")
+    langkah_rumus = st.text_area("Coba uraikan idemu untuk membuat rumus mencari akar:", key="eks3_ide")
 
-    if langkah_rumus.strip():
+    if langkah_rumus:
         with st.expander("🤖 Cek AI untuk eksplorasi ini"):
             st.markdown("#### Prompt untuk AI:")
-            st.code(
-                "Bagaimana cara menyusun rumus ABC untuk menyelesaikan ax^2 + bx + c = 0? Jelaskan langkah-langkah pembentukannya.",
-                language="markdown"
-            )
+            st.code("Bagaimana cara menyusun rumus ABC untuk menyelesaikan ax^2 + bx + c = 0? Jelaskan langkah-langkah pembentukannya.")
             st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
+
 
 # ------------------------- Eksplorasi 4 --------------------------
 if langkah_rumus.strip():
-    st.subheader("✍️ Eksplorasi 4: Menyelidiki Peran Diskriminan")
+    st.subheader("✍️ Eksplorasi 4: Menemukan Peran Diskriminan")
 
-    st.markdown(
-        """
-        Perhatikan bagian dalam akar dari rumus ABC:
+    st.markdown("""
+    Setelah kamu memperoleh rumus ABC:
+    $$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
 
-        $$
-        x = \\frac{-b \\pm \\sqrt{\\color{orange}{b^2 - 4ac}}}{2a}
-        $$
+    Perhatikan bagian yang di dalam akar:  
+    $$\\Delta = b^2 - 4ac$$
 
-        Bagian $b^2 - 4ac$ disebut **diskriminan (D)**.
+    ⚡ **Aktivitas Menemukan:**
+    1. Coba masukkan nilai a, b, dan c berikut.
+    2. Amati bagaimana nilai Δ mempengaruhi jumlah dan jenis akar.
 
-        Coba kamu selidiki:
+    > Apa yang terjadi jika Δ negatif? Atau nol? Atau positif?
 
-        > Apa pengaruh nilai D terhadap jumlah akar real dalam persamaan kuadrat?
+    Masukkan nilai a, b, dan c:
+    """)
 
-        Gunakan contoh nilai $a$, $b$, dan $c$ yang kamu tentukan sendiri.
-        """
-    )
+    a4 = st.number_input("Nilai a", key="eks4_a")
+    b4 = st.number_input("Nilai b", key="eks4_b")
+    c4 = st.number_input("Nilai c", key="eks4_c")
 
+    delta = b4**2 - 4*a4*c4
+
+    st.latex(f"\\Delta = {b4}^2 - 4({a4})({c4}) = {delta}")
+
+    if delta > 0:
+        st.markdown("✅ Δ > 0 → Persamaan memiliki **dua akar real berbeda**")
+    elif delta == 0:
+        st.markdown("✅ Δ = 0 → Persamaan memiliki **dua akar real kembar**")
+    else:
+        st.markdown("⚠️ Δ < 0 → Persamaan memiliki **akar imajiner (tidak real)**")
+
+    analisis_diskriminan = st.text_area("🧠 Apa simpulanmu tentang peran diskriminan Δ?", key="eks4_diskriminan")
+
+    
     disk_check = st.text_area("🔍 Refleksi: Apa dugaanmu tentang peran diskriminan (D)?", key="eks4_dugaan")
 
     if disk_check.strip():
