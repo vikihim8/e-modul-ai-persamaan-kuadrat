@@ -84,126 +84,145 @@ if jawaban_identifikasi:
     
 
 # --- 3. Eksplorasi ---
-st.header("🔬 Eksplorasi")
+st.header("🔍 Eksplorasi: Menemukan Metode Penyelesaian Persamaan Kuadrat")
 
-st.markdown("#### ✍️ Eksplorasi 1: Menyelesaikan dengan Pemfaktoran")
+# ------------------------- Eksplorasi 1 --------------------------
+st.subheader("✍️ Eksplorasi 1: Menyelesaikan dengan Pemfaktoran")
 st.latex(r"x^2 - 5x + 6 = 0")
 
-st.markdown(
-    """
-    Untuk menyelesaikan persamaan kuadrat tersebut dengan pemfaktoran, ikuti langkah-langkah eksploratif berikut:
-    
-    **Langkah 1:**  
-    Temukan dua bilangan yang jika dikalikan hasilnya **6** dan jika dijumlahkan hasilnya **-5**.
-    """
-)
+st.markdown("**Langkah 1:** Temukan dua bilangan yang hasil kali = 6 dan jumlah = -5.")
 
-bilangan1 = st.text_input("Masukkan bilangan pertama:", key="bil1")
-bilangan2 = st.text_input("Masukkan bilangan kedua:", key="bil2")
+bil1 = st.text_input("Masukkan bilangan pertama:", key="eks1_bil1")
+bil2 = st.text_input("Masukkan bilangan kedua:", key="eks1_bil2")
 
-if bilangan1 and bilangan2:
+valid_faktor = False
+if bil1 and bil2:
     try:
-        b1 = int(bilangan1)
-        b2 = int(bilangan2)
-        hasil_kali = b1 * b2
-        hasil_jumlah = b1 + b2
-
-        if hasil_kali == 6 and hasil_jumlah == -5:
+        b1 = int(bil1)
+        b2 = int(bil2)
+        if b1 * b2 == 6 and b1 + b2 == -5:
             st.success("✅ Tepat! Pasangan bilangan kamu sesuai.")
+            valid_faktor = True
         else:
-            st.warning(f"⚠️ Periksa kembali. {b1} × {b2} = {hasil_kali}, {b1} + {b2} = {hasil_jumlah}. Seharusnya hasil kali 6 dan jumlah -5.")
+            st.warning("⚠️ Coba periksa lagi. Hasil kali harus 6 dan jumlah -5.")
     except ValueError:
-        st.error("❌ Harap masukkan bilangan bulat.")
+        st.error("❌ Masukkan bilangan bulat.")
 
-st.markdown(
-    """
-    **Langkah 2:**  
-    Gunakan pasangan bilangan tersebut untuk menuliskan bentuk faktornya.
-    
-    _(Misal: jika pasangannya 2 dan 3, maka bentuknya: (x - 2)(x - 3))_
-    """
-)
+if valid_faktor:
+    bentuk_faktor = st.text_input("Tulis bentuk faktornya:", key="eks1_faktor")
+    if bentuk_faktor:
+        akar1 = st.text_input("Akar pertama dari bentuk faktornya:", key="eks1_akar1")
+        akar2 = st.text_input("Akar kedua dari bentuk faktornya:", key="eks1_akar2")
 
-faktorisasi = st.text_input("Tulis bentuk faktornya:", placeholder="Contoh: (x - 2)(x - 3)", key="faktorisasi")
+        if akar1 and akar2:
+            analisis1 = st.text_area("🔍 Apa yang kamu pelajari dari metode faktorisasi ini?", key="analisis1")
 
-if faktorisasi:
-    st.success("✅ Bentuk faktormu telah dicatat. Lanjutkan ke langkah berikutnya.")
+            if analisis1:
+                with st.expander("🤖 Cek AI untuk eksplorasi ini"):
+                    st.markdown("#### Prompt untuk AI (salin dan tempel di Perplexity):")
+                    st.code(
+                        "Bagaimana cara menyelesaikan persamaan kuadrat x² - 5x + 6 = 0 menggunakan metode faktorisasi? Jelaskan langkah-langkahnya.",
+                        language="markdown"
+                    )
+                    st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
-st.markdown(
-    """
-    **Langkah 3:**  
-    Dari bentuk faktornya, tentukan akar-akarnya!
-    """
-)
+# ------------------------- Eksplorasi 2 --------------------------
+if analisis1:
+    st.subheader("✍️ Eksplorasi 2: Menemukan Metode Umum dari Bentuk Akar")
 
-akar1 = st.text_input("Akar pertama:", key="akar1")
-akar2 = st.text_input("Akar kedua:", key="akar2")
+    st.markdown(
+        """
+        Sekarang kamu sudah menemukan akar-akar dari faktorisasi.
 
-if akar1 and akar2:
-    st.success(f"✅ Akar-akar yang kamu masukkan: {akar1} dan {akar2}")
+        Pernahkah kamu bertanya:
+        > "Bagaimana caranya jika bentuk kuadratnya **tidak bisa difaktorkan** dengan mudah?"
 
-# --- Input Langkah Faktorisasi (jika dibutuhkan) ---
-langkah_faktorisasi = st.text_area("🧮 Tuliskan langkah-langkah faktorisasi yang kamu lakukan:", key="langkah_faktorisasi")
+        Mari kita coba kembangkan cara **menggeneralisasi** langkahmu tadi.
+        """
+    )
 
+    st.markdown("Tulis ekspresi kuadrat dalam bentuk: $(x - p)(x - q)$ dan kembangkan bentuknya.")
+    ekspansi = st.text_input("Hasil ekspansi dari (x - p)(x - q):", key="eks2_expand")
 
-# --- Eksplorasi 2: Gunakan Rumus ABC ---
-st.markdown("#### ✍️ Eksplorasi 2: Gunakan Rumus ABC untuk Menyelesaikan Persamaan Kuadrat")
-st.latex(r"x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}")
-st.markdown("Persamaan yang akan diselesaikan: $$x^2 - 5x + 6 = 0$$")
+    if ekspansi:
+        st.markdown("Bandingkan hasil ekspansimu dengan bentuk umum kuadrat: $ax^2 + bx + c$")
+        hubungan = st.text_area("Apa hubungan antara $p + q$, $p \\times q$, dan koefisien $b$, $c$?", key="eks2_hubungan")
 
-# Step 1: Identifikasi nilai a, b, dan c
-st.markdown("**Langkah 1: Tentukan nilai koefisien**")
-a_input = st.text_input("Masukkan nilai $$a$$:", value="1", key="a_input")
-b_input = st.text_input("Masukkan nilai $$b$$:", value="-5", key="b_input")
-c_input = st.text_input("Masukkan nilai $$c$$:", value="6", key="c_input")
+        if hubungan:
+            with st.expander("🤖 Cek AI untuk eksplorasi ini"):
+                st.markdown("#### Prompt untuk AI (salin dan tempel):")
+                st.code(
+                    "Apa hubungan antara akar-akar p dan q dengan koefisien b dan c pada persamaan kuadrat ax^2 + bx + c?",
+                    language="markdown"
+                )
+                st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
-# Step 2: Hitung diskriminan
-st.markdown("**Langkah 2: Hitung nilai diskriminan $$D = b^2 - 4ac$$**")
-st.text_input("Tulis hasil perhitungan diskriminan:", key="diskriminan_input")
+# ------------------------- Eksplorasi 3 --------------------------
+if hubungan:
+    st.subheader("✍️ Eksplorasi 3: Menemukan Rumus Umum dari Akar")
 
-# Step 3: Akar-akar kuadrat
-st.markdown("**Langkah 3: Hitung akar-akar menggunakan rumus ABC**")
-st.markdown("Gunakan nilai $$a$$, $$b$$, dan diskriminan yang sudah kamu temukan.")
-st.text_input("Tulis akar pertama (x₁):", key="akar1_diskriminan")
-st.text_input("Tulis akar kedua (x₂):", key="akar2_diskriminan")
+    st.markdown(
+        """
+        Sekarang kita ingin menyusun **rumus umum** dari akar-akar tersebut.
 
-# Opsional: Umpan balik reflektif
-st.markdown("**🧠 Refleksi:**")
-st.text_area("Apa kelebihan menggunakan rumus ABC dibanding pemfaktoran?", key="refleksi_abc")
+        Misalkan persamaan kuadratnya:
+        $$ax^2 + bx + c = 0$$
 
+        Coba kamu rumuskan:  
+        > Jika tidak bisa difaktorkan, bagaimana kamu bisa menyelesaikan persamaan itu?
 
+        Gunakan ide dari menyelesaikan bentuk kuadrat sederhana.
+        """
+    )
 
-# --- Eksplorasi 3: Hubungan Faktorisasi dan Rumus ABC ---
-st.markdown("#### ✍️ Eksplorasi 3: Hubungan antara Faktorisasi dan Rumus ABC")
+    langkah_rumus = st.text_area("Coba uraikan idemu untuk membuat rumus mencari akar:", key="eks3_ide")
 
-st.markdown(
-    """
-    Setelah kamu menyelesaikan persamaan kuadrat $$x^2 - 5x + 6 = 0$$ dengan **pemfaktoran** dan **rumus ABC**, mari kita cermati lebih dalam:
-    
-    - Hasil dari faktorisasi: akar-akar apa yang kamu temukan?
-    - Hasil dari rumus ABC: apakah akarnya sama?
-    """
-)
+    if langkah_rumus:
+        with st.expander("🤖 Cek AI untuk eksplorasi ini"):
+            st.markdown("#### Prompt untuk AI:")
+            st.code(
+                "Bagaimana cara menyusun rumus ABC untuk menyelesaikan ax^2 + bx + c = 0? Jelaskan langkah-langkah pembentukannya.",
+                language="markdown"
+            )
+            st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
-akar_faktorisasi = st.text_input("Tulis kembali akar-akar dari hasil faktorisasi:", key="akar_faktorisasi")
-akar_abc = st.text_input("Tulis kembali akar-akar dari hasil rumus ABC:", key="akar_abc")
+# ------------------------- Eksplorasi 4 --------------------------
+if langkah_rumus:
+    st.subheader("✍️ Eksplorasi 4: Menyelidiki Peran Diskriminan")
 
-st.markdown("---")
+    st.markdown(
+        """
+        Setelah kamu menyusun rumus ABC untuk menyelesaikan $ax^2 + bx + c = 0$, coba amati lebih dalam bentuk rumusnya:
 
-st.markdown(
-    """
-    Sekarang, perhatikan kembali bentuk faktornya. Misalnya, jika hasil faktorisasi adalah:
-    
-    $$(x - p)(x - q) = 0$$
-    
-    maka akarnya adalah $$x = p$$ dan $$x = q$$
-    
-    Bandingkan dengan hasil dari rumus ABC:
-    """
-)
+        $$
+        x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}
+        $$
 
-st.text_input("Apakah nilai $$p$$ dan $$q$$ bisa kamu dapatkan dari rumus ABC?", key="hubungan_pq")
-st.text_area("Tuliskan kesimpulanmu tentang hubungan antara metode pemfaktoran dan rumus ABC", key="kesimpulan_hubungan")
+        Lihat bagian di dalam akar (radikal), yaitu:  
+        $$
+        D = b^2 - 4ac
+        $$
+
+        Bagian ini disebut **diskriminan**.  
+        Coba kamu selidiki:
+
+        > Apa pengaruh nilai diskriminan terhadap banyaknya akar real dari suatu persamaan kuadrat?
+
+        Isilah berdasarkan contoh-contoh nilai $a$, $b$, dan $c$ yang kamu pilih sendiri.
+        """
+    )
+
+    disk_check = st.text_area("Apa dugaanmu tentang pengaruh nilai diskriminan (D)?", key="eks4_dugaan")
+
+    if disk_check:
+        with st.expander("🤖 Cek AI untuk eksplorasi ini"):
+            st.markdown("#### Prompt untuk AI:")
+            st.code(
+                "Jelaskan bagaimana diskriminan (D = b^2 - 4ac) menentukan banyaknya akar real dalam persamaan kuadrat ax^2 + bx + c = 0.",
+                language="markdown"
+            )
+            st.markdown("[🔗 Buka Perplexity AI dengan Prompt Ini](https://www.perplexity.ai/search?q=Jelaskan+bagaimana+diskriminan+(D+%3D+b%5E2+-+4ac)+menentukan+banyaknya+akar+real+dalam+persamaan+kuadrat+ax%5E2+%2B+bx+%2B+c+%3D+0.)")
+
 
 
 # --- 3. Soal Persamaan Kuadrat ---
@@ -222,6 +241,8 @@ st.markdown(
     Setelah itu, bandingkan hasil yang kamu peroleh dari kedua metode.
     """
 )
+
+
 # --- 4. Pengolahan Data ---
 st.header("📊 Pengolahan Data")
 st.markdown(
