@@ -159,6 +159,7 @@ if (
 from sympy import symbols, expand, latex
 import streamlit as st
 
+if st.session_state.get("analisis3"):
 x = symbols('x')
 
 st.header("✍️ Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum")
