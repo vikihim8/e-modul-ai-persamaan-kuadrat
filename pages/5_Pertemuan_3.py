@@ -128,45 +128,52 @@ if valid_faktor:
                     )
                     st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
-# ------------------------- Eksplorasi 2 --------------------------
+# ------------------------- Eksplorasi 2 (REVISI) --------------------------
 hubungan = ""
+
 if analisis1.strip():
     st.subheader("✍️ Eksplorasi 2: Menemukan Pola Akar dari Faktorisasi")
 
     st.markdown("""
-    Kamu sudah tahu bahwa persamaan kuadrat bisa difaktorkan menjadi:  
-    $$(x - p)(x - q) = 0$$
+    Bayangkan kamu punya dua bilangan, misalnya 2 dan 5.  
+    Sekarang kita akan lakukan eksperimen:
 
-    **Sekarang coba hal berikut:**
-    1. Masukkan dua bilangan berbeda \( p \) dan \( q \) di bawah ini.
-    2. Lihat bentuk persamaan kuadrat hasil dari faktorisasi tersebut.
-    3. Amati hubungan antara koefisien \( a, b, c \) dengan \( p \) dan \( q \).
+    1. **Masukkan dua bilangan p dan q di bawah ini.**
+    2. Sistem akan membentuk faktor \((x - p)(x - q)\).
+    3. Sistem akan mengekspansi faktor itu menjadi bentuk umum kuadrat.
+    4. Amati dan cari **hubungan antara p, q dengan koefisien b dan c**.
 
-    Apa yang bisa kamu simpulkan?
+    Coba beberapa pasangan nilai dan lihat polanya!
     """)
 
-    p = st.number_input("Masukkan nilai p", key="eks2_p")
-    q = st.number_input("Masukkan nilai q", key="eks2_q")
+    p = st.number_input("🔢 Masukkan nilai p", key="eks2_p")
+    q = st.number_input("🔢 Masukkan nilai q", key="eks2_q")
 
     if p != q:
         x = sp.Symbol('x')
-        expanded = sp.expand((x - p) * (x - q))
-        st.latex(f"{sp.latex((x - p)*(x - q))} = {sp.latex(expanded)}")
+        faktor = (x - p)*(x - q)
+        ekspansi = sp.expand(faktor)
 
-        analisis2 = st.text_area("🧠 Apa hubungan antara p, q, dan koefisien a, b, c dalam bentuk umum ax² + bx + c?", key="eks2_analisis")
+        st.markdown("📌 Hasil Faktorisasi dan Ekspansi:")
+        st.latex(f"{sp.latex(faktor)} = {sp.latex(ekspansi)}")
 
-    if ekspansi.strip():
-        st.markdown("Bandingkan hasil ekspansimu dengan bentuk umum kuadrat: $ax^2 + bx + c$")
-        hubungan = st.text_area("🔍 Refleksi: Apa hubungan antara $p + q$, $p \\times q$, dan koefisien $b$, $c$?", key="eks2_hubungan")
+        st.markdown("🧐 Sekarang perhatikan bentuk umum dari ekspansi ini:  \n$ax^2 + bx + c$")
+        st.markdown("📌 Lalu, perhatikan nilai berikut:")
+        st.latex(f"p + q = {p + q}")
+        st.latex(f"p \\times q = {p * q}")
 
-        if hubungan.strip():
-            with st.expander("🤖 Cek AI untuk eksplorasi ini"):
-                st.markdown("#### Prompt untuk AI (salin dan tempel):")
-                st.code(
-                    "Apa hubungan antara akar-akar p dan q dengan koefisien b dan c pada persamaan kuadrat ax^2 + bx + c?",
-                    language="markdown"
-                )
-                st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
+        analisis2 = st.text_area("🧠 Apa hubungan antara nilai b, c dengan p + q dan p × q?", key="eks2_analisis")
+
+        if analisis2.strip():
+            st.markdown("🎯 Refleksikan: Apakah kamu menemukan hubungan konsisten?")
+            hubungan = st.text_area("✍️ Tulis simpulan hubungan antara $p + q$, $p \\times q$ dan $b$, $c$ di sini:", key="eks2_hubungan")
+
+            if hubungan.strip():
+                with st.expander("🤖 Bandingkan dengan AI"):
+                    st.markdown("Prompt untuk AI (bisa kamu salin dan tempel):")
+                    st.code("Apa hubungan antara akar-akar p dan q dengan koefisien b dan c pada persamaan kuadrat ax^2 + bx + c?", language="markdown")
+                    st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
+
 
 # ------------------------- Eksplorasi 3 --------------------------
 langkah_rumus = ""
