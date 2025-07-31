@@ -141,7 +141,10 @@ akar2 = st.text_input("Akar kedua:", key="akar2")
 
 if akar1 and akar2:
     st.success(f"✅ Akar-akar yang kamu masukkan: {akar1} dan {akar2}")
-)", key="faktorisasi")
+
+# --- Input Langkah Faktorisasi (jika dibutuhkan) ---
+langkah_faktorisasi = st.text_area("🧮 Tuliskan langkah-langkah faktorisasi yang kamu lakukan:", key="faktorisasi")
+
 
 # --- Eksplorasi 2: Gunakan Rumus ABC ---
 st.markdown("#### ✍️ Eksplorasi 2: Gunakan Rumus ABC untuk Menyelesaikan Persamaan Kuadrat")
