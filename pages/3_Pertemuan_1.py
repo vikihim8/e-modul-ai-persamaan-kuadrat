@@ -23,6 +23,10 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
+# Identitas
+st.subheader("👤 Identitas")
+nama = st.text_input("Nama Siswa:")
+kelas = st.text_input("Kelas:")
 
 
 # --- Stimulus dan Identifikasi Masalah ---
