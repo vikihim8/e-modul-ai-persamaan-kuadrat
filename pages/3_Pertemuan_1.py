@@ -7,6 +7,11 @@ import datetime
 import sympy as sp
 
 
+
+# --- Judul Halaman ---
+st.title("📘 Pertemuan 1: Menemukan Bentuk Umum dan Grafik Fungsi Kuadrat")
+st.markdown("**Capaian:** Siswa dapat mengidentifikasi bentuk umum persamaan kuadrat dan menganalisis pengaruh koefisien terhadap bentuk grafik.")
+
 # Setup Spreadsheet
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 json_creds = st.secrets["gcp_service_account"]
@@ -19,9 +24,6 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
 
-# --- Judul Halaman ---
-st.title("📘 Pertemuan 1: Menemukan Bentuk Umum dan Grafik Fungsi Kuadrat")
-st.markdown("**Capaian:** Siswa dapat mengidentifikasi bentuk umum persamaan kuadrat dan menganalisis pengaruh koefisien terhadap bentuk grafik.")
 
 # --- Stimulus dan Identifikasi Masalah ---
 st.header("1. Stimulus")
