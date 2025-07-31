@@ -96,7 +96,9 @@ bil1 = st.text_input("Masukkan bilangan pertama:", key="eks1_bil1")
 bil2 = st.text_input("Masukkan bilangan kedua:", key="eks1_bil2")
 
 valid_faktor = False
-if bil1 and bil2:
+analisis1 = ""
+
+if bil1.strip() and bil2.strip():
     try:
         b1 = int(bil1)
         b2 = int(bil2)
@@ -110,14 +112,14 @@ if bil1 and bil2:
 
 if valid_faktor:
     bentuk_faktor = st.text_input("Tulis bentuk faktornya:", key="eks1_faktor")
-    if bentuk_faktor:
+    if bentuk_faktor.strip():
         akar1 = st.text_input("Akar pertama dari bentuk faktornya:", key="eks1_akar1")
         akar2 = st.text_input("Akar kedua dari bentuk faktornya:", key="eks1_akar2")
 
-        if akar1 and akar2:
-            analisis1 = st.text_area("🔍 Apa yang kamu pelajari dari metode faktorisasi ini?", key="analisis1")
+        if akar1.strip() and akar2.strip():
+            analisis1 = st.text_area("🔍 Refleksi: Apa yang kamu pelajari dari metode faktorisasi ini?", key="analisis1")
 
-            if analisis1:
+            if analisis1.strip():
                 with st.expander("🤖 Cek AI untuk eksplorasi ini"):
                     st.markdown("#### Prompt untuk AI (salin dan tempel di Perplexity):")
                     st.code(
@@ -127,8 +129,9 @@ if valid_faktor:
                     st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
 # ------------------------- Eksplorasi 2 --------------------------
-if analisis1:
-    st.subheader("✍️ Eksplorasi 2: Menemukan Metode Umum dari Bentuk Akar")
+hubungan = ""
+if analisis1.strip():
+    st.subheader("✍️ Eksplorasi 2: Menemukan Pola dari Bentuk Umum")
 
     st.markdown(
         """
@@ -137,18 +140,18 @@ if analisis1:
         Pernahkah kamu bertanya:
         > "Bagaimana caranya jika bentuk kuadratnya **tidak bisa difaktorkan** dengan mudah?"
 
-        Mari kita coba kembangkan cara **menggeneralisasi** langkahmu tadi.
+        Mari kita coba kembangkan pola dari bentuk akar.
         """
     )
 
     st.markdown("Tulis ekspresi kuadrat dalam bentuk: $(x - p)(x - q)$ dan kembangkan bentuknya.")
     ekspansi = st.text_input("Hasil ekspansi dari (x - p)(x - q):", key="eks2_expand")
 
-    if ekspansi:
+    if ekspansi.strip():
         st.markdown("Bandingkan hasil ekspansimu dengan bentuk umum kuadrat: $ax^2 + bx + c$")
-        hubungan = st.text_area("Apa hubungan antara $p + q$, $p \\times q$, dan koefisien $b$, $c$?", key="eks2_hubungan")
+        hubungan = st.text_area("🔍 Refleksi: Apa hubungan antara $p + q$, $p \\times q$, dan koefisien $b$, $c$?", key="eks2_hubungan")
 
-        if hubungan:
+        if hubungan.strip():
             with st.expander("🤖 Cek AI untuk eksplorasi ini"):
                 st.markdown("#### Prompt untuk AI (salin dan tempel):")
                 st.code(
@@ -158,26 +161,24 @@ if analisis1:
                 st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
 # ------------------------- Eksplorasi 3 --------------------------
-if hubungan:
+langkah_rumus = ""
+if hubungan.strip():
     st.subheader("✍️ Eksplorasi 3: Menemukan Rumus Umum dari Akar")
 
     st.markdown(
         """
-        Sekarang kita ingin menyusun **rumus umum** dari akar-akar tersebut.
-
         Misalkan persamaan kuadratnya:
         $$ax^2 + bx + c = 0$$
 
-        Coba kamu rumuskan:  
-        > Jika tidak bisa difaktorkan, bagaimana kamu bisa menyelesaikan persamaan itu?
+        Jika tidak bisa difaktorkan, bagaimana kamu bisa menyelesaikan persamaan itu?
 
         Gunakan ide dari menyelesaikan bentuk kuadrat sederhana.
         """
     )
 
-    langkah_rumus = st.text_area("Coba uraikan idemu untuk membuat rumus mencari akar:", key="eks3_ide")
+    langkah_rumus = st.text_area("🔍 Refleksi: Coba uraikan idemu untuk menyusun rumus mencari akar (tanpa faktorisasi):", key="eks3_ide")
 
-    if langkah_rumus:
+    if langkah_rumus.strip():
         with st.expander("🤖 Cek AI untuk eksplorasi ini"):
             st.markdown("#### Prompt untuk AI:")
             st.code(
@@ -187,41 +188,37 @@ if hubungan:
             st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
 
 # ------------------------- Eksplorasi 4 --------------------------
-if langkah_rumus:
+if langkah_rumus.strip():
     st.subheader("✍️ Eksplorasi 4: Menyelidiki Peran Diskriminan")
 
     st.markdown(
         """
-        Setelah kamu menyusun rumus ABC untuk menyelesaikan $ax^2 + bx + c = 0$, coba amati lebih dalam bentuk rumusnya:
+        Perhatikan bagian dalam akar dari rumus ABC:
 
         $$
-        x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}
+        x = \\frac{-b \\pm \\sqrt{\\color{orange}{b^2 - 4ac}}}{2a}
         $$
 
-        Lihat bagian di dalam akar (radikal), yaitu:  
-        $$
-        D = b^2 - 4ac
-        $$
+        Bagian $b^2 - 4ac$ disebut **diskriminan (D)**.
 
-        Bagian ini disebut **diskriminan**.  
         Coba kamu selidiki:
 
-        > Apa pengaruh nilai diskriminan terhadap banyaknya akar real dari suatu persamaan kuadrat?
+        > Apa pengaruh nilai D terhadap jumlah akar real dalam persamaan kuadrat?
 
-        Isilah berdasarkan contoh-contoh nilai $a$, $b$, dan $c$ yang kamu pilih sendiri.
+        Gunakan contoh nilai $a$, $b$, dan $c$ yang kamu tentukan sendiri.
         """
     )
 
-    disk_check = st.text_area("Apa dugaanmu tentang pengaruh nilai diskriminan (D)?", key="eks4_dugaan")
+    disk_check = st.text_area("🔍 Refleksi: Apa dugaanmu tentang peran diskriminan (D)?", key="eks4_dugaan")
 
-    if disk_check:
+    if disk_check.strip():
         with st.expander("🤖 Cek AI untuk eksplorasi ini"):
             st.markdown("#### Prompt untuk AI:")
             st.code(
                 "Jelaskan bagaimana diskriminan (D = b^2 - 4ac) menentukan banyaknya akar real dalam persamaan kuadrat ax^2 + bx + c = 0.",
                 language="markdown"
             )
-            st.markdown("[🔗 Buka Perplexity AI dengan Prompt Ini](https://www.perplexity.ai/search?q=Jelaskan+bagaimana+diskriminan+(D+%3D+b%5E2+-+4ac)+menentukan+banyaknya+akar+real+dalam+persamaan+kuadrat+ax%5E2+%2B+bx+%2B+c+%3D+0.)")
+            st.markdown("[🔗 Buka Perplexity AI dengan Prompt Ini](https://www.perplexity.ai)")
 
 
 
