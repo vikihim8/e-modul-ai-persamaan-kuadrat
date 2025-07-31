@@ -38,8 +38,7 @@ st.success("✅ Jawabanmu telah dicatat")
 
 st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
-
-
+st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
 
 
 st.title("3. Pengumpulan Data")
