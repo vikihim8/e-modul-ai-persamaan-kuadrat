@@ -7,7 +7,7 @@ import datetime
 import sympy as sp
 
 
-# --- Setup Spreadsheet ---
+# Setup Spreadsheet
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 json_creds = st.secrets["gcp_service_account"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(json_creds, scope)
