@@ -522,6 +522,17 @@ if kuis:
         st.error("❌ Jawaban kurang tepat.")
         cek_kuis = "Salah"
 
+# Pastikan semua variabel memiliki nilai default jika belum terisi
+jawaban1 = jawaban1 if 'jawaban1' in locals() else ""
+jawaban2 = jawaban2 if 'jawaban2' in locals() else ""
+analisis1 = analisis1 if 'analisis1' in locals() else ""
+analisis2 = analisis2 if 'analisis2' in locals() else ""
+jawaban_siswa = jawaban_siswa if 'jawaban_siswa' in locals() else ""
+verifikasi = verifikasi if 'verifikasi' in locals() else ""
+kesimpulan = kesimpulan if 'kesimpulan' in locals() else ""
+cek_kuis = cek_kuis if 'cek_kuis' in locals() else ""
+refleksi = refleksi if 'refleksi' in locals() else ""
+
 # --- Kirim Semua Data ke Spreadsheet ---
 if st.button("📤 Kirim Semua Jawaban"):
     if nama and kelas:
@@ -530,6 +541,7 @@ if st.button("📤 Kirim Semua Jawaban"):
         st.success("✅ Semua jawaban berhasil dikirim.")
     else:
         st.warning("❗ Nama dan Kelas wajib diisi di sidebar.")
+
 
 # --- Navigasi Halaman ---
 st.markdown("---")
