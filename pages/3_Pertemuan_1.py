@@ -422,8 +422,6 @@ if st.session_state.get("analisis8"):
 kesimpulan_eskplorasi = st.text_area("✍️ Masukkan kesimpulan eksplorasimu di sini:"
         """)
 
-if kesimpulan_eksplorasi:
-    st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
 
 
 
