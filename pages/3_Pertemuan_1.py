@@ -498,7 +498,8 @@ if kesimpulan.strip() != "":
         st.markdown("""
         🔗 Klik untuk melihat jawaban versi AI di [Perplexity](https://www.perplexity.ai)
 
-        💡 *Sebelumnya, salin dan tempelkan prompt ini ke AI:*
+        💡 Sebelumnya, salin dan tempelkan prompt ini ke AI:
+        
         **Prompt:**
         Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
         """)
