@@ -24,7 +24,7 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
 # Identitas
-st.subheader("👤 Identitas")
+st.header("👤 Identitas")
 nama = st.text_input("Nama Siswa:")
 kelas = st.text_input("Kelas:")
 
@@ -32,22 +32,22 @@ kelas = st.text_input("Kelas:")
 # --- Stimulus dan Identifikasi Masalah ---
 st.header("1. Stimulus")
 st.write("Bayangkan kamu sedang menonton lintasan bola dilempar ke udara. Bentuknya seperti parabola. Mari kita pelajari grafik fungsi kuadrat dari fenomena tersebut.")
-stimulus = st.text_input("📝 Apa yang kamu pikirkan tentang bentuk lintasan parabola ini?", key="stimulus")
+stimulus = st.text_input("📝 Apa yang kamu pikirkan tentang bentuk lintasan parabola ini?", placeholder="Tulis jawabanmu di sini...", key="stimulus")
 if stimulus:
     st.success("✅ Jawabanmu telah dicatat")
 
 
 st.header("2. Identifikasi Masalah")
-masalah = st.text_input("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
+masalah = st.text_input("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", placeholder="Tulis jawabanmu di sini...", key="masalah")
 if masalah:
     st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
 
 
-st.title("3. Pengumpulan Data")
+st.header("3. Pengumpulan Data")
 st.write(
-    "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c = 0$$ "
+    "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c$$,"
     "dengan $$a$$ adalah koefisien variabel $$x^2$$, $$b$$ adalah koefisien variabel $$x$$, "
-    "dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut."
+    "dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut:"
 )
 
 # Eksplorasi 1
@@ -76,9 +76,7 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         st.pyplot(fig)
 
         analisis1 = st.text_area(
-            "Tuliskan analisismu berdasarkan grafik di atas.",
-            placeholder="Misalnya: grafik membuka ke atas saat a positif.",
-            key="analisis1"
+            "Tuliskan analisismu berdasarkan grafik di atas", key="analisis1"
         )
 
         if analisis1.strip():
@@ -404,7 +402,7 @@ x² + 4x + 5
         refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
 
 with st.expander("Kesimpulan Eksplorasi"):
-
+if st.session_state.get("refleksi8"):
     st.markdown(
         """
         ✅ **Petunjuk:**
@@ -428,7 +426,7 @@ with st.expander("Kesimpulan Eksplorasi"):
 
 
 # --- Pengolahan Data (Soal Latihan) ---
-st.title("4. Pengolahan Data")
+st.header("4. Pengolahan Data")
 st.write("""
 Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
 $$h(t) = -5t^2 + 20t + 1$$
@@ -447,7 +445,7 @@ if st.button("Kirim Pengolahan Data"):
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
-st.title("5. Verifikasi")
+st.header("5. Verifikasi")
 st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
     
 st.markdown("**✅ Jawaban AI untuk soal ini:**")
@@ -485,7 +483,7 @@ if verifikasi:
 
 
 # --- 7. Kesimpulan ---
-st.title("6. Penarikan Kesimpulan")
+st.header("6. Penarikan Kesimpulan")
 
 # Input kesimpulan dari pengguna
 kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
