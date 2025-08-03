@@ -45,9 +45,7 @@ if masalah:
 
 st.header("3. Pengumpulan Data")
 st.write(
-    "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c$$,"
-    "dengan $$a$$ adalah koefisien variabel $$x^2$$, $$b$$ adalah koefisien variabel $$x$$, "
-    "dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut:"
+    "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c$$, dengan $$a$$ adalah koefisien variabel $$x^2$$, $$b$$ adalah koefisien variabel $$x$$, dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut:"
 )
 
 # Eksplorasi 1
@@ -103,7 +101,7 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan
 
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
-if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
+if st.session_state.get("analisis1"):
     with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai $$b$$ terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika **nilai $$b$$ diubah**? Cobalah masukkan berbagai nilai $$b$$ dan amati pergeseran grafik"):
         
         b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
@@ -420,12 +418,12 @@ if st.session_state.get("analisis8"):
         
         - Bentuk umum persamaan kuadrat beserta syaratnya.
         - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien ($$a$$, $$b$$, dan $$c$$).
-        kesimpulan_eskplorasi = st.text_area(
-        "✍️ Masukkan kesimpulan eksplorasimu di sini:"
+
+kesimpulan_eskplorasi = st.text_area("✍️ Masukkan kesimpulan eksplorasimu di sini:"
         """)
 
-        if kesimpulan_eksplorasi:
-            st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
+if kesimpulan_eksplorasi:
+    st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
 
 
 
