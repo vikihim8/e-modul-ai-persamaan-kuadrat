@@ -420,7 +420,7 @@ if st.session_state.get("analisis8"):
         - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien ($$a$$, $$b$$, dan $$c$$).
         """)
         
-kesimpulan_eskplorasi = st.text_area("✍️ Masukkan kesimpulan eksplorasimu di sini:", key ="kesimpulan_eksplorasi")
+                st.text_area("✍️ Masukkan kesimpulan eksplorasimu di sini:", key ="kesimpulan_eksplorasi")
         
 
 
