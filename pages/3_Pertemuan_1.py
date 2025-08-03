@@ -420,11 +420,11 @@ if st.session_state.get("analisis8"):
         
         - Bentuk umum persamaan kuadrat beserta syaratnya.
         - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien ($$a$$, $$b$$, dan $$c$$).
-            kesimpulan = st.text_area(
+        kesimpulan_eskplorasi = st.text_area(
         "✍️ Masukkan kesimpulan eksplorasimu di sini:"
         """)
 
-    if kesimpulan:
+    if kesimpulan_eksplorasi:
         st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
 
 
