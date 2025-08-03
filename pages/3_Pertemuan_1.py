@@ -33,12 +33,14 @@ kelas = st.text_input("Kelas:")
 st.header("1. Stimulus")
 st.write("Bayangkan kamu sedang menonton lintasan bola dilempar ke udara. Bentuknya seperti parabola. Mari kita pelajari grafik fungsi kuadrat dari fenomena tersebut.")
 stimulus = st.text_area("📝 Apa yang kamu pikirkan tentang bentuk lintasan parabola ini?", key="stimulus")
-st.success("✅ Jawabanmu telah dicatat")
+if stimulus:
+    st.success("✅ Jawabanmu telah dicatat")
 
 
 st.header("2. Identifikasi Masalah")
 masalah = st.text_area("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", key="masalah")
-st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
+if masalah:
+    st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
 
 
 st.title("3. Pengumpulan Data")
