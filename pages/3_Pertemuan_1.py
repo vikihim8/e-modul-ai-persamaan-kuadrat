@@ -51,7 +51,7 @@ st.write(
 )
 
 # Eksplorasi 1
-with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika a = 0? Apa yang terjadi jika a ≠ 0?"):
+with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?"):
     a1 = st.number_input("Masukkan nilai $a$ (koefisien $x^2$):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien $x$):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
@@ -104,7 +104,7 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
-    with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai b terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika nilai b diubah? Cobalah masukkan berbagai nilai b dan amati pergeseran grafik"):
+    with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai $$b$$ terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika **nilai $$b$$ diubah**? Cobalah masukkan berbagai nilai $$b$$ dan amati pergeseran grafik"):
         
         b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
 
@@ -126,9 +126,7 @@ if "analisis1" in st.session_state and st.session_state.analisis1.strip() != "":
             st.pyplot(fig)
 
             analisis2 = st.text_area(
-                "Tuliskan analisismu berdasarkan grafik di atas.",
-                placeholder="Misalnya: nilai b menggeser grafik ke kiri atau kanan.",
-                key="analisis2"
+                "Tuliskan analisismu berdasarkan grafik di atas", key="analisis2"
             )
 
             if analisis2.strip() != "":
@@ -143,27 +141,27 @@ Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
 
 x² + 4x + 1  
-x² + 7x + 1  
+x² - 7x + 1  
 x² + 0x + 1
 
-📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai $$b$$ berbeda.
+📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai $$b$$ berbeda
 
 📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai $$b$$ berubah?
 """
                     )
-                    st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi2", height=80)
+                    st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
 
 
 
 # Eksplorasi 3: Nilai b negatif
 if st.session_state.get("analisis2"):
-    with st.expander("💡Eksplorasi 3: Apa pengaruh nilai b negatif terhadap arah dan letak grafik fungsi kuadrat?"):
+    with st.expander("💡Eksplorasi 3: Apa pengaruh nilai **$$b$$ negatif** terhadap arah dan letak grafik fungsi kuadrat?"):
         import matplotlib.pyplot as plt
 
         b_negatif = st.number_input("Masukkan nilai $b$ (negatif):", value=-1, step=1, key="b3")
-        a3 = st.number_input("Masukkan nilai a:", key="a3", value=1)
-        c3 = st.number_input("Masukkan nilai c:", key="c3", value=0)
+        a3 = st.number_input("Masukkan nilai $$a$$:", key="a3", value=1)
+        c3 = st.number_input("Masukkan nilai $$c$$:", key="c3", value=0)
 
         # Buat grafik fungsi kuadrat
         x_vals3 = [x for x in range(-10, 11)]
@@ -180,7 +178,7 @@ if st.session_state.get("analisis2"):
         ax3.legend()
         st.pyplot(fig3)
 
-        analisis3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas.", key="analisis3")
+        analisis3 = st.text_area("Tuliskan analisismu berdasarkan grafik di atas", key="analisis3")
 
         if analisis3.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 3"):
@@ -191,26 +189,28 @@ if st.session_state.get("analisis2"):
 Jelaskan bagaimana pengaruh nilai b yang negatif terhadap letak sumbu simetri dan posisi grafik fungsi kuadrat y = ax² + bx + c. Sertakan penjelasan visual jika memungkinkan. Apa yang terjadi saat b bernilai negatif dibandingkan b positif?
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan beberapa fungsi berikut:
+
 x² + 4x + 1  
 x² - 4x + 1  
-x² - 2x + 1
 
-📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
+📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai $$b$$ dalam hal ini?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai $$b$$ yang negatif terhadap grafik fungsi kuadrat?
+
 """)
-                st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai b yang negatif terhadap grafik fungsi kuadrat?")
-                st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi3", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
 
 
 
 # Eksplorasi 4: Nilai b positif
 if st.session_state.get("analisis3"):
-    with st.expander("💡Eksplorasi 4: Apa pengaruh nilai b positif terhadap arah dan letak grafik fungsi kuadrat?"):
-        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai b bernilai **positif**.")
+    with st.expander("💡Eksplorasi 4: Apa pengaruh nilai **$$b$$ positif** terhadap arah dan letak grafik fungsi kuadrat?"):
+        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai $$b$$ bernilai positif")
 
         b_positif = st.number_input("Masukkan nilai $b$ (positif):", value=1, step=1, key="b4")
-        a4 = st.number_input("Masukkan nilai a:", key="a4", value=1)
-        c4 = st.number_input("Masukkan nilai c:", key="c4", value=0)
+        a4 = st.number_input("Masukkan nilai $$a$$:", key="a4", value=1)
+        c4 = st.number_input("Masukkan nilai $$c$$:", key="c4", value=0)
         x_vals4 = sp.Symbol('x')
         y_vals4 = a4 * x_vals4**2 + b_positif * x_vals4 + c4
         st.write("Persamaan y =", y_vals4)
@@ -232,22 +232,24 @@ Jelaskan bagaimana pengaruh nilai b yang positif terhadap letak sumbu simetri da
 ---
 
 ✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan beberapa fungsi berikut:
-x² - 4x + 1  
-x² + 4x + 1
 
-📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai b dalam hal ini?
+x² - 5x + 1  
+x² + 5x + 1
+
+📊 Amati pergeseran grafiknya. Fokus pada letak titik puncak (vertex) dan arah grafik. Bagaimana peran nilai $$b$$ dalam hal ini?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai $$b$$ yang positif terhadap grafik fungsi kuadrat?
 """)
 
-        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai b yang positif terhadap grafik fungsi kuadrat?")
-        refleksi = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi4", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
 
             
 
 # Eksplorasi 5: Nilai c negatif
 if st.session_state.get("analisis4"):
-    with st.expander("💡Eksplorasi 5: Apa pengaruh nilai c negatif terhadap grafik fungsi kuadrat?"):
-        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **negatif**")
+    with st.expander("💡Eksplorasi 5: Apa pengaruh nilai **$$c$$ negatif** terhadap grafik fungsi kuadrat?"):
+        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai $$c$$ bernilai negatif")
 
         c5 = st.number_input("Masukkan nilai $$c$$ (negatif):", value=-1, step=1, key="c5")
         a5 = st.number_input("Masukkan nilai $$a$$ :", value=1, step=1, key="a5")
@@ -274,21 +276,22 @@ Jelaskan apa pengaruh nilai c negatif terhadap grafik fungsi kuadrat y = ax^2 + 
 x² + 4x + 3  
 x² + 4x - 3  
 
-📊 Amati pergeseran grafiknya. Fokus pada **pergeseran vertikal** dan **letak titik potong terhadap sumbu y** dan bentuk grafik. Bagaimana peran nilai **c** dalam hal ini?
+📊 Amati pergeseran grafiknya. Fokus pada pergeseran vertikal dan letak titik potong terhadap sumbu $$y$$ dan bentuk grafik. Bagaimana peran nilai $$c$$ dalam hal ini?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai $$c$$ yang negatif terhadap grafik fungsi kuadrat?
 """)
 
-        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai **c yang negatif** terhadap grafik fungsi kuadrat?")
-        refleksi = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi5", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 5 di sini...", key="refleksi_eksplorasi5", height=80)
 
 
 
 # Eksplorasi 6: Nilai c positif
 if st.session_state.get("analisis5"):
-    with st.expander("💡Eksplorasi 6: Apa pengaruh nilai c positif terhadap grafik fungsi kuadrat?"):
-        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai c bernilai **positif**")
+    with st.expander("💡Eksplorasi 6: Apa pengaruh nilai **$$c$$ positif** terhadap grafik fungsi kuadrat?"):
+        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai $$c$$ bernilai positif")
 
-        a6 = st.number_input("Masukkan nilai a:", key="a6", value=1)
-        b6 = st.number_input("Masukkan nilai b:", key="b6", value=0)
+        a6 = st.number_input("Masukkan nilai $$a$$:", key="a6", value=1)
+        b6 = st.number_input("Masukkan nilai $$b$$:", key="b6", value=0)
         c6 = st.number_input("Masukkan nilai $$c$$ (positif):", key="c6", value=1, step=1)
 
         import numpy as np
@@ -313,19 +316,20 @@ Jelaskan apa pengaruh nilai c positif terhadap grafik fungsi kuadrat y = ax^2 + 
 x² + 4x - 1  
 x² + 4x + 1  
 
-📊 Amati pergeseran grafiknya. Fokus pada **pergeseran vertikal** dan **letak titik potong terhadap sumbu y** dan bentuk grafik. Bagaimana peran nilai **c** dalam hal ini?
+📊 Amati pergeseran grafiknya. Fokus pada pergeseran vertikal dan letak titik potong terhadap sumbu $$y$$ dan bentuk grafik. Bagaimana peran nilai $$c$$ dalam hal ini?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai $$c$$ yang positif terhadap grafik fungsi kuadrat?
 """)
 
-        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang pengaruh nilai **c yang positif** terhadap grafik fungsi kuadrat?")
-        refleksi6 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi6", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 6 di sini...", key="refleksi_eksplorasi6", height=80)
 
         
 
 
 # Eksplorasi 7: Semua koefisien negatif
 if st.session_state.get("analisis6"):
-    with st.expander("💡Eksplorasi 7: Apa pengaruh nilai semua koefisien negatif terhadap grafik fungsi kuadrat?"):
-        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien **negatif**")
+    with st.expander("💡Eksplorasi 7: Apa pengaruh nilai **semua koefisien negatif** terhadap grafik fungsi kuadrat?"):
+        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien negatif")
 
         a7 = st.number_input("Masukkan nilai $$a$$ (harus negatif):", value=-1, step=1, key="a7")
         b7 = st.number_input("Masukkan nilai $$b$$ (harus negatif):", value=-1, step=1, key="b7")
@@ -354,19 +358,20 @@ Apa yang terjadi pada grafik fungsi kuadrat y = ax² + bx + c jika semua koefisi
 -x² - 2x - 3  
 -2x² - 4x - 1  
 
-📊 Perhatikan arah bukaannya (menghadap ke bawah), bentuk grafiknya (melebar atau menyempit), dan posisi titik potong terhadap sumbu y. Apa pola yang kamu temukan jika semua koefisien negatif?
+📊 Perhatikan arah bukaannya (menghadap ke bawah), bentuk grafiknya (melebar atau menyempit), dan posisi titik potong terhadap sumbu $$y$$. Apa pola yang kamu temukan jika semua koefisien negatif?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat dengan semua koefisien negatif?
 """)
 
-        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat dengan semua koefisien negatif?")
-        refleksi7 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi7", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 7 di sini...", key="refleksi_eksplorasi7", height=80)
 
 
 
 
 # Eksplorasi 8: Semua koefisien positif
 if st.session_state.get("analisis7"):
-    with st.expander("💡Eksplorasi 8: Apa pengaruh nilai semua koefisien positif terhadap grafik fungsi kuadrat?"):
-        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien **positif**")
+    with st.expander("💡Eksplorasi 8: Apa pengaruh nilai **semua koefisien positif** terhadap grafik fungsi kuadrat?"):
+        st.markdown("Mari kita amati bagaimana grafik berubah ketika nilai semua koefisien positif")
 
         a8 = st.number_input("Masukkan nilai $$a$$ (harus positif):", value=1, step=1, key="a8")
         b8 = st.number_input("Masukkan nilai $$b$$ (harus positif):", value=1, step=1, key="b8")
@@ -395,11 +400,13 @@ Jelaskan bagaimana grafik fungsi kuadrat y = ax² + bx + c berubah jika semua ko
 x² + 2x + 3  
 x² + 4x + 5  
 
-📊 Perhatikan arah bukaannya (menghadap ke atas), posisi minimum (titik puncak), dan apakah grafik menyentuh atau tidak menyentuh sumbu x. Apa pola yang bisa kamu simpulkan?
+📊 Perhatikan arah bukaannya (menghadap ke atas), posisi minimum (titik puncak), dan apakah grafik menyentuh atau tidak menyentuh sumbu $$x$$. Apa pola yang bisa kamu simpulkan?
+
+📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?
 """)
 
-        st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
-        refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 8 di sini...", key="refleksi_eksplorasi8", height=80)
+
 
 if st.session_state.get("analisis8"):
     with st.expander("Kesimpulan Eksplorasi"):
@@ -407,18 +414,15 @@ if st.session_state.get("analisis8"):
         """
         ✅ **Petunjuk:**
         
-        Silakan cek kembali hasil analisismu dan jawaban dari AI yang telah kamu pelajari dari eksplorasi sebelumnya.
+        Silakan cek kembali hasil analisismu dan jawaban dari AI yang telah kamu pelajari dari 8 eksplorasi sebelumnya
         
         Tuliskan **kesimpulan eksplorasi** ke dalam kotak di bawah ini. Pastikan kesimpulanmu mencakup:
         
         - Bentuk umum persamaan kuadrat beserta syaratnya.
-        - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien (a, b, dan c).
-        """
-    )
-
-    kesimpulan = st.text_area(
-        "✍️ Masukkan kesimpulan eksplorasimu di sini:",
-    )
+        - Karakteristik grafik fungsi kuadrat berdasarkan nilai masing-masing koefisien ($$a$$, $$b$$, dan $$c$$).
+            kesimpulan = st.text_area(
+        "✍️ Masukkan kesimpulan eksplorasimu di sini:"
+        """)
 
     if kesimpulan:
         st.success("✅ Terima kasih! Kesimpulanmu telah dicatat.")
@@ -429,7 +433,7 @@ if st.session_state.get("analisis8"):
 st.header("4. Pengolahan Data")
 st.write("""
 Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
-$$h(t) = -5t^2 + 20t + 1$$
+$$h(x) = -5x^2 + 20x + 1$$
 Tentukan:
 1. Waktu ketika bola mencapai tinggi maksimum
 2. Tinggi maksimum bola
@@ -451,28 +455,29 @@ st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
 st.markdown("**✅ Jawaban AI untuk soal ini:**")
 with st.expander("📘 Tampilkan Jawaban dari AI"):
     st.write("""
-    Fungsi kuadratnya: $$h(t) = -5t² + 20t + 1$$  
-    Titik puncaknya: $$t = {-b}/{2a} = {-20}/{2(-5)} = {-20}/{-10} = 2$$ detik  
+    Fungsi kuadratnya: $$h(x) = -5x² + 20x + 1$$  
+    Titik puncaknya: $$x = {-b}/{2a} = {-20}/{2(-5)} = {-20}/{-10} = 2$$ detik  
     Tinggi maksimum: $$h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21$$ meter
     """)
 
 st.markdown("**🔎 Cek ulang keakuratan dengan AI eksternal:**")
 st.markdown("""
-> 📋 *Salin dan tempelkan prompt ini ke [🔗Perplexity](https://www.perplexity.ai):*  
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapat penjelasan lengkap dan verifikasi terhadap jawabanmu:**
 
-Diketahui fungsi kuadrat h(t) = -5t² + 20t + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
+**Prompt:**
+Diketahui fungsi kuadrat h(x) = -5x² + 20x + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
     """)
 
 st.markdown("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
 st.markdown("""
-- [🌐 Buka Desmos Graphing Calculator](https://www.desmos.com/calculator)
-- Masukkan fungsi: `-5t^2 + 20t + 1`
+🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)
+- Masukkan fungsi: `-5x² + 20x + 1`
 - Perhatikan:  
     • Apakah grafik berbentuk parabola terbuka ke bawah?  
     • Apakah titik puncaknya sesuai?  
-    • Apakah titik potong sumbu y = 1?
+    • Apakah titik potong sumbu $$y = 1$$?
 
-Cek semua ini untuk memverifikasi pemahamanmu.
+Cek semua ini untuk memverifikasi pemahamanmu
 """)
 
 verifikasi = st.radio("Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?", ["Ya", "Tidak", "Sebagian"])
@@ -490,17 +495,16 @@ kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadra
 
 # Tampilkan notifikasi jika kesimpulan sudah diisi
 if kesimpulan.strip() != "":
-    st.success("Kesimpulan kamu telah dicatat. Selesai.")
+    st.success("✅ Kesimpulan kamu telah dicatat. Selesai.")
 
     # Baru tampilkan opsi bandingkan dengan AI jika sudah mengisi kesimpulan
     with st.expander("📖 Bandingkan dengan Kesimpulan Versi AI"):
         st.markdown("""
-        🔗 [Klik untuk melihat jawaban versi AI di Perplexity](https://www.perplexity.ai/search/kesimpulan-bentuk-umum-fung-3bCVmPvZTa2mjJdTMEPPrg)
+        🔗 Klik untuk melihat jawaban versi AI di [Perplexity](https://www.perplexity.ai)
 
         💡 *Sebelumnya, salin dan tempelkan prompt ini ke AI:*
-        ```
+        **Prompt:**
         Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
-        ```
         """)
 
 
