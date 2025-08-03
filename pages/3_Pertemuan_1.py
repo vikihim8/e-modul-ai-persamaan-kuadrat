@@ -401,9 +401,9 @@ x² + 4x + 5
         st.write("📝 **Refleksi:** Setelah percobaan dan verifikasi AI, apa kesimpulanmu tentang grafik fungsi kuadrat jika semua koefisien positif?")
         refleksi8 = st.text_area("Tulis jawabanmu di sini...", key="refleksi_eksplorasi8", height=80)
 
-with st.expander("Kesimpulan Eksplorasi"):
 if st.session_state.get("analisis8"):
-   st.markdown(
+    with st.expander("Kesimpulan Eksplorasi"):
+        st.markdown(
         """
         ✅ **Petunjuk:**
         
