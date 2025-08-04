@@ -122,127 +122,127 @@ Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan be
 
 # Eksplorasi 2
 if st.session_state.get("jawaban1"):
-with st.expander("💡Eksplorasi 2: Bagaimana jika persamaan kuadrat tidak bisa difaktorkan?"):
-    st.markdown("""
-    Sekarang coba selesaikan persamaan kuadrat ini:
-
-    ### Soal:
-    $$x^2 - 4x + 2 = 0$$
-
-    Apakah kamu bisa menyelesaikannya dengan metode yang sama seperti tadi?
-    """)
-
-    jawaban2 = st.text_area("Ceritakan bagaimana kamu mencoba menyelesaikan soal tersebut", key="jawaban_eksplorasi2")
-
-    if jawaban2.strip():
-        with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
-            st.info("""
-📌 **Prompt ke AI:**
-Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
-
-✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
-
-📝 **Refleksi:** Apa kelemahan metode faktorisasi? Kapan kita butuh cara lain selain faktorisasi?
-            """)
-            st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
+    with st.expander("💡Eksplorasi 2: Bagaimana jika persamaan kuadrat tidak bisa difaktorkan?"):
+        st.markdown("""
+        Sekarang coba selesaikan persamaan kuadrat ini:
+    
+        ### Soal:
+        $$x^2 - 4x + 2 = 0$$
+    
+        Apakah kamu bisa menyelesaikannya dengan metode yang sama seperti tadi?
+        """)
+    
+        jawaban2 = st.text_area("Ceritakan bagaimana kamu mencoba menyelesaikan soal tersebut", key="jawaban_eksplorasi2")
+    
+        if jawaban2.strip():
+            with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
+                st.info("""
+    📌 **Prompt ke AI:**
+    Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
+    
+    ✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
+    
+    📝 **Refleksi:** Apa kelemahan metode faktorisasi? Kapan kita butuh cara lain selain faktorisasi?
+                """)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
 # Eksplorasi 3
 if st.session_state.get("jawaban2"):
-with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai a, b, dan c diubah?"):
-    st.markdown("""
-    Coba masukkan berbagai nilai \(a\), \(b\), dan \(c\) lalu perhatikan bentuk akar-akarnya.
-    """)
-
-    a3 = st.number_input("Masukkan nilai a:", value=1, step=1, key="a3")
-    b3 = st.number_input("Masukkan nilai b:", value=0, step=1, key="b3")
-    c3 = st.number_input("Masukkan nilai c:", value=0, step=1, key="c3")
-
-    x = sp.symbols('x')
-    akar_eksplorasi = sp.solve(a3 * x**2 + b3 * x + c3, x)
-    akar_str = ", ".join([sp.latex(akar) for akar in akar_eksplorasi])
-
-    st.latex(f"Akar-akarnya: {akar_str}")
-
-    pola = st.text_area("Apa yang kamu perhatikan dari akar-akar ini ketika nilai a, b, dan c berubah?", key="analisis_pola_abc")
-
-    if pola.strip():
-        with st.expander("🔍Cek Pola dengan AI"):
-            st.info("""
-📌 **Prompt:**
-Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
-
-✅ Coba temukan bentuk umum dari solusi berdasarkan input a, b, dan c.
-
-📝 **Refleksi:** Apakah kamu melihat adanya rumus tertentu yang bisa digunakan untuk menyelesaikan semua persamaan kuadrat?
-            """)
-            st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
+    with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai a, b, dan c diubah?"):
+        st.markdown("""
+        Coba masukkan berbagai nilai \(a\), \(b\), dan \(c\) lalu perhatikan bentuk akar-akarnya.
+        """)
+    
+        a3 = st.number_input("Masukkan nilai a:", value=1, step=1, key="a3")
+        b3 = st.number_input("Masukkan nilai b:", value=0, step=1, key="b3")
+        c3 = st.number_input("Masukkan nilai c:", value=0, step=1, key="c3")
+    
+        x = sp.symbols('x')
+        akar_eksplorasi = sp.solve(a3 * x**2 + b3 * x + c3, x)
+        akar_str = ", ".join([sp.latex(akar) for akar in akar_eksplorasi])
+    
+        st.latex(f"Akar-akarnya: {akar_str}")
+    
+        pola = st.text_area("Apa yang kamu perhatikan dari akar-akar ini ketika nilai a, b, dan c berubah?", key="analisis_pola_abc")
+    
+        if pola.strip():
+            with st.expander("🔍Cek Pola dengan AI"):
+                st.info("""
+    📌 **Prompt:**
+    Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
+    
+    ✅ Coba temukan bentuk umum dari solusi berdasarkan input a, b, dan c.
+    
+    📝 **Refleksi:** Apakah kamu melihat adanya rumus tertentu yang bisa digunakan untuk menyelesaikan semua persamaan kuadrat?
+                """)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
 # Eksplorasi 4
 if st.session_state.get("pola"):
-with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
-    st.markdown("""
-    Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
-
-    $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
-
-    Apakah kamu pernah melihat bentuk seperti ini dari eksplorasi sebelumnya?
-    """)
-
-    rumus = st.text_area("Apa hubungan rumus ini dengan nilai-nilai akar yang kamu temukan sebelumnya?", key="hubungan_rumus")
-
-    if rumus.strip():
-        with st.expander("🔍Cek Konfirmasi AI"):
-            st.info("""
-📌 **Prompt:**
-Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
-
-✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
-
-📝 **Refleksi:** Apa kelebihan menggunakan rumus ini dibandingkan metode lainnya?
-            """)
-            st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
+    with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
+        st.markdown("""
+        Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
+    
+        $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+    
+        Apakah kamu pernah melihat bentuk seperti ini dari eksplorasi sebelumnya?
+        """)
+    
+        rumus = st.text_area("Apa hubungan rumus ini dengan nilai-nilai akar yang kamu temukan sebelumnya?", key="hubungan_rumus")
+    
+        if rumus.strip():
+            with st.expander("🔍Cek Konfirmasi AI"):
+                st.info("""
+    📌 **Prompt:**
+    Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
+    
+    ✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
+    
+    📝 **Refleksi:** Apa kelebihan menggunakan rumus ini dibandingkan metode lainnya?
+                """)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
 # Eksplorasi 5
 if st.session_state.get("rumus"):
-with st.expander("💡Eksplorasi 5: Apa pengaruh nilai di dalam akar? (Diskriminan)"):
-    st.markdown("""
-    Sekarang kita fokus pada bagian dalam tanda akar:
-
-    $$\Delta = b^2 - 4ac$$
-
-    Ubah-ubah nilai a, b, dan c untuk melihat efeknya pada akar.
-    """)
-
-    a5 = st.number_input("a:", value=1, step=1, key="a5")
-    b5 = st.number_input("b:", value=0, step=1, key="b5")
-    c5 = st.number_input("c:", value=0, step=1, key="c5")
-
-    D = b5**2 - 4*a5*c5
-
-    st.latex(f"\Delta = {D}")
-
-    if D > 0:
-        jenis = "D > 0 → Dua akar real berbeda"
-    elif D == 0:
-        jenis = "D = 0 → Satu akar real kembar"
-    else:
-        jenis = "D < 0 → Akar tidak real (imajiner)"
-
-    st.success(jenis)
-
-    analisis_d = st.text_area("Apa kesimpulanmu tentang pengaruh nilai diskriminan terhadap jenis akar?", key="analisis_d")
-
-    if analisis_d.strip():
-        with st.expander("🔍Cek Penjelasan AI"):
-            st.info("""
-📌 **Prompt:**
-Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
-
-✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
-
-📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
-            """)
-            st.text_area("Tulis jawaban refleksi Eksplorasi 5 di sini...", key="refleksi_eksplorasi5", height=80)
+    with st.expander("💡Eksplorasi 5: Apa pengaruh nilai di dalam akar? (Diskriminan)"):
+        st.markdown("""
+        Sekarang kita fokus pada bagian dalam tanda akar:
+    
+        $$\Delta = b^2 - 4ac$$
+    
+        Ubah-ubah nilai a, b, dan c untuk melihat efeknya pada akar.
+        """)
+    
+        a5 = st.number_input("a:", value=1, step=1, key="a5")
+        b5 = st.number_input("b:", value=0, step=1, key="b5")
+        c5 = st.number_input("c:", value=0, step=1, key="c5")
+    
+        D = b5**2 - 4*a5*c5
+    
+        st.latex(f"\Delta = {D}")
+    
+        if D > 0:
+            jenis = "D > 0 → Dua akar real berbeda"
+        elif D == 0:
+            jenis = "D = 0 → Satu akar real kembar"
+        else:
+            jenis = "D < 0 → Akar tidak real (imajiner)"
+    
+        st.success(jenis)
+    
+        analisis_d = st.text_area("Apa kesimpulanmu tentang pengaruh nilai diskriminan terhadap jenis akar?", key="analisis_d")
+    
+        if analisis_d.strip():
+            with st.expander("🔍Cek Penjelasan AI"):
+                st.info("""
+    📌 **Prompt:**
+    Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
+    
+    ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
+    
+    📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
+                """)
+                st.text_area("Tulis jawaban refleksi Eksplorasi 5 di sini...", key="refleksi_eksplorasi5", height=80)
 
 
 
@@ -362,4 +362,5 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
