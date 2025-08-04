@@ -110,6 +110,7 @@ with st.expander("💡Eksplorasi 1: Dapatkah kamu menyelesaikan persamaan kuadra
     if jawaban1.strip():
         with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
             st.info("""
+
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
 
 **Prompt:**  
@@ -118,7 +119,8 @@ Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan be
 ✅ Setelah membaca penjelasan AI, bandingkan dengan strategi yang kamu gunakan.
 
 📝 **Refleksi:** Apa metode paling mudah menurutmu? Apakah metode itu bisa digunakan untuk semua bentuk persamaan kuadrat?
-            """)
+
+""")
             st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 # Eksplorasi 2
@@ -147,7 +149,8 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
     ✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
     
     📝 **Refleksi:** Apa kelemahan metode faktorisasi? Kapan kita butuh cara lain selain faktorisasi?
-                """)
+    
+    """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
 # Eksplorasi 3
@@ -180,7 +183,8 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
     ✅ Coba temukan bentuk umum dari solusi berdasarkan input a, b, dan c.
     
     📝 **Refleksi:** Apakah kamu melihat adanya rumus tertentu yang bisa digunakan untuk menyelesaikan semua persamaan kuadrat?
-                """)
+    
+    """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
 if st.session_state.get("analisis_pola_abc", "").strip():
@@ -254,7 +258,8 @@ if st.session_state.get("analisis_pola_abc", "").strip():
     ✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
     
     📝 **Refleksi:** Apa kelebihan menggunakan rumus ini dibandingkan metode lainnya?
-                """)
+    
+    """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
 
@@ -353,7 +358,8 @@ if hasil_abc.strip():
     ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
     
     📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
-                """)
+    
+    """)
                 st.text_area("Tulis refleksimu di sini...", key="refleksi_eksplorasiakhir", height=80)
 
 
@@ -377,7 +383,8 @@ if kesimpulan.strip():
     ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
     
     📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
-                """)
+    
+    """)
                 st.text_area("Tulis refleksi dari pertemuan 3 di sini...", key="refleksi_p3", height=80)
 
 
@@ -420,6 +427,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
