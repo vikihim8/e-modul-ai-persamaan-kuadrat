@@ -34,14 +34,14 @@ from sympy import symbols, expand
 st.subheader("📍 Stimulus")
 st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
 st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_container_width=True)
-st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?", placeholder="Tulis jawabanmu di sini...", key ="stimulusp2")
+stimulusp2 = st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?", placeholder="Tulis jawabanmu di sini...", key ="stimulusp2")
 if stimulusp2:
     st.success("✅ Jawabanmu telah dicatat")
 
 # Identifikasi Masalah
 st.subheader("🔍 Identifikasi Masalah")
 identifikasi = st.text_area("Apa yang ingin kamu ketahui atau cari berdasarkan grafik di atas?")
-st.text_input("Tuliskan satu pertanyaan utamamu di sini:", placeholder="Tulis jawabanmu di sini...", key="pertanyaan")
+pertanyaan = st.text_input("Tuliskan satu pertanyaan utamamu di sini:", placeholder="Tulis jawabanmu di sini...", key="pertanyaan")
 if pertanyaan:
     st.success("✅ Jawabanmu telah dicatat")
 
@@ -326,6 +326,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
