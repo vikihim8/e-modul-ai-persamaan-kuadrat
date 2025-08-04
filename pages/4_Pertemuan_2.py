@@ -153,22 +153,20 @@ if (
 
     analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
     
-    if analisis3.strip() != "":
-        st.markdown("---")
+    if analisis3:
         st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
         st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-    
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
-    
-    **Prompt:**
-    Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
-        
-    ✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
-   
-    """)
-    
-        # Refleksi hanya muncul setelah prompt ditampilkan
-        st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3p2", height=80)
+            
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**
+Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
+
+✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+""")
+
+    # Tambahkan kotak refleksi setelah membandingkan
+        st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi2p2", height=80)
 
 
 
@@ -338,6 +336,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
