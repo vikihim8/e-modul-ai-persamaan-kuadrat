@@ -206,9 +206,9 @@ if st.session_state.get("analisis3"):
     analisis4_1 = st.text_area("Apa yang kamu perhatikan dari hasil bentuk umum tersebut?", key="analisis4_1")
 
     # Lanjut jika siswa menulis analisis
-        st.write("Sekarang coba ubah nilai $$p$$ dan $$q$$ beberapa kali.")
-        st.write("Amati perubahan pada koefisien $$**b**$$ dan $$**c**$$ dari bentuk umum tersebut.")
-        st.text_area("Apa pola hubungan antara $$p$$, $$q$$ dengan koefisien $$b$$ dan $$c$$ yang kamu temukan?", key="analisis4_2")
+    st.write("Sekarang coba ubah nilai $$p$$ dan $$q$$ beberapa kali.")
+    st.write("Amati perubahan pada koefisien $$**b**$$ dan $$**c**$$ dari bentuk umum tersebut.")
+    st.text_area("Apa pola hubungan antara $$p$$, $$q$$ dengan koefisien $$b$$ dan $$c$$ yang kamu temukan?", key="analisis4_2")
 
     if analisis4_1:
         st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
@@ -316,6 +316,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
