@@ -30,20 +30,20 @@ kelas = st.text_input("Kelas:")
 
 
 # --- Stimulus dan Identifikasi Masalah ---
-st.header("1. Stimulus")
+st.header("📌 Stimulus")
 st.write("Bayangkan kamu sedang menonton lintasan bola dilempar ke udara. Bentuknya seperti parabola. Mari kita pelajari grafik fungsi kuadrat dari fenomena tersebut.")
 stimulus = st.text_input("📝 Apa yang kamu pikirkan tentang bentuk lintasan parabola ini?", placeholder="Tulis jawabanmu di sini...", key="stimulus")
 if stimulus:
     st.success("✅ Jawabanmu telah dicatat")
 
 
-st.header("2. Identifikasi Masalah")
+st.header("🔍 Identifikasi Masalah")
 masalah = st.text_input("❓ Pertanyaan apa yang muncul di benakmu terkait grafik lintasan itu?", placeholder="Tulis jawabanmu di sini...", key="masalah")
 if masalah:
     st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
 
 
-st.header("3. Pengumpulan Data")
+st.header("🔍 Pengumpulan Data")
 st.write(
     "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c$$, dengan $$a$$ adalah koefisien variabel $$x^2$$, $$b$$ adalah koefisien variabel $$x$$, dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut:"
 )
@@ -426,7 +426,7 @@ if st.session_state.get("analisis8"):
 
 
 # --- Pengolahan Data (Soal Latihan) ---
-st.header("4. Pengolahan Data")
+st.header("📊 Pengolahan Data")
 st.write("""
 Sebuah bola dilemparkan dan lintasannya membentuk fungsi kuadrat:
 $$h(x) = -5x^2 + 20x + 1$$
@@ -445,7 +445,7 @@ if st.button("Kirim Pengolahan Data"):
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
-st.header("5. Verifikasi")
+st.header("Verifikasi")
 st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
     
 st.markdown("**✅ Jawaban AI untuk soal ini:**")
@@ -484,7 +484,7 @@ if verifikasi:
 
 
 # --- 7. Kesimpulan ---
-st.header("6. Penarikan Kesimpulan")
+st.header("🎯 Penarikan Kesimpulan")
 
 # Input kesimpulan dari pengguna
 kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
