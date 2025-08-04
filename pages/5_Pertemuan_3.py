@@ -239,8 +239,8 @@ if st.session_state.get("analisis_pola_abc", "").strip():
                 st.success("🎉 Kamu berhasil menyusun **rumus kuadrat**!")
     
         if step3.strip():
-            with st.expander("🔍Cek Konfirmasi AI"):
-                st.info("""
+           with st.expander("🔍Cek Pola dengan AI"):
+                st.info(r"""
     📌 **Prompt:**
     Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
     
@@ -411,6 +411,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
