@@ -363,7 +363,7 @@ if hasil_abc.strip():
     📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
     
     """)
-                st.text_area("Tulis refleksimu di sini...", key="refleksi_eksplorasiakhir", height=80)
+            st.text_area("Tulis refleksimu di sini...", key="refleksi_eksplorasiakhir", height=80)
 
 
 import streamlit as st
@@ -388,7 +388,7 @@ if kesimpulan.strip():
     📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
     
     """)
-                st.text_area("Tulis refleksi dari pertemuan 3 di sini...", key="refleksi_p3", height=80)
+            st.text_area("Tulis refleksi dari pertemuan 3 di sini...", key="refleksi_p3", height=80)
 
 
 
@@ -430,6 +430,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
