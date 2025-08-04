@@ -248,9 +248,9 @@ if st.session_state.get("analisis_pola_abc", "").strip():
             if eksplorasi4_step3:
                 st.success("🎉 Kamu berhasil menyusun **rumus kuadrat**!")
     
-        if eksplorasi4_step3.strip():
-           with st.expander("🔍Cek Pola dengan AI"):
-                st.info("""
+            if eksplorasi4_step3.strip():
+               with st.expander("🔍Cek Pola dengan AI"):
+                    st.info("""
     **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
@@ -262,7 +262,7 @@ if st.session_state.get("analisis_pola_abc", "").strip():
     
     """
                 )
-                st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
+                    st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
 
 # Eksplorasi 5
@@ -430,6 +430,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
