@@ -74,9 +74,9 @@ if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
 
 st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
 pengumpulan_input = st.text_area("Tulis pemahamanmu di sini", key="pengumpulan")
-        if pengumpulan.strip():
-            with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi"):
-                st.info("""
+if pengumpulan_input.strip():
+    with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi"):
+        st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**  
@@ -166,6 +166,7 @@ with col2:
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
         st.switch_page("pages/8_Latihan_dan_Refleksi.py")
+
 
 
 
