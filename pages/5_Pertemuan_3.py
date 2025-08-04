@@ -140,12 +140,11 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
     
         if jawaban2.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
-                st.info("""
               st.info("""
-    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
-    
-    **Prompt**
-    Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 4x + 2 = 0 jika tidak bisa difaktorkan secara langsung?
+**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+
+**Prompt:**
+Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 4x + 2 = 0 jika tidak bisa difaktorkan secara langsung?
     
     ✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
     
@@ -251,8 +250,8 @@ if st.session_state.get("analisis_pola_abc", "").strip():
     
         if step3.strip():
            with st.expander("🔍Cek Pola dengan AI"):
-                st.info(r"""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+                st.info("""
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
@@ -431,6 +430,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
