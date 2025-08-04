@@ -111,7 +111,7 @@ with st.expander("💡Eksplorasi 1: Dapatkah kamu menyelesaikan persamaan kuadra
         with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
             st.info("""
 
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
 
 **Prompt:**  
 Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan beberapa metode termasuk faktorisasi, grafik, dan metode lainnya jika ada.
@@ -141,7 +141,7 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
                 st.info("""
               st.info("""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt**
     Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
@@ -175,7 +175,7 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
         if pola.strip():
             with st.expander("🔍Cek Pola dengan AI"):
                 st.info("""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
@@ -250,7 +250,7 @@ if st.session_state.get("analisis_pola_abc", "").strip():
         if step3.strip():
            with st.expander("🔍Cek Pola dengan AI"):
                 st.info(r"""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
@@ -296,7 +296,7 @@ if st.session_state.get("eksplorasi4_step3", "").strip():
         if analisis_d.strip():
             with st.expander("🔍Cek Penjelasan AI"):
                 st.info("""
-    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
@@ -350,7 +350,7 @@ st.header("Verifikasi")
 if hasil_abc.strip():
     with st.expander("🔍Cek Penjelasan AI"):
             st.info("""
-    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 5x + 6 = 0 dengan dua metode: pemfaktoran dan rumus ABC?
@@ -375,7 +375,7 @@ kesimpulan = st.text_area(
 if kesimpulan.strip():
     with st.expander("🔍Cek Penjelasan AI"):
             st.info("""
-    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Bandingkan dua metode penyelesaian persamaan kuadrat: metode faktorisasi dan metode rumus ABC. Berikan kelebihan dan kekurangan masing-masing serta contoh soal yang bisa diselesaikan dengan dua metode tersebut
@@ -427,6 +427,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
