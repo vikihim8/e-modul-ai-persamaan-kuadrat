@@ -122,7 +122,7 @@ Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan be
             st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 # Eksplorasi 2
-if st.session_state.get("jawaban1"):
+if st.session_state.get("jawaban_eksplorasi1", "").strip():
     with st.expander("💡Eksplorasi 2: Bagaimana jika persamaan kuadrat tidak bisa difaktorkan?"):
         st.markdown("""
         Sekarang coba selesaikan persamaan kuadrat ini:
@@ -148,7 +148,7 @@ if st.session_state.get("jawaban1"):
                 st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
 # Eksplorasi 3
-if st.session_state.get("jawaban2"):
+if st.session_state.get("jawaban_eksplorasi2", "").strip():
     with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai a, b, dan c diubah?"):
         st.markdown("""
         Coba masukkan berbagai nilai \(a\), \(b\), dan \(c\) lalu perhatikan bentuk akar-akarnya.
@@ -179,7 +179,7 @@ if st.session_state.get("jawaban2"):
                 st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
 # Eksplorasi 4
-if st.session_state.get("pola"):
+if st.session_state.get("analisis_pola_abc", "").strip():
     with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
         st.markdown("""
         Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
@@ -204,7 +204,7 @@ if st.session_state.get("pola"):
                 st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
 # Eksplorasi 5
-if st.session_state.get("rumus"):
+if st.session_state.get("hubungan_rumus", "").strip():
     with st.expander("💡Eksplorasi 5: Apa pengaruh nilai di dalam akar? (Diskriminan)"):
         st.markdown("""
         Sekarang kita fokus pada bagian dalam tanda akar:
@@ -363,6 +363,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
