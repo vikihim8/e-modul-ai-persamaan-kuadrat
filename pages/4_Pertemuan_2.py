@@ -34,16 +34,20 @@ from sympy import symbols, expand
 st.subheader("📍 Stimulus")
 st.write("Diketahui grafik fungsi kuadrat memotong sumbu X di x = 2 dan x = 3")
 st.image("pages/grafik_pq.png", caption="Contoh Grafik p dan q", use_container_width=True)
-st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?")
+st.text_input("Apa yang bisa kamu simpulkan dari titik potong tersebut terhadap bentuk fungsi kuadrat?", placeholder="Tulis jawabanmu di sini...", key ="stimulusp2")
+if stimulusp2:
+    st.success("✅ Jawabanmu telah dicatat")
 
 # Identifikasi Masalah
 st.subheader("🔍 Identifikasi Masalah")
 identifikasi = st.text_area("Apa yang ingin kamu ketahui atau cari berdasarkan grafik di atas?")
-st.text_input("Tuliskan satu pertanyaan utamamu di sini:", key="pertanyaan")
+st.text_input("Tuliskan satu pertanyaan utamamu di sini:", placeholder="Tulis jawabanmu di sini...", key="pertanyaan")
+if pertanyaan:
+    st.success("✅ Jawabanmu telah dicatat")
 
 # Eksplorasi 1
-st.subheader("🔬 Eksplorasi 1: Menentukan Akar-akar dari Grafik")
-st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x = 2$$ dan $$x = 3$$. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
+st.subheader("🔬 Eksplorasi 1: Menentukan **Akar-akar dari Grafik**")
+st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
 
 akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
 akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
@@ -68,16 +72,18 @@ st.session_state.analisis1 = analisis1
 if analisis1.strip() != "":
     st.markdown("---")
     st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-    st.write("Salin dan tempelkan pertanyaan berikut ke [Perplexity AI](https://www.perplexity.ai):")
-    st.code("Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?")
-    st.info("💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?")
+    st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
+            
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**
+Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?
+
+✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+""")
 
     # Tambahkan kotak refleksi setelah membandingkan
-    refleksi_eksplorasi1 = st.text_area(
-        "✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:",
-        key="refleksi_eksplorasi1_input"
-    )
-    st.session_state.refleksi_akhir = refleksi_eksplorasi1
+    st.text_area(Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 
 
@@ -320,3 +326,4 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
