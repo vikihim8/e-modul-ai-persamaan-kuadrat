@@ -18,12 +18,19 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
+
+# Identitas
+st.header("👤 Identitas")
+nama = st.text_input("Nama Siswa:")
+kelas = st.text_input("Kelas:")
+
+
 x = sp.Symbol('x')
 st.set_page_config(page_title="Pertemuan 3", layout="centered")
 
 st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat")
 
-st.markdown("**Capaian:** Siswa dapat menyelesaikan soal persamaan kuadrat menggunakan metode pemfaktoran dan rumus ABC.")
+st.markdown("**Capaian:** Siswa dapat menyelesaikan soal persamaan kuadrat menggunakan rumus ABC")
 
 # --- 1. Stimulus ---
 st.header("📌 Stimulus")
@@ -84,171 +91,158 @@ if jawaban_identifikasi:
     
 
 # --- 3. Eksplorasi ---
-st.header("🔍 Eksplorasi: Menemukan Metode Penyelesaian Persamaan Kuadrat")
+st.header("🔍 Eksplorasi: Menemukan Metode Penyelesaian Persamaan Kuadrat Rumus ABC")
 
-# ------------------------- Eksplorasi 1 --------------------------
-st.subheader("✍️ Eksplorasi 1: Menyelesaikan dengan Pemfaktoran")
-st.latex(r"x^2 - 5x + 6 = 0")
-
-st.markdown("**Langkah 1:** Temukan dua bilangan yang hasil kali = 6 dan jumlah = -5.")
-
-bil1 = st.text_input("Masukkan bilangan pertama:", key="eks1_bil1")
-bil2 = st.text_input("Masukkan bilangan kedua:", key="eks1_bil2")
-
-valid_faktor = False
-analisis1 = ""
-
-if bil1.strip() and bil2.strip():
-    try:
-        b1 = int(bil1)
-        b2 = int(bil2)
-        if b1 * b2 == 6 and b1 + b2 == -5:
-            st.success("✅ Tepat! Pasangan bilangan kamu sesuai.")
-            valid_faktor = True
-        else:
-            st.warning("⚠️ Coba periksa lagi. Hasil kali harus 6 dan jumlah -5.")
-    except ValueError:
-        st.error("❌ Masukkan bilangan bulat.")
-
-if valid_faktor:
-    bentuk_faktor = st.text_input("Tulis bentuk faktornya:", key="eks1_faktor")
-    if bentuk_faktor.strip():
-        akar1 = st.text_input("Akar pertama dari bentuk faktornya:", key="eks1_akar1")
-        akar2 = st.text_input("Akar kedua dari bentuk faktornya:", key="eks1_akar2")
-
-        if akar1.strip() and akar2.strip():
-            analisis1 = st.text_area("🔍 Refleksi: Apa yang kamu pelajari dari metode faktorisasi ini?", key="analisis1")
-
-            if analisis1.strip():
-                with st.expander("🤖 Cek AI untuk eksplorasi ini"):
-                    st.markdown("#### Prompt untuk AI (salin dan tempel di Perplexity):")
-                    st.code(
-                        "Bagaimana cara menyelesaikan persamaan kuadrat x² - 5x + 6 = 0 menggunakan metode faktorisasi? Jelaskan langkah-langkahnya.",
-                        language="markdown"
-                    )
-                    st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
-
-# ------------------------- Eksplorasi 2 (REVISI) --------------------------
-hubungan = ""
-
-if analisis1.strip():
-    st.subheader("✍️ Eksplorasi 2: Menemukan Pola Akar dari Faktorisasi")
-
+# Eksplorasi 1
+with st.expander("💡Eksplorasi 1: Dapatkah kamu menyelesaikan persamaan kuadrat tanpa difaktorkan?"):
     st.markdown("""
-    Bayangkan kamu punya dua bilangan, misalnya 2 dan 5.  
-    Sekarang kita akan lakukan eksperimen:
+    Coba selesaikan persamaan kuadrat di bawah ini dengan cara apapun yang kamu tahu.
 
-    1. **Masukkan dua bilangan p dan q di bawah ini.**
-    2. Sistem akan membentuk faktor \((x - p)(x - q)\).
-    3. Sistem akan mengekspansi faktor itu menjadi bentuk umum kuadrat.
-    4. Amati dan cari **hubungan antara p, q dengan koefisien b dan c**.
+    ### Soal:
+    $$x^2 - 5x + 6 = 0$$
 
-    Coba beberapa pasangan nilai dan lihat polanya!
+    Kamu boleh menggunakan tebak-tebakan, grafik, atau strategi lainnya.
     """)
 
-    p = st.number_input("🔢 Masukkan nilai p", key="eks2_p")
-    q = st.number_input("🔢 Masukkan nilai q", key="eks2_q")
+    jawaban1 = st.text_area("Tuliskan bagaimana kamu menyelesaikan persamaan di atas", key="jawaban_eksplorasi1")
 
-    if p != q:
-        x = sp.Symbol('x')
-        faktor = (x - p)*(x - q)
-        ekspansi = sp.expand(faktor)
+    if jawaban1.strip():
+        with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
+            st.info("""
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
 
-        st.markdown("📌 Hasil Faktorisasi dan Ekspansi:")
-        st.latex(f"{sp.latex(faktor)} = {sp.latex(ekspansi)}")
+**Prompt:**  
+Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan beberapa metode termasuk faktorisasi, grafik, dan metode lainnya jika ada.
 
-        st.markdown("🧐 Sekarang perhatikan bentuk umum dari ekspansi ini:  \n$ax^2 + bx + c$")
-        st.markdown("📌 Lalu, perhatikan nilai berikut:")
-        st.latex(f"p + q = {p + q}")
-        st.latex(f"p \\times q = {p * q}")
+✅ Setelah membaca penjelasan AI, bandingkan dengan strategi yang kamu gunakan.
 
-        analisis2 = st.text_area("🧠 Apa hubungan antara nilai b, c dengan p + q dan p × q?", key="eks2_analisis")
+📝 **Refleksi:** Apa metode paling mudah menurutmu? Apakah metode itu bisa digunakan untuk semua bentuk persamaan kuadrat?
+            """)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
-        if analisis2.strip():
-            st.markdown("🎯 Refleksikan: Apakah kamu menemukan hubungan konsisten?")
-            hubungan = st.text_area("✍️ Tulis simpulan hubungan antara $p + q$, $p \\times q$ dan $b$, $c$ di sini:", key="eks2_hubungan")
-
-            if hubungan.strip():
-                with st.expander("🤖 Bandingkan dengan AI"):
-                    st.markdown("Prompt untuk AI (bisa kamu salin dan tempel):")
-                    st.code("Apa hubungan antara akar-akar p dan q dengan koefisien b dan c pada persamaan kuadrat ax^2 + bx + c?", language="markdown")
-                    st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
-
-
-# ------------------------- Eksplorasi 3 --------------------------
-langkah_rumus = ""
-if hubungan.strip():
-    st.subheader("✍️ Eksplorasi 3: Menemukan Rumus Umum dari Akar")
-
+# Eksplorasi 2
+if st.session_state.get("jawaban1"):
+with st.expander("💡Eksplorasi 2: Bagaimana jika persamaan kuadrat tidak bisa difaktorkan?"):
     st.markdown("""
-    Misalkan persamaan kuadrat:
-    $$ax^2 + bx + c = 0$$
+    Sekarang coba selesaikan persamaan kuadrat ini:
 
-    ⚡ **Aktivitas Menemukan:**
-    1. Coba ubah bentuk umum tersebut ke bentuk kuadrat sempurna (completing the square).
-    2. Masukkan langkah-langkahmu.
-    3. Lihat bagaimana muncul rumus ABC dari situ.
+    ### Soal:
+    $$x^2 - 4x + 2 = 0$$
 
-    > Jika kamu kesulitan, klik tombol AI untuk mendapat petunjuk langkah-langkahnya.
+    Apakah kamu bisa menyelesaikannya dengan metode yang sama seperti tadi?
     """)
 
-    langkah_rumus = st.text_area("Coba uraikan idemu untuk membuat rumus mencari akar:", key="eks3_ide")
+    jawaban2 = st.text_area("Ceritakan bagaimana kamu mencoba menyelesaikan soal tersebut", key="jawaban_eksplorasi2")
 
-    if langkah_rumus:
-        with st.expander("🤖 Cek AI untuk eksplorasi ini"):
-            st.markdown("#### Prompt untuk AI:")
-            st.code("Bagaimana cara menyusun rumus ABC untuk menyelesaikan ax^2 + bx + c = 0? Jelaskan langkah-langkah pembentukannya.")
-            st.markdown("[🔗 Buka Perplexity AI](https://www.perplexity.ai/)")
+    if jawaban2.strip():
+        with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
+            st.info("""
+📌 **Prompt ke AI:**
+Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
 
+✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
 
-# ------------------------- Eksplorasi 4 --------------------------
-if langkah_rumus.strip():
-    st.subheader("✍️ Eksplorasi 4: Menemukan Peran Diskriminan")
+📝 **Refleksi:** Apa kelemahan metode faktorisasi? Kapan kita butuh cara lain selain faktorisasi?
+            """)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
+# Eksplorasi 3
+if st.session_state.get("jawaban2"):
+with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai a, b, dan c diubah?"):
     st.markdown("""
-    Setelah kamu memperoleh rumus ABC:
-    $$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
-
-    Perhatikan bagian yang di dalam akar:  
-    $$\\Delta = b^2 - 4ac$$
-
-    ⚡ **Aktivitas Menemukan:**
-    1. Coba masukkan nilai a, b, dan c berikut.
-    2. Amati bagaimana nilai Δ mempengaruhi jumlah dan jenis akar.
-
-    > Apa yang terjadi jika Δ negatif? Atau nol? Atau positif?
-
-    Masukkan nilai a, b, dan c:
+    Coba masukkan berbagai nilai \(a\), \(b\), dan \(c\) lalu perhatikan bentuk akar-akarnya.
     """)
 
-    a4 = st.number_input("Nilai a", key="eks4_a")
-    b4 = st.number_input("Nilai b", key="eks4_b")
-    c4 = st.number_input("Nilai c", key="eks4_c")
+    a3 = st.number_input("Masukkan nilai a:", value=1, step=1, key="a3")
+    b3 = st.number_input("Masukkan nilai b:", value=0, step=1, key="b3")
+    c3 = st.number_input("Masukkan nilai c:", value=0, step=1, key="c3")
 
-    delta = b4**2 - 4*a4*c4
+    x = sp.symbols('x')
+    akar_eksplorasi = sp.solve(a3 * x**2 + b3 * x + c3, x)
+    akar_str = ", ".join([sp.latex(akar) for akar in akar_eksplorasi])
 
-    st.latex(f"\\Delta = {b4}^2 - 4({a4})({c4}) = {delta}")
+    st.latex(f"Akar-akarnya: {akar_str}")
 
-    if delta > 0:
-        st.markdown("✅ Δ > 0 → Persamaan memiliki **dua akar real berbeda**")
-    elif delta == 0:
-        st.markdown("✅ Δ = 0 → Persamaan memiliki **dua akar real kembar**")
+    pola = st.text_area("Apa yang kamu perhatikan dari akar-akar ini ketika nilai a, b, dan c berubah?", key="analisis_pola_abc")
+
+    if pola.strip():
+        with st.expander("🔍Cek Pola dengan AI"):
+            st.info("""
+📌 **Prompt:**
+Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
+
+✅ Coba temukan bentuk umum dari solusi berdasarkan input a, b, dan c.
+
+📝 **Refleksi:** Apakah kamu melihat adanya rumus tertentu yang bisa digunakan untuk menyelesaikan semua persamaan kuadrat?
+            """)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
+
+# Eksplorasi 4
+if st.session_state.get("pola"):
+with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
+    st.markdown("""
+    Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
+
+    $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+    Apakah kamu pernah melihat bentuk seperti ini dari eksplorasi sebelumnya?
+    """)
+
+    rumus = st.text_area("Apa hubungan rumus ini dengan nilai-nilai akar yang kamu temukan sebelumnya?", key="hubungan_rumus")
+
+    if rumus.strip():
+        with st.expander("🔍Cek Konfirmasi AI"):
+            st.info("""
+📌 **Prompt:**
+Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
+
+✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
+
+📝 **Refleksi:** Apa kelebihan menggunakan rumus ini dibandingkan metode lainnya?
+            """)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
+
+# Eksplorasi 5
+if st.session_state.get("rumus"):
+with st.expander("💡Eksplorasi 5: Apa pengaruh nilai di dalam akar? (Diskriminan)"):
+    st.markdown("""
+    Sekarang kita fokus pada bagian dalam tanda akar:
+
+    $$\Delta = b^2 - 4ac$$
+
+    Ubah-ubah nilai a, b, dan c untuk melihat efeknya pada akar.
+    """)
+
+    a5 = st.number_input("a:", value=1, step=1, key="a5")
+    b5 = st.number_input("b:", value=0, step=1, key="b5")
+    c5 = st.number_input("c:", value=0, step=1, key="c5")
+
+    D = b5**2 - 4*a5*c5
+
+    st.latex(f"\Delta = {D}")
+
+    if D > 0:
+        jenis = "D > 0 → Dua akar real berbeda"
+    elif D == 0:
+        jenis = "D = 0 → Satu akar real kembar"
     else:
-        st.markdown("⚠️ Δ < 0 → Persamaan memiliki **akar imajiner (tidak real)**")
+        jenis = "D < 0 → Akar tidak real (imajiner)"
 
-    analisis_diskriminan = st.text_area("🧠 Apa simpulanmu tentang peran diskriminan Δ?", key="eks4_diskriminan")
+    st.success(jenis)
 
-    
-    disk_check = st.text_area("🔍 Refleksi: Apa dugaanmu tentang peran diskriminan (D)?", key="eks4_dugaan")
+    analisis_d = st.text_area("Apa kesimpulanmu tentang pengaruh nilai diskriminan terhadap jenis akar?", key="analisis_d")
 
-    if disk_check.strip():
-        with st.expander("🤖 Cek AI untuk eksplorasi ini"):
-            st.markdown("#### Prompt untuk AI:")
-            st.code(
-                "Jelaskan bagaimana diskriminan (D = b^2 - 4ac) menentukan banyaknya akar real dalam persamaan kuadrat ax^2 + bx + c = 0.",
-                language="markdown"
-            )
-            st.markdown("[🔗 Buka Perplexity AI dengan Prompt Ini](https://www.perplexity.ai)")
+    if analisis_d.strip():
+        with st.expander("🔍Cek Penjelasan AI"):
+            st.info("""
+📌 **Prompt:**
+Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
+
+✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
+
+📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
+            """)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 5 di sini...", key="refleksi_eksplorasi5", height=80)
 
 
 
@@ -368,3 +362,4 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
