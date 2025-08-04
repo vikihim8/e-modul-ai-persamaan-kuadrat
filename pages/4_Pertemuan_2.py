@@ -171,84 +171,61 @@ Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
 
 
 
-# ------------------------- Eksplorasi 4: Menyelidiki Peran Koefisien --------------------------
-from sympy import symbols, expand, latex
+# ------------------------- Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum --------------------------
 import streamlit as st
+from sympy import symbols, expand, latex
 
 if st.session_state.get("analisis3"):
-    x = symbols('x')
-
     st.header("✍️ Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum")
 
-    st.markdown("""
-    Tanpa diberitahu bagaimana mencari nilai $$p$$ dan $$q$$, coba amati bentuk umum fungsi kuadrat:
+    x = symbols('x')
 
-    $$
-    f(x) = ax^2 + bx + c
-    $$
-
-    Kamu akan menebak nilai akar-akar $$p$$ dan $$q$$ dari ekspansi faktorisasi dan melihat bagaimana hubungannya dengan koefisien.
+    st.write("""
+    Misalkan kita punya fungsi kuadrat dalam bentuk faktor:
+    
+    **f(x) = a(x - p)(x - q)**
+    
+    Ayo ubah bentuk ini menjadi bentuk umum (standar):  
+    **f(x) = ax² + bx + c**
     """)
 
-    nilai_a = st.number_input("Masukkan nilai koefisien a:", value=1, step=1, key="nilai_a_input")
-    akar1 = st.number_input("Masukkan nilai akar pertama (p):", value=1, step=1, key="akar1eks4_input")
-    akar2 = st.number_input("Masukkan nilai akar kedua (q):", value=2, step=1, key="akar2eks4_input")
+    nilai_a = st.number_input("Masukkan nilai a", value=1, key="nilai_a_input")
+    nilai_p = st.number_input("Masukkan nilai p", value=1, key="nilai_p_input")
+    nilai_q = st.number_input("Masukkan nilai q", value=2, key="nilai_q_input")
 
-    st.session_state.nilai_a = nilai_a
-    st.session_state.akar1 = akar1
-    st.session_state.akar2 = akar2
+    # Simpan ke session
+    st.session_state.a = nilai_a
+    st.session_state.p = nilai_p
+    st.session_state.q = nilai_q
 
-    f_expand = expand(st.session_state.nilai_a * (x - st.session_state.akar1) * (x - st.session_state.akar2))
-    latex_str = latex(f_expand)
+    # Expand bentuk faktornya
+    bentuk_umum = expand(nilai_a * (x - nilai_p)*(x - nilai_q))
+    st.latex("f(x) = " + latex(bentuk_umum))
 
-    st.markdown("Berikut bentuk hasil ekspansinya:")
-    st.latex(f"f(x) = {latex_str}")
+    # Pertanyaan reflektif
+    analisis4_1 = st.text_area("Apa yang kamu perhatikan dari hasil bentuk umum tersebut?", key="analisis4_1")
 
-    st.markdown("Sekarang, tanpa melihat kembali, coba **tebak** nilai akar-akar dari fungsi tersebut.")
+    # Lanjut jika siswa menulis analisis
+    if analisis4_1:
+        st.markdown("---")
+        st.write("Sekarang coba ubah nilai p dan q beberapa kali.")
+        st.write("Amati perubahan pada koefisien **b** dan **c** dari bentuk umum tersebut.")
+        st.text_area("Apa pola hubungan antara p, q dengan koefisien b dan c yang kamu temukan?", key="analisis4_2")
 
-    tebakan_p = st.number_input("Tebak nilai akar pertama (p):", value=0, step=1, key="tebakan_p")
-    tebakan_q = st.number_input("Tebak nilai akar kedua (q):", value=0, step=1, key="tebakan_q")
+        st.markdown("---")
+        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
+        st.info("""💬 Bandingkan hasil temuanmu dengan AI. Apakah serupa? Apa perbedaannya?
 
-    analisis4 = st.text_area("Apa alasanmu memilih nilai p dan q tersebut?", key="analisis4")
-
-    if analisis4.strip():
-        if st.button("Cek Tebakan"):
-            hasil_c = tebakan_p * tebakan_q
-            hasil_b = -1 * (tebakan_p + tebakan_q)
-
-            st.write(f"Hasil perkalian akar: $$p \\times q = {hasil_c}$$")
-            st.write(f"Hasil penjumlahan akar: $$p + q = {tebakan_p + tebakan_q}$$")
-            st.write(f"Hasil negatif jumlah akar: $$- (p + q) = {hasil_b}$$")
-
-            st.write("💡 Sekarang kita cek apakah hasil tebakanmu sesuai dengan bentuk umum fungsi kuadrat:")
-            st.latex(f"f(x) = {latex_str}")
-
-            st.markdown("Bandingkan hasil yang kamu dapatkan dengan koefisien dari bentuk umum tersebut.")
-
-            cek_koefisien = st.text_area(
-                "🔍 Refleksi: Apa hubungan yang kamu temukan antara hasil penjumlahan/perkalian akar dan koefisien fungsi kuadrat?",
-                key="analisis5"
-            )
-
-            if cek_koefisien.strip():
-                st.success("🎯 Keren! Sekarang kamu mungkin mulai menyadari bahwa:")
-                st.latex(r"p + q = -\frac{b}{a} \quad \text{dan} \quad p \times q = \frac{c}{a}")
-                st.info("Hubungan ini disebut sebagai **hubungan akar-akar persamaan kuadrat dengan koefisiennya.**")
-            
-            if cek_koefisien:
-                st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-                st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-            
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**
-Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?
+Bagaimana hubungan antara akar-akar (p dan q) dengan koefisien b dan c dalam fungsi kuadrat f(x) = a(x - p)(x - q)?
 
-✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+✍️ Setelah membandingkan, tuliskan kesimpulanmu di bawah ini:
 """)
 
-    # Tambahkan kotak refleksi setelah membandingkan
-        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi3p2", height=80)
+        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
+
 
 
 
@@ -341,6 +318,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
