@@ -111,10 +111,10 @@ with st.expander("💡Eksplorasi 1: Dapatkah kamu menyelesaikan persamaan kuadra
         with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
             st.info("""
 
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
 
 **Prompt:**  
-Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan beberapa metode termasuk faktorisasi, grafik, dan metode lainnya jika ada.
+Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 5x + 6 = 0? Jelaskan beberapa metode termasuk faktorisasi, grafik, dan metode lainnya jika ada.
 
 ✅ Setelah membaca penjelasan AI, bandingkan dengan strategi yang kamu gunakan.
 
@@ -122,6 +122,7 @@ Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 5x + 6 = 0\)? Jelaskan be
 """
                 )
             st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
+
 
 # Eksplorasi 2
 if st.session_state.get("jawaban_eksplorasi1", "").strip():
@@ -141,10 +142,10 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
                 st.info("""
               st.info("""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt**
-    Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
+    Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 4x + 2 = 0 jika tidak bisa difaktorkan secara langsung?
     
     ✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
     
@@ -155,14 +156,14 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
 
 # Eksplorasi 3
 if st.session_state.get("jawaban_eksplorasi2", "").strip():
-    with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai a, b, dan c diubah?"):
+    with st.expander("💡Eksplorasi 3: Apa pola akar jika nilai $$a, b,$$ dan $$c$$ diubah?"):
         st.markdown("""
-        Coba masukkan berbagai nilai \(a\), \(b\), dan \(c\) lalu perhatikan bentuk akar-akarnya.
+        Coba masukkan berbagai nilai $$a$$, $$b$$, dan $$c$$ lalu perhatikan bentuk akar-akarnya.
         """)
     
-        a3 = st.number_input("Masukkan nilai a:", value=1, step=1, key="a3")
-        b3 = st.number_input("Masukkan nilai b:", value=0, step=1, key="b3")
-        c3 = st.number_input("Masukkan nilai c:", value=0, step=1, key="c3")
+        a3 = st.number_input("Masukkan nilai $$a$$:", value=1, step=1, key="a3")
+        b3 = st.number_input("Masukkan nilai $$b$$:", value=0, step=1, key="b3")
+        c3 = st.number_input("Masukkan nilai $$c$$:", value=0, step=1, key="c3")
     
         x = sp.symbols('x')
         akar_eksplorasi = sp.solve(a3 * x**2 + b3 * x + c3, x)
@@ -175,7 +176,8 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
         if pola.strip():
             with st.expander("🔍Cek Pola dengan AI"):
                 st.info("""
-    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
     Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
@@ -184,25 +186,24 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
     
     📝 **Refleksi:** Apakah kamu melihat adanya rumus tertentu yang bisa digunakan untuk menyelesaikan semua persamaan kuadrat?
     
-    """
-                       )
+    """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
 if st.session_state.get("analisis_pola_abc", "").strip():
     with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
         st.markdown(r"""
-        Kamu sudah menemukan pola hubungan antara koefisien \( a, b, \) dan \( c \) terhadap akar-akar persamaan kuadrat.
+        Kamu sudah menemukan pola hubungan antara koefisien $$a, b,$$ dan $$c$$ terhadap akar-akar persamaan kuadrat.
 
         Sekarang, mari kita susun **rumus penyelesaian umum** dengan menyelesaikan bentuk umum persamaan kuadrat:  
-        \[
+        $$
         ax^2 + bx + c = 0
-        \]
+        $$
 
         **Langkah 1:**  
-        Bagi semua suku dengan \( a \), agar koefisien \( x^2 \) menjadi 1.
-        \[
+        Bagi semua suku dengan $$a$$, agar koefisien $$x^2$$ menjadi 1.
+        $$
         x^2 + \frac{b}{a}x + \frac{c}{a} = 0
-        \]
+        $$
         """)
         
         step1 = st.text_area("✅ Tulis hasil setelah dibagi semua suku dengan a:", key="eksplorasi4_step1", height=60)
@@ -211,9 +212,9 @@ if st.session_state.get("analisis_pola_abc", "").strip():
             st.markdown(r"""
             **Langkah 2:**  
             Pindahkan konstanta ke ruas kanan:
-            \[
+            $$
             x^2 + \frac{b}{a}x = -\frac{c}{a}
-            \]
+            $$
 
             **Langkah 3:**  
             Lengkapi kuadrat kiri agar jadi bentuk kuadrat sempurna. Tambahkan
@@ -430,6 +431,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
