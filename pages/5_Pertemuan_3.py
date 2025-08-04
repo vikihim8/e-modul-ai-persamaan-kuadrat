@@ -138,7 +138,10 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
         if jawaban2.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
                 st.info("""
-    📌 **Prompt ke AI:**
+              st.info("""
+    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt**
     Bagaimana cara menyelesaikan persamaan kuadrat \(x^2 - 4x + 2 = 0\) jika tidak bisa difaktorkan secara langsung?
     
     ✅ Setelah membaca penjelasan AI, bandingkan dengan cara kamu menyelesaikan.
@@ -169,7 +172,9 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
         if pola.strip():
             with st.expander("🔍Cek Pola dengan AI"):
                 st.info("""
-    📌 **Prompt:**
+    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt:**
     Apa pola akar-akar dari persamaan kuadrat jika diketahui nilai \(a\), \(b\), dan \(c\)? Apakah ada hubungan umum yang bisa ditemukan?
     
     ✅ Coba temukan bentuk umum dari solusi berdasarkan input a, b, dan c.
@@ -241,7 +246,9 @@ if st.session_state.get("analisis_pola_abc", "").strip():
         if step3.strip():
            with st.expander("🔍Cek Pola dengan AI"):
                 st.info(r"""
-    📌 **Prompt:**
+    📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt:**
     Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
     
     ✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
@@ -284,7 +291,9 @@ if st.session_state.get("eksplorasi4_step3", "").strip():
         if analisis_d.strip():
             with st.expander("🔍Cek Penjelasan AI"):
                 st.info("""
-    📌 **Prompt:**
+    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt:**
     Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
     
     ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
@@ -333,43 +342,43 @@ hasil_abc = st.text_area("📝 Akar dari metode rumus ABC:", key="hasil_abc")
 
 # --- 5. Verifikasi ---
 st.header("Verifikasi")
-st.markdown("#### 🔎 Cek AI")
-st.code("Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 5x + 6 = 0 dengan dua metode: pemfaktoran dan rumus ABC?")
-st.info("Gunakan jawaban AI sebagai referensi. Bandingkan dengan jawabanmu dan perhatikan perbedaan langkah atau hasil yang ditemukan.")
-st.markdown("[🔗 Lihat jawaban AI di Perplexity](https://www.perplexity.ai)")
+if hasil_abc.strip():
+    with st.expander("🔍Cek Penjelasan AI"):
+            st.info("""
+    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt:**
+    Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 5x + 6 = 0 dengan dua metode: pemfaktoran dan rumus ABC?
+    
+    ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
+    
+    📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
+                """)
+                st.text_area("Tulis refleksimu di sini...", key="refleksi_eksplorasiakhir", height=80)
+
 
 import streamlit as st
 
 # --- 6. Penarikan Kesimpulan ---
 st.header("🎯 Penarikan Kesimpulan")
 kesimpulan = st.text_area(
-    "Apa kesimpulanmu dari hasil eksplorasi dua metode tersebut? Manakah yang menurutmu lebih mudah atau lebih cepat?",
+    "Apa kesimpulanmu dari hasil eksplorasi metode rumus ABC? Manakah yang menurutmu lebih mudah atau lebih cepat?",
     key="kesimpulan_akhir"
 )
 
-# Prompt untuk Perplexity
-prompt = f"""Bandingkan dua metode penyelesaian persamaan kuadrat: metode faktorisasi dan metode rumus ABC.
-Berikan kelebihan dan kekurangan masing-masing serta contoh soal yang bisa diselesaikan dengan dua metode tersebut."""
-
-# Tampilkan tombol untuk menyalin prompt dan mengakses Perplexity
-if kesimpulan.strip() != "":
-    st.markdown("### 🔍 Coba Bandingkan Jawabanmu dengan AI!")
-    st.code(prompt, language="markdown")
-
-    st.markdown(
-        f"""
-        <a href="https://www.perplexity.ai" target="_blank">
-            <button style='padding:10px 20px;font-size:16px;border:none;border-radius:8px;background-color:#4CAF50;color:white;cursor:pointer;'>
-                Buka Perplexity AI untuk Cek Jawaban
-            </button>
-        </a>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.info("📋 Salin prompt di atas, lalu tempel di Perplexity AI untuk membandingkan jawabanmu.")
-else:
-    st.warning("❗Isi dulu kesimpulanmu sebelum lanjut ke AI ya!")
+if kesimpulan.strip():
+    with st.expander("🔍Cek Penjelasan AI"):
+            st.info("""
+    📌**Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+    
+    **Prompt:**
+    Bandingkan dua metode penyelesaian persamaan kuadrat: metode faktorisasi dan metode rumus ABC. Berikan kelebihan dan kekurangan masing-masing serta contoh soal yang bisa diselesaikan dengan dua metode tersebut
+    
+    ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
+    
+    📝 **Refleksi:** Apakah kamu dapat menebak jenis akar hanya dari nilai \(\Delta\)?
+                """)
+                st.text_area("Tulis refleksi dari pertemuan 3 di sini...", key="refleksi_p3", height=80)
 
 
 
@@ -411,6 +420,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
