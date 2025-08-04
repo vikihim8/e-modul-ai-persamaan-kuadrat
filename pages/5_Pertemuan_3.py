@@ -140,7 +140,7 @@ if st.session_state.get("jawaban_eksplorasi1", "").strip():
     
         if jawaban2.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 2"):
-              st.info("""
+            st.info("""
 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
 
 **Prompt:**
@@ -151,7 +151,7 @@ Bagaimana cara menyelesaikan persamaan kuadrat x^2 - 4x + 2 = 0 jika tidak bisa 
     📝 **Refleksi:** Apa kelemahan metode faktorisasi? Kapan kita butuh cara lain selain faktorisasi?
     """
                 )
-                st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
+            st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
 
 # Eksplorasi 3
 if st.session_state.get("jawaban_eksplorasi2", "").strip():
@@ -430,6 +430,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
