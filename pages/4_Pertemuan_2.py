@@ -79,7 +79,7 @@ if analisis1.strip() != "":
 **Prompt:**
 Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?
 
-✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+✍️ Setelah membandingkan, tuliskan refleksimu untuk pertemuan 1:
 """)
 
     # Tambahkan kotak refleksi setelah membandingkan
@@ -119,7 +119,7 @@ if st.session_state.get("analisis1"):
 **Prompt:**
 Bagaimana cara menyusun fungsi kuadrat jika diketahui dua akarnya?
 
-✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+✍️ Setelah membandingkan, tuliskan refleksimu untuk pertemuan 2:
 """)
 
     # Tambahkan kotak refleksi setelah membandingkan
@@ -162,7 +162,7 @@ if (
 **Prompt:**
 Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
 
-✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+✍️ Setelah membandingkan, tuliskan refleksimu untuk eksplorasi 3:
 """)
 
     # Tambahkan kotak refleksi setelah membandingkan
@@ -219,26 +219,35 @@ if st.session_state.get("analisis3"):
 **Prompt:**
 Bagaimana hubungan antara akar-akar (p dan q) dengan koefisien b dan c dalam fungsi kuadrat f(x) = a(x - p)(x - q)?
 
-✍️ Setelah membandingkan, tuliskan kesimpulanmu di bawah ini:
+✍️ Setelah membandingkan, tuliskan refleksimu di bawah ini:
 """)
 
-        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
+        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4p2", height=80)
 
 
 
 
 # Eksplorasi 5
-if st.session_state.get("analisis4"):  # Pastikan Eksplorasi 4 sudah dijawab
+if st.session_state.get("analisis4_1"):  # Pastikan Eksplorasi 4 sudah dijawab
     st.subheader("🔬 Eksplorasi 5: Buat Kesimpulan Umum")
-    st.write("Setelah melakukan semua eksplorasi, apa kesimpulanmu untuk menentukan bentuk umum fungsi kuadrat dari grafiknya?")
+    st.write("Setelah melakukan semua eksplorasi, apa kesimpulanmu untuk menentukan bentuk faktor dari bentuk umum persamaan kuadrat?")
 
     kesimpulan = st.text_area("✍️ Tuliskan kesimpulanmu di sini:", key="kesimpulan")
 
-    if kesimpulan.strip():
-        if st.button("💡 Bandingkan dengan AI"):
-            st.markdown("##### 🔎 Cek AI")
-            st.code("Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?")
-            st.info("📝 Bandingkan kesimpulanmu dengan versi AI.")
+    if kesimpulan:
+        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
+        st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
+            
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**
+Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?
+
+✍️ Setelah membandingkan, tuliskan refleksimu terkait eksplorasi pada pertemuan 2 ini:
+""")
+
+    # Tambahkan kotak refleksi setelah membandingkan
+        st.text_area("Tulis jawaban refleksi Eksplorasi akhir di sini...", key="refleksi_eksplorasi5p2", height=80)
 
 
 
@@ -316,6 +325,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
