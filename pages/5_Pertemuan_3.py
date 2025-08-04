@@ -244,7 +244,7 @@ if st.session_state.get("analisis_pola_abc", "").strip():
             x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
             \]
             step3 = st.text_area("✅ Apa kamu sudah mendapatkan rumus yang sama?", key="eksplorasi4_step3", height=60)
-
+            """)
             if eksplorasi4_step3:
                 st.success("🎉 Kamu berhasil menyusun **rumus kuadrat**!")
     
@@ -430,6 +430,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
