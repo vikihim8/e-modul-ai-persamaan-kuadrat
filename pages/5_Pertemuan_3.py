@@ -184,7 +184,10 @@ if st.session_state.get("analisis_pola_abc", "").strip():
         st.markdown("""
         Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
     
-        $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+        $$
+        x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+        $$
+
     
         Apakah kamu pernah melihat bentuk seperti ini dari eksplorasi sebelumnya?
         """)
@@ -363,6 +366,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
