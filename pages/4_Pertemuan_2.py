@@ -47,9 +47,7 @@ if pertanyaan:
 
 # Eksplorasi 1
 st.subheader("🔬 Eksplorasi 1: Menentukan **Akar-akar dari Grafik**")
-st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$
-
-         Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut")
+st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$.  Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut")
 
 akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
 akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
@@ -338,6 +336,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
