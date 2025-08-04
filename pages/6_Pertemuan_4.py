@@ -87,7 +87,7 @@ Jelaskan secara rinci jika misal saya memiliki persamaan h(t) = t² + vt + h₀ 
 📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara hasil eksplorasimu dengan hasil AI
 """
                 )
-                st.text_area("Tulis refleksi Eksplorasi di sini...", key="refleksi_eksplorasip4", height=80)
+        st.text_area("Tulis refleksi Eksplorasi di sini...", key="refleksi_eksplorasip4", height=80)
 
 # Langkah 4: Pengolahan Data (Latihan)
 st.header("Pengolahan Data")
@@ -166,6 +166,7 @@ with col2:
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
         st.switch_page("pages/8_Latihan_dan_Refleksi.py")
+
 
 
 
