@@ -74,17 +74,20 @@ if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
 
 st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
 pengumpulan_input = st.text_area("Tulis pemahamanmu di sini", key="pengumpulan")
-if kesimpulan_input.strip():
+if pengumpulan_input.strip():
     with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi"):
         st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
-**Prompt:**
-Apa kesimpulan detail materi tentang penerapan fungsi kuadrat dalam kehidupan sehari-hari
+**Prompt:**  
+Jelaskan secara rinci jika misal saya memiliki persamaan h(t) = t² + vt + h₀ dengan t: waktu (detik), v: kecepatan awal (m/s), h₀: tinggi awal (meter). Bagaimana cara menghitung Tinggi Maksimum & Waktu Tempuh, serta Hitung kapan bola menyentuh tanah (h = 0)
 
-📝 **Refleksi:** Setelah kegiatan pada pertemuan ini, tuliskan refleksimu di sini
-""")
-        st.text_area("Tulis jawaban refleksi pertemuan 4 di sini...", key="refleksi_kesimpulan", height=80)
+📊 Bandingkan hasil analisismu dengan hasil yang disajikan oleh AI
+
+📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara hasil eksplorasimu dengan hasil AI
+"""
+                )
+        st.text_area("Tulis refleksi Eksplorasi di sini...", key="refleksi_eksplorasip4", height=80)
 
 
         
@@ -125,7 +128,7 @@ Apa kesimpulan detail materi tentang penerapan fungsi kuadrat dalam kehidupan se
 
 📝 **Refleksi:** Setelah kegiatan pada pertemuan ini, tuliskan refleksimu di sini
 """)
-         st.text_area("Tulis jawaban refleksi pertemuan 4 di sini...", key="refleksi_eksplorasip4", height=80)
+        st.text_area("Tulis jawaban refleksi pertemuan 4 di sini...", key="refleksi_kesimpulan", height=80)
 
 
         
