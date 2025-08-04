@@ -166,7 +166,7 @@ Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
 """)
 
     # Tambahkan kotak refleksi setelah membandingkan
-        st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi2p2", height=80)
+        st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3p2", height=80)
 
 
 
@@ -234,16 +234,21 @@ if st.session_state.get("analisis3"):
                 st.success("🎯 Keren! Sekarang kamu mungkin mulai menyadari bahwa:")
                 st.latex(r"p + q = -\frac{b}{a} \quad \text{dan} \quad p \times q = \frac{c}{a}")
                 st.info("Hubungan ini disebut sebagai **hubungan akar-akar persamaan kuadrat dengan koefisiennya.**")
+            
+            if cek_koefisien:
+                st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
+                st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
+            
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
-    st.markdown("#### 🤖 Cek AI")
-    st.code("Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?")
-    st.markdown("[🔗 Kunjungi Perplexity.ai](https://www.perplexity.ai)")
+**Prompt:**
+Bagaimana cara menemukan p dan q untuk memfaktorkan fungsi kuadrat dalam bentuk umum ax^2 + bx + c?
 
+✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+""")
 
-# Refleksi setelah membaca jawaban AI
-refleksi_ai = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi_pq")
-if refleksi_ai:
-    st.success("Bagus! Kamu sedang membangun pemahaman yang lebih dalam tentang pola dalam fungsi kuadrat.")
+    # Tambahkan kotak refleksi setelah membandingkan
+        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi3p2", height=80)
 
 
 
@@ -336,6 +341,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
