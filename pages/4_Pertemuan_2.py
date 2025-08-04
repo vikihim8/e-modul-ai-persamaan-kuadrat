@@ -83,7 +83,7 @@ Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap su
 """)
 
     # Tambahkan kotak refleksi setelah membandingkan
-    st.text_area(Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1p2", height=80)
+    st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1p2", height=80)
 
 
 
@@ -326,5 +326,6 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
