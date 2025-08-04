@@ -164,6 +164,7 @@ if (
     Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
         
     ✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+   
     """)
     
         # Refleksi hanya muncul setelah prompt ditampilkan
@@ -337,6 +338,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
