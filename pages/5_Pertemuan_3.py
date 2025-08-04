@@ -178,21 +178,67 @@ if st.session_state.get("jawaban_eksplorasi2", "").strip():
                 """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3", height=80)
 
-# Eksplorasi 4
 if st.session_state.get("analisis_pola_abc", "").strip():
     with st.expander("💡Eksplorasi 4: Menyusun Rumus Penyelesaian Umum"):
         st.markdown(r"""
-        Berdasarkan pola yang kamu temukan tadi, coba perhatikan bentuk akar ini:
+        Kamu sudah menemukan pola hubungan antara koefisien \( a, b, \) dan \( c \) terhadap akar-akar persamaan kuadrat.
 
-        $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+        Sekarang, mari kita susun **rumus penyelesaian umum** dengan menyelesaikan bentuk umum persamaan kuadrat:  
+        \[
+        ax^2 + bx + c = 0
+        \]
 
-    
-        Apakah kamu pernah melihat bentuk seperti ini dari eksplorasi sebelumnya?
+        **Langkah 1:**  
+        Bagi semua suku dengan \( a \), agar koefisien \( x^2 \) menjadi 1.
+        \[
+        x^2 + \frac{b}{a}x + \frac{c}{a} = 0
+        \]
         """)
+        
+        step1 = st.text_area("✅ Tulis hasil setelah dibagi semua suku dengan a:", key="eksplorasi4_step1", height=60)
+
+        if step1.strip():
+            st.markdown(r"""
+            **Langkah 2:**  
+            Pindahkan konstanta ke ruas kanan:
+            \[
+            x^2 + \frac{b}{a}x = -\frac{c}{a}
+            \]
+
+            **Langkah 3:**  
+            Lengkapi kuadrat kiri agar jadi bentuk kuadrat sempurna. Tambahkan
+            \(
+            \left( \frac{b}{2a} \right)^2
+            \)
+            ke kedua ruas.
+            \[
+            x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2 = -\frac{c}{a} + \left( \frac{b}{2a} \right)^2
+            \]
+            """)
+            step2 = st.text_area("✅ Apa bentuk kuadrat sempurna di ruas kiri?", key="eksplorasi4_step2", height=60)
+
+        if st.session_state.get("eksplorasi4_step2", "").strip():
+            st.markdown(r"""
+            **Langkah 4:**  
+            Bentuk ruas kiri menjadi kuadrat sempurna, lalu akar-kan kedua ruas:
+            \[
+            \left( x + \frac{b}{2a} \right)^2 = \frac{b^2 - 4ac}{4a^2}
+            \]
+            \[
+            x + \frac{b}{2a} = \pm \frac{\sqrt{b^2 - 4ac}}{2a}
+            \]
+
+            **Langkah 5 (Terakhir):**  
+            Isolasi \( x \) untuk mendapatkan rumus umum:
+            \[
+            x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+            \]
+            step3 = st.text_area("✅ Apa kamu sudah mendapatkan rumus yang sama?", key="eksplorasi4_step3", height=60)
+
+            if eksplorasi4_step3:
+                st.success("🎉 Kamu berhasil menyusun **rumus kuadrat**!")
     
-        rumus = st.text_area("Apa hubungan rumus ini dengan nilai-nilai akar yang kamu temukan sebelumnya?", key="hubungan_rumus")
-    
-        if rumus.strip():
+        if step3.strip():
             with st.expander("🔍Cek Konfirmasi AI"):
                 st.info("""
     📌 **Prompt:**
@@ -204,8 +250,9 @@ if st.session_state.get("analisis_pola_abc", "").strip():
                 """)
                 st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4", height=80)
 
+
 # Eksplorasi 5
-if st.session_state.get("hubungan_rumus", "").strip():
+if st.session_state.get("eksplorasi4_step3", "").strip():
     with st.expander("💡Eksplorasi 5: Apa pengaruh nilai di dalam akar? (Diskriminan)"):
         st.markdown("""
         Sekarang kita fokus pada bagian dalam tanda akar:
@@ -364,6 +411,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
