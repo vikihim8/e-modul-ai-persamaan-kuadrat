@@ -47,7 +47,9 @@ if pertanyaan:
 
 # Eksplorasi 1
 st.subheader("🔬 Eksplorasi 1: Menentukan **Akar-akar dari Grafik**")
-st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$. Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.")
+st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$
+
+         Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut")
 
 akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
 akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
@@ -136,7 +138,7 @@ if (
     st.subheader("🔬 Eksplorasi 3: Pengaruh Nilai a terhadap Bentuk Umum Fungsi Kuadrat")
     from sympy import symbols, expand
     
-    st.markdown("Sekarang kita akan mencoba **mengubah-ubah nilai $$a$$** dan melihat bagaimana bentuk fungsi kuadrat berubah.")
+    st.markdown("Sekarang kita akan mencoba mengubah-ubah nilai $$a$$ dan melihat bagaimana bentuk fungsi kuadrat berubah.")
     
     a_eksplorasi = st.number_input("🔢 Coba masukkan nilai a yang berbeda", value=1, key="a_eksplorasi3")
     akar1 = st.number_input("🧮 Masukkan akar pertama", value=0, step=1, key="akar1_eksplorasi3")
@@ -154,15 +156,20 @@ if (
     analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
 
     if analisis3:
-        st.markdown("### 🔎 Cek AI (Perplexity.ai)")
-        st.write("Bandingkan pemahamanmu dengan AI menggunakan prompt berikut:")
-        st.code("Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?")
-        st.info("💡 Kunjungi [Perplexity.ai](https://www.perplexity.ai) dan salin prompt di atas.")
+        st.markdown("---")
+        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
+        st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
             
-        refleksi3 = st.text_area("💭 Setelah membaca jawaban AI, apa insight baru yang kamu dapatkan?", key="refleksi3")
-# langsung gunakan refleksi3 tanpa mengatur session_state lagi
-    if refleksi3:
-        st.success(f"Terima kasih atas refleksinya: {refleksi3}")
+📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+
+**Prompt:**
+Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?"
+
+✍️ Setelah membandingkan, tuliskan kembali kesimpulanmu tentang hubungan tersebut:
+""")
+
+    # Tambahkan kotak refleksi setelah membandingkan
+    st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3p2", height=80)
 
 
 
@@ -331,6 +338,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
