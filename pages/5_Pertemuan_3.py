@@ -19,11 +19,6 @@ def simpan_ke_sheet(nama, kelas, pertemuan, skor, jawaban, refleksi):
     sheet.append_row([nama, kelas, pertemuan, skor, jawaban, refleksi, waktu])
 
 
-# Identitas
-st.header("👤 Identitas")
-nama = st.text_input("Nama Siswa:")
-kelas = st.text_input("Kelas:")
-
 
 x = sp.Symbol('x')
 st.set_page_config(page_title="Pertemuan 3", layout="centered")
@@ -31,6 +26,12 @@ st.set_page_config(page_title="Pertemuan 3", layout="centered")
 st.title("📘 Pertemuan 3: Menyelesaikan Persamaan Kuadrat")
 
 st.markdown("**Capaian:** Siswa dapat menyelesaikan soal persamaan kuadrat menggunakan rumus ABC")
+
+# Identitas
+st.header("👤 Identitas")
+nama = st.text_input("Nama Siswa:")
+kelas = st.text_input("Kelas:")
+
 
 # --- 1. Stimulus ---
 st.header("📌 Stimulus")
@@ -362,5 +363,6 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
