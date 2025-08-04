@@ -255,7 +255,7 @@ if st.session_state.get("analisis_pola_abc", "").strip():
     **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
-    Bagaimana rumus \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) bisa ditemukan dari bentuk umum persamaan kuadrat \(ax^2 + bx + c = 0\)?
+    Bagaimana rumus x = (-b +- (sqrt(b^2 - 4ac)))/2a bisa ditemukan dari bentuk umum persamaan kuadrat ax^2 + bx + c = 0?
     
     ✅ Bandingkan dengan pola yang kamu temukan di eksplorasi sebelumnya.
     
@@ -302,7 +302,7 @@ if st.session_state.get("eksplorasi4_step3", "").strip():
     📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
     
     **Prompt:**
-    Apa pengaruh nilai diskriminan \(\Delta = b^2 - 4ac\) terhadap jenis akar dari persamaan kuadrat?
+    Apa pengaruh nilai diskriminan Diskriminan = b^2 - 4ac terhadap jenis akar dari persamaan kuadrat?
     
     ✅ Coba cocokkan hasil eksperimenmu dengan teori dari AI.
     
@@ -431,6 +431,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 4"):
         st.switch_page("pages/6_Pertemuan_4.py")
+
 
 
 
