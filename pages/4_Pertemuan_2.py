@@ -183,10 +183,10 @@ if st.session_state.get("analisis3"):
     st.write("""
     Misalkan kita punya fungsi kuadrat dalam bentuk faktor:
     
-    **f(x) = a(x - p)(x - q)**
+    **$$f(x) = a(x - p)(x - q)$$**
     
     Ayo ubah bentuk ini menjadi bentuk umum (standar):  
-    **f(x) = ax² + bx + c**
+    **$$f(x) = ax² + bx + c$$**
     """)
 
     nilai_a = st.number_input("Masukkan nilai a", value=1, key="nilai_a_input")
@@ -206,13 +206,13 @@ if st.session_state.get("analisis3"):
     analisis4_1 = st.text_area("Apa yang kamu perhatikan dari hasil bentuk umum tersebut?", key="analisis4_1")
 
     # Lanjut jika siswa menulis analisis
-    if analisis4_1:
-        st.markdown("---")
-        st.write("Sekarang coba ubah nilai p dan q beberapa kali.")
-        st.write("Amati perubahan pada koefisien **b** dan **c** dari bentuk umum tersebut.")
-        analisis4_2 = st.text_area("Apa pola hubungan antara p, q dengan koefisien b dan c yang kamu temukan?", key="analisis4_2")
 
-    if analisis4_2:
+        st.markdown("---")
+        st.write("Sekarang coba ubah nilai $$p$$ dan $$q$$ beberapa kali.")
+        st.write("Amati perubahan pada koefisien $$**b**$$ dan $$**c**$$ dari bentuk umum tersebut.")
+        st.text_area("Apa pola hubungan antara $$p$$, $$q$$ dengan koefisien $$b$$ dan $$c$$ yang kamu temukan?", key="analisis4_2")
+
+    if analisis4_1:
         st.markdown("---")
         st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
         st.info("""💬 Bandingkan hasil temuanmu dengan AI. Apakah serupa? Apa perbedaannya?
@@ -319,6 +319,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
