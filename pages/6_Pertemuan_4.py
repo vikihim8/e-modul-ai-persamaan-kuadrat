@@ -48,55 +48,59 @@ st.markdown("- `v`: kecepatan awal (m/s)")
 st.markdown("- `h₀`: tinggi awal (meter)")
 
 # Input pengguna
-v = st.number_input("Masukkan kecepatan awal (v) dalam m/s", value=20)
-h0 = st.number_input("Masukkan tinggi awal (h₀) dalam meter", value=1)
+v_input = st.number_input("Masukkan kecepatan awal (v) dalam m/s", value=20)
+h0_input = st.number_input("Masukkan tinggi awal (h₀) dalam meter", value=1)
 
 if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
-import sympy as sp
+    import sympy as sp
 
-# Definisikan simbol
-t = sp.Symbol('t', real=True, positive=True)
-v, h0 = sp.symbols('v h0', real=True)
+    # Definisikan simbol dan persamaan
+    t = sp.Symbol('t', real=True, positive=True)
+    h = 1 * t**2 + v_input * t + h0_input
 
-# Persamaan tinggi
-h = 1 * t**2 + v * t + h0
+    # Hitung waktu saat tinggi maksimum (turunan = 0)
+    turunan = h.diff(t)
+    t_max_solutions = sp.solve(turunan, t)
 
-# Turunan untuk mencari tinggi maksimum
-t_max_solutions = sp.solve(h.diff(t), t)
-if t_max_solutions:
-    t_max = t_max_solutions[0]
-    h_max = h.subs(t, t_max)
+    if t_max_solutions:
+        t_max = t_max_solutions[0]
+        h_max = h.subs(t, t_max)
 
-    # Hitung kapan bola menyentuh tanah
-    total_waktu = [sol.evalf() for sol in sp.solve(h, t) if sol.is_real and sol >= 0]
+        # Hitung kapan bola menyentuh tanah (h = 0)
+        total_waktu = [sol.evalf() for sol in sp.solve(h, t) if sol.is_real and sol >= 0]
 
-    st.success(f"⏱️ Waktu saat tinggi maksimum: {float(t_max):.2f} detik")
-    st.success(f"📏 Tinggi maksimum bola: {float(h_max):.2f} meter")
+        st.success(f"⏱️ Waktu saat tinggi maksimum: {float(t_max):.2f} detik")
+        st.success(f"📏 Tinggi maksimum bola: {float(h_max):.2f} meter")
 
-    if total_waktu:
-        st.success(f"🕒 Perkiraan bola menyentuh tanah: {float(max(total_waktu)):.2f} detik")
+        if total_waktu:
+            st.success(f"🕒 Perkiraan bola menyentuh tanah: {float(max(total_waktu)):.2f} detik")
+        else:
+            st.warning("⚠️ Tidak ditemukan waktu bola menyentuh tanah secara realistis.")
     else:
-        st.warning("Tidak ditemukan waktu ketika bola menyentuh tanah.")
-else:
-    st.warning("Tidak ditemukan waktu maksimum.")
+        st.warning("⚠️ Tidak ditemukan waktu maksimum (solusi tidak ada).")
 
-
+# Refleksi pengguna
 st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
 pengumpulan_input = st.text_area("Tulis pemahamanmu di sini", key="pengumpulan")
+
 if pengumpulan_input.strip():
     with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi"):
         st.info("""
 📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
 
 **Prompt:**  
-Jelaskan secara rinci jika misal saya memiliki persamaan h(t) = t² + vt + h₀ dengan t: waktu (detik), v: kecepatan awal (m/s), h₀: tinggi awal (meter). Bagaimana cara menghitung Tinggi Maksimum & Waktu Tempuh, serta Hitung kapan bola menyentuh tanah (h = 0)
+Diberikan persamaan ketinggian bola h(t) = t² + vt + h₀, dengan t adalah waktu (detik), v adalah kecepatan awal (m/s), dan h₀ adalah tinggi awal (meter). Jelaskan cara menghitung:  
+1. Waktu saat bola mencapai tinggi maksimum  
+2. Tinggi maksimum bola  
+3. Waktu ketika bola menyentuh tanah (h = 0)  
+Berikan penjelasan lengkap secara matematis serta contoh penerapan.
 
-📊 Bandingkan hasil analisismu dengan hasil yang disajikan oleh AI
+📊 Bandingkan hasil analisismu dengan hasil dari AI
 
-📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara hasil eksplorasimu dengan hasil AI
-"""
-                )
+📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara hasil eksplorasimu dan hasil AI?
+""")
         st.text_area("Tulis refleksi Eksplorasi di sini...", key="refleksi_eksplorasip4", height=80)
+
 
 
         
@@ -177,6 +181,7 @@ with col2:
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
         st.switch_page("pages/8_Latihan_dan_Refleksi.py")
+
 
 
 
