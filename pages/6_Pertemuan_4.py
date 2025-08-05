@@ -42,7 +42,7 @@ identifikasi_input = st.text_input("✍️ Tulis pertanyaan atau masalah yang ka
 
 # Langkah 3: Pengumpulan Data
 st.header("Pengumpulan Data")
-st.markdown("📈 Eksplorasi fungsi kuadrat dalam bentuk umum: `h(t) = t² + vt + h₀`, di mana:")
+st.markdown("📈 Eksplorasi fungsi kuadrat dalam bentuk umum: `h(t) = -4.9t² + vt + h₀`, di mana:")
 st.markdown("- `t`: waktu (detik)")
 st.markdown("- `v`: kecepatan awal (m/s)")
 st.markdown("- `h₀`: tinggi awal (meter)")
@@ -56,7 +56,7 @@ if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
 
     # Definisikan simbol dan persamaan
     t = sp.Symbol('t', real=True, positive=True)
-    h = 1 * t**2 + v_input * t + h0_input
+    h = -4.9 * t**2 + v_input * t + h0_input
 
     # Hitung waktu saat tinggi maksimum (turunan = 0)
     turunan = h.diff(t)
@@ -181,6 +181,7 @@ with col2:
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
         st.switch_page("pages/8_Latihan_dan_Refleksi.py")
+
 
 
 
