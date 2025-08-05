@@ -52,24 +52,33 @@ v = st.number_input("Masukkan kecepatan awal (v) dalam m/s", value=20)
 h0 = st.number_input("Masukkan tinggi awal (h₀) dalam meter", value=1)
 
 if st.button("🔍 Hitung Tinggi Maksimum & Waktu Tempuh"):
-    import sympy as sp
-    t = sp.Symbol('t', real=True, positive=True)
-    h = 1 * t**2 + v * t + h0
+import sympy as sp
 
-    # Hitung waktu saat tinggi maksimum (turunan = 0)
-    t_max = sp.solve(h.diff(t), t)[0]
+# Definisikan simbol
+t = sp.Symbol('t', real=True, positive=True)
+v, h0 = sp.symbols('v h0', real=True)
+
+# Persamaan tinggi
+h = 1 * t**2 + v * t + h0
+
+# Turunan untuk mencari tinggi maksimum
+t_max_solutions = sp.solve(h.diff(t), t)
+if t_max_solutions:
+    t_max = t_max_solutions[0]
     h_max = h.subs(t, t_max)
 
-    # Hitung kapan bola menyentuh tanah (h = 0)
+    # Hitung kapan bola menyentuh tanah
     total_waktu = [sol.evalf() for sol in sp.solve(h, t) if sol.is_real and sol >= 0]
 
     st.success(f"⏱️ Waktu saat tinggi maksimum: {float(t_max):.2f} detik")
     st.success(f"📏 Tinggi maksimum bola: {float(h_max):.2f} meter")
-    
+
     if total_waktu:
         st.success(f"🕒 Perkiraan bola menyentuh tanah: {float(max(total_waktu)):.2f} detik")
     else:
-        st.warning("⚠️ Tidak ditemukan waktu bola menyentuh tanah secara realistis.")
+        st.warning("Tidak ditemukan waktu ketika bola menyentuh tanah.")
+else:
+    st.warning("Tidak ditemukan waktu maksimum.")
 
 
 st.markdown("✍️ Apa yang kamu pahami dari hasil perhitungan di atas?")
@@ -168,6 +177,7 @@ with col2:
 with col3:
     if st.button("➡️ Latihan dan Refleksi"):
         st.switch_page("pages/8_Latihan_dan_Refleksi.py")
+
 
 
 
