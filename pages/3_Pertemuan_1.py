@@ -208,12 +208,13 @@ Amati bagaimana sumbu simetri & titik puncak berubah saat nilai $b$ berbeda.
                     with st.expander("📖 Verifikasi Jawaban"):
                         st.markdown("""
                         **📚 Materi Verifikasi:**
-
+                        
                         - Perubahan nilai $b$ **tidak mengubah bentuk parabola**, tetapi **menggeser posisi puncak parabola secara horizontal**.
-                        - **Sumbu simetri** berubah sesuai rumus $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+                        - **Sumbu simetri** dapat ditentukan dari rumus $x_{\\text{puncak}} = \\frac{-b}{2a}$.  
                           Semakin besar nilai $|b|$, semakin jauh pergeserannya dari sumbu $y$.
                         - **Titik puncak** ikut berpindah sesuai perubahan $b$, baik ke kiri maupun ke kanan.
                         """)
+
 
 
 
