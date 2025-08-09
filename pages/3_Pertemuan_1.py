@@ -701,7 +701,7 @@ with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
     )
     
 # Verifikasi Desmos
-with st.expander("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
+with st.expander("📈 Verifikasi bentuk grafik fungsi dengan Desmos:"):
     st.markdown("""
     🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
     Masukkan fungsi: `-5x² + 20x + 1`
@@ -844,6 +844,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 2"):
         st.switch_page("pages/4_Pertemuan_2.py")
+
 
 
 
