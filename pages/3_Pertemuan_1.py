@@ -686,25 +686,8 @@ if st.button("Kirim Pengolahan Data"):
 st.header("🔍 Verifikasi Hasil Pengolahan Data")
 st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
 
-# Input jawaban siswa
-jawaban_pengolahan = st.text_area("✍️ Tuliskan jawaban soal pengolahan data di sini:", key="jawaban_pengolahan", height=100)
-
-if jawaban_pengolahan.strip() != "":
     # Jawaban AI internal
-    with st.expander("📘 Jawaban AI untuk soal ini"):
-        st.markdown("""
-        **Fungsi kuadratnya:**  
-        $$h(x) = -5x^2 + 20x + 1$$  
-
-        **Titik puncak:**  
-        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
-
-        **Tinggi maksimum:**  
-        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
-        """)
-
-    # Verifikasi AI eksternal
-    with st.expander("🤖 Cek ulang keakuratan dengan AI eksternal"):
+    with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
         st.markdown("""
         **Prompt yang digunakan untuk semua AI:**
         > Diketahui fungsi kuadrat h(x) = -5x² + 20x + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
@@ -714,6 +697,7 @@ if jawaban_pengolahan.strip() != "":
         - [Gemini](https://gemini.google.com) → tempel prompt dan bandingkan hasilnya  
         - [ChatGPT](https://chat.openai.com) → tempel prompt dan lihat penjelasan langkah demi langkah  
         """)
+
 
     # Verifikasi Desmos
     with st.expander("📈 Verifikasi bentuk grafik fungsi dengan Desmos"):
@@ -739,14 +723,17 @@ if jawaban_pengolahan.strip() != "":
         st.markdown("""
         **Materi yang benar sesuai soal:**
         - **Bentuk umum:** $$y = ax^2 + bx + c$$ dengan $$a < 0$$ → parabola terbuka ke bawah.
-        - **Titik puncak:** dihitung dengan $$x = -\\frac{b}{2a}$$, lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum.
-        - Pada soal ini:  
-            - $$x_{puncak} = 2$$ detik  
-            - $$y_{maksimum} = 21$$ meter
+        **Fungsi kuadratnya:**  
+        $$h(x) = -5x^2 + 20x + 1$$  
+
+        **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a}$$
+        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
+
+        **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum
+        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
+
         - Grafiknya simetris terhadap garis $$x = 2$$.
         """)
-
-
 
 
 
