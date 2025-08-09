@@ -103,7 +103,7 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan
 📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat $$a ≠ 0$$ dan saat $$a = 0$$?
 """
                 )
-                st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
+refleksi_eksplorasi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
 
 # Verifikasi hanya muncul jika refleksi sudah diisi
 if refleksi_eksplorasi1.strip():
