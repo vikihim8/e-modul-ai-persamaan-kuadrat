@@ -74,19 +74,22 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         st.pyplot(fig)
 
         analisis1 = st.text_area(
-            "Tuliskan analisismu berdasarkan grafik di atas", key="analisis1"
+            "Tuliskan analisismu berdasarkan grafik di atas. Jika kamu masih belum menemukan hasil analisis, coba perhatikan perintah berikut:
+            - masukkan nilai $$a$$ = 0 dan nilai $$b$$ & $$c$$ sesuai kemaumanmu. Bagaimana bentuk grafiknya? tuliskan di hasil analisis
+            - masukkan nilai $$a$$ ≠ 0  dan nilai $$b$$ & $$c$$ sesuai kemaumanmu. Bagaimana bentuk grafiknya? tuliskan di hasil analisis
+            Dari kedua hasil yang ditampilkan oleh grafik, itulah yang akan menjadi hasil utama analisismu. ", key="analisis1"
         )
 
         if analisis1.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
                 st.info("""
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+📌 **Salin dan tempel prompt ini ke 3 AI berikut [Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [Chat GPT](https://chatgpt.com/) untuk mendapatkan penjelasan dari 3 output yang berbeda. Pahami dan bandingkan ketiga output AI tersebut dan ambillah beberapa hal yang menjadi inti dari ketiga output AI tersebut**
 
 **Prompt:**  
 Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan apa yang terjadi pada grafik fungsi kuadrat jika a ≠ 0 dalam persamaan y = ax² + bx + c. Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan berikan perbandingan visual antara grafik saat a = 0 dan a ≠ 0.
 
 
-✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) untuk memverifikasi bentuk grafik jika **$$a = 0$$** dan jika **$$a ≠ 0$$**. salin dan tempelkan 2 contoh persamaan dari kedua kondisi berikut:
 
 2x² + 3x + 1  
 0x² + 3x + 1
@@ -97,6 +100,27 @@ Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan
 """
                 )
                 st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
+
+# Verifikasi hanya muncul jika refleksi sudah diisi
+if refleksi_eksplorasi1.strip():
+    st.success("Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+
+    with st.expander("📖 Verifikasi Jawaban"):
+        st.markdown("""
+        **📚 Materi Verifikasi:**
+        
+        - **Jika $a ≠ 0 $**:  
+          Fungsi berbentuk kuadrat (grafiknya **parabola**).  
+          - Jika $a > 0$, parabola membuka ke atas.  
+          - Jika $a < 0$, parabola membuka ke bawah.  
+          - Memiliki titik puncak dan sumbu simetri.
+
+        - **Jika $a = 0$**:  
+          Fungsi berubah menjadi persamaan linear \( y = bx + c \) (grafiknya **garis lurus**).  
+          - Kemiringan garis ditentukan oleh nilai \( b \).  
+          - Tidak memiliki titik puncak maupun sumbu simetri.
+        """)
+
 
 
 
