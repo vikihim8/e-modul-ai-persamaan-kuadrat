@@ -73,57 +73,68 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         ax.set_title("Grafik Fungsi Kuadrat")
         st.pyplot(fig)
 
-        analisis1 = st.text_area(
-    """Tuliskan analisismu berdasarkan grafik di atas. 
-    Jika kamu masih belum menemukan hasil analisis, coba perhatikan perintah berikut:
-    - Masukkan nilai $a = 0$ dan nilai $b$ & $c$ sesuai kemauanmu. Bagaimana bentuk grafiknya? Tuliskan di hasil analisis.
-    - Masukkan nilai $a \neq 0$ dan nilai $b$ & $c$ sesuai kemauanmu. Bagaimana bentuk grafiknya? Tuliskan di hasil analisis.
-    
-    Dari kedua hasil yang ditampilkan oleh grafik, itulah yang akan menjadi hasil utama analisismu.
-    """,
-    key="analisis1"
-    )
+analisis1 = st.text_area(
+    """
+**💡 Instruksi Analisis:**
 
-        if analisis1.strip():
-            with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
-                st.info("""
-📌 **Salin dan tempel prompt ini ke 3 AI berikut [Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [Chat GPT](https://chatgpt.com/) untuk mendapatkan penjelasan dari 3 output yang berbeda. Pahami dan bandingkan ketiga output AI tersebut dan ambillah beberapa hal yang menjadi inti dari ketiga output AI tersebut**
+Jika kamu belum menemukan hasil analisis, ikuti langkah ini:
+
+1. Masukkan nilai $a = 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
+   ➡️ Amati bentuk grafiknya.
+
+2. Masukkan nilai $a ≠ 0 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
+   ➡️ Amati bentuk grafiknya.
+
+3. Bandingkan kedua grafik tersebut dan tuliskan hasil pengamatanmu.
+    """,
+    key="analisis1",
+    height=180
+)
+
+# --- Cek AI muncul hanya jika analisis diisi ---
+if analisis1.strip():
+    with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 1"):
+        st.info("""
+📌 **Instruksi Cek AI:**  
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
 **Prompt:**  
-Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan apa yang terjadi pada grafik fungsi kuadrat jika a ≠ 0 dalam persamaan y = ax² + bx + c. Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan berikan perbandingan visual antara grafik saat a = 0 dan a ≠ 0.
+> Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan jika a ≠ 0 dalam persamaan y = ax² + bx + c.  
+> Jelaskan perubahan bentuk grafik, apakah masih berupa parabola atau tidak, dan sertakan perbandingan visual.
 
+✅ Setelah itu, verifikasi dengan [Desmos Graphing Calculator](https://www.desmos.com/calculator) menggunakan dua contoh:
+- `y = 2x² + 3x + 1`
+- `y = 0x² + 3x + 1`
 
-✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) untuk memverifikasi bentuk grafik jika **$$a = 0$$** dan jika **$$a ≠ 0$$**. salin dan tempelkan 2 contoh persamaan dari kedua kondisi berikut:
-
-2x² + 3x + 1  
-0x² + 3x + 1
-
-📊 Bandingkan hasil grafiknya. Apakah bentuknya tetap parabola jika $$a = 0$$?
-
-📝 **Refleksi:** Apa perbedaan utama yang kamu temukan antara grafik fungsi kuadrat saat $$a ≠ 0$$ dan saat $$a = 0$$?
-"""
-                )
-refleksi_eksplorasi1 = st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1", height=80)
-
-# Verifikasi hanya muncul jika refleksi sudah diisi
-if refleksi_eksplorasi1.strip():
-    st.success("Refleksi sudah diisi. Berikut materi verifikasinya 👇")
-
-    with st.expander("📖 Verifikasi Jawaban"):
-        st.markdown("""
-        **📚 Materi Verifikasi:**
-        
-        - **Jika $a ≠ 0 $**:  
-          Fungsi berbentuk kuadrat (grafiknya **parabola**).  
-          - Jika $a > 0$, parabola membuka ke atas.  
-          - Jika $a < 0$, parabola membuka ke bawah.  
-          - Memiliki titik puncak dan sumbu simetri.
-
-        - **Jika $a = 0$**:  
-          Fungsi berubah menjadi persamaan linear \( y = bx + c \) (grafiknya **garis lurus**).  
-          - Kemiringan garis ditentukan oleh nilai \( b \).  
-          - Tidak memiliki titik puncak maupun sumbu simetri.
+Lalu bandingkan bentuk grafiknya.
         """)
+
+    # --- Refleksi muncul setelah cek AI ---
+    refleksi_eksplorasi1 = st.text_area(
+        "📝 Refleksi: Apa perbedaan utama antara grafik fungsi kuadrat saat $a ≠ 0 0$ dan saat $a = 0$?",
+        key="refleksi_eksplorasi1",
+        height=80
+    )
+
+    # --- Verifikasi hanya muncul jika refleksi diisi ---
+    if refleksi_eksplorasi1.strip():
+        st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+
+        with st.expander("📖 Verifikasi Jawaban"):
+            st.markdown("""
+            **📚 Materi Verifikasi:**
+
+            - **Jika $a ≠ 0 0$**  
+              Fungsi berbentuk kuadrat (**grafiknya parabola**).  
+              - $a > 0$ → parabola membuka ke atas.  
+              - $a < 0$ → parabola membuka ke bawah.  
+              - Memiliki titik puncak & sumbu simetri.
+
+            - **Jika $a = 0$**  
+              Fungsi berubah menjadi persamaan linear \(y = bx + c\) (**grafiknya garis lurus**).  
+              - Kemiringan garis ditentukan oleh nilai \(b\).  
+              - Tidak memiliki titik puncak atau sumbu simetri.
+            """)
 
 
 
