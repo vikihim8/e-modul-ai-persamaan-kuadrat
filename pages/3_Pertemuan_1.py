@@ -696,10 +696,10 @@ if jawaban_pengolahan.strip() != "":
         $$h(x) = -5x^2 + 20x + 1$$  
 
         **Titik puncak:**  
-        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2 \ \text{detik}$$  
+        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2 detik$$  
 
         **Tinggi maksimum:**  
-        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21 \ \text{meter}$$
+        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21 meter$$
         """)
 
     # Verifikasi AI eksternal
