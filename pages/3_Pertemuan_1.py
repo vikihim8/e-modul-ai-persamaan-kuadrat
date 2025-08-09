@@ -49,7 +49,7 @@ st.write(
 )
 
 # --- Eksplorasi 1: Pengaruh Nilai a terhadap Bentuk Grafik ---
-with st.expander("💡 Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?"):")
+with st.expander("💡 Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?:")
     # Input nilai a, b, c
     a1 = st.number_input("Masukkan nilai $a = 0$ dan $a ≠ 0$ (koefisien $x^2$):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien $x$):", value=0, step=1, key="b1")
