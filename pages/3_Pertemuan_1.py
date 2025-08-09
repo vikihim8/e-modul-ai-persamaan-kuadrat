@@ -48,19 +48,21 @@ st.write(
     "Bentuk umum dari suatu persamaan kuadrat yaitu $$y = ax^2 + bx + c$$, dengan $$a$$ adalah koefisien variabel $$x^2$$, $$b$$ adalah koefisien variabel $$x$$, dan $$c$$ adalah konstanta. Mari kita lakukan eksplorasi berikut:"
 )
 
-# Eksplorasi 1
-with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?"):
-    a1 = st.number_input("Masukkan nilai $a$ = 0 dan $a ≠ 0$(koefisien $x^2$) :", value=0, step=1, key="a1")
+# --- Eksplorasi 1: Pengaruh Nilai a terhadap Bentuk Grafik ---
+with st.expander("💡 Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?"):")
+    # Input nilai a, b, c
+    a1 = st.number_input("Masukkan nilai $a = 0$ dan $a ≠ 0$ (koefisien $x^2$):", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien $x$):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
 
-
+    # Status tombol untuk menampilkan grafik
     if "grafik1_ditampilkan" not in st.session_state:
         st.session_state.grafik1_ditampilkan = False
 
     if st.button("Tampilkan Grafik Eksplorasi 1"):
         st.session_state.grafik1_ditampilkan = True
 
+    # Tampilkan grafik jika tombol sudah ditekan
     if st.session_state.grafik1_ditampilkan:
         x = np.linspace(-10, 10, 400)
         y = a1 * x**2 + b1 * x + c1
@@ -73,11 +75,10 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         ax.set_title("Grafik Fungsi Kuadrat")
         st.pyplot(fig)
 
-analisis1 = st.text_area(
-    """
+    # --- Analisis ---
+    analisis1 = st.text_area(
+        """
 **💡 Instruksi Analisis:**
-
-Jika kamu belum menemukan hasil analisis, ikuti langkah ini:
 
 1. Masukkan nilai $a = 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
    ➡️ Amati bentuk grafiknya.
@@ -86,15 +87,15 @@ Jika kamu belum menemukan hasil analisis, ikuti langkah ini:
    ➡️ Amati bentuk grafiknya.
 
 3. Bandingkan kedua grafik tersebut dan tuliskan hasil pengamatanmu.
-    """,
-    key="analisis1",
-    height=100
-)
+        """,
+        key="analisis1",
+        height=100
+    )
 
-# --- Cek AI muncul hanya jika analisis diisi ---
-if analisis1.strip():
-    with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 1"):
-        st.info("""
+    # --- Cek AI ---
+    if analisis1.strip():
+        with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 1"):
+            st.info("""
 📌 **Instruksi Cek AI:**  
 Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
@@ -107,35 +108,33 @@ Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity
 - `y = 0x² + 3x + 1`
 
 Lalu bandingkan bentuk grafiknya.
-        """)
-
-    # --- Refleksi muncul setelah cek AI ---
-    refleksi_eksplorasi1 = st.text_area(
-        "📝 Refleksi: Apa perbedaan utama antara grafik fungsi kuadrat saat $a ≠ 0$ dan saat $a = 0$?",
-        key="refleksi_eksplorasi1",
-        height=80
-    )
-
-    # --- Verifikasi hanya muncul jika refleksi diisi ---
-    if refleksi_eksplorasi1.strip():
-        st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
-
-        with st.expander("📖 Verifikasi Jawaban"):
-            st.markdown("""
-            **📚 Materi Verifikasi:**
-
-            - **Jika $a ≠ 0$**  
-              Fungsi berbentuk kuadrat (**grafiknya parabola**).  
-              - $a > 0$ → parabola membuka ke atas.  
-              - $a < 0$ → parabola membuka ke bawah.  
-              - Memiliki titik puncak & sumbu simetri.
-
-            - **Jika $a = 0$**  
-              Fungsi berubah menjadi persamaan linear \(y = bx + c\) (**grafiknya garis lurus**).  
-              - Kemiringan garis ditentukan oleh nilai \(b\).  
-              - Tidak memiliki titik puncak atau sumbu simetri.
             """)
 
+        # --- Refleksi ---
+        refleksi_eksplorasi1 = st.text_area(
+            "📝 Refleksi: Apa perbedaan utama antara grafik fungsi kuadrat saat $a ≠ 0$ dan saat $a = 0$?",
+            key="refleksi_eksplorasi1",
+            height=80
+        )
+
+        # --- Verifikasi ---
+        if refleksi_eksplorasi1.strip():
+            st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+            with st.expander("📖 Verifikasi Jawaban"):
+                st.markdown("""
+                **📚 Materi Verifikasi:**
+
+                - **Jika $a ≠ 0$**  
+                  Fungsi berbentuk kuadrat (**grafiknya parabola**).  
+                  - $a > 0$ → parabola membuka ke atas.  
+                  - $a < 0$ → parabola membuka ke bawah.  
+                  - Memiliki titik puncak & sumbu simetri.
+
+                - **Jika $a = 0$**  
+                  Fungsi berubah menjadi persamaan linear $$y = bx + c$$ (**grafiknya garis lurus**).  
+                  - Kemiringan garis ditentukan oleh nilai $$b$$.  
+                  - Tidak memiliki titik puncak atau sumbu simetri.
+                """)
 
 
 
@@ -210,7 +209,7 @@ Amati bagaimana sumbu simetri & titik puncak berubah saat nilai $b$ berbeda.
                         **📚 Materi Verifikasi:**
 
                         - Perubahan nilai $b$ **tidak mengubah bentuk parabola**, tetapi **menggeser posisi puncak parabola secara horizontal**.
-                        - **Sumbu simetri** berubah sesuai rumus $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                        - **Sumbu simetri** berubah sesuai rumus $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
                           Semakin besar nilai $|b|$, semakin jauh pergeserannya dari sumbu $y$.
                         - **Titik puncak** ikut berpindah sesuai perubahan $b$, baik ke kiri maupun ke kanan.
                         """)
