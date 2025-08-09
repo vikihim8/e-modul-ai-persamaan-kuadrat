@@ -712,12 +712,15 @@ Perhatikan:
 - Apakah titik potong sumbu $$y = 1$$?
 """)
 
-    # Konfirmasi siswa
-    verifikasi = st.radio(
-        "Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?",
-        ["Ya", "Tidak", "Sebagian"],
-        key="verifikasi_pengolahan"
-    )
+# Konfirmasi siswa
+verifikasi = st.radio(
+    "Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?",
+    ["Ya", "Tidak", "Sebagian"],
+    key="verifikasi_pengolahan"
+)
+
+if verifikasi:
+    st.session_state["verifikasi_done"] = True
 
     # Materi verifikasi
 with st.expander("📚 Materi Verifikasi Pengolahan Data"):
@@ -842,4 +845,5 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 2"):
         st.switch_page("pages/4_Pertemuan_2.py")
+
 
