@@ -82,13 +82,13 @@ Jika kamu belum menemukan hasil analisis, ikuti langkah ini:
 1. Masukkan nilai $a = 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
    ➡️ Amati bentuk grafiknya.
 
-2. Masukkan nilai $a ≠ 0 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
+2. Masukkan nilai $a ≠ 0$ dan atur nilai $b$ & $c$ sesuai kemauanmu.  
    ➡️ Amati bentuk grafiknya.
 
 3. Bandingkan kedua grafik tersebut dan tuliskan hasil pengamatanmu.
     """,
     key="analisis1",
-    height=180
+    height=100
 )
 
 # --- Cek AI muncul hanya jika analisis diisi ---
@@ -111,7 +111,7 @@ Lalu bandingkan bentuk grafiknya.
 
     # --- Refleksi muncul setelah cek AI ---
     refleksi_eksplorasi1 = st.text_area(
-        "📝 Refleksi: Apa perbedaan utama antara grafik fungsi kuadrat saat $a ≠ 0 0$ dan saat $a = 0$?",
+        "📝 Refleksi: Apa perbedaan utama antara grafik fungsi kuadrat saat $a ≠ 0$ dan saat $a = 0$?",
         key="refleksi_eksplorasi1",
         height=80
     )
@@ -124,7 +124,7 @@ Lalu bandingkan bentuk grafiknya.
             st.markdown("""
             **📚 Materi Verifikasi:**
 
-            - **Jika $a ≠ 0 0$**  
+            - **Jika $a ≠ 0$**  
               Fungsi berbentuk kuadrat (**grafiknya parabola**).  
               - $a > 0$ → parabola membuka ke atas.  
               - $a < 0$ → parabola membuka ke bawah.  
