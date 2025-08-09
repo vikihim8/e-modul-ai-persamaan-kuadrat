@@ -701,7 +701,7 @@ with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
     )
     
 # Verifikasi Desmos
-st.markdown("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
+with st.expander("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
 st.markdown("""
 🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
 Masukkan fungsi: `-5x² + 20x + 1`
@@ -727,13 +727,16 @@ with st.expander("📚 Materi Verifikasi Pengolahan Data"):
     st.markdown("""
     **Materi yang benar sesuai soal:**
     - **Bentuk umum:** $$y = ax^2 + bx + c$$ dengan $$a < 0$$ → parabola terbuka ke bawah.
+    
     **Fungsi kuadratnya:**  
     $$h(x) = -5x^2 + 20x + 1$$  
 
     **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a}$$
+    
     $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
 
     **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum
+    
     $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
 
     - Grafiknya simetris terhadap garis $$x = 2$$.
@@ -845,5 +848,6 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 2"):
         st.switch_page("pages/4_Pertemuan_2.py")
+
 
 
