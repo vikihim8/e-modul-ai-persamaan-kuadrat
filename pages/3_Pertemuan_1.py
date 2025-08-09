@@ -74,11 +74,15 @@ with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk g
         st.pyplot(fig)
 
         analisis1 = st.text_area(
-            "Tuliskan analisismu berdasarkan grafik di atas. Jika kamu masih belum menemukan hasil analisis, coba perhatikan perintah berikut:
-            - masukkan nilai $$a$$ = 0 dan nilai $$b$$ & $$c$$ sesuai kemaumanmu. Bagaimana bentuk grafiknya? tuliskan di hasil analisis
-            - masukkan nilai $$a$$ ≠ 0  dan nilai $$b$$ & $$c$$ sesuai kemaumanmu. Bagaimana bentuk grafiknya? tuliskan di hasil analisis
-            Dari kedua hasil yang ditampilkan oleh grafik, itulah yang akan menjadi hasil utama analisismu. ", key="analisis1"
-        )
+    """Tuliskan analisismu berdasarkan grafik di atas. 
+    Jika kamu masih belum menemukan hasil analisis, coba perhatikan perintah berikut:
+    - Masukkan nilai $a = 0$ dan nilai $b$ & $c$ sesuai kemauanmu. Bagaimana bentuk grafiknya? Tuliskan di hasil analisis.
+    - Masukkan nilai $a \neq 0$ dan nilai $b$ & $c$ sesuai kemauanmu. Bagaimana bentuk grafiknya? Tuliskan di hasil analisis.
+    
+    Dari kedua hasil yang ditampilkan oleh grafik, itulah yang akan menjadi hasil utama analisismu.
+    """,
+    key="analisis1"
+    )
 
         if analisis1.strip():
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 1"):
