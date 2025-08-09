@@ -686,30 +686,31 @@ if st.button("Kirim Pengolahan Data"):
 st.header("🔍 Verifikasi Hasil Pengolahan Data")
 st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
 
-    # Jawaban AI internal
-    with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
-        st.markdown("""
-        **Prompt yang digunakan untuk semua AI:**
-        > Diketahui fungsi kuadrat h(x) = -5x² + 20x + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
+# Expander: petunjuk prompt dan link ke beberapa AI eksternal
+with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
+    st.markdown(
+        """
+**Prompt yang digunakan untuk semua AI:**  
+> Diketahui fungsi kuadrat $h(x) = -5x^2 + 20x + 1$. Tentukan titik puncaknya dan tinggi maksimumnya.
 
-        **🔗 Cek di AI berikut:**
-        - [Perplexity AI](https://www.perplexity.ai) → tempel prompt di kolom pencarian  
-        - [Gemini](https://gemini.google.com) → tempel prompt dan bandingkan hasilnya  
-        - [ChatGPT](https://chat.openai.com) → tempel prompt dan lihat penjelasan langkah demi langkah  
-        """)
+**🔗 Cek di AI berikut:**  
+- [Perplexity AI](https://www.perplexity.ai) — tempel prompt di kolom pencarian.  
+- [Gemini (Google)](https://gemini.google.com) — tempel prompt dan bandingkan hasilnya.  
+- [ChatGPT (OpenAI)](https://chat.openai.com) — tempel prompt dan lihat penjelasan langkah demi langkah.
+"""
+    )
+    
+# Verifikasi Desmos
+st.markdown("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
+st.markdown("""
+🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
+Masukkan fungsi: `-5x² + 20x + 1`
 
-
-    # Verifikasi Desmos
-    with st.expander("📈 Verifikasi bentuk grafik fungsi dengan Desmos"):
-        st.markdown("""
-        🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
-        Masukkan fungsi: `-5x² + 20x + 1`
-
-        Perhatikan:
-        - Apakah grafik berbentuk parabola terbuka ke bawah?
-        - Apakah titik puncaknya di (2, 21)?
-        - Apakah titik potong sumbu $$y = 1$$?
-        """)
+Perhatikan:
+- Apakah grafik berbentuk parabola terbuka ke bawah?
+- Apakah titik puncaknya di (2, 21)?
+- Apakah titik potong sumbu $$y = 1$$?
+""")
 
     # Konfirmasi siswa
     verifikasi = st.radio(
@@ -719,22 +720,21 @@ st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
     )
 
     # Materi verifikasi
-    with st.expander("📚 Materi Verifikasi Pengolahan Data"):
-        st.markdown("""
-        **Materi yang benar sesuai soal:**
-        - **Bentuk umum:** $$y = ax^2 + bx + c$$ dengan $$a < 0$$ → parabola terbuka ke bawah.
-        **Fungsi kuadratnya:**  
-        $$h(x) = -5x^2 + 20x + 1$$  
+with st.expander("📚 Materi Verifikasi Pengolahan Data"):
+    st.markdown("""
+    **Materi yang benar sesuai soal:**
+    - **Bentuk umum:** $$y = ax^2 + bx + c$$ dengan $$a < 0$$ → parabola terbuka ke bawah.
+    **Fungsi kuadratnya:**  
+    $$h(x) = -5x^2 + 20x + 1$$  
 
-        **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a}$$
-        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
+    **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a}$$
+    $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
 
-        **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum
-        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
+    **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum
+    $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
 
-        - Grafiknya simetris terhadap garis $$x = 2$$.
-        """)
-
+    - Grafiknya simetris terhadap garis $$x = 2$$.
+    """)
 
 
 # --- 7. Kesimpulan ---
