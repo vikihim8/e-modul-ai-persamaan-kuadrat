@@ -702,15 +702,15 @@ with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
     
 # Verifikasi Desmos
 with st.expander("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
-st.markdown("""
-🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
-Masukkan fungsi: `-5x² + 20x + 1`
-
-Perhatikan:
-- Apakah grafik berbentuk parabola terbuka ke bawah?
-- Apakah titik puncaknya di (2, 21)?
-- Apakah titik potong sumbu $$y = 1$$?
-""")
+    st.markdown("""
+    🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
+    Masukkan fungsi: `-5x² + 20x + 1`
+    
+    Perhatikan:
+    - Apakah grafik berbentuk parabola terbuka ke bawah?
+    - Apakah titik puncaknya di ($$2, 21$$)?
+    - Apakah titik potong sumbu $$y = 1$$?
+    """)
 
 # Konfirmasi siswa
 verifikasi = st.radio(
@@ -731,13 +731,9 @@ with st.expander("📚 Materi Verifikasi Pengolahan Data"):
     **Fungsi kuadratnya:**  
     $$h(x) = -5x^2 + 20x + 1$$  
 
-    **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a}$$
-    
-    $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
+    **Titik puncak:**  dihitung dengan $$x = -\\frac{b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2$$ detik  
 
-    **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum
-    
-    $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
+    **Tinggi maksimum:**  lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum  $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21$$  meter
 
     - Grafiknya simetris terhadap garis $$x = 2$$.
     """)
@@ -748,7 +744,7 @@ st.header("🎯 Penarikan Kesimpulan")
 
 # Input kesimpulan dari pengguna
 kesimpulan = st.text_area(
-    "Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?",
+    "Tuliskan kesimpulanmu pada pertemuan 1 ini",
     key="kesimpulan_siswa",
     height=120
 )
@@ -848,6 +844,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 2"):
         st.switch_page("pages/4_Pertemuan_2.py")
+
 
 
 
