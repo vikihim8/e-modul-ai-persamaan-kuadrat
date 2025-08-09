@@ -50,7 +50,7 @@ st.write(
 
 # Eksplorasi 1
 with st.expander("💡Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk grafik? Apa yang terjadi jika **$$a = 0$$**? Apa yang terjadi jika **$$a ≠ 0$$**?"):
-    a1 = st.number_input("Masukkan nilai $a$ (koefisien $x^2$):", value=0, step=1, key="a1")
+    a1 = st.number_input("Masukkan nilai $a$ = 0 dan $a ≠ 0$(koefisien $x^2$) :", value=0, step=1, key="a1")
     b1 = st.number_input("Masukkan nilai $b$ (koefisien $x$):", value=0, step=1, key="b1")
     c1 = st.number_input("Masukkan nilai $c$ (konstanta):", value=0, step=1, key="c1")
 
@@ -172,7 +172,7 @@ if st.session_state.get("analisis1"):
 3. Bandingkan pergeseran grafik untuk setiap perubahan nilai $b$.
                 """,
                 key="analisis2",
-                height=140
+                height=100
             )
 
             # --- Cek AI muncul hanya jika analisis diisi ---
@@ -210,7 +210,7 @@ Amati bagaimana sumbu simetri & titik puncak berubah saat nilai $b$ berbeda.
                         **📚 Materi Verifikasi:**
 
                         - Perubahan nilai $b$ **tidak mengubah bentuk parabola**, tetapi **menggeser posisi puncak parabola secara horizontal**.
-                        - **Sumbu simetri** berubah sesuai rumus \( x = -\frac{b}{2a} \).  
+                        - **Sumbu simetri** berubah sesuai rumus $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
                           Semakin besar nilai $|b|$, semakin jauh pergeserannya dari sumbu $y$.
                         - **Titik puncak** ikut berpindah sesuai perubahan $b$, baik ke kiri maupun ke kanan.
                         """)
