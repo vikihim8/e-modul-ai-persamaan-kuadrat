@@ -141,7 +141,7 @@ Lalu bandingkan bentuk grafiknya.
 
 # Eksplorasi 2 (Hanya dibuka jika eksplorasi 1 sudah selesai)
 if st.session_state.get("analisis1"):
-    with st.expander("💡Eksplorasi 2: Bagaimana pengaruh nilai $$b$$ terhadap posisi grafik? Apakah sumbu simetri dan titik puncak berubah ketika **nilai $$b$$ diubah**? Cobalah masukkan berbagai nilai $$b$$ dan amati pergeseran grafik"):
+    with st.expander("💡 Eksplorasi 2: Pengaruh Nilai $b$ terhadap Posisi Grafik"):
         
         b2 = st.number_input("Masukkan nilai $b$:", value=0, step=1, key="b2")
 
@@ -162,32 +162,58 @@ if st.session_state.get("analisis1"):
             ax.set_title(f"Grafik y = x² + {b2}x")
             st.pyplot(fig)
 
+            # --- Analisis ---
             analisis2 = st.text_area(
-                "Tuliskan analisismu berdasarkan grafik di atas", key="analisis2"
+                """
+**💡 Instruksi Analisis:**
+
+1. Ubah nilai $b$ menjadi beberapa angka berbeda (positif, negatif, dan nol).
+2. Amati bagaimana **sumbu simetri** dan **titik puncak** berpindah.
+3. Bandingkan pergeseran grafik untuk setiap perubahan nilai $b$.
+                """,
+                key="analisis2",
+                height=140
             )
 
-            if analisis2.strip() != "":
+            # --- Cek AI muncul hanya jika analisis diisi ---
+            if analisis2.strip():
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 2"):
-                    st.info(
-                        """
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+                    st.info("""
+📌 **Instruksi Cek AI:**  
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
 **Prompt:**  
-Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak. Berikan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda, serta bandingkan pergeseran posisi grafiknya.
+> Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak.  
+> Sertakan ilustrasi atau contoh grafik untuk beberapa nilai b yang berbeda.
 
-✅ Setelah memahami penjelasan dari AI, buka [Desmos Graphing Calculator](https://www.desmos.com/calculator) dan coba masukkan:
+✅ Setelah itu, verifikasi dengan [Desmos Graphing Calculator](https://www.desmos.com/calculator) menggunakan contoh:
+- `y = x² + 4x + 1`
+- `y = x² - 7x + 1`
+- `y = x² + 0x + 1`
 
-x² + 4x + 1  
-x² - 7x + 1  
-x² + 0x + 1
+Amati bagaimana sumbu simetri & titik puncak berubah saat nilai $b$ berbeda.
+                    """)
 
-📊 Amati bagaimana sumbu simetri dan titik puncak grafik berubah saat nilai $$b$$ berbeda
+                # --- Refleksi muncul setelah cek AI ---
+                refleksi_eksplorasi2 = st.text_area(
+                    "📝 Refleksi: Apa yang terjadi pada sumbu simetri dan titik puncak ketika nilai $b$ berubah?",
+                    key="refleksi_eksplorasi2",
+                    height=80
+                )
 
-📝 **Refleksi:** Apa yang terjadi pada posisi grafik (sumbu simetri dan titik puncak) ketika nilai $$b$$ berubah?
-"""
-                    )
-                    st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2", height=80)
+                # --- Verifikasi hanya muncul jika refleksi diisi ---
+                if refleksi_eksplorasi2.strip():
+                    st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
 
+                    with st.expander("📖 Verifikasi Jawaban"):
+                        st.markdown("""
+                        **📚 Materi Verifikasi:**
+
+                        - Perubahan nilai $b$ **tidak mengubah bentuk parabola**, tetapi **menggeser posisi puncak parabola secara horizontal**.
+                        - **Sumbu simetri** berubah sesuai rumus \( x = -\frac{b}{2a} \).  
+                          Semakin besar nilai $|b|$, semakin jauh pergeserannya dari sumbu $y$.
+                        - **Titik puncak** ikut berpindah sesuai perubahan $b$, baik ke kiri maupun ke kanan.
+                        """)
 
 
 
