@@ -422,7 +422,7 @@ if st.session_state.get("analisis4"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 5"):
                     st.info("""
 📌 **Instruksi Cek AI:**
-Salin prompt berikut ke AI pilihanmu untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $c$ negatif terhadap grafik fungsi kuadrat $y = ax^2 + bx + c$,  
@@ -492,7 +492,7 @@ if st.session_state.get("analisis5"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 6"):
                     st.info("""
 📌 **Instruksi Cek AI:**
-Salin prompt berikut ke AI pilihanmu untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $c$ positif terhadap grafik fungsi kuadrat $y = ax^2 + bx + c$,  
@@ -548,7 +548,7 @@ if st.session_state.get("analisis6"):
         if analisis7.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 7"):
                 st.info("""
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
 **Prompt:**
 Apa yang terjadi pada grafik fungsi kuadrat y = ax² + bx + c jika semua koefisien (a, b, dan c) bernilai negatif? Jelaskan bentuk grafiknya, arah bukaannya, dan posisi relatif terhadap sumbu x dan y. Sertakan contoh fungsi dan gambarnya.
@@ -599,7 +599,8 @@ if st.session_state.get("analisis7"):
         if analisis8.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 8"):
                 st.info("""
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai):**
+📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+
 
 **Prompt:**
 Jelaskan bagaimana grafik fungsi kuadrat y = ax² + bx + c berubah jika semua koefisien a, b, dan c bernilai positif. Jelaskan arah bukaannya, bentuk parabola, letak titik potong terhadap sumbu y, dan apakah grafik memotong sumbu x. Sertakan contoh fungsi.
