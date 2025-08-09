@@ -682,40 +682,69 @@ if st.button("Kirim Pengolahan Data"):
 
 
 # --- 6. Verifikasi ke AI dan Desmos ---
-st.header("Verifikasi")
+st.header("🔍 Verifikasi Hasil Pengolahan Data")
 st.info("Cek kembali jawabanmu dengan bantuan AI dan grafik dari Desmos.")
-    
-st.markdown("**✅ Jawaban AI untuk soal ini:**")
-with st.expander("📘 Tampilkan Jawaban dari AI"):
-    st.write("""
-    Fungsi kuadratnya: $$h(x) = -5x² + 20x + 1$$  
-    Titik puncaknya: $$x = {-b}/{2a} = {-20}/{2(-5)} = {-20}/{-10} = 2$$ detik  
-    Tinggi maksimum: $$h(2) = -5(2)² + 20(2) + 1 = -20 + 40 + 1 = 21$$ meter
-    """)
 
-st.markdown("**🔎 Cek ulang keakuratan dengan AI eksternal:**")
-st.markdown("""
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapat penjelasan lengkap dan verifikasi terhadap jawabanmu:**
+# Input jawaban siswa
+jawaban_pengolahan = st.text_area("✍️ Tuliskan jawaban soal pengolahan data di sini:", key="jawaban_pengolahan", height=100)
 
-**Prompt:**
-Diketahui fungsi kuadrat h(x) = -5x² + 20x + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
-    """)
+if jawaban_pengolahan.strip() != "":
+    # Jawaban AI internal
+    with st.expander("📘 Jawaban AI untuk soal ini"):
+        st.markdown("""
+        **Fungsi kuadratnya:**  
+        $$h(x) = -5x^2 + 20x + 1$$  
 
-st.markdown("**📈 Verifikasi bentuk grafik fungsi dengan Desmos:**")
-st.markdown("""
-🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)
-- Masukkan fungsi: `-5x² + 20x + 1`
-- Perhatikan:  
-    • Apakah grafik berbentuk parabola terbuka ke bawah?  
-    • Apakah titik puncaknya sesuai?  
-    • Apakah titik potong sumbu $$y = 1$$?
+        **Titik puncak:**  
+        $$x = \\frac{-b}{2a} = \\frac{-20}{2(-5)} = \\frac{-20}{-10} = 2 \ \text{detik}$$  
 
-Cek semua ini untuk memverifikasi pemahamanmu
-""")
+        **Tinggi maksimum:**  
+        $$h(2) = -5(2)^2 + 20(2) + 1 = -20 + 40 + 1 = 21 \ \text{meter}$$
+        """)
 
-verifikasi = st.radio("Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?", ["Ya", "Tidak", "Sebagian"])
-if verifikasi:
-    st.session_state.verifikasi_done = True
+    # Verifikasi AI eksternal
+    with st.expander("🤖 Cek ulang keakuratan dengan AI eksternal"):
+        st.markdown("""
+        **Prompt yang digunakan untuk semua AI:**
+        > Diketahui fungsi kuadrat h(x) = -5x² + 20x + 1. Tentukan titik puncaknya dan tinggi maksimumnya.
+
+        **🔗 Cek di AI berikut:**
+        - [Perplexity AI](https://www.perplexity.ai) → tempel prompt di kolom pencarian  
+        - [Gemini](https://gemini.google.com) → tempel prompt dan bandingkan hasilnya  
+        - [ChatGPT](https://chat.openai.com) → tempel prompt dan lihat penjelasan langkah demi langkah  
+        """)
+
+    # Verifikasi Desmos
+    with st.expander("📈 Verifikasi bentuk grafik fungsi dengan Desmos"):
+        st.markdown("""
+        🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
+        Masukkan fungsi: `-5x² + 20x + 1`
+
+        Perhatikan:
+        - Apakah grafik berbentuk parabola terbuka ke bawah?
+        - Apakah titik puncaknya di (2, 21)?
+        - Apakah titik potong sumbu $$y = 1$$?
+        """)
+
+    # Konfirmasi siswa
+    verifikasi = st.radio(
+        "Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?",
+        ["Ya", "Tidak", "Sebagian"],
+        key="verifikasi_pengolahan"
+    )
+
+    # Materi verifikasi
+    with st.expander("📚 Materi Verifikasi Pengolahan Data"):
+        st.markdown("""
+        **Materi yang benar sesuai soal:**
+        - **Bentuk umum:** $$y = ax^2 + bx + c$$ dengan $$a < 0$$ → parabola terbuka ke bawah.
+        - **Titik puncak:** dihitung dengan $$x = -\\frac{b}{2a}$$, lalu substitusi ke fungsi untuk mendapatkan tinggi maksimum.
+        - Pada soal ini:  
+            - $$x_{puncak} = 2$$ detik  
+            - $$y_{maksimum} = 21$$ meter
+        - Grafiknya simetris terhadap garis $$x = 2$$.
+        """)
+
 
 
 
@@ -724,21 +753,53 @@ if verifikasi:
 st.header("🎯 Penarikan Kesimpulan")
 
 # Input kesimpulan dari pengguna
-kesimpulan = st.text_area("Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?")
+kesimpulan = st.text_area(
+    "Apa kesimpulanmu tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?",
+    key="kesimpulan_siswa",
+    height=120
+)
 
 # Tampilkan notifikasi jika kesimpulan sudah diisi
 if kesimpulan.strip() != "":
     st.success("✅ Kesimpulan kamu telah dicatat. Selesai.")
 
-    # Baru tampilkan opsi bandingkan dengan AI jika sudah mengisi kesimpulan
-    with st.expander("📖 Bandingkan dengan Kesimpulan Versi AI"):
+    # Bandingkan dengan AI eksternal
+    with st.expander("🤖 Bandingkan Kesimpulanmu dengan AI Eksternal"):
         st.markdown("""
-        🔗 Klik untuk melihat jawaban versi AI di [Perplexity](https://www.perplexity.ai)
+        **Prompt yang digunakan untuk semua AI:**
+        > Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
 
-        💡 Sebelumnya, salin dan tempelkan prompt ini ke AI:
+        **🔗 Cek di AI berikut:**
+        - [Perplexity AI](https://www.perplexity.ai)  
+        - [Gemini](https://gemini.google.com)  
+        - [ChatGPT](https://chat.openai.com)  
+        """)
+
+    # Materi verifikasi kesimpulan
+    with st.expander("📚 Materi Verifikasi Kesimpulan"):
+        st.markdown("""
+        **Bentuk Umum Persamaan Kuadrat:**
+        - Ditulis sebagai: $$y = ax^2 + bx + c$$ dengan $$a ≠ 0$$
+
+        **Pengaruh masing-masing koefisien:**
+        1. **Koefisien a**  
+           - Menentukan arah buka parabola:  
+             - $$a > 0$$ → terbuka ke atas  
+             - $$a < 0$$ → terbuka ke bawah  
+           - Nilai |a| besar → parabola lebih sempit, |a| kecil → parabola lebih lebar  
         
-        **Prompt:**
-        Apa kesimpulan tentang bentuk umum persamaan kuadrat dan karakteristik grafik berdasarkan masing-masing nilai koefisiennya?
+        2. **Koefisien b**  
+           - Mempengaruhi posisi sumbu simetri: $$x = -\\frac{b}{2a}$$  
+           - Menggeser puncak parabola ke kiri/kanan  
+
+        3. **Koefisien c**  
+           - Menentukan titik potong dengan sumbu y pada titik (0, c)
+
+        **Ringkasan:**
+        - Grafik parabola simetris terhadap garis $$x = -\\frac{b}{2a}$$
+        - Titik puncak dapat dihitung dengan:  
+          $$x_{puncak} = -\\frac{b}{2a}, \quad y_{puncak} = f(x_{puncak})$$
+        - Bentuk parabola (lebar/sempit) dan arah buka tergantung nilai a
         """)
 
 
