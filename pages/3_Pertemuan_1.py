@@ -562,15 +562,17 @@ Apa yang terjadi pada grafik fungsi kuadrat y = ax² + bx + c jika semua koefisi
 📝 **Refleksi:** Apa kesimpulanmu?
 """)
 
-                st.text_area("Tulis jawaban refleksi Eksplorasi 7 di sini...", key="refleksi_eksplorasi7", height=80)
-
-            with st.expander("📚 Materi Verifikasi"):
-                st.markdown("""
-- Nilai $$a < 0$$ (negatif) → parabola membuka ke bawah.
-- Nilai $$b < 0$$ (negatif) → sumbu simetri bergeser ke kanan.
-- Nilai $$c < 0$$ (negatif) → titik potong sumbu $$y$$ berada di bawah titik asal.
-- Semua koefisien negatif membuat grafik berada di kuadran bawah dengan puncak di atas titik potong sumbu $$y$$.
-""")
+                refleksi7 = st.text_area("Tulis jawaban refleksi Eksplorasi 7 di sini...", key="refleksi_eksplorasi7", height=80)
+            
+                if refleksi7.strip():
+                    st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+                    with st.expander("📚 Materi Verifikasi"):
+                        st.markdown("""
+        - Nilai $$a < 0$$ (negatif) → parabola membuka ke bawah.
+        - Nilai $$b < 0$$ (negatif) → sumbu simetri bergeser ke kanan.
+        - Nilai $$c < 0$$ (negatif) → titik potong sumbu $$y$$ berada di bawah titik asal.
+        - Semua koefisien negatif membuat grafik berada di kuadran bawah dengan puncak di atas titik potong sumbu $$y$$.
+        """)
 
 
 # Eksplorasi 8: Semua koefisien positif
@@ -611,15 +613,17 @@ Jelaskan bagaimana grafik fungsi kuadrat y = ax² + bx + c berubah jika semua ko
 📝 **Refleksi:** Apa kesimpulanmu?
 """)
 
-                st.text_area("Tulis jawaban refleksi Eksplorasi 8 di sini...", key="refleksi_eksplorasi8", height=80)
-
-            with st.expander("📚 Materi Verifikasi"):
-                st.markdown("""
-- Nilai $$a > 0$$ → parabola membuka ke atas.
-- Nilai $$b > 0$$ → sumbu simetri bergeser ke kiri.
-- Nilai $$c > 0$$ → titik potong sumbu $$y$$ berada di atas titik asal.
-- Semua koefisien positif membuat grafik berada di kuadran atas dengan titik puncak di bawah titik potong sumbu $$y$$.
-""")
+                refleksi8 = st.text_area("Tulis jawaban refleksi Eksplorasi 8 di sini...", key="refleksi_eksplorasi8", height=80)
+                
+                if refleksi8.strip():
+                    st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+                    with st.expander("📚 Materi Verifikasi"):
+                        st.markdown("""
+        - Nilai $$a > 0$$ → parabola membuka ke atas.
+        - Nilai $$b > 0$$ → sumbu simetri bergeser ke kiri.
+        - Nilai $$c > 0$$ → titik potong sumbu $$y$$ berada di atas titik asal.
+        - Semua koefisien positif membuat grafik berada di kuadran atas dengan titik puncak di bawah titik potong sumbu $$y$$.
+        """)
 
 
 
