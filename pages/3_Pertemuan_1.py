@@ -98,7 +98,7 @@ with st.expander("💡 Eksplorasi 1: Bagaimana pengaruh nilai a terhadap bentuk 
         with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 1"):
             st.info("""
 📌 **Instruksi Cek AI:**  
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
 
 **Prompt:**  
 > Jelaskan secara rinci apa yang terjadi pada grafik fungsi kuadrat jika a = 0 dan jika a ≠ 0 dalam persamaan y = ax² + bx + c.  
@@ -180,7 +180,7 @@ if st.session_state.get("analisis1"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 2"):
                     st.info("""
 📌 **Instruksi Cek AI:**  
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
 
 **Prompt:**  
 > Jelaskan bagaimana perubahan nilai b memengaruhi posisi grafik fungsi kuadrat y = ax² + bx + c, khususnya terhadap sumbu simetri dan titik puncak.  
@@ -264,7 +264,7 @@ if st.session_state.get("analisis2"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 3"):
                     st.info("""
 📌 **Instruksi Cek AI:**  
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $b$ negatif terhadap letak sumbu simetri dan posisi grafik fungsi kuadrat y = ax² + bx + c.  
@@ -345,7 +345,8 @@ if st.session_state.get("analisis3"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 4"):
                     st.info("""
 📌 **Instruksi Cek AI:**  
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
+
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $b$ positif terhadap letak sumbu simetri dan posisi grafik fungsi kuadrat y = ax² + bx + c.  
@@ -422,7 +423,8 @@ if st.session_state.get("analisis4"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 5"):
                     st.info("""
 📌 **Instruksi Cek AI:**
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
+
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $c$ negatif terhadap grafik fungsi kuadrat $y = ax^2 + bx + c$,  
@@ -492,7 +494,8 @@ if st.session_state.get("analisis5"):
                 with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 6"):
                     st.info("""
 📌 **Instruksi Cek AI:**
-Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
+
 
 **Prompt:**  
 > Jelaskan pengaruh nilai $c$ positif terhadap grafik fungsi kuadrat $y = ax^2 + bx + c$,  
@@ -548,7 +551,8 @@ if st.session_state.get("analisis6"):
         if analisis7.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 7"):
                 st.info("""
-📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
+
 
 **Prompt:**
 Apa yang terjadi pada grafik fungsi kuadrat y = ax² + bx + c jika semua koefisien (a, b, dan c) bernilai negatif? Jelaskan bentuk grafiknya, arah bukaannya, dan posisi relatif terhadap sumbu x dan y. Sertakan contoh fungsi dan gambarnya.
@@ -599,7 +603,7 @@ if st.session_state.get("analisis7"):
         if analisis8.strip() != "":
             with st.expander("🔍Cek Hasil Verifikasi AI Eksplorasi 8"):
                 st.info("""
-📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
+📌Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil. Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
 
 
 **Prompt:**
@@ -697,6 +701,7 @@ with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
 - [Perplexity AI](https://www.perplexity.ai) — tempel prompt di kolom pencarian.  
 - [Gemini (Google)](https://gemini.google.com) — tempel prompt dan bandingkan hasilnya.  
 - [ChatGPT (OpenAI)](https://chat.openai.com) — tempel prompt dan lihat penjelasan langkah demi langkah.
+Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
 """
     )
     
@@ -763,6 +768,7 @@ if kesimpulan.strip() != "":
         - [Perplexity AI](https://www.perplexity.ai)  
         - [Gemini](https://gemini.google.com)  
         - [ChatGPT](https://chat.openai.com)  
+        Output yang dihasilkan akan memiliki perbedaan, coba amati dan ambilah beberapa hal yang menjadi inti dari output ketiga AI tersebut.
         """)
 
     # Materi verifikasi kesimpulan
