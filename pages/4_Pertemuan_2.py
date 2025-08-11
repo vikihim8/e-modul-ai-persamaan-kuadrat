@@ -369,7 +369,7 @@ if kesimpulan.strip() != "":
         **Cara Memfaktorkan Bentuk Kuadrat:**
         1. Bentuk umum: $$f(x) = ax^2 + bx + c$$  
         2. Cari dua bilangan yang:
-           - Hasil kalinya = $$a \times c$$
+           - Hasil kalinya = $$a*c$$
            - Jumlahnya = $$b$$
         3. Pecah suku tengah menggunakan dua bilangan tersebut.
         4. Kelompokkan dan faktorkan per kelompok.
@@ -377,7 +377,7 @@ if kesimpulan.strip() != "":
 
         **Contoh Soal:**  
         $$f(x) = x^2 - 7x + 10$$  
-        - Hasil kali: $$1 \times 10 = 10$$  
+        - Hasil kali: $$1*10 = 10$$  
         - Jumlah: $$-7$$  
         → Bilangan: $$-5$$ dan $$-2$$  
 
@@ -432,6 +432,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
