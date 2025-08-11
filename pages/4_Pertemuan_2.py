@@ -120,7 +120,7 @@ Lalu perhatikan apakah titik potongnya sesuai dengan akar-akarnya.
                 """)
 
 # ------------------------- Eksplorasi 2 -------------------------
-if st.session_state.get("analisis1"):
+if st.session_state.get("analisis1p2"):
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
 
     akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar1_input")
@@ -432,6 +432,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
