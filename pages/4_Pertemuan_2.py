@@ -45,58 +45,89 @@ pertanyaan = st.text_input("Tuliskan satu pertanyaan utamamu di sini:", placehol
 if pertanyaan:
     st.success("✅ Jawabanmu telah dicatat, Mari lanjutkan ke tahap eksplorasi")
 
-# Eksplorasi 1
-st.subheader("🔬 Eksplorasi 1: Menentukan **Akar-akar dari Grafik**")
-st.write("Grafik fungsi kuadrat memotong sumbu $$x$$ ,  di $$x = 2$$ dan $$x = 3$$.  Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut")
+# --- Eksplorasi 1: Menentukan Akar-akar dari Grafik ---
+with st.expander("💡 Eksplorasi 1: Menentukan **Akar-akar dari Grafik**"):
+    st.markdown("""
+    Grafik fungsi kuadrat memotong sumbu $$x$$ di $$x = 2$$ dan $$x = 3$$.  
+    Itu artinya nilai $$x$$ yang membuat $$y = 0$$ adalah akar-akar dari fungsi kuadrat tersebut.
+    """)
 
-akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
-akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
+    # Input akar-akar
+    akar1 = st.number_input("Masukkan akar pertama:", key="akar1_input", step=1)
+    akar2 = st.number_input("Masukkan akar kedua:", key="akar2_input", step=1)
 
-# Simpan ke session state
-st.session_state.akar1 = akar1
-st.session_state.akar2 = akar2
+    # Simpan ke session state
+    st.session_state.akar1 = akar1
+    st.session_state.akar2 = akar2
 
-# Tampilkan bentuk faktornya langsung
-if akar1 != 0 or akar2 != 0:  # atau bisa pakai kondisi yang lebih ketat
-    st.latex(f"f(x) = a(x - {akar1})(x - {akar2})")
-    st.write("Bentuk ini disebut *bentuk faktor* dari fungsi kuadrat.")
+    # Tampilkan bentuk faktornya langsung jika sudah diisi
+    if akar1 != 0 or akar2 != 0:
+        st.latex(f"f(x) = a(x - {akar1})(x - {akar2})")
+        st.write("Bentuk ini disebut *bentuk faktor* dari fungsi kuadrat.")
 
-# Analisis konsep
-analisis1 = st.text_area(
-    "Apa hubungan antara titik potong grafik dan akar-akar fungsi kuadrat?", 
-    key="analisis1_input"
-)
-st.session_state.analisis1 = analisis1
+    # --- Analisis ---
+    analisis1p2 = st.text_area(
+        """
+**💡 Instruksi Analisis:**
 
-# Jika sudah menuliskan analisis awal, baru tampilkan bagian AI
-if analisis1.strip() != "":
-    st.markdown("---")
-    st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-    st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-            
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+1. Amati grafik fungsi kuadrat yang memotong sumbu $$x$$ di dua titik berbeda.  
+2. Tentukan koordinat titik potong tersebut.  
+3. Hubungkan titik potong itu dengan akar-akar fungsi kuadrat.  
+4. Tuliskan kesimpulan hubungan antara titik potong grafik dengan akar-akar fungsi kuadrat.
+        """,
+        key="analisis1p2",
+        height=100
+    )
 
-**Prompt:**
-Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?
+    # --- Cek AI ---
+    if analisis1p2.strip():
+        with st.expander("🔍 Cek Hasil Verifikasi AI Eksplorasi 1"):
+            st.info("""
+📌 **Instruksi Cek AI:**  
+Salin prompt berikut ke **3 AI berbeda** ([Perplexity AI](https://www.perplexity.ai), [Gemini AI](https://gemini.google.com/app), [ChatGPT](https://chatgpt.com/)) untuk membandingkan hasil.
 
-✍️ Setelah membandingkan, tuliskan refleksimu untuk pertemuan 1:
-""")
+**Prompt:**  
+> Apa hubungan antara akar-akar fungsi kuadrat dan titik potong grafik terhadap sumbu x?  
+> Jelaskan secara rinci, sertakan contoh, dan hubungan bentuk faktor dengan posisi akar di grafik.
 
-    # Tambahkan kotak refleksi setelah membandingkan
-    st.text_area("Tulis jawaban refleksi Eksplorasi 1 di sini...", key="refleksi_eksplorasi1p2", height=80)
+✅ Setelah itu, verifikasi dengan [Desmos Graphing Calculator](https://www.desmos.com/calculator) menggunakan contoh:
+- `y = (x - 2)(x - 3)`
 
+Lalu perhatikan apakah titik potongnya sesuai dengan akar-akarnya.
+            """)
 
+        # --- Refleksi ---
+        refleksi1p2 = st.text_area(
+            "📝 Refleksi: Apa hubungan pasti antara akar-akar fungsi kuadrat dengan titik potong sumbu x pada grafiknya?",
+            key="refleksi_eksplorasi1p2",
+            height=80
+        )
 
-# Eksplorasi 2 (muncul jika analisis1 sudah diisi)
+        # --- Verifikasi ---
+        if refleksi1p2.strip():
+            st.success("✅ Refleksi sudah diisi. Berikut materi verifikasinya 👇")
+            with st.expander("📖 Verifikasi Jawaban"):
+                st.markdown("""
+                **📚 Materi Verifikasi:**
+                
+                - **Akar-akar fungsi kuadrat** adalah nilai $$x$$ yang membuat $$y = 0$$.  
+                - Pada grafik, akar-akar ini adalah **titik potong grafik dengan sumbu x**.  
+                - Jika persamaan dalam bentuk faktor: $$y = a(x - r_1)(x - r_2)$$  
+                  maka:
+                  - $$r_1$$ = titik potong pertama
+                  - $$r_2$$ = titik potong kedua  
+                - Jika hanya ada satu akar (diskriminan = 0), grafik menyentuh sumbu x di satu titik.
+                """)
+
+# ------------------------- Eksplorasi 2 -------------------------
 if st.session_state.get("analisis1"):
     st.subheader("🔬 Eksplorasi 2: Membangun Fungsi Kuadrat dari Akar-akar")
-    st.write("Jika kamu tahu akar-akarnya, kamu bisa menyusun bentuk faktornya yaitu:")
-    
-    akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar(1)_input")
-    akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar(2)_input")
+
+    akar1 = st.number_input("Masukkan akar pertama (p):", step=1, key="akar1_input")
+    akar2 = st.number_input("Masukkan akar kedua (q):", step=1, key="akar2_input")
 
     if akar1 and akar2:
-        # Menampilkan hasil bentuk fungsi kuadrat
+        # Bentuk faktornya
         st.markdown("### ✍️ Bentuk Umum Fungsi Kuadrat")
         st.latex(rf"f(x) = (x - {akar1})(x - {akar2})")
 
@@ -105,149 +136,131 @@ if st.session_state.get("analisis1"):
         b = -(akar1 + akar2)
         c = akar1 * akar2
         st.latex(rf"f(x) = x^2 + ({b})x + ({c})")
-    
-        # Input analisis eksplorasi
+
+        # Analisis
         analisis2 = st.text_area("🔎 Tuliskan penjelasanmu: bagaimana kamu menyusun fungsi kuadrat tersebut?", key="analisis2_input")
-        st.session_state.analisis2 = analisis2
-        
+
         if analisis2:
-            st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-            st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-            
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+            with st.expander("📘 Cek jawaban dengan AI"):
+                st.markdown("""
+                **Prompt yang digunakan untuk semua AI:**
+                > Bagaimana cara menyusun fungsi kuadrat jika diketahui dua akarnya?
 
-**Prompt:**
-Bagaimana cara menyusun fungsi kuadrat jika diketahui dua akarnya?
+                **🔗 Cek di AI berikut:**
+                - [Perplexity AI](https://www.perplexity.ai)  
+                - [Gemini](https://gemini.google.com)  
+                - [ChatGPT](https://chat.openai.com)  
+                """)
 
-✍️ Setelah membandingkan, tuliskan refleksimu untuk pertemuan 2:
-""")
+            refleksi2 = st.text_area("✍️ Tulis refleksi Eksplorasi 2 setelah membandingkan dengan AI:", key="refleksi_eksplorasi2")
+            if refleksi2:
+                with st.expander("📚 Verifikasi Materi Eksplorasi 2"):
+                    st.markdown("""
+                    - Jika diketahui akar-akar $p$ dan $q$, bentuk faktornya adalah:  
+                      $$f(x) = a(x - p)(x - q)$$
+                    - Untuk $a = 1$, bentuk umumnya menjadi:  
+                      $$f(x) = x^2 - (p+q)x + pq$$
+                    - Nilai $b = -(p+q)$ dan $c = pq$.
+                    """)
 
-    # Tambahkan kotak refleksi setelah membandingkan
-            st.text_area("Tulis jawaban refleksi Eksplorasi 2 di sini...", key="refleksi_eksplorasi2p2", height=80)
 
-
-
-# Eksplorasi 3: Mengalikan bentuk faktor menjadi bentuk umum
-if (
-    st.session_state.get("analisis2") and
-    st.session_state.get("akar1") is not None and
-    st.session_state.get("akar2") is not None
-):
+# ------------------------- Eksplorasi 3 -------------------------
+if st.session_state.get("analisis2_input"):
     st.subheader("🔬 Eksplorasi 3: Pengaruh Nilai a terhadap Bentuk Umum Fungsi Kuadrat")
     from sympy import symbols, expand
-    
-    st.markdown("Sekarang kita akan mencoba mengubah-ubah nilai $$a$$ dan melihat bagaimana bentuk fungsi kuadrat berubah.")
-    
-    a_eksplorasi = st.number_input("🔢 Coba masukkan nilai a yang berbeda", value=1, key="a_eksplorasi3")
-    akar1 = st.number_input("🧮 Masukkan akar pertama", value=0, step=1, key="akar1_eksplorasi3")
-    akar2 = st.number_input("🧮 Masukkan akar kedua", value=0, step=1, key="akar2_eksplorasi3")
+    import sympy as sp
+
+    a_eksplorasi = st.number_input("🔢 Masukkan nilai a", value=1, key="a_eksplorasi3")
+    akar1 = st.number_input("🧮 Akar pertama", value=0, step=1, key="akar1_eksplorasi3")
+    akar2 = st.number_input("🧮 Akar kedua", value=0, step=1, key="akar2_eksplorasi3")
 
     x = symbols('x')
     f_eksplorasi = a_eksplorasi * (x - akar1) * (x - akar2)
-    f_eksplorasi_expand = expand(f_eksplorasi)
+    st.latex(f"f(x) = {sp.latex(expand(f_eksplorasi))}")
 
-    # Tampilkan dalam bentuk fungsi kuadrat yang diperluas
-    st.latex(f"f(x) = {sp.latex(f_eksplorasi_expand)}")
-    
-    st.write("Apakah bentuk umum fungsi kuadrat berubah saat kamu mengubah nilai a? Coba ganti nilai a beberapa kali.")
-
-    analisis3 = st.text_area("Apa yang kamu perhatikan dari hasil perkalian ini?", key="analisis3")
-    
+    analisis3 = st.text_area("Apa yang kamu perhatikan dari perubahan nilai a?", key="analisis3_input")
     if analisis3:
-        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-        st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-            
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
+        with st.expander("📘 Cek jawaban dengan AI"):
+            st.markdown("""
+            **Prompt yang digunakan untuk semua AI:**
+            > Bagaimana pengaruh nilai a terhadap bentuk grafik fungsi kuadrat dalam bentuk umum?
 
-**Prompt:**
-Bagaimana cara mengubah bentuk faktor fungsi kuadrat menjadi bentuk umum?
+            **🔗 Cek di AI berikut:**
+            - [Perplexity AI](https://www.perplexity.ai)  
+            - [Gemini](https://gemini.google.com)  
+            - [ChatGPT](https://chat.openai.com)  
+            """)
+        refleksi3 = st.text_area("✍️ Tulis refleksi Eksplorasi 3 setelah membandingkan dengan AI:", key="refleksi_eksplorasi3")
+        if refleksi3:
+            with st.expander("📚 Verifikasi Materi Eksplorasi 3"):
+                st.markdown("""
+                - Nilai $a$ menentukan lebar dan arah buka parabola:
+                  - $a > 0$: parabola terbuka ke atas  
+                  - $a < 0$: parabola terbuka ke bawah  
+                - Semakin besar $|a|$, parabola semakin sempit.
+                """)
 
-✍️ Setelah membandingkan, tuliskan refleksimu untuk eksplorasi 3:
-""")
 
-    # Tambahkan kotak refleksi setelah membandingkan
-        st.text_area("Tulis jawaban refleksi Eksplorasi 3 di sini...", key="refleksi_eksplorasi3p2", height=80)
-
-
-
-
-# ------------------------- Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum --------------------------
-import streamlit as st
-from sympy import symbols, expand, latex
-
-if st.session_state.get("analisis3"):
-    st.header("✍️ Eksplorasi 4: Menyelidiki Pola dari Bentuk Umum")
-
+# ------------------------- Eksplorasi 4 -------------------------
+if st.session_state.get("analisis3_input"):
+    st.header("✍️ Eksplorasi 4: Hubungan Akar-akar dengan Koefisien b dan c")
     x = symbols('x')
 
-    st.write("""
-    Misalkan kita punya fungsi kuadrat dalam bentuk faktor:
-    
-    **$$f(x) = a(x - p)(x - q)$$**
-    
-    Ayo ubah bentuk ini menjadi bentuk umum (standar):  
-    **$$f(x) = ax² + bx + c$$**
-    """)
+    nilai_a = st.number_input("Masukkan nilai a", value=1, key="nilai_a_input4")
+    nilai_p = st.number_input("Masukkan nilai p", value=1, key="nilai_p_input4")
+    nilai_q = st.number_input("Masukkan nilai q", value=2, key="nilai_q_input4")
 
-    nilai_a = st.number_input("Masukkan nilai a", value=1, key="nilai_a_input")
-    nilai_p = st.number_input("Masukkan nilai p", value=1, key="nilai_p_input")
-    nilai_q = st.number_input("Masukkan nilai q", value=2, key="nilai_q_input")
+    bentuk_umum = expand(nilai_a * (x - nilai_p) * (x - nilai_q))
+    st.latex("f(x) = " + sp.latex(bentuk_umum))
 
-    # Simpan ke session
-    st.session_state.a = nilai_a
-    st.session_state.p = nilai_p
-    st.session_state.q = nilai_q
+    analisis4 = st.text_area("Apa pola hubungan antara p, q dengan b dan c?", key="analisis4_input")
+    if analisis4:
+        with st.expander("📘 Cek jawaban dengan AI"):
+            st.markdown("""
+            **Prompt yang digunakan untuk semua AI:**
+            > Bagaimana hubungan antara akar-akar p dan q dengan koefisien b dan c pada fungsi kuadrat?
 
-    # Expand bentuk faktornya
-    bentuk_umum = expand(nilai_a * (x - nilai_p)*(x - nilai_q))
-    st.latex("f(x) = " + latex(bentuk_umum))
-
-    # Pertanyaan reflektif
-    st.text_area("Apa yang kamu perhatikan dari hasil bentuk umum tersebut?", key="analisis4_1")
-
-    # Lanjut jika siswa menulis analisis
-    st.write("Sekarang coba ubah nilai $$p$$ dan $$q$$ beberapa kali.")
-    st.write("Amati perubahan pada koefisien **$$b$$** dan **$$c$$** dari bentuk umum tersebut.")
-    analisis4_1 = st.text_area("Apa pola hubungan antara $$p$$, $$q$$ dengan koefisien $$b$$ dan $$c$$ yang kamu temukan?", key="analisis4_2")
-
-    if analisis4_1:
-        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-        st.info("""💬 Bandingkan hasil temuanmu dengan AI. Apakah serupa? Apa perbedaannya?
-
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
-
-**Prompt:**
-Bagaimana hubungan antara akar-akar (p dan q) dengan koefisien b dan c dalam fungsi kuadrat f(x) = a(x - p)(x - q)?
-
-✍️ Setelah membandingkan, tuliskan refleksimu di bawah ini:
-""")
-
-        st.text_area("Tulis jawaban refleksi Eksplorasi 4 di sini...", key="refleksi_eksplorasi4p2", height=80)
+            **🔗 Cek di AI berikut:**
+            - [Perplexity AI](https://www.perplexity.ai)  
+            - [Gemini](https://gemini.google.com)  
+            - [ChatGPT](https://chat.openai.com)  
+            """)
+        refleksi4 = st.text_area("✍️ Tulis refleksi Eksplorasi 4 setelah membandingkan dengan AI:", key="refleksi_eksplorasi4")
+        if refleksi4:
+            with st.expander("📚 Verifikasi Materi Eksplorasi 4"):
+                st.markdown("""
+                - Untuk $f(x) = a(x - p)(x - q)$ berlaku:
+                  - $b = -a(p + q)$
+                  - $c = apq$
+                - Hubungan ini berlaku untuk semua nilai $a$, $p$, dan $q$.
+                """)
 
 
+# ------------------------- Eksplorasi 5 -------------------------
+if st.session_state.get("analisis4_input"):
+    st.subheader("🔬 Eksplorasi 5: Kesimpulan Umum Bentuk Faktor dan Bentuk Umum")
+    kesimpulan5 = st.text_area("✍️ Tuliskan kesimpulanmu di sini:", key="kesimpulan5_input")
 
+    if kesimpulan5:
+        with st.expander("📘 Cek jawaban dengan AI"):
+            st.markdown("""
+            **Prompt yang digunakan untuk semua AI:**
+            > Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?
 
-# Eksplorasi 5
-if st.session_state.get("analisis4_1"):  # Pastikan Eksplorasi 4 sudah dijawab
-    st.subheader("🔬 Eksplorasi 5: Buat Kesimpulan Umum")
-    st.write("Setelah melakukan semua eksplorasi, apa kesimpulanmu untuk menentukan bentuk faktor dari bentuk umum persamaan kuadrat?")
-
-    kesimpulan = st.text_area("✍️ Tuliskan kesimpulanmu di sini:", key="kesimpulan")
-
-    if kesimpulan:
-        st.markdown("#### 🔎 Cek Jawabanmu dengan AI (Perplexity)")
-        st.info("""💬 Bandingkan hasil jawabanmu dengan AI. Apakah serupa? Apa bedanya?
-            
-📌 **Salin dan tempel prompt ini ke [Perplexity AI](https://www.perplexity.ai) untuk mendapatkan penjelasan lengkap:**
-
-**Prompt:**
-Bagaimana mengubah bentuk umum fungsi kuadrat menjadi bentuk faktor dan menemukan akarnya?
-
-✍️ Setelah membandingkan, tuliskan refleksimu terkait eksplorasi pada pertemuan 2 ini:
-""")
-
-    # Tambahkan kotak refleksi setelah membandingkan
-        st.text_area("Tulis jawaban refleksi Eksplorasi akhir di sini...", key="refleksi_eksplorasi5p2", height=80)
+            **🔗 Cek di AI berikut:**
+            - [Perplexity AI](https://www.perplexity.ai)  
+            - [Gemini](https://gemini.google.com)  
+            - [ChatGPT](https://chat.openai.com)  
+            """)
+        refleksi5 = st.text_area("✍️ Tulis refleksi Eksplorasi 5 setelah membandingkan dengan AI:", key="refleksi_eksplorasi5")
+        if refleksi5:
+            with st.expander("📚 Verifikasi Materi Eksplorasi 5"):
+                st.markdown("""
+                - Bentuk umum: $f(x) = ax^2 + bx + c$  
+                - Bentuk faktor: $f(x) = a(x - p)(x - q)$ dengan $p$ dan $q$ adalah akar-akar persamaan kuadrat.  
+                - Untuk mengubah bentuk umum ke bentuk faktor, gunakan rumus akar-akar:
+                  $$p, q = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                """)
 
 
 
@@ -265,35 +278,129 @@ if analisisdata.strip():
     
 
 # --- 5. Pembuktian (Verifikasi) ---
-st.header("Verifikasi")
-with st.expander("🔍 Cek AI setelah menjawab"):
-    st.markdown("#### 🔗 Periksa pemahamanmu dengan AI")
+st.header("🔍 Verifikasi Pembuktian")
+st.info("Cek kembali jawaban pembuktianmu dengan bantuan AI dan grafik dari Desmos (jika relevan).")
 
-    # Prompt AI
-    st.markdown("##### 🔎 Cek AI")
-    st.code("Sebuah fungsi kuadrat diberikan dalam bentuk umum f(x) = x² - 7x + 10. "
-            "Faktorkan fungsi tersebut menjadi bentuk (x - p)(x - q). "
-            "Tunjukkan proses langkah demi langkah bagaimana kamu menemukan nilai p dan q, "
-            "beserta alasan matematisnya.")
+# Expander: petunjuk prompt dan link ke beberapa AI eksternal
+with st.expander("📘 Cek jawaban dengan AI untuk soal ini"):
+    st.markdown(
+        """
+**Prompt yang digunakan untuk semua AI:**  
+> Sebuah fungsi kuadrat diberikan dalam bentuk umum $f(x) = x^2 - 7x + 10$.  
+> Faktorkan fungsi tersebut menjadi bentuk $(x - p)(x - q)$.  
+> Tunjukkan proses langkah demi langkah bagaimana menemukan nilai $p$ dan $q$, beserta alasan matematisnya.
+
+**🔗 Cek di AI berikut:**  
+- [Perplexity AI](https://www.perplexity.ai) — tempel prompt di kolom pencarian.  
+- [Gemini (Google)](https://gemini.google.com) — tempel prompt dan bandingkan hasilnya.  
+- [ChatGPT (OpenAI)](https://chat.openai.com) — tempel prompt dan lihat penjelasan langkah demi langkah.
+"""
+    )
+
+# (Opsional) Verifikasi Desmos jika ingin visualisasi grafiknya
+with st.expander("📈 Verifikasi bentuk grafik fungsi dengan Desmos:"):
+    st.markdown("""
+    🌐 Buka [Desmos Graphing Calculator](https://www.desmos.com/calculator)  
+    Masukkan fungsi: `x^2 - 7x + 10`
     
-    st.markdown("[🔗 Buka Perplexity untuk melihat jawaban AI](https://www.perplexity.ai/search/faktorkan-bentuk-berikut-f-x-x-zX63Q4XtQvmPVB..m6yvOg)")
+    Perhatikan:
+    - Apakah grafik memotong sumbu-x di $x = 2$ dan $x = 5$?  
+    - Apakah grafik terbuka ke atas?  
+    - Apakah titik potong sumbu-y di $y = 10$?
+    """)
+
+# Konfirmasi siswa
+verifikasi = st.radio(
+    "Apakah jawabanmu sesuai dengan hasil AI dan grafik Desmos?",
+    ["Ya", "Tidak", "Sebagian"],
+    key="verifikasi_pembuktian"
+)
+
+if verifikasi:
+    st.session_state["verifikasi_pembuktian_done"] = True
+
+# Materi verifikasi
+with st.expander("📚 Materi Verifikasi Pembuktian"):
+    st.markdown("""
+    **Materi yang benar sesuai soal:**
+    - **Bentuk umum:** $f(x) = x^2 - 7x + 10$  
+    - Cari $p$ dan $q$ dengan mencari dua bilangan yang hasilnya $10$ (c) dan jumlahnya $-7$ (b).  
+      → $p = 2$, $q = 5$  
+
+    **Bentuk faktor:**  
+    $$f(x) = (x - 2)(x - 5)$$  
+
+    - Grafiknya parabola terbuka ke atas karena $a = 1 > 0$.  
+    - Titik potong sumbu-x: $(2,0)$ dan $(5,0)$  
+    - Titik potong sumbu-y: $(0,10)$
+    """)
 
 
 
 # --- 6. Penarikan Kesimpulan ---
-st.header("✍️Penarikan Kesimpulan")
-st.write("Tuliskan kesimpulanmu terlebih dahulu berdasarkan proses eksplorasi, pengolahan dan pembuktian sebelumnya.")
-kesimpulan = st.text_area("📚 Apa kesimpulan yang kamu dapatkan dari aktivitas ini?")
+st.header("🎯 Penarikan Kesimpulan")
 
-if kesimpulan.strip():
-    st.success("✅ Kesimpulan kamu tercatat.")
-    
-    with st.expander("🔍 Cek Kesimpulan AI setelah kamu menjawab"):
-        st.write("📌 *Salin dan tempel prompt ini di Perplexity.ai untuk membandingkan kesimpulanmu dengan AI:*")
-        st.code("Buatkan kesimpulan singkat dan jelas tentang bagaimana cara memfaktorkan bentuk kuadrat f(x) = x^2 - 7x + 10 dan apa yang bisa dipelajari dari proses tersebut.")
-        st.markdown("[Klik untuk membuka Perplexity](https://www.perplexity.ai)")
+# Input kesimpulan dari pengguna
+kesimpulan = st.text_area(
+    "📚 Apa kesimpulan yang kamu dapatkan dari aktivitas ini?",
+    key="kesimpulan_faktorisasi",
+    height=120
+)
+
+# Tampilkan notifikasi jika kesimpulan sudah diisi
+if kesimpulan.strip() != "":
+    st.success("✅ Kesimpulan kamu telah dicatat. Selesai.")
+
+    # Bandingkan dengan AI eksternal
+    with st.expander("🤖 Bandingkan Kesimpulanmu dengan AI Eksternal"):
+        st.markdown("""
+        **Prompt yang digunakan untuk semua AI:**
+        > Buatkan kesimpulan singkat dan jelas tentang bagaimana cara memfaktorkan bentuk kuadrat $f(x) = x^2 - 7x + 10$ dan apa yang bisa dipelajari dari proses tersebut.
+
+        **🔗 Cek di AI berikut:**
+        - [Perplexity AI](https://www.perplexity.ai)  
+        - [Gemini](https://gemini.google.com)  
+        - [ChatGPT](https://chat.openai.com)  
+        """)
+
+    # Materi verifikasi kesimpulan
+    with st.expander("📚 Materi Verifikasi Kesimpulan"):
+        st.markdown("""
+        **Cara Memfaktorkan Bentuk Kuadrat:**
+        1. Bentuk umum: $$f(x) = ax^2 + bx + c$$  
+        2. Cari dua bilangan yang:
+           - Hasil kalinya = $$a \times c$$
+           - Jumlahnya = $$b$$
+        3. Pecah suku tengah menggunakan dua bilangan tersebut.
+        4. Kelompokkan dan faktorkan per kelompok.
+        5. Gabungkan faktor yang sama untuk mendapatkan bentuk akhir.
+
+        **Contoh Soal:**  
+        $$f(x) = x^2 - 7x + 10$$  
+        - Hasil kali: $$1 \times 10 = 10$$  
+        - Jumlah: $$-7$$  
+        → Bilangan: $$-5$$ dan $$-2$$  
+
+        **Pecah suku tengah:**  
+        $$x^2 - 5x - 2x + 10$$  
+
+        **Kelompokkan:**  
+        $$(x^2 - 5x) - (2x - 10)$$  
+
+        **Faktorkan:**  
+        $$x(x - 5) - 2(x - 5)$$  
+
+        **Hasil akhir:**  
+        $$f(x) = (x - 2)(x - 5)$$  
+
+        **Ringkasan:**
+        - Faktorisasi membantu menemukan akar persamaan kuadrat dengan cepat.
+        - Akar dari contoh di atas: $$x = 2$$ dan $$x = 5$$
+        - Grafiknya parabola terbuka ke atas, memotong sumbu-x di dua titik tersebut.
+        """)
 else:
     st.warning("✍️ Silakan isi kesimpulan terlebih dahulu sebelum melihat versi AI.")
+
 
 
 # --- Refleksi Akhir ---
@@ -325,6 +432,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
