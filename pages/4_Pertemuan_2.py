@@ -255,11 +255,11 @@ if st.session_state.get("analisis4_input"):
         refleksi5 = st.text_area("✍️ Tulis refleksi Eksplorasi 5 setelah membandingkan dengan AI:", key="refleksi_eksplorasi5")
         if refleksi5:
             with st.expander("📚 Verifikasi Materi Eksplorasi 5"):
-                st.markdown("""
+                st.markdown(r"""
                 - Bentuk umum: $f(x) = ax^2 + bx + c$  
                 - Bentuk faktor: $f(x) = a(x - p)(x - q)$ dengan $p$ dan $q$ adalah akar-akar persamaan kuadrat.  
                 - Untuk mengubah bentuk umum ke bentuk faktor, gunakan rumus akar-akar:
-                  $$p, q_{akar} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                  $$p, q_{\text{akar}} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
                 """)
 
 
@@ -432,6 +432,7 @@ with col2:
 with col3:
     if st.button("➡️ Pertemuan 3"):
         st.switch_page("pages/5_Pertemuan_3.py")
+
 
 
 
